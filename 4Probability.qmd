@@ -342,7 +342,7 @@ Let, Y={Yes} and N={No}.
 The joint probability table with marginal probability table is given below:
 
 |                  |  **A**   |  **B**   |  **C**   | **D (Below C)** | **Row total** |
-|:----------------:|:--------:|:--------:|:--------:|:---------------:|:-------------:|
+|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 |      **Y**       |   0.12   |   0.06   |   0.12   |      0.02       |   **0.32**    |
 |      **N**       |   0.13   |   0.21   |   0.26   |      0.08       |   **0.68**    |
 | **Column total** | **0.25** | **0.27** | **0.38** |    **0.10**     |   **1.00**    |
@@ -356,6 +356,100 @@ And $P(Y\cap A)=P(Y)\cdot P(A)=0.32\times 0.25=0.08$.
 Since $P(Y\cap A) \ne P(Y) \cdot P(A)$ so, $Y$ and $A$ are not independent. Hence, we do not need to test other combinations.
 
 In conclusion we can say that "worked additional problems" and "expected grade" are not statistically independent.
+
+
+
+## Exercises 4.1
+
+4.1) [@anderson2011] Suppose that we have two events, A and B, with $P(A)= 0.50$, $P(B) = 0.60$, and $P(A \cap B) = 0.40$ .
+
+i)  Find $P(A | B)$.
+
+ii) Find $P(B | A)$.
+
+iii) Are A and B independent? Why or why not?
+
+4.2) Suppose P(A)=0.40 and P(B\|A)=0.30. What is the joint probability of A and B?
+
+4.3) A local bank reports that 80 percent of its customers maintain a checking account, 60 percent have a savings account, and 50 percent have both. If a customer is chosen at random, what is the probability the customer has either a checking or a savings account? What is the probability the customer does not have either a checking or a savings account?
+
+4.4) [@keller2014] Suppose we have the following joint probabilities .
+
+|          |          |          |          |
+|----------|:--------:|:--------:|:--------:|
+|          | **A~1~** | **A~2~** | **A~3~** |
+| **B~1~** |   0.15   |   0.20   |   0.10   |
+| **B~2~** |   0.25   |   0.25   |   0.05   |
+
+Compute the marginal probabilities.
+
+4.5) Refer to Exercise 4.
+
+a.  Compute $P(A_2|B_2)$. Also compute $P(\bar {A_2}|B_2)$
+
+b.  Compute $P(B_1|A_2)$.
+
+4.6) Refer to Exercise 2.
+
+a.  Compute $P(A_1 \ \ or \ \ A_2)$.
+b.  Compute $P(A_2\ \ or \ \ B_2)$.
+
+4.7) A survey was conducted among 100 college students about their preferred study method and performance in exams.
+
+|                 | Low Score | Medium Score | High Score |
+|-----------------|:---------:|:------------:|:----------:|
+| **Group Study** |    10     |      15      |     5      |
+| **Self Study**  |     5     |      25      |     40     |
+
+a.  **Construct** a joint probability table.
+
+b.  **Compute** the probability that a randomly selected student did group study and scored medium?
+
+c.  **Find** the probability that a student prefers Self Study, regardless of score.
+
+d.  **Determine** the probability that a student either got a High Score or prefers Group Study.
+
+e.  Given that a student scored Low, what is the probability they did group study?
+
+f.  A student scored high. **Find** the probability that he did self study.
+
+g.  Are preferred study method and performance in exam independent?
+
+4.8) A company surveys 600 customers about their income level and purchasing behavior of a premium product.
+
+|                 | Did Not Buy | Bought Once | Bought Multiple Times |
+|-----------------|:-----------:|:-----------:|:---------------------:|
+| **Low Income**  |     150     |     60      |          30           |
+| **High Income** |     60      |     90      |          210          |
+
+a.  What is the probability that a customer is high income and bought multiple times?
+
+b.  What is the probability that a customer is from the low-income group?
+
+c.  What is the probability that a customer is either high income or bought multiple times?
+
+d.  What is the probability that a customer is high income, given that they bought multiple times?
+
+e.  What is the probability that a customer bought once, given that they are low income?
+
+f.  Are income level and purchasing behavior independent?
+
+4.9) A firm has classified its customers in two ways: (1) according to whether the account is overdue and (2) whether the account is new (less than 12 months) or old. An analysis of the firm’s records provided the input for the following table of joint probabilities.
+
+|     |             |                 |
+|-----|:-----------:|:---------------:|
+|     | **Overdue** | **Not overdue** |
+| New |    0.06     |      0.13       |
+| Old |    0.52     |      0.29       |
+
+One account is randomly selected.
+
+a.  If the account is overdue, what is the probability that it is new?
+
+b.  If the account is new, what is the probability that it is overdue?
+
+c.  Is the age of the account related to whether it is overdue? Explain.
+
 
 ## Probability Trees
 
@@ -387,71 +481,7 @@ $=P(W_1)P(W_2|W_1)+P(B_1)P(W_2|B_1)$
 
 $=(\frac{2}{5})(\frac{1}{4})+(\frac{3}{5})(\frac{2}{4})=\frac{1}{10}+\frac{3}{10}=\frac{4}{10}=\frac{2}{5}$.
 
-## Exercises 4.1
 
-4.1) [@anderson2011] Suppose that we have two events, A and B, with $P(A)= .50$, $P(B) = .60$, and $P(A \cap B) = .40$ .
-
-i)  Find $P(A | B)$.
-
-ii) Find $P(B | A)$.
-
-iii) Are A and B independent? Why or why not?
-
-4.2) Suppose P(A)=0.40 and P(B\|A)=0.30. What is the joint probability of A and B?
-
-4.3) A local bank reports that 80 percent of its customers maintain a checking account, 60 percent have a savings account, and 50 percent have both. If a customer is chosen at random, what is the probability the customer has either a checking or a savings account? What is the probability the customer does not have either a checking or a savings account?
-
-4.4) [@keller2014] Suppose we have the following joint probabilities .
-
-|          |          |          |          |
-|----------|:--------:|:--------:|:--------:|
-|          | **A~1~** | **A~2~** | **A~3~** |
-| **B~1~** |   0.15   |   0.20   |   0.10   |
-| **B~2~** |   0.25   |   0.25   |   0.05   |
-
-Compute the marginal probabilities.
-
-4.5) Refer to Exercise 4.
-
-a.  Compute $P(A_2|B_2)$.
-
-b.  Compute $P(B_1|A_2)$.
-
-4.6) Refer to Exercise 2.
-
-a.  Compute $P(A_1 \ \ or \ \ A_2)$.
-b.  Compute $P(A_2\ \ or \ \ B_2)$.
-
-4.7) Credit scorecards are used by financial institutions to help decide to whom loans should be granted. An analysis of the records of one bank produced the following probabilities.
-
-| **Lone Performance** | Score Under 400 | Score 400 or more |
-|----------------------|:---------------:|:-----------------:|
-| **Fully repaid**     |      0.19       |       0.64        |
-| **Defaulted**        |      0.13       |       0.04        |
-
-a.  What proportion of loans are fully repaid?
-
-b.  What proportion of loans was fully repaid if someone's score is less than 400 ?
-
-c.  What proportion of loans was fully repaid if someone's score is than 400 or more?
-
-d.  Are score and whether the loan is fully repaid independent? Explain.
-
-4.8) A firm has classified its customers in two ways: (1) according to whether the account is overdue and (2) whether the account is new (less than 12 months) or old. An analysis of the firm’s records provided the input for the following table of joint probabilities.
-
-|     |             |                 |
-|-----|:-----------:|:---------------:|
-|     | **Overdue** | **Not overdue** |
-| New |    0.06     |      0.13       |
-| Old |    0.52     |      0.29       |
-
-One account is randomly selected.
-
-a.  If the account is overdue, what is the probability that it is new?
-
-b.  If the account is new, what is the probability that it is overdue?
-
-c.  Is the age of the account related to whether it is overdue? Explain.
 
 ## Total Probability rule and Bayes' Theorem
 
@@ -487,6 +517,14 @@ P(A_1|B)=\frac{P(A_1\cap B)}{P(B)}
 $$
 
 In the same way we can compute $P(A_2|B)$ and $P(A_3|B)$.
+
+**Example 4.21:** A marketing company is studying customer behavior by analyzing how individuals respond to different types of advertisements and whether those interactions lead to a purchase. Each customer is exposed to one of three types of ads: email with a probability of 0.3, social media with a probability of 0.5, and television with a probability of 0.2. The effectiveness of these ads varies: 20% of customers who receive an email make a purchase, while 40% respond positively to social media ads, and 50% of those shown a TV ad proceed to buy.
+
+a.  **Construct** a probability tree from the above information.
+
+b.  **Find** the probability that a customer will make a purchase (regardless which type of ad he was exposed).
+
+c.  Suppose a customer made a purchase. What is the probability that he saw the ad in social media?
 
 ## Exercises 4.2
 

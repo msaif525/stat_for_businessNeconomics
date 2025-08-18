@@ -299,7 +299,7 @@ sal6d %>% mutate(m=mean(sal6),deviation=sal6-m,squared_deviation=deviation^2)->v
 ```
 
 | Salary ($x_i$) | Sample mean, $\bar x$ | $(x_i-\bar x)$ | $(x_i-\bar x)^2$ |
-|:----------------:|:----------------:|:----------------:|:----------------:|
+|:--:|:--:|:--:|:--:|
 | 3450 | 3505 | -55 | 3025 |
 | 3550 | 3505 | 45 | 2025 |
 | 3650 | 3505 | 145 | 21025 |
@@ -484,7 +484,7 @@ Eventually the **standard deviation** is $\sqrt {s^2}$
 [*Solution:*]{.underline}
 
 |  |  |  |  |  |
-|---------------|:-------------:|:-------------:|:-------------:|:-------------:|
+|----|:--:|:--:|:--:|:--:|
 | **Audit Time (days)** | **Mid point**$(M_i)$ | **Frequency** $(f_i)$ | $f_i M_i$ | $f_i M_i^2$ |
 | 10-14 | 12 | 4 | 48 | 576 |
 | 15-19 | 17 | 8 | 136 | 2312 |
@@ -755,9 +755,32 @@ e.  Using the z-score approach, do the data contain any outliers? Does the appro
 
 ### Comparative box-plot
 
-**An example:** Cell Phone Companies Customer Satisfaction. Consumer Reports provides overall customer satisfaction scores for AT&T, Sprint, T-Mobile, and Verizon cell-phone services in major metropolitan areas throughout the United States. The **rating** for each service reflects the overall customer satisfaction considering a variety of factors such as cost, connectivity problems, dropped calls, static interference, and customer support. A satisfaction scale from 0 to 100 is used with 0 indicating completely dissatisfied and 100 indicating completely satisfied. Suppose that the ratings for the four cell-phone services in 20 metropolitan areas are as shown below.
+**An example:** Cell Phone Companies Customer Satisfaction. Consumer Reports provides overall customer satisfaction scores for AT&T, Sprint, T-Mobile, and Verizon cell-phone services in major metropolitan areas throughout the United States. The **rating** for each service reflects the overall customer satisfaction considering a variety of factors such as cost, connectivity problems, dropped calls, static interference, and customer support. A satisfaction scale from 0 to 100 is used with 0 indicating completely dissatisfied and 100 indicating completely satisfied. Suppose that the ratings for the four cell-phone services in 20 metropolitan areas are as shown below [@anderson2020].
 
-![](images/clipboard-1914441999.png)
+| Metropolitan Area | AT&T | Sprint | T-Mobile | Verizon |
+|-------------------|:----:|:------:|:--------:|:-------:|
+| Atlanta           |  70  |   66   |    71    |   79    |
+| Boston            |  69  |   64   |    74    |   76    |
+| Chicago           |  71  |   65   |    70    |   77    |
+| Dallas            |  75  |   65   |    74    |   78    |
+| Denver            |  71  |   67   |    73    |   77    |
+| Detroit           |  73  |   65   |    77    |   79    |
+| Jacksonville      |  73  |   64   |    75    |   81    |
+| Las Vegas         |  72  |   68   |    74    |   81    |
+| Los Angeles       |  66  |   65   |    68    |   78    |
+| Miami             |  68  |   69   |    73    |   80    |
+| Minneapolis       |  68  |   66   |    75    |   77    |
+| Philadelphia      |  72  |   66   |    71    |   78    |
+| Phoenix           |  68  |   66   |    76    |   81    |
+| San Antonio       |  75  |   65   |    75    |   80    |
+| San Diego         |  69  |   68   |    72    |   79    |
+| San Francisco     |  66  |   69   |    73    |   75    |
+| Seattle           |  68  |   67   |    74    |   77    |
+| St. Louis         |  74  |   66   |    74    |   79    |
+| Tampa             |  73  |   63   |    73    |   79    |
+| Washington        |  72  |   68   |    71    |   76    |
+
+: Cell Phone Companies Customer Satisfaction {#tbl-tab.compare}
 
 We can easily compare the **ratings** for 4- cell-phone services using **comparative/parallel box-plots**
 
@@ -912,7 +935,7 @@ x=c(3,5,6,9,12)
 Here sample mean, $\bar x=\frac{\sum x}{n}=\frac{3+5+...+12}{5}=7$
 
 | $x$ | $(x-\bar x)$ | $(x-\bar x)^2$ | $(x-\bar x)^3$ | $(x-\bar x)^4$ |
-|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+|:--:|:--:|:--:|:--:|:--:|
 | 3 | -4 | 16 | -64 | 256 |
 | 5 | -2 | 4 | -8 | 16 |
 | 6 | -1 | 1 | -1 | 1 |

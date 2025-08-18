@@ -6,7 +6,7 @@ editor_options:
 
 # Introduction to estimation
 
-In previous chapter we discuss the sampling properties of the sample mean and varance. In this chapter we discuss abot the **parameter estimation**.It falls under the bracnh of **Statistical Inference.** The process of estimation involves determining the approximate value of a population parameter on the basis of sample data. There are two types **parameter estimation-(i) point estimation** and **(ii) interval estimation.**
+In previous chapter we discuss the sampling properties of the sample mean and variance. In this chapter we discuss about the **parameter estimation**.It falls under the branch of **Statistical Inference.** The process of estimation involves determining the approximate value of a population parameter on the basis of sample data. There are two types **parameter estimation-(i) point estimation** and **(ii) interval estimation.**
 
 ## Point Estimation
 
@@ -388,7 +388,38 @@ $$
 
 Here, $t_{\alpha/2}$ is the $t$ value providing an area of $\alpha/2$ in the upper tail of the $t$ distribution with $(n-1)$ degrees of freedom that is $P(T>t_{\alpha/2,n-1})=\alpha/2$.
 
-**Problem 9.5** [@keller2014, page 341] In a survey conducted to determine, among other things, the cost of vacations, 64 individuals were randomly sampled. Each person was asked to compute the cost of her or his most recent vacation and the sample mean was \$1810.16. Assuming that the standard deviation is \$400, **estimate** with 95% confidence the average cost of all vacations.\
+**Problem 9.5** [@keller2014, page 341] In a survey conducted to determine, among other things, the cost of vacations, 64 individuals were randomly sampled. Each person was asked to compute the cost of her or his most recent vacation and the sample mean was \$1810.16. Assuming that the standard deviation is \$400, **estimate** with 95% confidence interval for the average cost of all vacations.
+
+***Solution:** Let,* $X$ be the vacation cost in \$. Also let $\mu$ be the mean of all vacations.
+
+Here sample size is $n=64$ with the sample mean , $\bar x =\$ 1810.16$.
+
+The assumed (population) standard deviation, $\sigma=\$400$. Since the sample size is sufficiently large so according to CLT, $\bar X\sim N(\mu, \sigma_{\bar X}^2) \ \ approximately$ .
+
+Where $\sigma_{\bar X}=\frac{\sigma}{\sqrt n}=\frac{400}{\sqrt 64}=50$
+
+For 99% confidence interval (CI) $z_{\alpha/2}=2.575$.
+
+So the 99% CI for the $\mu$ is:
+
+$$
+\bar x\pm z_{\alpha/2} * \frac{\sigma}{\sqrt n}
+$$
+
+
+$$
+\begin{equation}
+\bar x\pm z_{\alpha/2} * \frac{\sigma}{\sqrt n} \\
+
+Or, 1810.16\pm 2.575*50\\
+
+Or, 1810.16\pm 128.75\\
+
+1681.41, 1938.91
+\end{equation}
+$$
+
+$\therefore P(1681.41<\mu<1938.91)=99\%$. 
 
 **Problem 9.6** [@keller2014, page 340] It is known that the amount of time needed to change the oil on a car is normally distributed with a standard deviation of 5 minutes. The amount of time to complete a random sample of 10 oil changes was recorded and listed here. **Compute** the 99% confidence interval estimate of the mean of the population.
 
@@ -398,7 +429,9 @@ Here, $t_{\alpha/2}$ is the $t$ value providing an area of $\alpha/2$ in the upp
 
 **Problem 9.8** [@newbold2013, page 302]Twenty people in one large metropolitan area were asked to record the time (in minutes) that it takes them to drive to work. These times were as follows:
 
-30, 42, 35, 40, 45, 22, 32, 15, 41, 45, 28, 32, 45, 27, 47, 50, 30, 25, 46, 25
+30, 42, 35, 40, 45, 22, 32, 15, 41, 45, 
+
+28, 32, 45, 27, 47, 50, 30, 25, 46, 25
 
 Assuming that the population is normally distributed find the 99% confidence interval for the population mean of time it takes to drive to work.
 
@@ -421,9 +454,56 @@ $$
 $$ {#eq-9.3}\
 which is valid provided that $n\hat p$ and $n(1 - \hat p)$ are greater than 5.
 
-\
 **Problem 9.9** [@newbold2013, page 305] In a random sample of 95 manufacturing firms, 67 indicated that their company attained ISO certification within the last two years. Find a 99% confidence interval for the population proportion of companies that have been certified within the last 2 years.
 
 **Problem 9.10** [@newbold2013, page 305] From a random sample of 400 registered voters in one city, 320 indicated that they would vote in favor of a proposed policy in an upcoming election. Find a 98% confidence interval for the population proportion in favor of this policy.
 
-##  Interval estimation: Comparing TWO populations
+## Sample size determination: Large Population
+
+If $E$ be the *margin of error **(E)**,* $\sigma$ be the population standard deviation (assume known) then the required **sample size (n)** to estimate a population mean $\mu$ with $(1-\alpha)\times 100\%$ confidence level is:
+
+$$
+n=\left( \frac{z_{\alpha/2} \sigma}{E} \right)^2
+$$ {#eq-9.4}
+
+::: callout-note
+## Sample size determination: Derivation
+
+From the interval estimation reagrding $\mu$ we know
+
+$$
+P(\bar x-z_{\alpha/2} \frac{\sigma}{\sqrt n}<\mu<\bar x+z_{\alpha/2} \frac{\sigma}{\sqrt n})=1-\alpha
+$$
+
+That is,
+
+$$
+P(\bar x-E<\mu<\bar x+E)=1-\alpha
+$$
+
+Hence we can write,
+
+$$
+E=z_{\alpha/2} \frac{\sigma}{\sqrt n}
+$$
+
+Solving for $n$ we have
+
+$$
+n=\left( \frac{z_{\alpha/2} * \sigma}{E} \right)^2
+$$
+:::
+
+**Problem 9.11 [@keller2014]**
+
+a\) Determine the sample size required to estimate a population mean to within 10 units given that the population standard deviation is 50. A confidence level of 90% is judged to be appropriate.
+
+b\) Repeat part (a) changing the standard deviation to 100.
+
+c\) Re-do part (a) using a 95% confidence level.
+
+d\) Repeat part (a) wherein we wish to estimate the population mean to within 20 units.\
+\
+**Problem 9.12 [@keller2014]** The operations manager of a large production plant would like to estimate the average amount of time workers take to assemble a new electronic component. After observing a number of workers assembling similar devices, she guesses that the standard deviation is 6 minutes. How large a sample of workers should she take if she wishes to estimate the mean assembly time to within 20 seconds? Assume that the confidence level is to be 99%\
+
+## Interval estimation: Comparing TWO populations

@@ -313,7 +313,7 @@ pclt_3
 
 From @fig-cltsim we can see that as the sample size increases, the sampling distribution of **sample mean** tends to bell-shaped or normal though the population data was very skewed to the right. This simulation clearly demonstrate the fact of Central Limit Theorem (CLT).
 
-For more interactive simulation of **CLT** please visit the [Click here to visit the ShinyApp for Central Limit Theorem Simulation](https://saifuddin24.shinyapps.io/CLT_Sim/).
+For more interactive simulation of **CLT** please [click here to visit the ShinyApp for Central Limit Theorem Simulation](https://saifuddin24.shinyapps.io/CLT_Sim/).
 
 
 **Problem 8.1** The foreman of a bottling plant has observed that the amount of soda in each 32-ounce bottle is actually a normally distributed random variable, with a mean of 32.2 ounces and a standard deviation of .3 ounce [@keller2014, page 308].

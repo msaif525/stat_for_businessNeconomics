@@ -54,7 +54,13 @@ $$
 H_1:\mu_1-\mu_2\ne 0
 $$
 
-### **Case-II(A):**  $\sigma_1^2$ **and** $\sigma_2^2$ **are unknown but equal(**$\sigma_1^2=\sigma_2^2$**)**
+**Problem 11.2** A credit card watchdog group claims that there is a difference in the mean credit card debts of households in California and Illinois. The results of a random survey of 250 households from each state are shown at the bottom. The two samples are independent. Assume that $\sigma_1 =\$ 1045$ for California and $\sigma_2=\$1350$ for Illinois. Do the results support the group’s claim? Use $\alpha= 0.05$.
+
+![](images/clipboard-280675657.png){width="149"}
+
+**Problem 11.3** A travel agency claims that the average daily cost of meals and lodging for vacationing in Alaska is greater than the average daily cost in Colorado. The table at the bottom shows the results of a random survey of vacationers in each state. The two samples are independent. Assume that $\sigma_1=\$24$ for Alaska and $\sigma_2=\$19$ for Colorado, and that both populations are normally distributed. At $\alpha= 0.05$, is there enough evidence to support the claim?
+
+### **Case-II(A):** $\sigma_1^2$ **and** $\sigma_2^2$ **are unknown but equal(**$\sigma_1^2=\sigma_2^2$**)**
 
 To test $H_0: \mu_1-\mu_2=D_0$ the test statistic is:
 
@@ -104,7 +110,7 @@ Assuming $s_1^2>s_2^2$ ,**we can reject the** $H_0$ **if** $F>F_{\alpha/2, \nu_1
 
 **NOTE:** We refer to the population providing the larger sample variance as *population 1* .\
 
-**Problem 11.2** The following data were collected from two population- population A and population B.
+**Problem 11.4** The following data were collected from two population- population A and population B.
 
 |                     | Population A | Population B |
 |---------------------|:------------:|:------------:|
@@ -190,3 +196,75 @@ t_sta<-(10.1-13.6)/sqrt(svar_pooled*(1/40+1/35))
 t_c<-qt(.025,73)
 
 ```
+
+**Problem 11.5** An accounting firm is interested in providing opportunities for its auditors to gain more expertise in statistical sampling methods. They wish to compare traditional classroom instruction with online self-paced tutorials. Auditors were assigned at random to one type of instruction, and the auditors were then given an exam. The table shows how the two groups performed.
+
+![](images/clipboard-2656718887.png){width="175"}
+
+a\) **Test** equality of variances of two methods of learning.
+
+b\) **Test** whether there is any significant difference in mean scores between Traditional and Online method.
+
+## Hypothesis test: Comparing TWO means when the samples are dependent/ matched/paired
+
+The **paired t-test** is used to compare the means of two related groups (e.g., before-and-after measurements on the **same subjects**). To validly apply the test, the following assumptions must be met:
+
+**Assumptions of the Paired t-test:**
+
+1)  [Paired observations:]{.underline} Each subject or entity provides a pair of observations (e.g., pre-treatment and post-treatment). The test assumes that data are dependent.
+
+2)  [Continuous or interval scale:]{.underline} The differences between paired observations should be measured on a continuous (interval or ratio) scale.
+
+3)  [Normality of the differences:]{.underline}
+
+The distribution of the differences (not the raw values) between the paired observations should be approximately normally distributed.
+
+-   For small samples (typically n \< 30), this assumption is critical.
+
+-   For larger samples, the Central Limit Theorem provides robustness.
+
+4)  [No significant outliers in the differences:]{.underline}
+
+Extreme outliers in the differences can heavily influence the result and violate the normality assumption.
+
+**Test procedure**
+
+Suppose $n$ subjects are measured in two different occasion/conditions regarding the measurement variable $X$.
+
+Let, $\mu_A$ be the population mean of $X$ under condition A and
+
+$\mu_B$ be the population mean of $X$under condition B
+
+So the difference between the means is $\mu_d=\mu_A-\mu_B$
+
+To test the **hypotheses:**
+
+$$
+H_0: \mu_d=0
+$$
+
+$$
+H_1: \mu_d \ne 0
+$$
+
+the t**est statistic** is:
+
+$$
+t=\frac{\bar d -\mu_d}{s_d/ \sqrt{n} }
+$$
+
+which is Student t distributed with $n-1$ degrees of freedom, provided that the differences are normally distributed.
+
+The rejection rule is similar as one-sample t-test.\
+
+Here,
+
+-   $n=$ sample size
+
+-   $d_i=$ difference in measurements between two conditions from $i^{th}$ subject
+
+-   $$\bar d=\frac{\sum_{i=1}^{n} d_i}{n}$$
+
+-   $$s_d=\sqrt { \frac{\sum_{i=1}^{n} (d-\bar d)^2}{n-1}}$$
+
+**Problem 11.6**

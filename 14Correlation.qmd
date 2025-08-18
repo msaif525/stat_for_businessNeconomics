@@ -145,6 +145,34 @@ $$
 r=\frac{n \sum xy-(\sum x) (\sum y)}{\sqrt {\left [n\sum x^2-(\sum x)^2 \right] } \sqrt{\left [n\sum y^2-(\sum y)^2 \right]}}
 $$
 
+::: callout-note
+## Proof of $-1\le\rho\le+1$
+
+From Cauchy–Schwarz Inequality we know that,
+
+$$
+(E[XY])^2\le E[X^2] E[Y^2]
+$$
+
+Now center the variables $X$ and $Y$ with respect to their mean we have,
+
+$$
+(E[(X-\mu_X)(Y-\mu_Y)])^2 \le E[(X-\mu_X)^2] E[(Y-\mu_Y)^2]
+$$
+
+$$
+\Rightarrow [Cov(X,Y)]^2 \le Var(X)  \cdot Var(Y)
+$$
+
+$$
+\Rightarrow (\sigma_{XY})^2 \le \sigma^2_X \sigma^2_Y 
+$$
+
+$$
+\Rightarrow | \sigma_{XY}| \le \sigma_X \sigma_Y
+$$
+:::
+
 ### Interpretation of correlation coefficient
 
 \(a\) $r=-1$ implies *perfect negative* correlation,
@@ -559,7 +587,7 @@ vi\) **Comment** about goodness of fit of the estimated model.
 **Problem 10.5.2** **Age and Blood Pressure.** The ages (in years) of 10 men and their systolic blood pressures (in millimeters of mercury).
 
 |                                   |     |     |     |     |     |     |     |     |     |     |
-|--------------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|-------|
+|-----------------------------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|-----|
 | **Age**                           | 16  | 25  | 39  | 45  | 49  | 64  | 70  | 29  | 57  | 22  |
 | **Systolic blood pressure (SBP)** | 109 | 128 | 143 | 145 | 199 | 185 | 180 | 130 | 175 | 118 |
 

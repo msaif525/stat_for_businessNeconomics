@@ -1,14 +1,13 @@
 ---
+title: "Descriptive statistic: Tabular and Graphical Presentations"
 output: html_document
 editor_options: 
   chunk_output_type: console
 ---
 
-# Descriptive statistic: Tabular and Graphical Presentations
-
 ## Summarizing Categorical Data
 
-**Frequency Distribution**
+### **Frequency Distribution**
 
 A frequency distribution is a tabular summary of data showing the number (frequency) of items in each of several non overlapping classes.
 
@@ -56,7 +55,7 @@ MBA %>% count(`Soft Drink`) %>% kable(col.names = c("Soft Drink","Frequency"),al
 
 -   The *percent frequency* of a class is the relative frequency multiplied by 100.
 
-## Bar Charts and Pie Charts
+### Bar Charts and Pie Charts
 
 -   **Bar chart:** A graphical device for depicting qualitative data that have been summarized in a frequency, relative frequency, or percent frequency distribution.
 
@@ -125,9 +124,154 @@ pi_chart<-ggplot(pi_data, aes(x = "", y = RF, fill = `Soft Drink`)) +
 pi_chart
 ```
 
+### Cross-tabulation and its graphical presentation
+
+**Cross-tabulation** (also known as crosstabs or contingency tables) is a fundamental data analysis technique used to examine the relationship between **two** or **more** **categorical variables.** For instance, consider the following cross-table between the **gender** and **fitness-level** of 30 individuals:
+
+```{r echo=FALSE}
+library(readr) # Recommended for robust CSV reading
+
+data_string <- "ID,Age,Gender,Monthly Income (USD),Hours of Exercise/Week,Favorite Fruit,Fitness Level,Temperature Preference (°C)
+1,25,Male,1520.75,2.5,Mango,Fair,23
+2,32,Female,2280.50,1.2,Apple,Poor,22
+3,20,Male,925.10,4.8,Banana,Good,19
+4,29,Female,1980.90,3.3,Orange,Fair,22
+5,40,Male,3055.45,0.7,Apple,Poor,21
+6,23,Female,1425.00,5.9,Mango,Excellent,20
+7,37,Male,3625.80,2.1,Banana,Fair,18
+8,31,Female,2520.00,1.5,Apple,Poor,27
+9,27,Male,1685.25,3.7,Orange,Good,22
+10,22,Female,1190.00,6.2,Mango,Excellent,19
+11,34,Male,3180.45,0.0,Banana,Poor,24
+12,26,Female,1830.60,4.3,Orange,Good,19
+13,39,Male,3999.00,1.4,Apple,Fair,22
+14,24,Female,1335.75,5.6,Banana,Excellent,26
+15,28,Male,2125.35,2.2,Mango,Fair,27
+16,33,Female,2885.50,3.1,Orange,Good,22
+17,21,Male,960.00,6.0,Apple,Excellent,18
+18,30,Female,2190.00,1.7,Banana,Fair,27
+19,36,Male,3425.90,2.3,Mango,Fair,27
+20,29,Female,1920.40,4.5,Orange,Good,20
+21,35,Male,3095.25,3.0,Apple,Good,23
+22,22,Female,1125.00,5.1,Banana,Excellent,27
+23,38,Male,4180.60,1.8,Mango,Fair,22
+24,30,Female,2590.00,2.4,Orange,Fair,20
+25,41,Male,3540.85,0.9,Apple,Poor,22
+26,28,Female,1875.50,4.0,Banana,Good,24
+27,24,Male,1275.00,6.7,Mango,Excellent,21
+28,31,Female,2390.25,3.5,Orange,Good,25
+29,36,Male,2965.80,2.6,Banana,Fair,22
+30,21,Female,985.00,5.4,Apple,Excellent,25"
+
+# Read the data into a data frame
+df_r <- read_csv(data_string)
+
+# View the structure of the data frame
+#str(df_r)
+
+# View the first few rows
+#head(df_r)
+```
+
+```{r echo=FALSE}
+#| label: tbl-cross.tab
+#| tbl-cap: "Cross-Tabulation of Gender by Fitness Level"
+
+# Load the knitr package for kable function
+library(knitr)
+library(dplyr) # For data manipulation if needed, though not strictly necessary for this simple table
+
+# Create the data for the cross-tabulation
+# It's good practice to define your data explicitly
+
+data_table <- data.frame(
+  Gender = c("Male", "Female", "Grand Total"),
+  Excellent = c(2, 5, 7),
+  Fair = c(7, 3, 10),
+  Good = c(3, 5, 8),
+  Poor = c(3, 2, 5),
+  `Grand Total` = c(15, 15, 30),
+  check.names = FALSE # This allows column names with spaces like "Grand Total"
+)
+
+# Generate the kable table
+# Quarto automatically handles the rendering for different output formats
+
+kable(data_table,
+      format = "markdown", # Or "html", "latex", etc., Quarto often infers
+      align = c("l", "c", "c", "c", "c", "c"), # Left-align Gender, center-align others
+      )
+
+```
+
+We can show the information of cross-tab using (a) Clustered column chart or (b) Stacked column chart (see @fig-stacked.chart ).
+
+```{r echo=FALSE}
+#| label: fig-stacked.chart
+#| fig-cap: "Visulization of relationship between two categorical variables"
+#| fig-height: 6
+
+
+# Reshape the data from wide to long format for ggplot2
+# This makes it easier to plot 'Fitness Level' as a fill or x-axis variable
+library(tidyr)
+
+df_r$`Fitness Level`<- factor(df_r$`Fitness Level`,
+                                  levels = c("Poor", "Fair", "Good", "Excellent"))
+
+# Create the grouped bar chart
+library(ggplot2)
+
+ggplot(df_r, aes(x = Gender, fill = `Fitness Level`)) +
+  geom_bar(position = position_dodge(width = 1)) +
+  geom_text(
+    stat = "count",
+    aes(label = ..count..),
+    position = position_dodge(width = 1),
+    vjust = 0.2,
+    size = 4
+  ) +
+  labs(
+    title = "Cluster bar chart: Fitness Level distribution by Gender",
+    x = "Gender",
+    y = "Number of Individuals"
+  ) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 10)) +  # Discrete y-axis
+  scale_fill_discrete(name = "Fitness Level") +
+  facet_wrap(~ Gender, scales = "free_x")+
+  theme_minimal()+
+  theme(strip.text = element_blank())->cluster.fig
+
+
+
+
+ggplot(df_r, aes(x = Gender, fill = `Fitness Level`)) +
+  geom_bar() +
+  geom_text(
+    stat = "count",
+    aes(label = ..count..),
+    position = position_stack(vjust = 0.5),
+    size = 4
+  ) +
+  labs(
+    title = "Stacked Bar Chart: Fitness level by Gender",
+    x = "Gender",
+    y = "Number of Individuals"
+  ) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 10)) +
+  scale_fill_discrete(name = "Fitness Level") +
+  theme_minimal()->stacked.fig 
+
+library(patchwork)
+cluster.fig/stacked.fig+  plot_annotation(tag_levels = list(c('(a)', '(b)'), '1'))
+
+```
+
 ## Summarizing Quantitative Data
 
-**Frequency Distribution** of quantitative data: Consider the following data.
+### **Frequency Distribution** of quantitative data
+
+Consider the following data.
 
 YEAR-END AUDIT TIMES (IN DAYS): 12, 14, 19, 18, 15, 15, 18, 17, 20, 27, 22, 23, 22, 21, 33, 28, 14, 18, 16, 13,
 
@@ -143,7 +287,7 @@ To construct a frequency distribution we have to
 2.  Determine the *width* of each class.
 3.  Determine the *class limits*.
 
-## Frequency Distribution of quantitative data
+### Frequency Distribution of Audit time data
 
 Here, $n=20$, Smallest value=12, Largest value=33.
 
@@ -165,19 +309,19 @@ fd_data %>% mutate(Audit_clas=ifelse(Audit%in%c(10:14),"[10,15)",
                               ifelse(Audit%in%c(15:19),"[15,20)",
                               ifelse(Audit%in%c(20:24),"[20,25)",                                         ifelse(Audit%in%c(25:29),"[25,30)","[30,35)")))))->fd
 
-fd %>% count(Audit_clas) %>% mutate(rf=n/sum(n),pf=100*rf)->fd 
+fd %>% count(Audit_clas) %>% mutate(rf=n/sum(n),pf=100*rf)->fd2 
 
-fd %>% kable(digits = 2,col.names = c("Audit Time (days)","Frequency (f) ","Rf", "Pf"),align = "c")
+fd2 %>% kable(digits = 2,col.names = c("Audit Time (days)","Frequency (f) ","Relative frequency (rf)", "Percent frequency(pf)"),align = "c")
 
 ```
 
-## Histogram
+### Histogram
 
 A common graphical presentation of quantitative data is a *histogram.* This graphical summary can be prepared for data previously summarized in either a *frequency*, *relative frequency*, or *percent frequency* distribution.
 
-```{r fig.asp = 0.5, fig.width = 4}
+```{r}
 #| label: fig-fig3
-#| fig-cap: " HISTOGRAM FOR THE AUDIT TIME DATA"
+#| fig-cap: "Histogram for the Audit Time data"
 #| fig-align: left
 #| fig-height: 5
 #| fig-width: 5
@@ -185,27 +329,252 @@ A common graphical presentation of quantitative data is a *histogram.* This grap
 
 #png(filename="HISTOGRAM.png", width=600, height=600)
 
-fd %>% ggplot(aes(x=Audit_clas,y=n))+geom_col(width =1,col="black",fill="steelblue")+
+fd2 %>% ggplot(aes(x=Audit_clas,y=n))+geom_col(width =1,col="black",fill="steelblue")+
   scale_y_continuous(breaks = 0:8)+
   theme_classic()+
-  labs(x="Audit Time (days)",y="Frequency")
+  labs(x="Audit Time (days)",y="Frequency")+
+  theme(axis.text = element_text(size = 12))
 
 #dev.off()
 
 
 ```
 
-## HISTOGRAM and shape of the distribution
+**Important Note:** A **relative frequency/ percent frequency histogram** is ideal for comparing distributions across groups of different sizes, as it displays proportions instead of raw counts, allowing fair and meaningful comparisons.
 
-![](FIGURE%202.5.png)
+**Illustration ( see** @fig-rfhist.is.better**)**
 
-## Cumulative Distributions
+A dataset of **Marks** (out of 100) was collected from two student groups:
 
-A variation of the frequency distribution that provides another tabular summary of quantitative data is the *cumulative frequency* distribution.
+-   **70 Female students**
 
-![](TABLE%202.7.png)
+-   **40 Male students**
 
-## The Stem-and-Leaf Display
+The goal is to compare the distribution of marks between these two groups.
+
+The **frequency histogram** shows how many students fall into each marks range (bin). However, since the number of female students (70) is greater than male students (40), their bars are naturally taller — even if the relative performance is similar. This makes direct comparison **unfair and misleading**.
+
+A **relative frequency histogram** shows the **proportion** of students in each bin **within each group**. By dividing counts by the total number in the group:
+
+-   It **normalizes** the data,
+
+-   Allows for **fair comparisons** between groups of different sizes,
+
+-   Highlights **true differences in distribution**, not just differences in group size.
+
+**Example Observation**
+
+From the RF histogram:
+
+-   Around **40% of males** scored between 50–60.
+
+-   Around **39% of females** scored between 50–60.
+
+This comparison is **valid** only because the histograms show **relative frequency**, not raw counts.
+
+```{r}
+#| label: fig-rfhist.is.better
+#| fig-cap: "Comparison between Frequency histogram and relative frequency histogram"
+#| fig-width: 8
+#| fig-height: 6
+
+set.seed(332)  # For reproducibility
+
+# Generate 30 male CGPAs and 50 female CGPAs
+male_cgpa <- round(rnorm(40,70,10), 2)
+female_cgpa <- round(rnorm(70, 70,10), 2)
+
+# Combine into a data frame
+df <- data.frame(
+  StudentID = 1:110,
+  Gender = c(rep("Male", 40), rep("Female", 70)),
+  Marks = c(male_cgpa, female_cgpa)
+)
+
+library(psych)
+#describe(df)
+
+
+#head(df)
+
+library(dplyr)
+library(ggplot2)
+
+# Step 1: Bin the Marks and calculate count per gender
+df_binned <- df %>%
+  mutate(bin = cut(Marks, breaks = seq(30, 100, by = 10), right = FALSE)) %>%
+  group_by(Gender, bin) %>%
+  summarise(count = n(), .groups = "drop")
+
+# Step 2: Plot frequency histogram using geom_col
+ggplot(df_binned, aes(x = bin, y = count, fill = Gender)) +
+  geom_col(color = "black",width = 1) +
+  geom_text(aes(label = count), vjust = 1) +
+  facet_wrap(~Gender,labeller = labeller(Gender = c("Male" = "Male(n=40)", "Female" = "Female (n=70)"))) +
+  labs(
+    x = "Marks",
+    y = "Number of Students / Frequency",
+    subtitle = "Frequency Histogram of Marks by Gender"
+  ) +
+  #annotate()
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.text = element_text(size = 10),
+        strip.text = element_text(size = 11, 
+                                  face = "bold"),
+          plot.background = element_rect(color = "black", size = 1, fill = "beige"))->freqhist.Marks
+
+  
+
+
+# Step 1: Create bin variable and calculate counts per bin and gender
+df_binned <- df %>%
+  mutate(bin = cut(Marks, breaks = seq(30, 100, by = 10), right = FALSE)) %>%
+  group_by(Gender, bin) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  group_by(Gender) %>%
+  mutate(rf = count / sum(count))  # relative frequency per gender
+
+# Step 2: Plot using geom_col
+ggplot(df_binned, aes(x = bin, y = rf, fill = Gender)) +
+  geom_col(color = "black",width = 1) +
+  geom_text(aes(label = round(rf, 2)), vjust = 1) +
+  facet_wrap(~Gender,labeller = labeller(Gender = c("Male" = "Male(n=40)", "Female" = "Female (n=70)"))) +
+  labs(
+    x = "Marks",
+    y = "Relative Frequency",
+    subtitle = "Relative Frequency Histogram of Marks by Gender"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.text = element_text(size = 10),
+        strip.text = element_text(size = 11, 
+                                  face = "bold"),
+         plot.background = element_rect(color = "black", size = 1, fill = "beige"))->rfreqhist.Marks
+
+
+library(patchwork)
+
+rf.better<-freqhist.Marks/rfreqhist.Marks
+
+rf.better
+
+###
+
+
+
+
+```
+
+### HISTOGRAM and shape of the distribution
+
+See @fig-hist.skewness .
+
+```{r}
+#| label: fig-hist.skewness
+#| fig-cap: "Histograms Showing Differing Levels of Skewness"
+
+# Load required libraries
+library(ggplot2)
+library(dplyr)
+
+set.seed(123)
+
+# Generate data with different skewness
+df <- data.frame(
+  value = c(
+    rbeta(500, 2, 5),    # Moderately right skewed
+    rbeta(500, 5, 2),    # Moderately left skewed
+    rnorm(500, 0.5, .2),# Symmetric
+    rbeta(500, 1, 5)     # Highly right skewed
+  ),
+  panel = factor(rep(c("B: Moderately Skewed Right",
+                       "A: Moderately Skewed Left",
+                       "C: Symmetric",
+                       "D: Highly Skewed Right"),
+                     each = 500),
+                 levels = c("A: Moderately Skewed Left",
+                            "B: Moderately Skewed Right",
+                            "C: Symmetric",
+                            "D: Highly Skewed Right"))
+)
+
+# Plot
+ggplot(df, aes(x = value)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 10, fill = "#58A0C8", color = "black") +
+  facet_wrap(~panel, ncol = 2) +
+  labs(
+    title = " ",
+    y = NULL,
+    x = NULL
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    panel.grid.minor = element_blank()
+  )
+
+
+```
+
+### Cumulative Distributions and Ogive
+
+A variation of the frequency distribution that provides another tabular summary of quantitative data is the *cumulative frequency* distribution. @tbl-tab.crf shows the **cumulative relative frequency** of `Audit Time` data.
+
+```{r}
+#| label: tbl-tab.crf
+#| tbl-cap: "Frequency, relative frequency and Cumulative relative frequency distribution of Audit Time Data"
+#| fig-width: 5
+#| fig-height: 4
+
+fd %>% count(Audit_clas) %>% mutate(rf=n/sum(n),crf=cumsum(rf)) %>%
+  kable(digits = 2,col.names = c("Audit Time (days)","Frequency (f) ","Relative frequency (rf)", "Cumulative relative frequency(crf)"),align = "c")
+  
+```
+
+### Ogive
+
+Another way of presenting this information is the ogive, which is a graphical representation of the cumulative relative frequencies. @fig-ogive is the drawn ogive for the cumulative relative frequency for `Audit time` data.\
+
+```{r}
+#| label: fig-ogive
+#| fig-cap: "Ogive for Audit Time data"
+
+
+# Load library
+library(ggplot2)
+
+# Data frame
+data <- data.frame(
+  AuditTime = c(10,15, 20, 25, 30, 35),
+  CRF = c(0,0.20, 0.60, 0.85, 0.95, 1.00)
+)
+
+# Plot
+ggplot(data, aes(x = AuditTime, y = CRF)) +
+  geom_line(color = "blue") +
+  geom_point(size = 3, color = "blue") +
+  geom_text(aes(label = sprintf("%.2f", CRF)), vjust = 2, 
+            hjust=1.2,size = 4) +
+  labs(
+    title = " ",
+    x = "Audit Time (days)",
+    y = "Cumulative relative frequency"
+  ) +
+  scale_y_continuous(limits = c(0, 1.1),breaks = seq(0, 1, by = 0.1),
+                     expand = c(0, 0)) +
+  scale_x_continuous(limits = c(10,40),
+                     breaks = seq(10, 36, by = 5),expand = c(0, 0))+
+  theme_classic()+
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 14))
+
+```
+
+For instance, from both @tbl-tab.crf and @fig-ogive we can say (estimate) that 60% of audits took **less than 20 days** . Similarly, 95% of audits took **less than 30 days** and so on.
+
+### The Stem-and-Leaf Display
 
 The techniques of **exploratory data analysis** consist of simple arithmetic and easy-to-draw graphs that can be used to summarize data quickly. One technique—referred to as a **stem-and-leaf display**—can be used to show both the rank order and shape of a data set simultaneously [@anderson2011].
 
@@ -363,3 +732,62 @@ axis(1, at = seq(180,2180,250))
 > 114, 99, 131, 124, 117, 102, 106, 127, 119, 115,98, 104, 144, 151, 132, 106, 125, 122, 118, 118
 
 **Construct** a stem-and-leaf display for the data.
+
+## Line Chart
+
+## Scatter diagram
+
+## Case Study: Lifestyle Indicators and Preferences
+
+You’re given data from a cross-sectional survey of 30 individuals. Variables include Age, Gender, Monthly Income, Hours of Exercise/Week , Fitness Level, Favorite Fruit and Temperature preference. This data-set enables practice with data visualization, scale classification, and relationship analysis using tools like bar charts, scatter plots, and histograms.
+
+| **ID** | **Age** | **Gender** | **Monthly Income (USD)** | **Hours of Exercise/Week** | **Favorite Fruit** | **Fitness Level** | **Temperature Preference (°C)** |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 1 | 25 | Male | 1520.75 | 2.5 | Mango | Fair | 23 |
+| 2 | 32 | Female | 2280.50 | 1.2 | Apple | Poor | 22 |
+| 3 | 20 | Male | 925.10 | 4.8 | Banana | Good | 19 |
+| 4 | 29 | Female | 1980.90 | 3.3 | Orange | Fair | 22 |
+| 5 | 40 | Male | 3055.45 | 0.7 | Apple | Poor | 21 |
+| 6 | 23 | Female | 1425.00 | 5.9 | Mango | Excellent | 20 |
+| 7 | 37 | Male | 3625.80 | 2.1 | Banana | Fair | 18 |
+| 8 | 31 | Female | 2520.00 | 1.5 | Apple | Poor | 27 |
+| 9 | 27 | Male | 1685.25 | 3.7 | Orange | Good | 22 |
+| 10 | 22 | Female | 1190.00 | 6.2 | Mango | Excellent | 19 |
+| 11 | 34 | Male | 3180.45 | 0.0 | Banana | Poor | 24 |
+| 12 | 26 | Female | 1830.60 | 4.3 | Orange | Good | 19 |
+| 13 | 39 | Male | 3999.00 | 1.4 | Apple | Fair | 22 |
+| 14 | 24 | Female | 1335.75 | 5.6 | Banana | Excellent | 26 |
+| 15 | 28 | Male | 2125.35 | 2.2 | Mango | Fair | 27 |
+| 16 | 33 | Female | 2885.50 | 3.1 | Orange | Good | 22 |
+| 17 | 21 | Male | 960.00 | 6.0 | Apple | Excellent | 18 |
+| 18 | 30 | Female | 2190.00 | 1.7 | Banana | Fair | 27 |
+| 19 | 36 | Male | 3425.90 | 2.3 | Mango | Fair | 27 |
+| 20 | 29 | Female | 1920.40 | 4.5 | Orange | Good | 20 |
+| 21 | 35 | Male | 3095.25 | 3.0 | Apple | Good | 23 |
+| 22 | 22 | Female | 1125.00 | 5.1 | Banana | Excellent | 27 |
+| 23 | 38 | Male | 4180.60 | 1.8 | Mango | Fair | 22 |
+| 24 | 30 | Female | 2590.00 | 2.4 | Orange | Fair | 20 |
+| 25 | 41 | Male | 3540.85 | 0.9 | Apple | Poor | 22 |
+| 26 | 28 | Female | 1875.50 | 4.0 | Banana | Good | 24 |
+| 27 | 24 | Male | 1275.00 | 6.7 | Mango | Excellent | 21 |
+| 28 | 31 | Female | 2390.25 | 3.5 | Orange | Good | 25 |
+| 29 | 36 | Male | 2965.80 | 2.6 | Banana | Fair | 22 |
+| 30 | 21 | Female | 985.00 | 5.4 | Apple | Excellent | 25 |
+
+**Tasks**
+
+1)  **Identify** the *scale of measurement* of each variable.
+
+2)  **Construct** suitable graph/chart for variables like *gender*, *fitness level* etc.
+
+3)  **Construct** relative frequency histogram for variables like age, Monthly Income (USD), etc. **Describe** what you have learned.
+
+4)  **Plot** Hours of Exercise/Week vs Temperature Preference (°C). What is your conclusion.
+
+5)  **Draw** the scatter plot of Monthly Income vs Hours of Exercise/Week. Is there any relation?
+
+6)  **Cross-tabulation**
+
+> a)  Make a cross-tabulation between Gender and Favorite Fruit. Show the result in a stacked bar-chart.
+
+> b)  Make a cross-tabulation between Favorite Fruit and Fitness Level. Show the result in a stacked bar-chart.

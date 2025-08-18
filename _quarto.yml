@@ -1,5 +1,9 @@
 project:
   type: book
+  
+description: "An introductory e‑book on Statistics for Business and Economics with practical examples, exercises, and visualizations."
+keyword: ["Statistics", "Business", "Economics", "Probability", "Data Analysis","Hypothesis test"]
+number-sections: true
 
 book:
   title: "Statistics for Business and Economics"
@@ -9,8 +13,9 @@ book:
 
   
   date: today
-  cover-image: "cover.jpg"
-
+  cover-image: "cover2.jpg"
+  
+  
   chapters:
     - index.qmd
     - 1intro.qmd
@@ -48,7 +53,7 @@ book:
     type: textbox    
 
 execute: 
-  echo: true
+  echo: false
   warning: false
 
 bibliography: references.bib
@@ -65,12 +70,18 @@ format:
     code-fold: true
   pdf:
     documentclass: scrreprt
+    include-in-header: footer.tex
     geometry:
       - top=20mm
       - bottom=25mm
       - left=25mm
       - right=25mm
       - heightrounded
+    toc: true
+    toc-depth: 2
+    colorlinks: true
+    fontsize: 11pt
+    include-before-body: cover.tex
   
 css: styles.css
 editor: visual
