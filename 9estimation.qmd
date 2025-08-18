@@ -16,21 +16,21 @@ In previous chapter we discuss the sampling properties of the sample mean and va
 
 -   The numerical value obtained for , is called the **point estimate**.
 
-+-------------------------------+------------+---------------------------------------------------------------------------------------+
-| Population parameter          | Symbol     | Point estimator                                                                       |
-+===============================+:==========:+:=====================================================================================:+
-| Population mean               | $\mu$      | Sample mean,                                                                          |
-|                               |            |                                                                                       |
-|                               |            | $\bar x=\frac{\sum x}{n}$                                                             |
-+-------------------------------+------------+---------------------------------------------------------------------------------------+
-| Population standard deviation | $\sigma$   | Sample standard deviation,                                                            |
-|                               |            |                                                                                       |
-|                               |            | $s=\sqrt{\frac{\sum(x-\bar x)^2}{n-1}}=\sqrt {\frac{\sum x^2 -n\cdot \bar x^2}{n-1}}$ |
-+-------------------------------+------------+---------------------------------------------------------------------------------------+
-| Population proportion         | $p$        | Sample proportion,                                                                    |
-|                               |            |                                                                                       |
-|                               |            | $\hat p=\frac{\# \ \ of \ \  outcomes\ \ of  \ \ interest }{n}$                       |
-+-------------------------------+------------+---------------------------------------------------------------------------------------+
++-------------------------------+-------------+---------------------------------------------------------------------------------------+
+| Population parameter          | Symbol      | Point estimator                                                                       |
++===============================+:===========:+:=====================================================================================:+
+| Population mean               | $\mu$       | Sample mean,                                                                          |
+|                               |             |                                                                                       |
+|                               |             | $\bar x=\frac{\sum x}{n}$                                                             |
++-------------------------------+-------------+---------------------------------------------------------------------------------------+
+| Population standard deviation | $\sigma$    | Sample standard deviation,                                                            |
+|                               |             |                                                                                       |
+|                               |             | $s=\sqrt{\frac{\sum(x-\bar x)^2}{n-1}}=\sqrt {\frac{\sum x^2 -n\cdot \bar x^2}{n-1}}$ |
++-------------------------------+-------------+---------------------------------------------------------------------------------------+
+| Population proportion         | $p$         | Sample proportion,                                                                    |
+|                               |             |                                                                                       |
+|                               |             | $\hat p=\frac{\# \ \ of \ \  outcomes\ \ of  \ \ interest }{n}$                       |
++-------------------------------+-------------+---------------------------------------------------------------------------------------+
 
 : Some common population parameters and their estimators {#tbl-tab9.1}
 
@@ -406,20 +406,16 @@ $$
 \bar x\pm z_{\alpha/2} * \frac{\sigma}{\sqrt n}
 $$
 
-
 $$
 \begin{equation}
-\bar x\pm z_{\alpha/2} * \frac{\sigma}{\sqrt n} \\
-
-Or, 1810.16\pm 2.575*50\\
-
-Or, 1810.16\pm 128.75\\
-
-1681.41, 1938.91
+\bar x\pm z\_{\alpha/2} * \frac{\sigma}{\sqrt n} \\
+& Or, 1810.16\pm 2.575*50 \\
+& Or, 1810.16\pm 128.75\\
+& 1681.41, 1938.91
 \end{equation}
 $$
 
-$\therefore P(1681.41<\mu<1938.91)=99\%$. 
+$\therefore P(1681.41<\mu<1938.91)=99\%$.
 
 **Problem 9.6** [@keller2014, page 340] It is known that the amount of time needed to change the oil on a car is normally distributed with a standard deviation of 5 minutes. The amount of time to complete a random sample of 10 oil changes was recorded and listed here. **Compute** the 99% confidence interval estimate of the mean of the population.
 
@@ -429,7 +425,7 @@ $\therefore P(1681.41<\mu<1938.91)=99\%$.
 
 **Problem 9.8** [@newbold2013, page 302]Twenty people in one large metropolitan area were asked to record the time (in minutes) that it takes them to drive to work. These times were as follows:
 
-30, 42, 35, 40, 45, 22, 32, 15, 41, 45, 
+30, 42, 35, 40, 45, 22, 32, 15, 41, 45,
 
 28, 32, 45, 27, 47, 50, 30, 25, 46, 25
 
