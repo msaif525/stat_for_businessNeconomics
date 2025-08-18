@@ -16,21 +16,21 @@ In previous chapter we discuss the sampling properties of the sample mean and va
 
 -   The numerical value obtained for , is called the **point estimate**.
 
-+-------------------------------+------------+---------------------------------------------------------------------------------------+
-| Population parameter          | Symbol     | Point estimator                                                                       |
-+===============================+:==========:+:=====================================================================================:+
-| Population mean               | $\mu$      | Sample mean,                                                                          |
-|                               |            |                                                                                       |
-|                               |            | $\bar x=\frac{\sum x}{n}$                                                             |
-+-------------------------------+------------+---------------------------------------------------------------------------------------+
-| Population standard deviation | $\sigma$   | Sample standard deviation,                                                            |
-|                               |            |                                                                                       |
-|                               |            | $s=\sqrt{\frac{\sum(x-\bar x)^2}{n-1}}=\sqrt {\frac{\sum x^2 -n\cdot \bar x^2}{n-1}}$ |
-+-------------------------------+------------+---------------------------------------------------------------------------------------+
-| Population proportion         | $p$        | Sample proportion,                                                                    |
-|                               |            |                                                                                       |
-|                               |            | $\hat p=\frac{\# \ \ of \ \  outcomes\ \ of  \ \ interest }{n}$                       |
-+-------------------------------+------------+---------------------------------------------------------------------------------------+
++-------------------------------+-------------+---------------------------------------------------------------------------------------+
+| Population parameter          | Symbol      | Point estimator                                                                       |
++===============================+:===========:+:=====================================================================================:+
+| Population mean               | $\mu$       | Sample mean,                                                                          |
+|                               |             |                                                                                       |
+|                               |             | $\bar x=\frac{\sum x}{n}$                                                             |
++-------------------------------+-------------+---------------------------------------------------------------------------------------+
+| Population standard deviation | $\sigma$    | Sample standard deviation,                                                            |
+|                               |             |                                                                                       |
+|                               |             | $s=\sqrt{\frac{\sum(x-\bar x)^2}{n-1}}=\sqrt {\frac{\sum x^2 -n\cdot \bar x^2}{n-1}}$ |
++-------------------------------+-------------+---------------------------------------------------------------------------------------+
+| Population proportion         | $p$         | Sample proportion,                                                                    |
+|                               |             |                                                                                       |
+|                               |             | $\hat p=\frac{\# \ \ of \ \  outcomes\ \ of  \ \ interest }{n}$                       |
++-------------------------------+-------------+---------------------------------------------------------------------------------------+
 
 : Some common population parameters and their estimators {#tbl-tab9.1}
 
@@ -45,7 +45,7 @@ $\hat \theta$ be the sample statistic or point estimator of $\theta$
 A "good" estimator has some desirable properties.
 
 ::: callout-note
-## Unbiased
+## Unbiasedness
 
 A sample statistic $\hat \theta$ is said to be unbiased estimator of the population parameter $\theta$ if
 
@@ -76,11 +76,11 @@ $$
 
 So, $\bar X$ is an unbiased estimator of $\mu$.
 
-**Problem 9.2** Show that the function of sample variance $S^2=\frac{\sum_{i=1}^n(X_i-\bar X)^2}{n-1}$ is an unbiased estimator of population variance $\sigma^2$.
+**Problem 9.2** Let, $X_1, X_2,...,X_n$ be a random sample from a population with mean $\mu$ and variance $\sigma^2$. That is $X_i$ 's are independent and each $X_i$ has $E(X_i)=\mu$ and $Var(X_i)=\sigma^2$.
+
+Show that the function of sample variance $S^2=\frac{\sum_{i=1}^n(X_i-\bar X)^2}{n-1}$ is an unbiased estimator of population variance $\sigma^2$.
 
 [Solution:]{.underline} See @newbold2013, page 283, or we can proof it as follows:
-
-Suppose that $X$ is a random variable with mean $\mu$ and variance $\sigma^2$. Let $X_1, X_2 … X_n$ be a random sample of size $n$ from the population represented by $X$.
 
 We know $E(\bar X)=\mu_{\bar X}=\mu$ .
 
@@ -110,12 +110,27 @@ $\therefore E(S^2)=\sigma^2$.
 
 Hence $S^2$ is an unbiased estimator of $\sigma^2$.
 
+**Important NOTE:** This proof only valid when the actual sample size, $n$, is a small proportion of the population size $N$ or for small population size samples are taken with replacement (which me).
+\
+
 ::: callout-note
 ## Efficiency
+
+Suppose $\hat {\theta_1}$ and $\hat {\theta_2}$ be two unbiased estimators of population parameter $\theta$.
+
+$\hat {\theta_1}$ is said to be more efficient than $\hat {\theta_1}$ if $Var(\hat {\theta_2})<Var(\hat {\theta_2})$.
 :::
 
 ::: callout-note
 ## Consistency
+
+A point estimator $\hat {\theta}$ is sad to be consistent estimator of the parameter $\theta$ if the variance of the estimator becomes smaller as sample size increases.
+
+In other word,
+
+$$
+\lim_{n\rightarrow\infty} Var(\hat {\theta})=0
+$$\
 :::
 
 **Problem 9.3** [@anderson2020] A simple random sample of 30 managers and the corresponding data on annual salary and management training program participation are as shown in @tbl-tab9.2
@@ -392,34 +407,31 @@ Here, $t_{\alpha/2}$ is the $t$ value providing an area of $\alpha/2$ in the upp
 
 ***Solution:** Let,* $X$ be the vacation cost in \$. Also let $\mu$ be the mean of all vacations.
 
-Here sample size is $n=64$ with the sample mean , $\bar x =\$ 1810.16$.
+Here sample size is, $n=64$ with the sample mean , $\bar x =\$ 1810.16$.
 
 The assumed (population) standard deviation, $\sigma=\$400$. Since the sample size is sufficiently large so according to CLT, $\bar X\sim N(\mu, \sigma_{\bar X}^2) \ \ approximately$ .
 
 Where $\sigma_{\bar X}=\frac{\sigma}{\sqrt n}=\frac{400}{\sqrt 64}=50$
 
-For 99% confidence interval (CI) $z_{\alpha/2}=2.575$.
+For 99% confidence interval (CI), $z_{\alpha/2}=2.575$.
 
 So the 99% CI for the $\mu$ is:
 
 $$
-\bar x\pm z_{\alpha/2} * \frac{\sigma}{\sqrt n}
+\bar{x} \pm z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}
 $$
 
-
 $$
-\begin{equation}
-\bar x\pm z_{\alpha/2} * \frac{\sigma}{\sqrt n} \\
-
-Or, 1810.16\pm 2.575*50\\
-
-Or, 1810.16\pm 128.75\\
-
-1681.41, 1938.91
-\end{equation}
+Or,1810.16 \pm 2.575 \times 50
+$$ $$
+Or, 1810.16 \pm 128.75
 $$
 
-$\therefore P(1681.41<\mu<1938.91)=99\%$. 
+$$
+[1681.41, 1938.91]
+$$
+
+$\therefore P(1681.41<\mu<1938.91)=99\%$.
 
 **Problem 9.6** [@keller2014, page 340] It is known that the amount of time needed to change the oil on a car is normally distributed with a standard deviation of 5 minutes. The amount of time to complete a random sample of 10 oil changes was recorded and listed here. **Compute** the 99% confidence interval estimate of the mean of the population.
 
@@ -429,9 +441,7 @@ $\therefore P(1681.41<\mu<1938.91)=99\%$.
 
 **Problem 9.8** [@newbold2013, page 302]Twenty people in one large metropolitan area were asked to record the time (in minutes) that it takes them to drive to work. These times were as follows:
 
-30, 42, 35, 40, 45, 22, 32, 15, 41, 45, 
-
-28, 32, 45, 27, 47, 50, 30, 25, 46, 25
+30, 42, 35, 40, 45, 22, 32, 15, 41, 45, 28, 32, 45, 27, 47, 50, 30, 25, 46, 25
 
 Assuming that the population is normally distributed find the 99% confidence interval for the population mean of time it takes to drive to work.
 
@@ -445,7 +455,7 @@ $$
 Z=\frac{\hat p-p}{\sqrt {\frac{p(1-p)}{n}}}\approx follows \ \ N(0,1)
 $$
 
-Since $p$ is unknown we estimate $var(\hat p)$ as $\sqrt { \frac{\hat p(1-\hat p)}{n}}$.
+Since $p$ is unknown we estimate $var(\hat p)$ as $\frac{\hat p(1-\hat p)}{n}$.
 
 **Confidence Interval for Population Proportion,** $p$ **(Large Samples)**
 
@@ -460,6 +470,8 @@ which is valid provided that $n\hat p$ and $n(1 - \hat p)$ are greater than 5.
 
 ## Sample size determination: Large Population
 
+### Sample Size for Population Mean
+
 If $E$ be the *margin of error **(E)**,* $\sigma$ be the population standard deviation (assume known) then the required **sample size (n)** to estimate a population mean $\mu$ with $(1-\alpha)\times 100\%$ confidence level is:
 
 $$
@@ -469,7 +481,7 @@ $$ {#eq-9.4}
 ::: callout-note
 ## Sample size determination: Derivation
 
-From the interval estimation reagrding $\mu$ we know
+From the interval estimation regarding $\mu$ we know
 
 $$
 P(\bar x-z_{\alpha/2} \frac{\sigma}{\sqrt n}<\mu<\bar x+z_{\alpha/2} \frac{\sigma}{\sqrt n})=1-\alpha
@@ -503,7 +515,27 @@ b\) Repeat part (a) changing the standard deviation to 100.
 c\) Re-do part (a) using a 95% confidence level.
 
 d\) Repeat part (a) wherein we wish to estimate the population mean to within 20 units.\
+
+**Problem 9.12 [@keller2014]** The operations manager of a large production plant would like to estimate the average amount of time workers take to assemble a new electronic component. After observing a number of workers assembling similar devices, she guesses that the standard deviation is 6 minutes. How large a sample of workers should she take if she wishes to estimate the mean assembly time to within 20 seconds? Assume that the confidence level is to be 99%.
+
+### Sample Size for Population Proportion
+
+If $E$ be the *margin of error **(E)**,* $p*$ be the assumed population proportion or planning value of $\hat p$. Then the required **sample size (n)** to estimate a population proportion $p$ with $(1-\alpha)\times 100\%$ confidence level is:
+
+$$
+n=\frac{z_{\alpha/2}^2\times p^* (1-p^*)}{E^2} 
+$$ {#eq-9.5}
+
+**N.B:** From @eq-9.5 it can be proved that the sample size will be maximum for $p^*=0.5$. So to obtain the maximum sample size we can take $p^* (1-p^*)=0.5\times 0.5=0.25$ in @eq-9.5.
+
+**Problem 9.13** [@anderson2020] At 95% confidence, how large a sample should be taken to obtain a margin of error of 0.03 for the estimation of a population proportion? Assume that past data are not available for developing a planning value for population proportion $p$ ?
+
+**Problem 9.14** [@anderson2020] **Stay-at-Home Parenting.** In June 2014, Pew Research reported that in 16% of all homes with a stay-at-home parent, the father is the stay-at-home parent. An independent research firm has been charged with conducting a sample survey to obtain more current information.
+
+a\. What sample size is needed if the research firm’s goal is to estimate the current proportion of homes with a stay-at-home parent in which the father is the stay-at-home parent with a margin of error of 0.03? Use a 95% confidence level.
+
+b\. Repeat part (a) using a 99% confidence level.\
+
 \
-**Problem 9.12 [@keller2014]** The operations manager of a large production plant would like to estimate the average amount of time workers take to assemble a new electronic component. After observing a number of workers assembling similar devices, she guesses that the standard deviation is 6 minutes. How large a sample of workers should she take if she wishes to estimate the mean assembly time to within 20 seconds? Assume that the confidence level is to be 99%\
 
 ## Interval estimation: Comparing TWO populations

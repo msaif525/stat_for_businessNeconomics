@@ -7,118 +7,12 @@ bibliography: references.bib
 
 # Further topics on random variables
 
-## Joint distribution of two discrete r.vs
+## Functions of random variables: Transformations
 
-The function $f(x, y)$ is a **joint probability distribution** or **probability mass function** of the discrete random variables $X$ and $Y$ if
 
-1.  $f(x,y)\ge 0$ for all $(x,y)$,
-2.  $\sum_x \sum_y f(x,y)=1$,
-3.  $P(X=x, Y=y)=f(x,y)$
+## Moments Moment-Generating Functions (MGF)
 
-### Marginal distribution $X$ and $Y$ (discrete)
 
-The marginal distributions of $X$ alone and of $Y$ alone are
-
-1.  $f_X(x)=\sum_y f(x,y)$
-2.  $f_Y(y)=\sum_x f(x,y)$
-
-## Joint distribution of two continuous r.vs
-
-The function $f(x, y)$ is a joint density function of the continuous random variables $X$ and $Y$ if
-
-1.  $f(x,y)\ge 0$,
-2.  $\int_{-\infty}^\infty \int_{-\infty}^\infty f(x,y)\ \ dx\ \ dy=1$.
-
-### Marginal distribution $X$ and $Y$ (continuous )
-
-The marginal distributions of $X$ alone and of $Y$ alone are
-
-1.  $f_X(x)= \int_{-\infty}^\infty f(x,y) \ \ dy$,
-2.  $f_Y(y)= \int_{-\infty}^\infty f(x,y) \ \ dx$
-
-## Covariance and correlation between $X$ and $Y$
-
-::: callout-note
-## Covariance
-
-$$
-Cov(X,Y)=\sigma_{XY}=E \left[ (X-\mu_X)(Y-\mu_Y)\right]
-$$
-
-In other way,
-
-$$
-Cov(X,Y)=\sigma_{XY}=E(XY)-\mu_X\mu_Y
-$$
-:::
-
-::: callout-note
-## Correlation coefficient
-
-$$
-\rho=\frac{\sigma_{XY}}{\sigma_X \sigma_Y}\ \ ; -1\le\rho\le+1
-$$
-:::
-
-## Laws of Expected Value and Variance of the Linear combination of Two Variables
-
-Suppose a new random variable is $Z$ as follows:
-
-$$
-Z=aX+bY
-$$
-
-Where $a$ and $b$ are both constants.
-
-1.  $E(Z)=E(aX+bY)=aE(X)+bE(Y)$,
-2.  $Var(Z)=Var(aX+bY)=a^2 Var(X)+b^2 Var(Y)+2ab \ \ Cov (X,Y)$
-
-***N.B:** If* $X$ *and* $Y$ *are independent,* $Cov(X,Y ) = 0$.
-
-## Some problem on discrete joint distribution
-
-**Problem 7.5.1** The joint probability distribution of X and Y is shown in the following table.
-
-![](images/clipboard-3407163439.png){width="251"}
-
-a\. Determine the marginal distributions of $X$ and $Y$ .
-
-b\. Compute the covariance and coefficient of correlation between $X$ and $Y$ .
-
-c\. Develop the probability distribution of $X + Y$ .
-
-d\. Find $P(X+Y\le3)$.\
-
-**Problem 7.5.2** After analyzing several months of sales data, the owner of an appliance store produced the following joint probability distribution of the number of refrigerators and stoves sold daily.
-
-![](images/clipboard-1464176460.png){width="305"}
-
-a\. Find the marginal probability distribution of the number of refrigerators sold daily.
-
-b\. Find the marginal probability distribution of the number of stoves sold daily.
-
-c\. Compute the mean and variance of the number of refrigerators sold daily.
-
-d\. Compute the mean and variance of the number of stoves sold daily.
-
-e\. Compute the covariance and the coefficient of correlation.\
-
-## Some problem on continuous joint distribution
-
-Let $X$ denote the reaction time, in seconds, to a certain stimulus and $Y$ denote the temperature (◦F) at which a certain reaction starts to take place. Suppose that two random variables $X$ and Y have the joint density.
-
-$$
-f(x, y) = \begin{cases} 
-4xy, & 0 < x < 1, \, 0 < y < 1, \\
-0, & \text{elsewhere}.
-\end{cases}
-$$
-
-Find
-
-a\. $P(0\le X \le \frac{1}{2} \ \ {and}\ \ \frac{1}{4} \le Y\le \frac{1}{2})$;
-
-b\. $P(X<Y)$.
 
 ## Sum and Average of Independent Random Variables
 

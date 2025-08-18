@@ -22,8 +22,9 @@ book:
     - 2descriptive_graph_tab.qmd
     - 3descriptive_numer_measures.qmd
     - 4Probability.qmd
-    - 5randomvariable_and_discrete probability dist.qmd
-    - 6continuous_r.v.qmd
+    - 5randomvariable_and_probability dist.qmd
+    - 6.1discrete_r.v_special.qmd
+    - 6.2continuous_r.v_special.qmd
     - 7Further_topics_on_rv.qmd
     - 8sampling_and_sampling_distributions.qmd
     - 9estimation.qmd

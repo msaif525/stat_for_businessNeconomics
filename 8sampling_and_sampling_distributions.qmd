@@ -22,9 +22,9 @@ editor_options:
 
 A **simple random sample (SRS)** of size $n$ from a *finite* population of size $N$ is a sample selected such that each possible sample of size $n$ has the same probability of being selected.
 
--   Sampling can be *with* replacement.
+-   Sampling can be *with* replacement (**SWR**).
 
--   Sampling can be *without* replacement (recommended).
+-   Sampling can be *without* replacement **(SWOR)**(recommended).
 
 ## **Sampling from an Infinite Population**
 
@@ -43,15 +43,21 @@ A **random sample** of size $n$ from an *infinite* *population* is a sample sele
 
 1\) A sample selected randomly from a population (finite or infinite) is referred as a *random sample.* The procedure of selecting a sample randomly is known as *probability sampling.*
 
-2\) The *number* of different simple random samples of size $n$ that can be selected from a finite population of size $N$ is
+2\) The *number* of ways simple random samples by **SWR** of size $n$ that can be selected from a finite population of size $N$ is
+
+$$
+N^n
+$$
+
+3\) The *number* of ways **different** simple random samples by **SWOR** of size $n$ that can be selected from a finite population of size $N$ is
 
 $$
 {N \choose{n}}=\frac{N!}{n!(N-n)!}
 $$
 
-3\) Some other probability sampling methods are *stratified random sampling, cluster sampling,* and *systematic sampling*. We will discuss these methods later.
+4\) Some other probability sampling methods are *stratified random sampling, cluster sampling,* and *systematic sampling*. We will discuss these methods later.
 
-4\) We use the term “simple” in simple random sampling to clarify that this is the probability sampling method that assures each sample of size n has the same probability of being selected.
+5\) We use the term “simple” in simple random sampling to clarify that this is the probability sampling method that assures each sample of size $n$ has the same probability of being selected.
 :::
 
 ### Selecting simple random sample using R
@@ -60,7 +66,9 @@ Suppose we have a variable $X$ and let it contains $N=5$ elements as follows:
 
 $X=\{1,3,5,7,9\}$
 
-Using `R` we can draw several simple random samples of size $n=3$ in ${N\choose n}={5\choose 3}=10$ ways. Now we draw a random sample using `sample()` function in base `R`.
+Using `R` we can draw several simple random samples of size $n=3$.
+
+Now we draw a random sample (by using both SWR and SWOR )using `sample()` function in base `R`.
 
 ```{r echo=TRUE}
 set.seed(2103) # To keep reproducibility
@@ -74,7 +82,7 @@ sample(X,3, replace = TRUE)
 
 ```
 
-**The all possible that is 10 samples (*without replacement*) are :**
+**The all possible that is** ${N\choose n}={5\choose 3}=10$ **samples (by *SWOR*) are :**
 
 ```{r echo=FALSE}
 samples<-combn(X,3)
@@ -87,7 +95,7 @@ t(samples)
 
 The probability distribution of a **sample statistic** is called a **sampling distribution.**
 
-For example, due to sampling variability the **sample mean** $\bar x$ has a sampling distribution.
+For example, due to sampling variability the **sample mean** $\bar X$ has a sampling distribution.
 
 **Illustration** Consider a population of variable X: 1,3,5,7,9.
 
@@ -97,7 +105,7 @@ For example, due to sampling variability the **sample mean** $\bar x$ has a samp
 
 Here, $\mu=\frac{\sum x}{N}=\frac{1+3+...+9}{5}=5$
 
-**Task-2:** **Draw** all possible samples of size $n=2$ from this population. Then compute the means of all samples.
+**Task-2:** **Draw** all possible samples (without replacement) of size $n=2$ from this population. Then compute the means of all samples.
 
 ```{r echo=FALSE}
 all_sampl<-combn(X,2)
@@ -125,7 +133,7 @@ all_sampl<-combn(X,2)
 
 : All Samples of Size 2 and Their Means {#tbl-tab8.3}
 
-**Task-3:** **Construct** a probability distribution of sample mean, $\bar x$ (discrete) and **plot** it.
+**Task-3:** **Construct** a probability distribution of sample means, $\bar X$ (discrete) and **plot** it.
 
 [Solution:]{.underline}
 
@@ -183,20 +191,21 @@ ii\) **Draw** all possible samples of size $n=3$ from this population without re
 
 iii\) **Construct** a probability distribution of sample mean, $\bar x$ (discrete) and **plot** it.
 
-iv\) **Find** the $E(\bar x)$ . Does $E(\bar x)$ same as population mean $\mu$?
+iv\) **Find** the $E(\bar X)$ . Does $E(\bar X)$ same as population mean $\mu$?
 
-## Sampling distribution of $\bar x$
+## Sampling distribution of $\bar X$
 
-The sampling distribution of $\bar x$ is the probability distribution of all possible values of the sample mean $\bar x$.\
-If samples are drawn from a *infinite population (*or *finite but* $n/N\le 0.05$ [@anderson2020] then the
+The sampling distribution of $\bar X$ is the probability distribution of all possible values of the sample mean $\bar X$.\
 
--   Expected value of $\bar x$:
+-   Expected value of $\bar X$:
 
 $$
-E(\bar x)=\mu_{\bar x}=\mu
+E(\bar X)=\mu_{\bar x}=\mu
 $$
 
--   Standard deviation of $\bar x$:
+If samples are drawn from a *infinite population (*or *finite but* $n/N\le 0.05$ [@anderson2020] or in the case of **SWR** then the
+
+-   Standard deviation ox $\bar X$:
 
 $$
 \sigma_{\bar x}=\frac{\sigma}{\sqrt n}
@@ -216,7 +225,7 @@ The sampling distribution of the mean of a random sample drawn from any populati
 Let, $X_1$,$X_2$, .... be a sequence of independently and identically distributed random variables with common mean $\mu$ and common variance $\sigma^2$. We define
 
 $$
-Z=\frac{\bar x -\mu_{\bar x}}{\sigma_{\bar x}}
+Z=\frac{\bar x -\mu_{\bar X}}{\sigma_{\bar X}}
 $$
 
 Then the $Z$ will be approximately normally distributed as the sample size $n \rightarrow\infty$.
@@ -274,7 +283,6 @@ gdp_2023%>%
 
 **Now** we draw 1000 random samples (without replacement) of different sample sizes and then plot the histogram of samples means.
 
-
 ```{r}
 #| label: fig-cltsim
 #| fig-cap: "Demonstration of Central Limit Theorem through simulation"
@@ -314,7 +322,6 @@ pclt_3
 From @fig-cltsim we can see that as the sample size increases, the sampling distribution of **sample mean** tends to bell-shaped or normal though the population data was very skewed to the right. This simulation clearly demonstrate the fact of Central Limit Theorem (CLT).
 
 For more interactive simulation of **CLT** please [click here to visit the ShinyApp for Central Limit Theorem Simulation](https://saifuddin24.shinyapps.io/CLT_Sim/).
-
 
 **Problem 8.1** The foreman of a bottling plant has observed that the amount of soda in each 32-ounce bottle is actually a normally distributed random variable, with a mean of 32.2 ounces and a standard deviation of .3 ounce [@keller2014, page 308].
 
