@@ -299,7 +299,7 @@ sal6d %>% mutate(m=mean(sal6),deviation=sal6-m,squared_deviation=deviation^2)->v
 ```
 
 | Salary ($x_i$) | Sample mean, $\bar x$ | $(x_i-\bar x)$ | $(x_i-\bar x)^2$ |
-|:--:|:--:|:--:|:--:|
+|:----------------:|:----------------:|:----------------:|:----------------:|
 | 3450 | 3505 | -55 | 3025 |
 | 3550 | 3505 | 45 | 2025 |
 | 3650 | 3505 | 145 | 21025 |
@@ -484,7 +484,7 @@ Eventually the **standard deviation** is $\sqrt {s^2}$
 [*Solution:*]{.underline}
 
 |  |  |  |  |  |
-|----|:--:|:--:|:--:|:--:|
+|---------------|:-------------:|:-------------:|:-------------:|:-------------:|
 | **Audit Time (days)** | **Mid point**$(M_i)$ | **Frequency** $(f_i)$ | $f_i M_i$ | $f_i M_i^2$ |
 | 10-14 | 12 | 4 | 48 | 576 |
 | 15-19 | 17 | 8 | 136 | 2312 |
@@ -617,7 +617,37 @@ Sometimes a data set will have one or more observations with unusually large or 
 An observation say $x_i$ is treated as *outlier* if its corresponding **z-score** is *less than -3* or *greater than +3*.
 
 **Equivalently**, if an observation $x_i$ falls outside the interval $[\bar x-3\cdot s,\bar x+3\cdot s]$.
+
+[**Note:**]{.underline} **Z-score rule** works well for **large, symmetric, bell-shaped datasets**.
 :::
+
+**Example** Consider the following data:
+
+35, 68, 52, 80, 45, 60, 30, 75, 48, 53, 70, 42, 66, 55, 40, 58, 78, 36, 50, 62, 33, 71, 49, 44, 64, 38, 85, 57, 39, 61, 73, 46, 67, 32, 56, 65, 41, 59, 51, 54, 10, 100, 110, 77, 63, 69, 82, 37, 47, 60
+
+\(i\) **Plot** the data (histogram). Is it approximately bell-shaped/symmetric?
+
+[**Solution (i):**]{.underline}
+
+```{r}
+x_data<-c(35, 68, 52, 80, 45, 60, 30, 75, 48, 53,
+70, 42, 66, 55, 40, 58, 78, 36, 50, 62,
+33, 71, 49, 44, 64, 38, 85, 57, 39, 61,
+73, 46, 67, 32, 56, 65, 41, 59, 51, 54,
+8, 100, 115, 77, 63, 69, 82, 37, 47, 60)
+hist(x_data, main = "Frequency histogram",ylim = c(0,20))
+
+```
+
+\(ii\) Now identify outlier(s) using z-score rule.
+
+```{r}
+z_score=(x_data-mean(x_data))/sd(x_data)
+#hist(z_score)
+#sum(abs(z_score)>3)
+```
+
+[**Solution (ii):**]{.underline}
 
 ::: callout-note
 ## Using 1.5(IQR) rule to detect outlier
@@ -629,7 +659,19 @@ Lower limits, $LL=Q_1-1.5 (IQR)$
 Upper limits, $UL=Q_3+1.5 (IQR)$
 
 Any data value or observation falls outside the interval $[LL,UL]$ will be treated as outlier.
+
+[**Note:**]{.underline} **IQR rule** is **better for skewed or small datasets** .
 :::
+
+**Example** The following data shows the annual salaries (in thousand USD) of 10 employees in a company:
+
+50, 45, 52, 37, 42, 70, 40, 35, 47, 17
+
+**Identify** the **outlier(s)** in the dataset using 1.5(IQR) rule.
+
+```{r}
+#boxplot(c(50, 45, 52, 37, 42, 70, 40, 35, 47, 17))
+```
 
 ## Five-Number summary
 
@@ -935,7 +977,7 @@ x=c(3,5,6,9,12)
 Here sample mean, $\bar x=\frac{\sum x}{n}=\frac{3+5+...+12}{5}=7$
 
 | $x$ | $(x-\bar x)$ | $(x-\bar x)^2$ | $(x-\bar x)^3$ | $(x-\bar x)^4$ |
-|:--:|:--:|:--:|:--:|:--:|
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | 3 | -4 | 16 | -64 | 256 |
 | 5 | -2 | 4 | -8 | 16 |
 | 6 | -1 | 1 | -1 | 1 |
