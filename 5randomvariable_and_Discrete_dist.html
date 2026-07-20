@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="An introductory e‑book on Statistics for Business and Economics with practical examples, exercises, and visualizations.">
+
+<title>4&nbsp; Discrete Probability Distributions – Statistics for Business and Economics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./6continuous_Dist.html" rel="next">
+<link href="./4Probability.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-066b562477012fc308cfc884aa1e7cf5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./5randomvariable_and_Discrete_dist.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Probability Distributions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Statistics for Business and Economics</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-save"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+      </ul>
+    </div>
+    <a href="https://github.com/Saifuddin86/stat_for_businessNeconomics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Statistics-for-Business-and-Economics.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Statistics-for-Business-and-Economics.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3descriptive_numer_measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics: Numerical Measures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5randomvariable_and_Discrete_dist.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6continuous_Dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Continuous Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./7Further_topics_on_rv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Further topics on random variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./8sampling_and_sampling_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Sampling and Sampling distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10hypothesis_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis test: Introduction and testing one population parameter</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11Hypotheis_test(TWO population).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis test concerning TWO population parameters</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12ANOVA_oneway.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13Chi_squaredTest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chi-squared Test</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Correlation and Simple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#discrete-random-variable-and-probability-mass-function-pmf" id="toc-discrete-random-variable-and-probability-mass-function-pmf" class="nav-link active" data-scroll-target="#discrete-random-variable-and-probability-mass-function-pmf"><span class="header-section-number">4.1</span> Discrete random variable and Probability mass function (PMF)</a>
+  <ul class="collapse">
+  <li><a href="#expectation-mean-of-discrete-random-variable" id="toc-expectation-mean-of-discrete-random-variable" class="nav-link" data-scroll-target="#expectation-mean-of-discrete-random-variable"><span class="header-section-number">4.1.1</span> Expectation (Mean) of discrete random variable</a></li>
+  <li><a href="#variance-of-discrete-random-variable" id="toc-variance-of-discrete-random-variable" class="nav-link" data-scroll-target="#variance-of-discrete-random-variable"><span class="header-section-number">4.1.2</span> Variance of discrete random variable</a></li>
+  <li><a href="#exercise-discrete-random-variable" id="toc-exercise-discrete-random-variable" class="nav-link" data-scroll-target="#exercise-discrete-random-variable"><span class="header-section-number">4.1.3</span> Exercise: Discrete random variable</a></li>
+  </ul></li>
+  <li><a href="#joint-distribution-of-two-discrete-r.vs" id="toc-joint-distribution-of-two-discrete-r.vs" class="nav-link" data-scroll-target="#joint-distribution-of-two-discrete-r.vs"><span class="header-section-number">4.2</span> Joint distribution of two discrete r.vs</a>
+  <ul class="collapse">
+  <li><a href="#marginal-distribution-x-and-y-discrete" id="toc-marginal-distribution-x-and-y-discrete" class="nav-link" data-scroll-target="#marginal-distribution-x-and-y-discrete"><span class="header-section-number">4.2.1</span> Marginal distribution <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> (discrete)</a></li>
+  <li><a href="#stochastic-independence-of-jointly-distributed-random-variables" id="toc-stochastic-independence-of-jointly-distributed-random-variables" class="nav-link" data-scroll-target="#stochastic-independence-of-jointly-distributed-random-variables"><span class="header-section-number">4.2.2</span> Stochastic independence of Jointly Distributed Random Variables</a></li>
+  <li><a href="#covariance-and-correlation-between-x-and-y" id="toc-covariance-and-correlation-between-x-and-y" class="nav-link" data-scroll-target="#covariance-and-correlation-between-x-and-y"><span class="header-section-number">4.2.3</span> Covariance and correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></a></li>
+  <li><a href="#laws-of-expected-value-and-variance-of-the-linear-combination-of-two-variables" id="toc-laws-of-expected-value-and-variance-of-the-linear-combination-of-two-variables" class="nav-link" data-scroll-target="#laws-of-expected-value-and-variance-of-the-linear-combination-of-two-variables"><span class="header-section-number">4.2.4</span> Laws of Expected Value and Variance of the Linear combination of Two Variables</a></li>
+  <li><a href="#some-problems-on-discrete-joint-distribution" id="toc-some-problems-on-discrete-joint-distribution" class="nav-link" data-scroll-target="#some-problems-on-discrete-joint-distribution"><span class="header-section-number">4.2.5</span> Some problems on discrete joint distribution</a></li>
+  </ul></li>
+  <li><a href="#bernoulli-distributionr.v" id="toc-bernoulli-distributionr.v" class="nav-link" data-scroll-target="#bernoulli-distributionr.v"><span class="header-section-number">4.3</span> Bernoulli distribution/r.v</a></li>
+  <li><a href="#binomial-r.v" id="toc-binomial-r.v" class="nav-link" data-scroll-target="#binomial-r.v"><span class="header-section-number">4.4</span> Binomial r.v</a></li>
+  <li><a href="#poisson-r.v" id="toc-poisson-r.v" class="nav-link" data-scroll-target="#poisson-r.v"><span class="header-section-number">4.5</span> Poisson r.v</a>
+  <ul class="collapse">
+  <li><a href="#finding-probability-of-poisson-r.v" id="toc-finding-probability-of-poisson-r.v" class="nav-link" data-scroll-target="#finding-probability-of-poisson-r.v"><span class="header-section-number">4.5.1</span> Finding probability of Poisson r.v</a></li>
+  <li><a href="#the-recursion-formula-for-poisson-pmf" id="toc-the-recursion-formula-for-poisson-pmf" class="nav-link" data-scroll-target="#the-recursion-formula-for-poisson-pmf"><span class="header-section-number">4.5.2</span> The recursion formula for Poisson PMF</a></li>
+  <li><a href="#poisson-approximation-to-the-binomial-distribution" id="toc-poisson-approximation-to-the-binomial-distribution" class="nav-link" data-scroll-target="#poisson-approximation-to-the-binomial-distribution"><span class="header-section-number">4.5.3</span> Poisson Approximation to the Binomial Distribution</a></li>
+  </ul></li>
+  <li><a href="#multinomial-probability-distribution" id="toc-multinomial-probability-distribution" class="nav-link" data-scroll-target="#multinomial-probability-distribution"><span class="header-section-number">4.6</span> Multinomial Probability Distribution</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Probability Distributions</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="discrete-random-variable-and-probability-mass-function-pmf" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="discrete-random-variable-and-probability-mass-function-pmf"><span class="header-section-number">4.1</span> Discrete random variable and Probability mass function (PMF)</h2>
+<p>Suppose <span class="math inline">\(X\)</span> is a discrete random variable. The <strong>probability mass function (PMF)</strong> of <span class="math inline">\(X\)</span> can be denoted as <span class="math inline">\(f(x)\)</span> where</p>
+<p><span class="math display">\[ f(x)=P(X=x) \]</span>For each possible outcome <span class="math inline">\(x\)</span> ; <span class="math inline">\(f(x)\)</span> must satisfies:</p>
+<ol type="1">
+<li><p><span class="math display">\[f(x) \ge 0\]</span></p></li>
+<li><p><span class="math display">\[\sum _x f(x)=1\]</span></p></li>
+</ol>
+<p>The <strong>PMF</strong> <span class="math inline">\(f(x)\)</span> is also called probability distribution of the discrte random variable <span class="math inline">\(X\)</span>.</p>
+<p><strong>Example 5.1</strong> John Ragsdale sells new cars for Pelican Ford. John usually sells the largest number of cars on Saturday. He has developed the following probability distribution for the number of cars he expects to sell on a particular Saturday.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Number of cars sold,</strong> <span class="math inline">\(x\)</span></td>
+<td style="text-align: center;"><strong>Probability,</strong> <span class="math inline">\(f(x)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Compute</strong> (i) <span class="math inline">\(P(X=2)\)</span> ; (ii) <span class="math inline">\(P(X&lt;2)\)</span> ; (iii) <span class="math inline">\(P(X \ge 3)\)</span><br>
+</p>
+<section id="expectation-mean-of-discrete-random-variable" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="expectation-mean-of-discrete-random-variable"><span class="header-section-number">4.1.1</span> Expectation (Mean) of discrete random variable</h3>
+<p>Let <span class="math inline">\(X\)</span> be a discrete random variable with probability mass function <span class="math inline">\(f(x) = P(X = x)\)</span>.</p>
+<p>The <strong>expected value of</strong> <span class="math inline">\(X\)</span> the mean of <span class="math inline">\(X\)</span> is denoted by <span class="math inline">\(E(X)\)</span> and defined by:</p>
+<p><span class="math display">\[
+E(X)=\sum_x x.f(x)
+\]</span></p>
+<p>The expected value of <span class="math inline">\(X\)</span> is sometimes called the population mean of <span class="math inline">\(X\)</span> that is <span class="math inline">\(\mu=E(X)\)</span>.</p>
+<p><strong>Example 5.2</strong> John Ragsdale sells new cars for Pelican Ford. John usually sells the largest number of cars on Saturday. He has developed the following probability distribution for the number of cars he expects to sell on a particular Saturday.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Number of cars sold,</strong> <span class="math inline">\(x\)</span></td>
+<td style="text-align: center;"><strong>Probability,</strong> <span class="math inline">\(f(x)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.10</td>
+</tr>
+</tbody>
+</table>
+<p>On a typical Saturday, how many cars does John expect to sell?</p>
+<p><u>Solution:</u></p>
+<table class="caption-top table">
+<caption>Calculation of the Expected Value for the Number of Cars Sold</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(f(x)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x \cdot f(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.20</td>
+<td style="text-align: center;">0.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.30</td>
+<td style="text-align: center;">0.60</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.30</td>
+<td style="text-align: center;">0.90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.40</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Total</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\sum f(x)=1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mu =\sum x\cdot f(x)=2.10\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Alternative:</strong> The mean number of cars is:</p>
+<p><span class="math display">\[\mu =E[X]=\sum_{x=0}^4 x.f(x)\]</span></p>
+<p><span class="math display">\[=0(0.10)+1(0.20)+2(0.30)+3(0.30)+4(0.10)=2.1\]</span></p>
+<p>So on a typical Saturday, John Ragsdale expects to sell a mean of 2.1 cars a day.</p>
+</section>
+<section id="variance-of-discrete-random-variable" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="variance-of-discrete-random-variable"><span class="header-section-number">4.1.2</span> Variance of discrete random variable</h3>
+<p>Let <span class="math inline">\(X\)</span> be a discrete random variable with probability distribution <span class="math inline">\(f(x)\)</span> and mean <span class="math inline">\(\mu\)</span>. The variance of <span class="math inline">\(X\)</span> is</p>
+<p><span class="math display">\[var(X)=\sigma^2 =E[(X-\mu)^2]=\sum_x (x-\mu)^2 f(x)\]</span><strong>Alternative:</strong></p>
+<p><span class="math display">\[var (X)=E(X^2)-\mu^2\]</span> Where,</p>
+<p><span class="math display">\[E(X^2)=\sum_{x} x^2.f(x)\]</span></p>
+<p><strong>Example 5.3:</strong> From Example 5.2 <strong>compute</strong> <em>variance</em> and <em>standard deviation</em> of <span class="math inline">\(X\)</span>.</p>
+<p><u>Solution:</u> From Example 5.2 we have <span class="math inline">\(\mu =2.1\)</span>.</p>
+<table class="caption-top table">
+<caption>Calculation of the Variance for the Number of Cars Sold</caption>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(f(x)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x-\mu\)</span></th>
+<th style="text-align: center;"><span class="math inline">\((x-\mu)^2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\((x-\mu)^2 f(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">-2.1</td>
+<td style="text-align: center;">4.41</td>
+<td style="text-align: center;">0.441</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.20</td>
+<td style="text-align: center;">-1.1</td>
+<td style="text-align: center;">1.21</td>
+<td style="text-align: center;">0.242</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.30</td>
+<td style="text-align: center;">-0.1</td>
+<td style="text-align: center;">0.01</td>
+<td style="text-align: center;">0.003</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.30</td>
+<td style="text-align: center;">0.9</td>
+<td style="text-align: center;">0.81</td>
+<td style="text-align: center;">0.243</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">1.9</td>
+<td style="text-align: center;">3.61</td>
+<td style="text-align: center;">0.361</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Total</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\sum f(x)=1\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\sigma^2 =1.290\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Alternative:</strong> Here,</p>
+<p><span class="math display">\[E(X^2)=\sum_{x=0}^4 x^2.f(x)\]</span></p>
+<p><span class="math inline">\(=0^2(0.10)+1^2 (0.20)+2^2 (0.30)+3^2 (0.30)+4^2 (0.10)\)</span></p>
+<p><span class="math inline">\(=5.70\)</span></p>
+<p>Hence, <span class="math inline">\(var(X)=\sigma^2 =E(X^2)-\mu^2=5.70-(2.10)^2=1.29\)</span></p>
+<ul>
+<li><p>The variance is, <span class="math inline">\(\sigma^2=1.29\)</span> and</p></li>
+<li><p>The standard deviation is, <span class="math inline">\(\sigma=\sqrt {1.29}=1.136\)</span></p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Properties of E(.) and var(.)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants, then</p>
+<p>a) <span class="math inline">\(E(b)=b\)</span></p>
+<p>b) <span class="math inline">\(E(aX+b)=aE(X)+b\)</span></p>
+<p>c) <span class="math inline">\(var(b)=0\)</span></p>
+<p>d) <span class="math inline">\(var(aX+b)=a^2 \ \ var (X)\)</span></p>
+</div>
+</div>
+</section>
+<section id="exercise-discrete-random-variable" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="exercise-discrete-random-variable"><span class="header-section-number">4.1.3</span> Exercise: Discrete random variable</h3>
+<p>5.1) Compute the mean and variance of the following probability distribution.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f(x)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">0.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">0.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">0.40</td>
+</tr>
+</tbody>
+</table>
+<p>5.2) The information below is the number of daily emergency service calls made by the volunteer ambulance service of Walterboro, South Carolina, for the last 50 days. To explain, there were 22 days on which there were 2 emergency calls, and 9 days on which there were 3 emergency calls.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Number of calls</strong></td>
+<td style="text-align: center;"><strong>Frequency</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Total</strong></td>
+<td style="text-align: center;"><strong>50</strong></td>
+</tr>
+</tbody>
+</table>
+<p>a. Convert this information on the number of calls to a probability distribution.</p>
+<p>b. Is this an example of a discrete or continuous probability distribution?</p>
+<p>c. What is the mean number of emergency calls per day?</p>
+<p>d. What is the standard deviation of the number of calls made daily?</p>
+<p>5.3) Consider the following probability distribution of random variable <span class="math inline">\(X\)</span>:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(f(x)\)</span></td>
+<td style="text-align: center;">k</td>
+<td style="text-align: center;">2k</td>
+<td style="text-align: center;">2k</td>
+<td style="text-align: center;">3k</td>
+</tr>
+</tbody>
+</table>
+<p>(i) Find the value of k.</p>
+<p>(ii) Find the probability of the value of X exactly 4.</p>
+<p>(iii) Find the probability of the value of X between 3 and 7 (inclusive).</p>
+<p>(iv) Estimate expected value and standard deviation of X.</p>
+<p>5.4) Suppose that an antique jewelry dealer is interested in purchasing a gold necklace for which the probabilities are 0.22, 0.36, 0.28, and 0.14, respectively, that she will be able to sell it for a profit of $250, sell it for a profit of $150, break even, or sell it for a loss of $150. What is her expected profit?</p>
+<p>5.5) The monthly sales at a computer store have a mean of $25,000 and a standard deviation of $4,000. Profits are calculated by multiplying sales by 30% and subtracting fixed costs of $6,000. <strong>Find</strong> the mean and standard deviation of monthly profits.</p>
+<p>5.6) When parking a car in a downtown parking lot, drivers pay according to the number of hours or parts thereof. The probability distribution of the number of hours cars are parked has been estimated as follows.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(f(x)\)</span></td>
+<td style="text-align: center;">0.24</td>
+<td style="text-align: center;">0.18</td>
+<td style="text-align: center;">0.13</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.07</td>
+<td style="text-align: center;">0.04</td>
+<td style="text-align: center;">0.04</td>
+<td style="text-align: center;">0.20</td>
+</tr>
+</tbody>
+</table>
+<p>(a) <strong>Find</strong> the mean and standard deviation of the number of hours cars are parked in the lot.</p>
+<p>(b) The cost of parking is $2.50 per hour. <strong>Calculate</strong> the mean and standard deviation of the amount of revenue each car generates.</p>
+</section>
+</section>
+<section id="joint-distribution-of-two-discrete-r.vs" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="joint-distribution-of-two-discrete-r.vs"><span class="header-section-number">4.2</span> Joint distribution of two discrete r.vs</h2>
+<p>The function <span class="math inline">\(f(x, y)\)</span> is a <strong>joint probability distribution</strong> or <strong>probability mass function</strong> of the discrete random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> if</p>
+<ol type="1">
+<li><span class="math inline">\(f(x,y)\ge 0\)</span> for all <span class="math inline">\((x,y)\)</span>,</li>
+<li><span class="math inline">\(\sum_x \sum_y f(x,y)=1\)</span>,</li>
+<li><span class="math inline">\(P(X=x, Y=y)=f(x,y)\)</span></li>
+</ol>
+<section id="marginal-distribution-x-and-y-discrete" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="marginal-distribution-x-and-y-discrete"><span class="header-section-number">4.2.1</span> Marginal distribution <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> (discrete)</h3>
+<p>The marginal distributions of <span class="math inline">\(X\)</span> alone and of <span class="math inline">\(Y\)</span> alone are</p>
+<ol type="1">
+<li><span class="math inline">\(f_X(x)=\sum_y f(x,y)\)</span></li>
+<li><span class="math inline">\(f_Y(y)=\sum_x f(x,y)\)</span></li>
+</ol>
+</section>
+<section id="stochastic-independence-of-jointly-distributed-random-variables" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="stochastic-independence-of-jointly-distributed-random-variables"><span class="header-section-number">4.2.2</span> Stochastic independence of Jointly Distributed Random Variables</h3>
+<p>If <span class="math inline">\(f(x,y)=f_X(x)\times f_Y(y)\)</span> for all <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> the then the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> will said to be independent.</p>
+</section>
+<section id="covariance-and-correlation-between-x-and-y" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="covariance-and-correlation-between-x-and-y"><span class="header-section-number">4.2.3</span> Covariance and correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Covariance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+Cov(X,Y)=\sigma_{XY}=E \left[ (X-\mu_X)(Y-\mu_Y)\right]
+\]</span></p>
+<p>In other way,</p>
+<p><span class="math display">\[
+Cov(X,Y)=\sigma_{XY}=E(XY)-\mu_X\mu_Y
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Correlation coefficient
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\rho=\frac{\sigma_{XY}}{\sigma_X \sigma_Y}\ \ ; -1\le\rho\le+1
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="laws-of-expected-value-and-variance-of-the-linear-combination-of-two-variables" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="laws-of-expected-value-and-variance-of-the-linear-combination-of-two-variables"><span class="header-section-number">4.2.4</span> Laws of Expected Value and Variance of the Linear combination of Two Variables</h3>
+<p>Suppose a new random variable is <span class="math inline">\(Z\)</span> as follows:</p>
+<p><span class="math display">\[
+Z=aX+bY
+\]</span></p>
+<p>Where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are both constants.</p>
+<ol type="1">
+<li><span class="math inline">\(E(Z)=E(aX+bY)=aE(X)+bE(Y)\)</span>,</li>
+<li><span class="math inline">\(Var(Z)=Var(aX+bY)=a^2 Var(X)+b^2 Var(Y)+2ab \ \ Cov (X,Y)\)</span></li>
+</ol>
+<p><strong>N.B:</strong> If <span class="math inline">\(X\)</span> <em>and</em> <span class="math inline">\(Y\)</span> <em>are independent,</em> <span class="math inline">\(Cov(X,Y ) = 0\)</span>.</p>
+</section>
+<section id="some-problems-on-discrete-joint-distribution" class="level3" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="some-problems-on-discrete-joint-distribution"><span class="header-section-number">4.2.5</span> Some problems on discrete joint distribution</h3>
+<p><strong>Problem 1</strong> The joint probability distribution of X and Y is shown in the following table.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(y\)</span></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><strong>2</strong></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x\)</span></td>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;">0.3</td>
+<td style="text-align: center;">0.2</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">0.4</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li><p>Determine the marginal probability distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> .</p></li>
+<li><p>Find <span class="math inline">\(P(Y=1|X=2)\)</span>.</p></li>
+<li><p>Compute <span class="math inline">\(E(X)\)</span>, <span class="math inline">\(E(Y)\)</span> and <span class="math inline">\(Var(X)\)</span>, <span class="math inline">\(Var(Y)\)</span>.</p></li>
+<li><p>Verify whether <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent or not.</p></li>
+<li><p>Compute <span class="math inline">\(E(XY)\)</span>.</p></li>
+<li><p>Compute <span class="math inline">\(Cov(X,Y)\)</span> and correlation coefficient between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Derive the probability distribution of <span class="math inline">\(Z=X+Y\)</span>.</p></li>
+</ol>
+<p><strong>Problem 7.5.1</strong> The joint probability distribution of X and Y is shown in the following table.</p>
+<p><img src="images/clipboard-3407163439.png" class="img-fluid" width="251"></p>
+<p>a. Determine the marginal distributions of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> .</p>
+<p>b. Compute the covariance and coefficient of correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> .</p>
+<p>c. Develop the probability distribution of <span class="math inline">\(X + Y\)</span> .</p>
+<p>d. Find <span class="math inline">\(P(X+Y\le 3)\)</span>.<br>
+</p>
+<p><strong>Problem 7.5.2</strong> After analyzing several months of sales data, the owner of an appliance store produced the following joint probability distribution of the number of refrigerators and stoves sold daily.</p>
+<p><img src="images/clipboard-1464176460.png" class="img-fluid" width="305"></p>
+<p>a. Find the marginal probability distribution of the number of refrigerators sold daily.</p>
+<p>b. Find the marginal probability distribution of the number of stoves sold daily.</p>
+<p>c. Compute the mean and variance of the number of refrigerators sold daily.</p>
+<p>d. Compute the mean and variance of the number of stoves sold daily.</p>
+<p>e. Compute the covariance and the coefficient of correlation.<br>
+</p>
+<p>In the following sections we will discuss some commonly used discrete probability distributions which are used to predict number of success in finite number of random trials, or number of occurrence in a given interval or space and so on.</p>
+</section>
+</section>
+<section id="bernoulli-distributionr.v" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="bernoulli-distributionr.v"><span class="header-section-number">4.3</span> Bernoulli distribution/r.v</h2>
+<p>Bernoulli r.v comes from <strong>Bernoulli trial-</strong>a trial which has <strong>TWO</strong> possible outcomes (<em>success</em> or <em>failure</em>).</p>
+<p>Consider the toss of a <strong>biased coin</strong>, which comes up a head with probability <span class="math inline">\(p\)</span>, and a tail with probability <span class="math inline">\(1 - p\)</span>. The <strong>Bernoulli random variable</strong> takes the two values 1 and 0, depending on whether the outcome is a head or a tail:</p>
+<p><span class="math display">\[
+X =
+\begin{cases}
+  1, &amp; \mathrm{if \ \   HEAD \ \  appears}, \\
+  0, &amp; \mathrm{if \ \   TAIL \ \  appears}
+\end{cases}
+\]</span></p>
+<p><strong>PMF:</strong> <span class="math inline">\(P(X=x)=f(x)=p^x (1-p)^{1-x}; \ \ x=0,1\)</span></p>
+<p><strong>Mean:</strong> <span class="math inline">\(E(X)=p\)</span></p>
+<p><strong>Variance:</strong> <span class="math inline">\(Var(X)=p(1-p)\)</span></p>
+<p>For all its simplicity, the Bernoulli random variable is very important. In practice, it is used to model generic probabilistic situations with just two outcomes, such as:</p>
+<p>(a) The state of a telephone at a given time that can be either free or busy.</p>
+<p>(b) A person who can be either healthy or sick with a certain disease.</p>
+<p>(c) The preference of a person who can be either for or against a certain political candidate.<br>
+</p>
+<p>Furthermore, by combining multiple Bernoulli random variables, one can construct more complicated random variables.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Derivation of Mean and Variance of Bernoulli r.v</strong></p>
+<p><strong>Mean:</strong></p>
+<p><span class="math display">\[E(X)=\sum_{x=0}^1 x\cdot f(x)=(0) f(0)+(1)f(1)=0+1\cdotp p=p\]</span></p>
+<p><strong>Variance:</strong></p>
+<p><span class="math inline">\(Var(X)=E(X^2)-[E(X)]^2=p-p^2=p(1-p)\)</span></p>
+</div>
+</div>
+</section>
+<section id="binomial-r.v" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="binomial-r.v"><span class="header-section-number">4.4</span> Binomial r.v</h2>
+<p>In a Binomial experiment , the <strong>Bernoulli trial</strong> is repeated <span class="math inline">\(n\)</span> times with the following conditions:</p>
+<p>a) The trials are independent</p>
+<p>b) In each trial <span class="math inline">\(P(success)=p\)</span> remains constant</p>
+<p>Suppose <span class="math inline">\(X=number \ \ of \ \ successs \ \ in \ \ n\ \ trials\)</span>. Then <span class="math inline">\(X\)</span> is called a <strong>Binomial r.v</strong> or follows <strong>Binomial distribution.</strong></p>
+<p><strong>PMF:</strong> <span class="math display">\[P(X=x)=f(x)=\binom {n}{x} p^x (1-p)^{n-x} ; x=0,1,2,...,n\]</span></p>
+<p><strong>Mean:</strong> <span class="math inline">\(E(X)=np\)</span></p>
+<p><strong>Variance:</strong> <span class="math inline">\(Var(X)=np(1-p)\)</span></p>
+<p><u><strong>We write</strong></u> <span class="math inline">\(X\sim Bin (n,p)\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(Y=number \ \ of \ \ failures\ \ in \ \ n\ \ trials\)</span> then</p>
+<p><span class="math inline">\(Y\sim Bin(n,1-p)\)</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Relation between Bernoulli r.v and Binomial r.v
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>Binomial Random Variable</strong> Is a <strong>Sum of Bernoulli Random Variables</strong></p>
+<p>Let, <span class="math inline">\(Y_i\)</span> is a Bernoulli r.v appeared in <span class="math inline">\(i^{th}\)</span> Bernoulli trial. If we conduct <span class="math inline">\(n\)</span> independent Bernoulli trials then we have <span class="math inline">\(n\)</span> independent Bernoulli r.vs such as <span class="math inline">\(Y_1, Y_2, ..., Y_n\)</span>. Each <span class="math inline">\(Y_i\)</span> has values of either <span class="math inline">\(1\)</span> or <span class="math inline">\(0\)</span>.</p>
+<p>Now if <span class="math inline">\(X\)</span> is a Binomial r.v then,</p>
+<p><span class="math display">\[
+X=Y_1+Y_2+...+Y_n =\sum_{i=1}^n Y_i
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Derivation of Mean and Variance of Binomial r.v</strong></p>
+<p>From previous note, we know if <span class="math inline">\(Y_i\)</span> is a Bernoulli r.v then</p>
+<p><span class="math inline">\(E(Y_i)=p\)</span> and <span class="math inline">\(Var(Y_i)=p(1-p)\)</span></p>
+<p><em>So, the mean of Binomial r.v that is</em></p>
+<p><span class="math display">\[
+E(X)=E(Y_1+Y_2+...+Y_n)
+\]</span></p>
+<p><span class="math display">\[
+=E(Y_1)+E(Y_2)+...+E(Y_n)
+\]</span></p>
+<p><span class="math display">\[
+=p+p+...+p=np
+\]</span></p>
+<p><em>Now, the variance of</em> <span class="math inline">\(X\)</span> <em>is:</em></p>
+<p><span class="math display">\[
+Var(X)=Var(Y_1+Y_2+...+Y_n)
+\]</span></p>
+<p><span class="math display">\[
+=Var(Y_1)+Var(Y_2)+...+Var(Y_n)
+\]</span></p>
+<p><span class="math display">\[
+=p(1-p)+p(1-p)+...+p(1-p)=np(1-p)
+\]</span></p>
+</div>
+</div>
+<p><strong>Probability plot of binomial r.v for different values of</strong> <span class="math inline">\(p\)</span> <strong>and shape characteristics</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5randomvariable_and_Discrete_dist_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Example 5.4</strong> Consider a binomial experiment with <span class="math inline">\(n = 10\)</span> and <span class="math inline">\(p =0.30\)</span>.</p>
+<p>a) Compute <span class="math inline">\(P(X=0)\)</span> ; b) Compute <span class="math inline">\(P(X=2)\)</span>;</p>
+<p>c) Compute <span class="math inline">\(P(X \le 1)\)</span> ; d) Compute <span class="math inline">\(P(X\ge 2)\)</span>;</p>
+<p>e) Compute <span class="math inline">\(E(X)\)</span> ; f) Compute <span class="math inline">\(Var(X)\)</span> and <span class="math inline">\(\sigma\)</span>.<br>
+</p>
+<p><strong>Example 5.5</strong> A manufacturer of window frames knows from long experience that 30 percent of the production will have some type of minor defect that will require an adjustment. What is the probability that in a sample of 20 window frames:</p>
+<p>a) none will need adjustment?</p>
+<p>b) at most two will need adjustment?</p>
+<p>c) at least two will need adjustment?</p>
+<p>d) Estimate the mean and standard deviation of number of adjustment.</p>
+<p><strong>Example 5.6</strong> A certain type of tomato seed germinates 90% of the time. A backyard farmer planted 25 seeds.</p>
+<p>a) What is the probability that exactly 20 germinate?</p>
+<p>b) What is the probability that 23 or more germinate?</p>
+<p>c) What is the probability that 24 or fewer germinate?</p>
+<p>d) What is the expected number of seeds that germinate?<br>
+</p>
+<p><strong>Example 5.7</strong> A shoe store’s records show that 30% of customers making a purchase use a credit card to pay. This morning, 10 customers purchased shoes from the store. Answer the following:</p>
+<p>a) Find the probability that at least 8 of the customers used a credit card.</p>
+<p>b) What is the probability that at least three customers, but not more than five, used a credit card?</p>
+<p>c) What is the expected number of customers who used a credit card? What is the standard deviation?</p>
+<p>*d) Find the probability that exactly 5 customers <em>did not use</em> a credit card.</p>
+<p>*e) Find the probability that at least nine customers <em>did not use</em> a credit card<br>
+</p>
+</section>
+<section id="poisson-r.v" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="poisson-r.v"><span class="header-section-number">4.5</span> Poisson r.v</h2>
+<p>In this section we consider a discrete random variable that is often useful in estimating the number of occurrences over a specified interval of time or space. <em>For example</em>, the random variable of interest might be</p>
+<ul>
+<li><p>the <em>number of arrivals</em> at a car wash in <u>one hour</u>,</p></li>
+<li><p>the <em>number of repairs</em> needed in <u>10 miles</u> of highway, or</p></li>
+<li><p>the <em>number of leaks</em> in <u>100 miles</u> of pipeline.</p></li>
+</ul>
+<p><strong>PROPERTIES OF A POISSON EXPERIMENT</strong></p>
+<ol type="1">
+<li><p>The probability of an occurrence is the same for any two intervals of equal length.</p></li>
+<li><p>The occurrence or nonoccurrence in any interval is independent of the occurrence or nonoccurrence in any other interval.</p></li>
+</ol>
+<p>Suppose <span class="math inline">\(X\)</span> be the number occurrences in a given <strong>interval.</strong> Then,</p>
+<p><strong>PMF:</strong></p>
+<p><span class="math display">\[
+P(X=x)=f(x)=\frac{\mu^x e^{-\mu}}{x!}\ \ ; \ \ x=0,1,2,...,\infty
+\]</span></p>
+<p>Where, <span class="math inline">\(\mu\)</span> is the expected value or mean number of occurrences in an interval.</p>
+<p><strong>Mean:</strong> <span class="math inline">\(E(X)=\mu\)</span></p>
+<p><strong>Variance:</strong> <span class="math inline">\(Var(X)=\mu\)</span><br>
+<u><strong>We write,</strong></u> <span class="math inline">\(X \sim Pois(\mu)\)</span></p>
+<section id="finding-probability-of-poisson-r.v" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="finding-probability-of-poisson-r.v"><span class="header-section-number">4.5.1</span> Finding probability of Poisson r.v</h3>
+<p>Let, <span class="math inline">\(X\)</span> be a Poisson r.v with <span class="math inline">\(\mu=2.5\)</span>. Find the following probabilities using PMF:</p>
+<p>i) <span class="math inline">\(P(X=2)\)</span></p>
+<p>ii) <span class="math inline">\(P(X&lt;=1)\)</span></p>
+<p>iii) <span class="math inline">\(P(X&gt;3)\)</span></p>
+</section>
+<section id="the-recursion-formula-for-poisson-pmf" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="the-recursion-formula-for-poisson-pmf"><span class="header-section-number">4.5.2</span> The recursion formula for Poisson PMF</h3>
+<p>If <span class="math inline">\(X\sim Pois(\mu)\)</span> then</p>
+<p><span class="math inline">\(P(X=k)=\frac{e^{-\mu} \mu^k }{k!}\)</span> and</p>
+<p><span class="math inline">\(P(X=k-1)=\frac{e^{-\mu} \mu^{k-1} }{(k-1)!}\)</span></p>
+<p>Hence we have</p>
+<p><span class="math display">\[
+\frac{P(X=k)}{P(X=k-1)}=\frac{\mu}{k}
+\]</span></p>
+<p><span class="math display">\[
+Hence, \ \ P(X=k)=\frac{\mu}{k}P(X=k-1)
+\]</span></p>
+<p>So, for <span class="math inline">\(k=1\)</span>, <span class="math inline">\(P(X=1)=\frac{\mu}{1}P(X=0)\)</span> Or,</p>
+<p><span class="math display">\[
+f(1)=\frac{\mu}{1}f(0)
+\]</span></p>
+<p><span class="math display">\[
+f(2)=\frac{\mu}{2}f(1)
+\]</span></p>
+<p><span class="math display">\[
+.\\
+.\\
+.
+\]</span></p>
+<p>and so on.</p>
+<p><strong>Example</strong> <strong>911 Calls.</strong> Emergency 911 calls to a small municipality in Idaho come in at the rate of one every 2 minutes. <span class="citation" data-cites="anderson2020">(<a href="references.html#ref-anderson2020" role="doc-biblioref">Anderson 2020</a>, page no. 261)</span></p>
+<p>a. What is the expected number of 911 calls in one hour?</p>
+<p>b. What is the probability of three 911 calls in five minutes?</p>
+<p>c. What is the probability of no 911 calls in a five-minute period?<br>
+</p>
+<p><strong>Example</strong> <strong>Airport Passenger-Screening Facility</strong>. Airline passengers arrive randomly and independently at the passenger-screening facility at a major international airport. The mean arrival rate is 10 passengers per minute. <span class="citation" data-cites="anderson2020">(<a href="references.html#ref-anderson2020" role="doc-biblioref">Anderson 2020</a>, page no. 261)</span></p>
+<p>a. Compute the probability of no arrivals in a one-minute period.</p>
+<p>b. Compute the probability that three or fewer passengers arrive in a one-minute period.</p>
+<p>c. Compute the probability of no arrivals in a 15-second period.</p>
+<p>d. Compute the probability of at least one arrival in a 15-second period.</p>
+<p><strong>Example</strong> Customers arrive at a busy checkout counter at an average rate of 3 per minute. If the distribution of arrivals is Poisson, find the probability that in any given minute there will be 2 or fewer arrivals.</p>
+<p><strong>Example</strong> The number of accidents in a production facility has a Poisson distribution with a mean of 2.6 per month.</p>
+<p>a. For a given month what is the probability there will be fewer than 2 accidents?</p>
+<p>b. For a given month what is the probability there will be more than 3 accidents?<br>
+<br>
+</p>
+</section>
+<section id="poisson-approximation-to-the-binomial-distribution" class="level3" data-number="4.5.3">
+<h3 data-number="4.5.3" class="anchored" data-anchor-id="poisson-approximation-to-the-binomial-distribution"><span class="header-section-number">4.5.3</span> Poisson Approximation to the Binomial Distribution</h3>
+<p>When,</p>
+<ul>
+<li><p><span class="math inline">\(p \rightarrow0\)</span> (<em>Success rate is very low</em>);</p></li>
+<li><p><span class="math inline">\(n\rightarrow \infty\)</span> (<em>Number of trials is very large</em>);</p></li>
+</ul>
+<p>Then <strong>Binomial distribution</strong> can be <em>approximated</em> by <strong>Poisson distribution</strong>.</p>
+<ul>
+<li>Mathematically, <span class="math inline">\(Bin (x; n,p)\approx Pois(x;\mu)\)</span>; where <span class="math inline">\(\mu=np\)</span>.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>In practical situation</strong> if <span class="math inline">\(n &gt; 20\)</span> and <span class="math inline">\(np\le 7\)</span> ; then the approximation is close enough to use the Poisson distribution for binomial problems<span class="citation" data-cites="black2012">(<a href="references.html#ref-black2012" role="doc-biblioref">Black 2012</a>)</span>.</p>
+</div>
+</div>
+<p><strong>Example</strong> A college has 250 personal computers. The probability that any 1 of them will require repair in a given week is 0.01. Find the probability that fewer than 3 of the personal computers will require repair in a particular week. Use the Poisson approximation to the binomial distribution.<br>
+</p>
+<p><strong>Example</strong> It is estimated that 0.5 percent of the callers to the Customer Service department of Dell Inc.&nbsp;will receive a busy signal. What is the probability that of today’s 1,200 callers at least 3 received a busy signal?</p>
+<p><strong>Example</strong> Ms.&nbsp;Bergen is a loan officer at Coast Bank and Trust. From her years of experience, she estimates that the probability is .025 that an applicant will not be able to repay his or her installment loan. Last month she made 40 loans.</p>
+<p>a. What is the probability that 3 loans will be defaulted?</p>
+<p>b. What is the probability that at least 3 loans will be defaulted?</p>
+</section>
+</section>
+<section id="multinomial-probability-distribution" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="multinomial-probability-distribution"><span class="header-section-number">4.6</span> Multinomial Probability Distribution</h2>
+<p>Suppose that a random experiment consists of a sequence of <span class="math inline">\(n\)</span> trials. Assume that</p>
+<p>(1) The result of each trial is classified into one of <span class="math inline">\(k\)</span> categories.</p>
+<p>(2) The probability of a trial generating a result in category 1, category 2, … , category <span class="math inline">\(k\)</span> is constant over the trials and equal to <span class="math inline">\(p_1 , p_2 , ..., p_k\)</span>, respectively.</p>
+<p>(3) The trials are independent.</p>
+<p>The random variables <span class="math inline">\(X_1, X_2, ...,X_k\)</span> that denote the number of trials that result in class 1, class 2, … , class <span class="math inline">\(k\)</span>, respectively, have a multinomial distribution and the joint probability mass function is</p>
+<p><span class="math display">\[
+P(X_1=x_1,X_2=x_2,....,X_k=x_k)=\frac{n!}{x_1!x_2!....x_k!} p_1^{x_1}p_2^{x_2}...p_1^{x_k}
+\]</span></p>
+<p>for <span class="math inline">\(x_1+x_2+....+x_k=n\)</span> and <span class="math inline">\(p_1+p_2+...+p_k=1\)</span>.</p>
+<p><strong>Example</strong> The probabilities are 0.4, 0.2, 0.3, and 0.1, respectively, that a delegate to a certain convention arrived by air, bus, automobile, or train. What is the probability that among 9 delegates randomly selected at this convention, 3 arrived by air, 3 arrived by bus, 1 arrived by automobile, and 2 arrived by train?</p>
+<p><strong>Example</strong> According to a genetics theory, a certain cross of guinea pigs will result in red, black, and white offspring in the ratio 8:4:4. <strong>Find</strong> the probability that among 8 offspring, 5 will be red, 2 black, and 1 white.</p>
+<p><br>
+</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-anderson2020" class="csl-entry" role="listitem">
+Anderson, David R. 2020. <em>Statistics for Business &amp; Economics</em>. 14e ed. Boston, MA: Cengage.
+</div>
+<div id="ref-black2012" class="csl-entry" role="listitem">
+Black, Ken. 2012. <em>Business statistics: for contemporary decision making</em>. 7th ed. Hoboken, NJ: Wiley.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./4Probability.html" class="pagination-link" aria-label="Probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./6continuous_Dist.html" class="pagination-link" aria-label="Continuous Probability Distributions">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Continuous Probability Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

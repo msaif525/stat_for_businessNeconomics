@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="An introductory e‑book on Statistics for Business and Economics with practical examples, exercises, and visualizations.">
+
+<title>2&nbsp; Descriptive statistic: Tabular and Graphical Presentations – Statistics for Business and Economics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./3descriptive_numer_measures.html" rel="next">
+<link href="./1intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-066b562477012fc308cfc884aa1e7cf5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2descriptive_graph_tab.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistic: Tabular and Graphical Presentations</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Statistics for Business and Economics</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-save"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+      </ul>
+    </div>
+    <a href="https://github.com/Saifuddin86/stat_for_businessNeconomics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Statistics-for-Business-and-Economics.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Statistics-for-Business-and-Economics.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2descriptive_graph_tab.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistic: Tabular and Graphical Presentations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3descriptive_numer_measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive statistics: Numerical Measures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5randomvariable_and_Discrete_dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6continuous_Dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Continuous Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./7Further_topics_on_rv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Further topics on random variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./8sampling_and_sampling_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sampling and Sampling distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10hypothesis_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis test: Introduction and testing one population parameter</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11Hypotheis_test(TWO population).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hypothesis test concerning TWO population parameters</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12ANOVA_oneway.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13Chi_squaredTest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chi-squared Test</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlation and Simple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#summarizing-categorical-data" id="toc-summarizing-categorical-data" class="nav-link active" data-scroll-target="#summarizing-categorical-data"><span class="header-section-number">2.1</span> Summarizing Categorical Data</a>
+  <ul class="collapse">
+  <li><a href="#frequency-distribution" id="toc-frequency-distribution" class="nav-link" data-scroll-target="#frequency-distribution"><span class="header-section-number">2.1.1</span> <strong>Frequency Distribution</strong></a></li>
+  <li><a href="#bar-charts-and-pie-charts" id="toc-bar-charts-and-pie-charts" class="nav-link" data-scroll-target="#bar-charts-and-pie-charts"><span class="header-section-number">2.1.2</span> Bar Charts and Pie Charts</a></li>
+  <li><a href="#cross-tabulation-and-its-graphical-presentation" id="toc-cross-tabulation-and-its-graphical-presentation" class="nav-link" data-scroll-target="#cross-tabulation-and-its-graphical-presentation"><span class="header-section-number">2.1.3</span> Cross-tabulation and its graphical presentation</a></li>
+  </ul></li>
+  <li><a href="#summarizing-quantitative-data" id="toc-summarizing-quantitative-data" class="nav-link" data-scroll-target="#summarizing-quantitative-data"><span class="header-section-number">2.2</span> Summarizing Quantitative Data</a>
+  <ul class="collapse">
+  <li><a href="#frequency-distribution-of-quantitative-data" id="toc-frequency-distribution-of-quantitative-data" class="nav-link" data-scroll-target="#frequency-distribution-of-quantitative-data"><span class="header-section-number">2.2.1</span> <strong>Frequency Distribution</strong> of quantitative data</a></li>
+  <li><a href="#frequency-distribution-of-audit-time-data" id="toc-frequency-distribution-of-audit-time-data" class="nav-link" data-scroll-target="#frequency-distribution-of-audit-time-data"><span class="header-section-number">2.2.2</span> Frequency Distribution of Audit time data</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">2.2.3</span> Histogram</a></li>
+  <li><a href="#histogram-and-shape-of-the-distribution" id="toc-histogram-and-shape-of-the-distribution" class="nav-link" data-scroll-target="#histogram-and-shape-of-the-distribution"><span class="header-section-number">2.2.4</span> HISTOGRAM and shape of the distribution</a></li>
+  <li><a href="#cumulative-distributions-and-ogive" id="toc-cumulative-distributions-and-ogive" class="nav-link" data-scroll-target="#cumulative-distributions-and-ogive"><span class="header-section-number">2.2.5</span> Cumulative Distributions and Ogive</a></li>
+  <li><a href="#ogive" id="toc-ogive" class="nav-link" data-scroll-target="#ogive"><span class="header-section-number">2.2.6</span> Ogive</a></li>
+  <li><a href="#the-stem-and-leaf-display" id="toc-the-stem-and-leaf-display" class="nav-link" data-scroll-target="#the-stem-and-leaf-display"><span class="header-section-number">2.2.7</span> The Stem-and-Leaf Display</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.3</span> Exercises</a></li>
+  <li><a href="#line-chart" id="toc-line-chart" class="nav-link" data-scroll-target="#line-chart"><span class="header-section-number">2.4</span> Line Chart</a></li>
+  <li><a href="#scatter-diagram" id="toc-scatter-diagram" class="nav-link" data-scroll-target="#scatter-diagram"><span class="header-section-number">2.5</span> Scatter diagram</a></li>
+  <li><a href="#case-study-lifestyle-indicators-and-preferences" id="toc-case-study-lifestyle-indicators-and-preferences" class="nav-link" data-scroll-target="#case-study-lifestyle-indicators-and-preferences"><span class="header-section-number">2.6</span> Case Study: Lifestyle Indicators and Preferences</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistic: Tabular and Graphical Presentations</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="summarizing-categorical-data" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="summarizing-categorical-data"><span class="header-section-number">2.1</span> Summarizing Categorical Data</h2>
+<section id="frequency-distribution" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="frequency-distribution"><span class="header-section-number">2.1.1</span> <strong>Frequency Distribution</strong></h3>
+<p>A frequency distribution is a tabular summary of data showing the number (frequency) of items in each of several non overlapping classes.</p>
+<p><strong>Example 2.1</strong> Consider the following data shown in <span class="quarto-unresolved-ref">?tbl-tbl2_1</span>.</p>
+<table class="caption-top table">
+<caption>Data from a sample of 50 soft drink purchases</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Coke Classic</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diet Coke</td>
+<td style="text-align: left;">Diet Coke</td>
+<td style="text-align: left;">Coke Classic</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pepsi</td>
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Pepsi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diet Coke</td>
+<td style="text-align: left;">Diet Coke</td>
+<td style="text-align: left;">Dr.&nbsp;Pepper</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Coke Classic</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Sprite</td>
+<td style="text-align: left;">Diet Coke</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dr.&nbsp;Pepper</td>
+<td style="text-align: left;">Pepsi</td>
+<td style="text-align: left;">Pepsi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diet Coke</td>
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Pepsi</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pepsi</td>
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Pepsi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pepsi</td>
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Pepsi</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Pepsi</td>
+<td style="text-align: left;">Coke Classic</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dr.&nbsp;Pepper</td>
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Dr.&nbsp;Pepper</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sprite</td>
+<td style="text-align: left;">Sprite</td>
+<td style="text-align: left;">Pepsi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Dr.&nbsp;Pepper</td>
+<td style="text-align: left;">Sprite</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diet Coke</td>
+<td style="text-align: left;">Pepsi</td>
+<td style="text-align: left;">Coke Classic</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Diet Coke</td>
+<td style="text-align: left;">Sprite</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: left;">Pepsi</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>Now we will construct a frequency distribution by simply counting each type of soft-drink.</p>
+<div class="cell">
+<div id="tbl-tbl2" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tbl2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: Frequency distribution of Soft Drink Purchases
+</figcaption>
+<div aria-describedby="tbl-tbl2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Soft Drink</th>
+<th style="text-align: center;">Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diet Coke</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dr.&nbsp;Pepper</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pepsi</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sprite</td>
+<td style="text-align: center;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><strong>Relative Frequency and Percent Frequency Distributions</strong></p>
+<ul>
+<li><p>Relative Frequency <span class="math inline">\(=\frac{Frequency \ \ of \ \ the \ \ class}{n}\)</span></p></li>
+<li><p>The <em>percent frequency</em> of a class is the relative frequency multiplied by 100.</p></li>
+</ul>
+</section>
+<section id="bar-charts-and-pie-charts" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="bar-charts-and-pie-charts"><span class="header-section-number">2.1.2</span> Bar Charts and Pie Charts</h3>
+<ul>
+<li><p><strong>Bar chart:</strong> A graphical device for depicting qualitative data that have been summarized in a frequency, relative frequency, or percent frequency distribution.</p></li>
+<li><p><strong>Pie chart:</strong> A graphical device for presenting data summaries based on subdivision of a circle into sectors that correspond to the relative frequency for each class.</p></li>
+</ul>
+<p>From the frequency table of soft drinks purchase, we will develop relative and percent frequency distribution (see <a href="#tbl-tbl3" class="quarto-xref">Table&nbsp;<span>2.2</span></a>) and will construct a <strong>bar-chart</strong> and <strong>pie-chart</strong>.</p>
+<div class="cell">
+<div id="tbl-tbl3" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tbl3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: Frequency, Relative And Percent Frequency Distributions Of Soft Drink Purchases
+</figcaption>
+<div aria-describedby="tbl-tbl3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 19%">
+<col style="width: 31%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Soft Drink</th>
+<th style="text-align: center;">Frequency (f)</th>
+<th style="text-align: center;">Relative Frequency(Rf)</th>
+<th style="text-align: center;">Percent Frequency (Pf)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Coke Classic</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">0.38</td>
+<td style="text-align: center;">38</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diet Coke</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">0.16</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dr.&nbsp;Pepper</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pepsi</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">0.26</td>
+<td style="text-align: center;">26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sprite</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Now we construct a bar chart and pie chart.</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-fig1" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2descriptive_graph_tab_files/figure-html/fig-fig1-1.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Bar chart of Soft drink purchases
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-fig2" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2descriptive_graph_tab_files/figure-html/fig-fig2-1.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Pie chart of Soft drink purchases
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="cross-tabulation-and-its-graphical-presentation" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="cross-tabulation-and-its-graphical-presentation"><span class="header-section-number">2.1.3</span> Cross-tabulation and its graphical presentation</h3>
+<p><strong>Cross-tabulation</strong> (also known as crosstabs or contingency tables) is a fundamental data analysis technique used to examine the relationship between <strong>two</strong> or <strong>more</strong> <strong>categorical variables.</strong> For instance, consider the following cross-table between the <strong>gender</strong> and <strong>fitness-level</strong> of 30 individuals:</p>
+<div class="cell">
+<div id="tbl-cross.tab" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cross.tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.3: Cross-Tabulation of Gender by Fitness Level
+</figcaption>
+<div aria-describedby="tbl-cross.tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gender</th>
+<th style="text-align: center;">Excellent</th>
+<th style="text-align: center;">Fair</th>
+<th style="text-align: center;">Good</th>
+<th style="text-align: center;">Poor</th>
+<th style="text-align: center;">Grand Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Male</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Female</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Grand Total</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">30</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>We can show the information of cross-tab using (a) Clustered column chart or (b) Stacked column chart (see <a href="#fig-stacked.chart" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> ).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-stacked.chart" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-stacked.chart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2descriptive_graph_tab_files/figure-html/fig-stacked.chart-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stacked.chart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Visulization of relationship between two categorical variables
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="summarizing-quantitative-data" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="summarizing-quantitative-data"><span class="header-section-number">2.2</span> Summarizing Quantitative Data</h2>
+<section id="frequency-distribution-of-quantitative-data" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="frequency-distribution-of-quantitative-data"><span class="header-section-number">2.2.1</span> <strong>Frequency Distribution</strong> of quantitative data</h3>
+<p>Consider the following data.</p>
+<p>YEAR-END AUDIT TIMES (IN DAYS): 12, 14, 19, 18, 15, 15, 18, 17, 20, 27, 22, 23, 22, 21, 33, 28, 14, 18, 16, 13,</p>
+<p>To construct a frequency distribution we have to</p>
+<ol type="1">
+<li>Determine the <em>number of non overlapping classes(k)</em>.</li>
+<li>Determine the <em>width</em> of each class.</li>
+<li>Determine the <em>class limits</em>.</li>
+</ol>
+</section>
+<section id="frequency-distribution-of-audit-time-data" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="frequency-distribution-of-audit-time-data"><span class="header-section-number">2.2.2</span> Frequency Distribution of Audit time data</h3>
+<p>Here, <span class="math inline">\(n=20\)</span>, Smallest value=12, Largest value=33.</p>
+<ol type="1">
+<li>Determine number of classes, <span class="math inline">\(k\)</span> as : <span class="math inline">\(k=\sqrt n=\sqrt 20=4.47\approx5\)</span>. So <span class="math inline">\(5\)</span> is the number of <em>classes</em>.</li>
+<li>Class width <span class="math inline">\(w\)</span> as: <span class="math inline">\(w=\frac{Largest-Smallest}{k}=\frac{33-12}{5}=4.2\approx 5\)</span></li>
+<li>Class limits: Start from near <em>smallest</em> value (12) say from <span class="math inline">\(10\)</span> we have the following classes (<u><em>exclusive method-where upper bound of the class is excluded</em></u>):</li>
+</ol>
+<p><strong>[10,15), [15,20), [20,25), [25,30), and [30,35)</strong></p>
+<p>Now count the data values in corresponding classes and thus we have the <em>frequency distribution</em>. Once we have the frequency distribution then we also can produce the <em>relative</em> and <em>percent frequency distribution</em> (<a href="#tbl-tbl4" class="quarto-xref">Table&nbsp;<span>2.4</span></a> ).</p>
+<div class="cell">
+<div id="tbl-tbl4" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tbl4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.4: Frequency, relative frequency (rf) and percent frequency (pf) distribution for the audit time data (n=20)
+</figcaption>
+<div aria-describedby="tbl-tbl4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 19%">
+<col style="width: 30%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Audit Time (days)</th>
+<th style="text-align: center;">Frequency (f)</th>
+<th style="text-align: center;">Relative frequency (rf)</th>
+<th style="text-align: center;">Percent frequency(pf)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">[10,15)</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.20</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">[15,20)</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">0.40</td>
+<td style="text-align: center;">40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">[20,25)</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">[25,30)</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">[30,35)</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.05</td>
+<td style="text-align: center;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="histogram" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="histogram"><span class="header-section-number">2.2.3</span> Histogram</h3>
+<p>A common graphical presentation of quantitative data is a <em>histogram.</em> This graphical summary can be prepared for data previously summarized in either a <em>frequency</em>, <em>relative frequency</em>, or <em>percent frequency</em> distribution.</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-fig3" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2descriptive_graph_tab_files/figure-html/fig-fig3-1.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Histogram for the Audit Time data
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Important Note:</strong> A <strong>relative frequency/ percent frequency histogram</strong> is ideal for comparing distributions across groups of different sizes, as it displays proportions instead of raw counts, allowing fair and meaningful comparisons.</p>
+<p><strong>Illustration ( see</strong> <a href="#fig-rfhist.is.better" class="quarto-xref">Figure&nbsp;<span>2.5</span></a><strong>)</strong></p>
+<p>A dataset of <strong>Marks</strong> (out of 100) was collected from two student groups:</p>
+<ul>
+<li><p><strong>70 Female students</strong></p></li>
+<li><p><strong>40 Male students</strong></p></li>
+</ul>
+<p>The goal is to compare the distribution of marks between these two groups.</p>
+<p>The <strong>frequency histogram</strong> shows how many students fall into each marks range (bin). However, since the number of female students (70) is greater than male students (40), their bars are naturally taller — even if the relative performance is similar. This makes direct comparison <strong>unfair and misleading</strong>.</p>
+<p>A <strong>relative frequency histogram</strong> shows the <strong>proportion</strong> of students in each bin <strong>within each group</strong>. By dividing counts by the total number in the group:</p>
+<ul>
+<li><p>It <strong>normalizes</strong> the data,</p></li>
+<li><p>Allows for <strong>fair comparisons</strong> between groups of different sizes,</p></li>
+<li><p>Highlights <strong>true differences in distribution</strong>, not just differences in group size.</p></li>
+</ul>
+<p><strong>Example Observation</strong></p>
+<p>From the RF histogram:</p>
+<ul>
+<li><p>Around <strong>40% of males</strong> scored between 50–60.</p></li>
+<li><p>Around <strong>39% of females</strong> scored between 50–60.</p></li>
+</ul>
+<p>This comparison is <strong>valid</strong> only because the histograms show <strong>relative frequency</strong>, not raw counts.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-rfhist.is.better" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rfhist.is.better-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2descriptive_graph_tab_files/figure-html/fig-rfhist.is.better-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rfhist.is.better-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: Comparison between Frequency histogram and relative frequency histogram
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="histogram-and-shape-of-the-distribution" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="histogram-and-shape-of-the-distribution"><span class="header-section-number">2.2.4</span> HISTOGRAM and shape of the distribution</h3>
+<p>See <a href="#fig-hist.skewness" class="quarto-xref">Figure&nbsp;<span>2.6</span></a> .</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-hist.skewness" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist.skewness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2descriptive_graph_tab_files/figure-html/fig-hist.skewness-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist.skewness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.6: Histograms Showing Differing Levels of Skewness
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="cumulative-distributions-and-ogive" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="cumulative-distributions-and-ogive"><span class="header-section-number">2.2.5</span> Cumulative Distributions and Ogive</h3>
+<p>A variation of the frequency distribution that provides another tabular summary of quantitative data is the <em>cumulative frequency</em> distribution. <a href="#tbl-tab.crf" class="quarto-xref">Table&nbsp;<span>2.5</span></a> shows the <strong>cumulative relative frequency</strong> of <code>Audit Time</code> data.</p>
+<div class="cell">
+<div id="tbl-tab.crf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tab.crf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.5: Frequency, relative frequency and Cumulative relative frequency distribution of Audit Time Data
+</figcaption>
+<div aria-describedby="tbl-tab.crf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 16%">
+<col style="width: 26%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Audit Time (days)</th>
+<th style="text-align: center;">Frequency (f)</th>
+<th style="text-align: center;">Relative frequency (rf)</th>
+<th style="text-align: center;">Cumulative relative frequency(crf)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">[10,15)</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.20</td>
+<td style="text-align: center;">0.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">[15,20)</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">0.40</td>
+<td style="text-align: center;">0.60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">[20,25)</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.85</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">[25,30)</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">[30,35)</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.05</td>
+<td style="text-align: center;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="ogive" class="level3" data-number="2.2.6">
+<h3 data-number="2.2.6" class="anchored" data-anchor-id="ogive"><span class="header-section-number">2.2.6</span> Ogive</h3>
+<p>Another way of presenting this information is the ogive, which is a graphical representation of the cumulative relative frequencies. <a href="#fig-ogive" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> is the drawn ogive for the cumulative relative frequency for <code>Audit time</code> data.<br>
+</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-ogive" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ogive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2descriptive_graph_tab_files/figure-html/fig-ogive-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ogive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.7: Ogive for Audit Time data
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>For instance, from both <a href="#tbl-tab.crf" class="quarto-xref">Table&nbsp;<span>2.5</span></a> and <a href="#fig-ogive" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> we can say (estimate) that 60% of audits took <strong>less than 20 days</strong> . Similarly, 95% of audits took <strong>less than 30 days</strong> and so on.</p>
+</section>
+<section id="the-stem-and-leaf-display" class="level3" data-number="2.2.7">
+<h3 data-number="2.2.7" class="anchored" data-anchor-id="the-stem-and-leaf-display"><span class="header-section-number">2.2.7</span> The Stem-and-Leaf Display</h3>
+<p>The techniques of <strong>exploratory data analysis</strong> consist of simple arithmetic and easy-to-draw graphs that can be used to summarize data quickly. One technique—referred to as a <strong>stem-and-leaf display</strong>—can be used to show both the rank order and shape of a data set simultaneously <span class="citation" data-cites="anderson2011">(<a href="references.html#ref-anderson2011" role="doc-biblioref">Anderson and Sweeney 2011</a>)</span>.</p>
+<p><strong>Steps to Construct a Stem-and-Leaf Diagram</strong></p>
+<p>(1) Divide each number into two parts: a <strong>stem</strong>, consisting of one or more of the leading digits, and a <strong>leaf</strong>, consisting of the remaining digit.</p>
+<p>(2) List the stem values in a vertical column.</p>
+<p>(3) Record the leaf for each observation beside its stem.</p>
+<p>(4) Write the units for stems and leaves on the display.<br>
+</p>
+<p><strong>Example 2.2</strong> Here are the number of questions answered correctly on an aptitude test given to 50 individuals recently interviewed for a position at Haskens Manufacturing.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Stem-and-leaf display</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>112, 72, 69, 97, 107,73, 92, 76, 86, 73, 126, 128, 118, 127, 124,82, 104, 132, 134, 83, 92, 108, 96, 100, 92,115, 76, 91, 102, 81, 95, 141, 81, 80, 106,84, 119, 113, 98, 75, 68, 98, 115, 106, 95,100, 85, 94, 106, 119</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 1 digit(s) to the right of the |
+
+   6 | 89
+   7 | 233566
+   8 | 01123456
+   9 | 12224556788
+  10 | 002466678
+  11 | 2355899
+  12 | 4678
+  13 | 24
+  14 | 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Exception</strong></p>
+<p>In some data sets, providing more classes or stems may be desirable. One way to do this would be to modify the original stems as follows: For example, divide stem 5 into two new stems, 5L and 5U. Stem 5L has leaves 0, 1, 2, 3, and 4, and stem 5U has leaves 5, 6, 7, 8, and 9. This will double the number of original stems. However, there may be various type of data in practical situations. So, we have to figure out the suitable stem-and-leaf plot.</p>
+<p><strong>Example 2.3:</strong> Construct a stem-and-leaf plot from the following data:</p>
+<p>88.5, 98.8, 89.6, 92.2, 92.7, 88.4, 87.5, 90.9, 94.7, 88.3, 90.4, 83.4, 87.9, 92.6, 87.8, 89.9, 84.3, 90.4, 91.6, 91.0</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Solution-I</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Solution-II</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 1 digit(s) to the right of the |
+
+  8 | 34
+  8 | 888889
+  9 | 0000112233
+  9 | 59</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is at the |
+
+  82 | 4
+  84 | 3
+  86 | 589
+  88 | 34569
+  90 | 44906
+  92 | 267
+  94 | 7
+  96 | 
+  98 | 8</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Example 2.4 (Another example):</strong> Construct a stem-and-leaf plot from the following data: 7,8,2,1,8,3,5,7,1,2,2,5,8,5,5,7,8,7,5,3</p>
+<p><u>Solution:</u></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is at the |
+
+  1 | 00
+  2 | 000
+  3 | 00
+  4 | 
+  5 | 00000
+  6 | 
+  7 | 0000
+  8 | 0000</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.3</span> Exercises</h2>
+<p><strong>2.1</strong> A doctor’s office staff studied the waiting times for patients who arrive at the office with a request for emergency service. The following data with waiting times in minutes were collected over a one-month period.</p>
+<blockquote class="blockquote">
+<p>2, 5, 10, 12, 4, 4, 5, 17, 11, 8, 9, 8, 12, 21, 6, 8, 7, 13, 18, 3</p>
+</blockquote>
+<p>Use class interval/width of 5 in the following (start your class limit from 0):</p>
+<ol type="a">
+<li>Show the frequency distribution.</li>
+<li>Show the relative frequency distribution.</li>
+<li>Show the cumulative frequency distribution.</li>
+<li>Show the cumulative relative frequency distribution.</li>
+<li>What proportion of patients needing emergency service wait less than 10 minutes or less?</li>
+</ol>
+<!-- -->
+<p><strong>2.2</strong> A shortage of candidates has required school districts to pay higher salaries and offer extras to attract and retain school district superintendents. The following data show the annual base salary ($1000s) for superintendents in 20 districts in the greater Rochester, New York, area (The Rochester Democrat and Chronicle, February 10, 2008).</p>
+<blockquote class="blockquote">
+<p>187, 184, 174, 185, 175, 172, 202, 197, 165, 208, 215, 164, 162, 172, 182, 156, 172, 175, 170, 183</p>
+</blockquote>
+<p>Use appropriate number classes/ class width in the following.</p>
+<ol type="a">
+<li>Show the frequency distribution.</li>
+<li>Show the percent frequency distribution.</li>
+<li>Show the cumulative percent frequency distribution.</li>
+<li>Develop a histogram for the annual base salary.</li>
+<li>Do the data appear to be skewed? Explain.</li>
+<li>Which salary range belongs to the highest percentage of superintendents ?</li>
+</ol>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Histogram</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<blockquote class="blockquote">
+<p>187, 184, 174, 185, 175, 172, 202, 197, 165, 208, 215, 164, 162, 172, 182, 156, 172, 175, 170, 183</p>
+</blockquote>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2descriptive_graph_tab_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>2.3</strong> NRF/BIG research provided results of a consumer holiday spending survey (USA Today, December 20, 2005). The following data provide the dollar amount of holiday spending for a sample of 25 consumers.</p>
+<blockquote class="blockquote">
+<p>1200, 850, 740, 590, 340, 450, 890, 260, 610, 350, 1780, 180, 850,2050, 770, 800, 1090, 510, 520, 220, 1450, 280, 1120, 200 350</p>
+</blockquote>
+<ol type="a">
+<li>What is the lowest holiday spending? The highest?</li>
+<li>Use a class width of $250 to prepare a frequency distribution and a percent frequency distribution for the data.</li>
+<li>Prepare a histogram and comment on the shape of the distribution.</li>
+<li>What observations can you make about holiday spending?</li>
+</ol>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Histogram</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<blockquote class="blockquote">
+<p>1200, 850, 740, 590, 340, 450, 890, 260, 610, 350, 1780, 180, 850,2050, 770, 800, 1090, 510, 520, 220, 1450, 280, 1120, 200, 350</p>
+</blockquote>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2descriptive_graph_tab_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>2.4</strong> Construct a stem-and-leaf display for the following data.</p>
+<blockquote class="blockquote">
+<p>70, 72, 75, 64, 58, 83, 80, 82, 76, 75, 68, 65, 57, 78, 85, 72</p>
+</blockquote>
+<p><strong>2.5</strong> Construct a stem-and-leaf display for the following data.</p>
+<blockquote class="blockquote">
+<p>11.3, 9.6, 10.4, 7.5, 8.3, 10.5, 10.0, 9.3, 8.1, 7.7, 7.5, 8.4, 6.3, 8.8</p>
+</blockquote>
+<p><strong>2.6</strong> A psychologist developed a new test of adult intelligence. The test was administered to 20 individuals, and the following data were obtained.</p>
+<blockquote class="blockquote">
+<p>114, 99, 131, 124, 117, 102, 106, 127, 119, 115,98, 104, 144, 151, 132, 106, 125, 122, 118, 118</p>
+</blockquote>
+<p><strong>Construct</strong> a stem-and-leaf display for the data.</p>
+</section>
+<section id="line-chart" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="line-chart"><span class="header-section-number">2.4</span> Line Chart</h2>
+</section>
+<section id="scatter-diagram" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="scatter-diagram"><span class="header-section-number">2.5</span> Scatter diagram</h2>
+</section>
+<section id="case-study-lifestyle-indicators-and-preferences" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="case-study-lifestyle-indicators-and-preferences"><span class="header-section-number">2.6</span> Case Study: Lifestyle Indicators and Preferences</h2>
+<p>You’re given data from a cross-sectional survey of 30 individuals. Variables include Age, Gender, Monthly Income, Hours of Exercise/Week , Fitness Level, Favorite Fruit and Temperature preference. This data-set enables practice with data visualization, scale classification, and relationship analysis using tools like bar charts, scatter plots, and histograms.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>ID</strong></th>
+<th style="text-align: center;"><strong>Age</strong></th>
+<th style="text-align: center;"><strong>Gender</strong></th>
+<th style="text-align: center;"><strong>Monthly Income (USD)</strong></th>
+<th style="text-align: center;"><strong>Hours of Exercise/Week</strong></th>
+<th style="text-align: center;"><strong>Favorite Fruit</strong></th>
+<th style="text-align: center;"><strong>Fitness Level</strong></th>
+<th style="text-align: center;"><strong>Temperature Preference (°C)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">1520.75</td>
+<td style="text-align: center;">2.5</td>
+<td style="text-align: center;">Mango</td>
+<td style="text-align: center;">Fair</td>
+<td style="text-align: center;">23</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">2280.50</td>
+<td style="text-align: center;">1.2</td>
+<td style="text-align: center;">Apple</td>
+<td style="text-align: center;">Poor</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">925.10</td>
+<td style="text-align: center;">4.8</td>
+<td style="text-align: center;">Banana</td>
+<td style="text-align: center;">Good</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">1980.90</td>
+<td style="text-align: center;">3.3</td>
+<td style="text-align: center;">Orange</td>
+<td style="text-align: center;">Fair</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">3055.45</td>
+<td style="text-align: center;">0.7</td>
+<td style="text-align: center;">Apple</td>
+<td style="text-align: center;">Poor</td>
+<td style="text-align: center;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">1425.00</td>
+<td style="text-align: center;">5.9</td>
+<td style="text-align: center;">Mango</td>
+<td style="text-align: center;">Excellent</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">37</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">3625.80</td>
+<td style="text-align: center;">2.1</td>
+<td style="text-align: center;">Banana</td>
+<td style="text-align: center;">Fair</td>
+<td style="text-align: center;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">2520.00</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">Apple</td>
+<td style="text-align: center;">Poor</td>
+<td style="text-align: center;">27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">1685.25</td>
+<td style="text-align: center;">3.7</td>
+<td style="text-align: center;">Orange</td>
+<td style="text-align: center;">Good</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">1190.00</td>
+<td style="text-align: center;">6.2</td>
+<td style="text-align: center;">Mango</td>
+<td style="text-align: center;">Excellent</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">3180.45</td>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: center;">Banana</td>
+<td style="text-align: center;">Poor</td>
+<td style="text-align: center;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">1830.60</td>
+<td style="text-align: center;">4.3</td>
+<td style="text-align: center;">Orange</td>
+<td style="text-align: center;">Good</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">39</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">3999.00</td>
+<td style="text-align: center;">1.4</td>
+<td style="text-align: center;">Apple</td>
+<td style="text-align: center;">Fair</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">1335.75</td>
+<td style="text-align: center;">5.6</td>
+<td style="text-align: center;">Banana</td>
+<td style="text-align: center;">Excellent</td>
+<td style="text-align: center;">26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">2125.35</td>
+<td style="text-align: center;">2.2</td>
+<td style="text-align: center;">Mango</td>
+<td style="text-align: center;">Fair</td>
+<td style="text-align: center;">27</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">2885.50</td>
+<td style="text-align: center;">3.1</td>
+<td style="text-align: center;">Orange</td>
+<td style="text-align: center;">Good</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">960.00</td>
+<td style="text-align: center;">6.0</td>
+<td style="text-align: center;">Apple</td>
+<td style="text-align: center;">Excellent</td>
+<td style="text-align: center;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">2190.00</td>
+<td style="text-align: center;">1.7</td>
+<td style="text-align: center;">Banana</td>
+<td style="text-align: center;">Fair</td>
+<td style="text-align: center;">27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">3425.90</td>
+<td style="text-align: center;">2.3</td>
+<td style="text-align: center;">Mango</td>
+<td style="text-align: center;">Fair</td>
+<td style="text-align: center;">27</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">1920.40</td>
+<td style="text-align: center;">4.5</td>
+<td style="text-align: center;">Orange</td>
+<td style="text-align: center;">Good</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">3095.25</td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;">Apple</td>
+<td style="text-align: center;">Good</td>
+<td style="text-align: center;">23</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">1125.00</td>
+<td style="text-align: center;">5.1</td>
+<td style="text-align: center;">Banana</td>
+<td style="text-align: center;">Excellent</td>
+<td style="text-align: center;">27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">38</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">4180.60</td>
+<td style="text-align: center;">1.8</td>
+<td style="text-align: center;">Mango</td>
+<td style="text-align: center;">Fair</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">2590.00</td>
+<td style="text-align: center;">2.4</td>
+<td style="text-align: center;">Orange</td>
+<td style="text-align: center;">Fair</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">3540.85</td>
+<td style="text-align: center;">0.9</td>
+<td style="text-align: center;">Apple</td>
+<td style="text-align: center;">Poor</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">1875.50</td>
+<td style="text-align: center;">4.0</td>
+<td style="text-align: center;">Banana</td>
+<td style="text-align: center;">Good</td>
+<td style="text-align: center;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">1275.00</td>
+<td style="text-align: center;">6.7</td>
+<td style="text-align: center;">Mango</td>
+<td style="text-align: center;">Excellent</td>
+<td style="text-align: center;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">2390.25</td>
+<td style="text-align: center;">3.5</td>
+<td style="text-align: center;">Orange</td>
+<td style="text-align: center;">Good</td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">2965.80</td>
+<td style="text-align: center;">2.6</td>
+<td style="text-align: center;">Banana</td>
+<td style="text-align: center;">Fair</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">985.00</td>
+<td style="text-align: center;">5.4</td>
+<td style="text-align: center;">Apple</td>
+<td style="text-align: center;">Excellent</td>
+<td style="text-align: center;">25</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tasks</strong></p>
+<ol type="1">
+<li><p><strong>Identify</strong> the <em>scale of measurement</em> of each variable.</p></li>
+<li><p><strong>Construct</strong> suitable graph/chart for variables like <em>gender</em>, <em>fitness level</em> etc.</p></li>
+<li><p><strong>Construct</strong> relative frequency histogram for variables like age, Monthly Income (USD), etc. <strong>Describe</strong> what you have learned.</p></li>
+<li><p><strong>Plot</strong> Hours of Exercise/Week vs Temperature Preference (°C). What is your conclusion.</p></li>
+<li><p><strong>Draw</strong> the scatter plot of Monthly Income vs Hours of Exercise/Week. Is there any relation?</p></li>
+<li><p><strong>Cross-tabulation</strong></p></li>
+</ol>
+<blockquote class="blockquote">
+<ol type="a">
+<li>Make a cross-tabulation between Gender and Favorite Fruit. Show the result in a stacked bar-chart.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="2" type="a">
+<li>Make a cross-tabulation between Favorite Fruit and Fitness Level. Show the result in a stacked bar-chart.</li>
+</ol>
+</blockquote>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-anderson2011" class="csl-entry" role="listitem">
+Anderson, David R., and Dennis J. Sweeney. 2011. <em>Statistics for Business and Economics</em>. 11e [ed.]. Australia ; Mason, Ohio: South-Western Cengage Learning.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./1intro.html" class="pagination-link" aria-label="Data and Statistics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and Statistics</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./3descriptive_numer_measures.html" class="pagination-link" aria-label="Descriptive statistics: Numerical Measures">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive statistics: Numerical Measures</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

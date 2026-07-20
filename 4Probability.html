@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="An introductory e‑book on Statistics for Business and Economics with practical examples, exercises, and visualizations.">
+
+<title>3&nbsp; Probability – Statistics for Business and Economics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./5randomvariable_and_Discrete_dist.html" rel="next">
+<link href="./3descriptive_numer_measures.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-066b562477012fc308cfc884aa1e7cf5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./4Probability.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Statistics for Business and Economics</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-save"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+      </ul>
+    </div>
+    <a href="https://github.com/Saifuddin86/stat_for_businessNeconomics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Statistics-for-Business-and-Economics.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Statistics-for-Business-and-Economics.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3descriptive_numer_measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics: Numerical Measures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4Probability.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5randomvariable_and_Discrete_dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6continuous_Dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Continuous Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./7Further_topics_on_rv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Further topics on random variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./8sampling_and_sampling_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Sampling and Sampling distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10hypothesis_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis test: Introduction and testing one population parameter</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11Hypotheis_test(TWO population).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis test concerning TWO population parameters</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12ANOVA_oneway.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13Chi_squaredTest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chi-squared Test</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Correlation and Simple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#random-experiment" id="toc-random-experiment" class="nav-link active" data-scroll-target="#random-experiment"><span class="header-section-number">3.1</span> Random experiment</a></li>
+  <li><a href="#sample-space" id="toc-sample-space" class="nav-link" data-scroll-target="#sample-space"><span class="header-section-number">3.2</span> Sample space</a></li>
+  <li><a href="#event" id="toc-event" class="nav-link" data-scroll-target="#event"><span class="header-section-number">3.3</span> Event</a></li>
+  <li><a href="#complement-of-an-event" id="toc-complement-of-an-event" class="nav-link" data-scroll-target="#complement-of-an-event"><span class="header-section-number">3.4</span> Complement of an event</a></li>
+  <li><a href="#mutually-exclusive-events" id="toc-mutually-exclusive-events" class="nav-link" data-scroll-target="#mutually-exclusive-events"><span class="header-section-number">3.5</span> Mutually exclusive events</a></li>
+  <li><a href="#collectively-exhaustive" id="toc-collectively-exhaustive" class="nav-link" data-scroll-target="#collectively-exhaustive"><span class="header-section-number">3.6</span> Collectively Exhaustive</a></li>
+  <li><a href="#axiomatic-definition-of-probability" id="toc-axiomatic-definition-of-probability" class="nav-link" data-scroll-target="#axiomatic-definition-of-probability"><span class="header-section-number">3.7</span> Axiomatic definition of Probability</a></li>
+  <li><a href="#probability-of-an-event-classical-approach" id="toc-probability-of-an-event-classical-approach" class="nav-link" data-scroll-target="#probability-of-an-event-classical-approach"><span class="header-section-number">3.8</span> Probability of an event (Classical approach)</a></li>
+  <li><a href="#probability-of-an-event-empirical-approach" id="toc-probability-of-an-event-empirical-approach" class="nav-link" data-scroll-target="#probability-of-an-event-empirical-approach"><span class="header-section-number">3.9</span> Probability of an event (Empirical approach)</a></li>
+  <li><a href="#properties-of-probability-laws" id="toc-properties-of-probability-laws" class="nav-link" data-scroll-target="#properties-of-probability-laws"><span class="header-section-number">3.10</span> Properties of Probability Laws</a></li>
+  <li><a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability"><span class="header-section-number">3.11</span> Conditional Probability</a></li>
+  <li><a href="#the-multiplication-rule" id="toc-the-multiplication-rule" class="nav-link" data-scroll-target="#the-multiplication-rule"><span class="header-section-number">3.12</span> The Multiplication Rule</a></li>
+  <li><a href="#independent-events" id="toc-independent-events" class="nav-link" data-scroll-target="#independent-events"><span class="header-section-number">3.13</span> Independent events</a></li>
+  <li><a href="#bivariate-probabilities-joint-and-marginal-probability" id="toc-bivariate-probabilities-joint-and-marginal-probability" class="nav-link" data-scroll-target="#bivariate-probabilities-joint-and-marginal-probability"><span class="header-section-number">3.14</span> Bivariate Probabilities: Joint and Marginal Probability</a></li>
+  <li><a href="#independent-events-in-joint-probability-table" id="toc-independent-events-in-joint-probability-table" class="nav-link" data-scroll-target="#independent-events-in-joint-probability-table"><span class="header-section-number">3.15</span> Independent Events in Joint probability table</a></li>
+  <li><a href="#exercises-4.1" id="toc-exercises-4.1" class="nav-link" data-scroll-target="#exercises-4.1"><span class="header-section-number">3.16</span> Exercises 4.1</a></li>
+  <li><a href="#probability-trees" id="toc-probability-trees" class="nav-link" data-scroll-target="#probability-trees"><span class="header-section-number">3.17</span> Probability Trees</a></li>
+  <li><a href="#total-probability-rule-and-bayes-theorem" id="toc-total-probability-rule-and-bayes-theorem" class="nav-link" data-scroll-target="#total-probability-rule-and-bayes-theorem"><span class="header-section-number">3.18</span> Total Probability rule and Bayes’ Theorem</a></li>
+  <li><a href="#exercises-4.2" id="toc-exercises-4.2" class="nav-link" data-scroll-target="#exercises-4.2"><span class="header-section-number">3.19</span> Exercises 4.2</a></li>
+  <li><a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables"><span class="header-section-number">3.20</span> Random variables</a>
+  <ul class="collapse">
+  <li><a href="#types-of-random-variable" id="toc-types-of-random-variable" class="nav-link" data-scroll-target="#types-of-random-variable"><span class="header-section-number">3.20.1</span> Types of random variable</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>A probability is the chance, or likelihood, that a particular event will occur. These are examples of events representing typical probability-type questions:</p>
+<ul>
+<li><p>How many customers will arrive in a super shop in next 30 minutes?</p></li>
+<li><p>What is probability that a stock price will rise or fall?</p></li>
+</ul>
+<p>To answer these kind of questions in the face of uncertainty we need to study probability. To answer these type of questions which are raised in real life; at first we have to learn some basic concepts of probability.</p>
+<section id="random-experiment" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="random-experiment"><span class="header-section-number">3.1</span> Random experiment</h2>
+<p>A <strong>random experiment</strong> is a process leading to two or more possible outcomes, without knowing exactly which outcome will occur <span class="citation" data-cites="newbold2013">(<a href="references.html#ref-newbold2013" role="doc-biblioref">Newbold, Carlson, and Thorne 2013</a>)</span>.</p>
+<p><strong>Example 4.1:</strong> Tossing a coin, throwing a dice, change in the stock prices etc.</p>
+</section>
+<section id="sample-space" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sample-space"><span class="header-section-number">3.2</span> Sample space</h2>
+<p>A <strong>sample space</strong> is the collection of all outcomes of a random experiment. The sample space is usually denoted by <span class="math inline">\(S\)</span> or Greek letter <span class="math inline">\(\Omega\)</span> (omega).</p>
+<p><strong>Example 4.2:</strong></p>
+<ul>
+<li><p>If we toss a coin then the sample space is: <span class="math inline">\(S=\{H,T\}\)</span></p></li>
+<li><p>If we toss 2 coins then the sample space is: <span class="math inline">\(S=\{HH,HT,TH,TT\}\)</span></p></li>
+</ul>
+</section>
+<section id="event" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="event"><span class="header-section-number">3.3</span> Event</h2>
+<p>An <strong>event</strong> is a <em>subset</em> of a <em>sample space</em>.</p>
+<p>For example suppose, <span class="math inline">\(S=\{HH,HT,TH,TT\}\)</span> and <span class="math inline">\(A=\{HH,TT\}\)</span> is an event which a subset of sample space <span class="math inline">\(S\)</span>.</p>
+</section>
+<section id="complement-of-an-event" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="complement-of-an-event"><span class="header-section-number">3.4</span> Complement of an event</h2>
+<p>The complement of an event A with respect to Ω is the subset of all elements of <span class="math inline">\(\Omega\)</span> that are not in A. We denote the complement of A by the symbol <span class="math inline">\(A^C\)</span>.</p>
+<p><strong>Example 4.3:</strong> Consider the sample space:</p>
+<p><span class="math inline">\(\Omega =\{ 1,2,3,4,5,6\}\)</span></p>
+<p>Let, <span class="math inline">\(A=\{1,3,5 \}\)</span>. Then the complement of <span class="math inline">\(A\)</span> is <span class="math inline">\(A^C=\Omega-A=\{2,4,6\}\)</span></p>
+</section>
+<section id="mutually-exclusive-events" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="mutually-exclusive-events"><span class="header-section-number">3.5</span> Mutually exclusive events</h2>
+<p>The occurrence of one event means that none of the other events can occur at the same time.</p>
+<p><strong>Example 4.4:</strong></p>
+<ul>
+<li><p>The variable “Employment status” presents mutually exclusive outcomes, <em>employed</em> and <em>unemployed</em>. An employee selected at random is either male or female but cannot be both.</p></li>
+<li><p>A manufactured part is acceptable or unacceptable. The part cannot be both acceptable and unacceptable at the same time.</p></li>
+</ul>
+</section>
+<section id="collectively-exhaustive" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="collectively-exhaustive"><span class="header-section-number">3.6</span> Collectively Exhaustive</h2>
+<p>Given the <span class="math inline">\(K\)</span> events <span class="math inline">\(E_1\)</span>, <span class="math inline">\(E_2\)</span>, . . . , <span class="math inline">\(E_K\)</span> in the sample space, <span class="math inline">\(S\)</span>, if <span class="math inline">\(E_1 \cup E_2 \cup . . . \cup E_K = S\)</span>, these <span class="math inline">\(K\)</span> events are said to be collectively exhaustive.</p>
+</section>
+<section id="axiomatic-definition-of-probability" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="axiomatic-definition-of-probability"><span class="header-section-number">3.7</span> Axiomatic definition of Probability</h2>
+<p>The <strong>probability</strong> of an event <span class="math inline">\(A\)</span> is the sum of the weights of all sample points in <span class="math inline">\(A\)</span>. Therefore,</p>
+<p>(a) <span class="math inline">\(0 \le P(A)\le 1\)</span></p>
+<p>(b) If <span class="math inline">\(A_1, A_2,A_3,...\)</span> is a sequence of mutually exclusive events, then</p>
+<p><span class="math display">\[ P(A_1\cup A_2 \cup  A_3\cup ...).=P(A_1)+P(A_2)+P(A_3)+... \]</span></p>
+<p>(c) <span class="math inline">\(P(\Omega)=1\)</span></p>
+</section>
+<section id="probability-of-an-event-classical-approach" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="probability-of-an-event-classical-approach"><span class="header-section-number">3.8</span> Probability of an event (Classical approach)</h2>
+<p>Suppose an event <span class="math inline">\(A\)</span> is defined in the sample space <span class="math inline">\(S\)</span>. Then the probability of event <span class="math inline">\(A\)</span> is defined as :</p>
+<p><span class="math display">\[
+P(A)=\frac{n(A)}{n(S)};
+\]</span></p>
+<p>Here,</p>
+<p><span class="math inline">\(n(A)=\)</span> number of outcomes favorable to event <span class="math inline">\(A\)</span>;</p>
+<p><span class="math inline">\(n(S)=\)</span> total number of outcomes in the sample space <span class="math inline">\(S\)</span>.</p>
+<p><strong>Example 4.5</strong> Consider a random experiment of throwing two six-sided fair dices. Then the sample space is:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;"><strong>Dice2</strong></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Dice1</strong></td>
+<td style="text-align: center;">(1,1)</td>
+<td style="text-align: center;">(1,2)</td>
+<td style="text-align: center;">(1,3)</td>
+<td style="text-align: center;">(1,4)</td>
+<td style="text-align: center;">(1,5)</td>
+<td style="text-align: center;">(1,6)</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">(2,1)</td>
+<td style="text-align: center;">(2,2)</td>
+<td style="text-align: center;">(2,3)</td>
+<td style="text-align: center;">(2,4)</td>
+<td style="text-align: center;">(2,5)</td>
+<td style="text-align: center;">(2,6)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;">(3,1)</td>
+<td style="text-align: center;">(3,2)</td>
+<td style="text-align: center;">(3,3)</td>
+<td style="text-align: center;">(3,4)</td>
+<td style="text-align: center;">(3,5)</td>
+<td style="text-align: center;">(3,6)</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">(4,1)</td>
+<td style="text-align: center;">(4,2)</td>
+<td style="text-align: center;">(4,3)</td>
+<td style="text-align: center;">(4,4)</td>
+<td style="text-align: center;">(4,5)</td>
+<td style="text-align: center;">(4,6)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;">(5,1)</td>
+<td style="text-align: center;">(5,2)</td>
+<td style="text-align: center;">(5,3)</td>
+<td style="text-align: center;">(5,4)</td>
+<td style="text-align: center;">(5,5)</td>
+<td style="text-align: center;">(5,6)</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">(6,1)</td>
+<td style="text-align: center;">(6,2)</td>
+<td style="text-align: center;">(6,3)</td>
+<td style="text-align: center;">(6,4)</td>
+<td style="text-align: center;">(6,5)</td>
+<td style="text-align: center;">(6,6)</td>
+</tr>
+</tbody>
+</table>
+<p>Now <strong>compute</strong> the following probabilities:</p>
+<p>a) probability of same number in both dices;</p>
+<p>b) probability that sum of the numbers of two dices are equal to 5.</p>
+<p><u>Solution:</u> Here <span class="math inline">\(n(\Omega)=36\)</span></p>
+<p>a) Let, <span class="math inline">\(A\)</span>={same number in both dices}={(1,1),(2,2),(3,3),(4,4),(5,5),(6,6)}.</p>
+<p>Hence, <span class="math inline">\(n(A)=6\)</span>. So, <span class="math inline">\(P(A)=\frac{n(A))}{n(\Omega)}=\frac{6}{36}=\frac{1}{6}\)</span>.</p>
+<p>b) DIY (do it yourself).</p>
+<p><strong>Example 4.6</strong> A box/ an urn contains 6 black balls and 4 white balls. If two balls are selected at random (at a time) what is the probability that the</p>
+<p>i) both balls will be black?</p>
+<p>ii) both balls will be white?</p>
+<p><u>Solution-i)</u> Here, 2 balls can be selected in total <span class="math inline">\({10\choose 2}=45\)</span> ways. So, <span class="math inline">\(n(\Omega)=45\)</span>.</p>
+<p>Suppose, <span class="math inline">\(B\)</span>={2 black balls selected}. Two black balls can be selected in <span class="math inline">\({6\choose 2}=15\)</span> ways. So, <span class="math inline">\(n(B)=15\)</span>.</p>
+<p><span class="math inline">\(\therefore P(B)=\frac{n(B)}{n(\Omega)}=\frac{15}{45}=\frac{1}{3}\)</span>.</p>
+<p><u>Solution-i)</u> DIY.</p>
+</section>
+<section id="probability-of-an-event-empirical-approach" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="probability-of-an-event-empirical-approach"><span class="header-section-number">3.9</span> Probability of an event (Empirical approach)</h2>
+<p><strong>Empirical Probability</strong> is a type of probability that is calculated based on actual observations, experiments, or historical data rather than theoretical assumptions. It measures the likelihood of an event occurring by analyzing past occurrences or experimental results.</p>
+<p><strong>Formula for Empirical Probability:</strong></p>
+<p><span class="math display">\[
+P(E)=\frac{Number\ \ of  \ \ times \ \ the\ \  event\ \  occurs}{Total \ \ number\ \  of \ \ trials}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><span class="math inline">\(P(E)\)</span> is the probability of the event <span class="math inline">\(E\)</span>,</p></li>
+<li><p>The numerator is the count of occurrences of the event, and</p></li>
+<li><p>The denominator is the total number of trials or observations.</p></li>
+</ul>
+<p><strong>Example 4.7:</strong> Suppose in a class there are 30 students; 20 are male and 10 are females. If a student is selected at random what is the probability that he is a male?</p>
+<p><u>Solution:</u> Let, <span class="math inline">\(E_1=\)</span> set of male students and <span class="math inline">\(E_2=\)</span> set of female students. And, <span class="math inline">\(S=\)</span> set of all students</p>
+<p>So, probability that a male student is selected is: <span class="math display">\[
+P(E_1)=\frac{n(E_1)}{n(S)}=\frac{20}{30}=0.66667\approx 0.67
+\]</span> <em>Interpretation</em> There is almost <span class="math inline">\(67\%\)</span> chance that the selected student will be male.</p>
+</section>
+<section id="properties-of-probability-laws" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="properties-of-probability-laws"><span class="header-section-number">3.10</span> Properties of Probability Laws</h2>
+<p>Probability laws have a number of properties, which can be deduced from the axioms. Some of them are summarized below.</p>
+<p>a) <span class="math inline">\(P(A^C)=1-P(A)\)</span> <strong>[complement rule]</strong></p>
+<p>b) <span class="math inline">\(P(A \cap B^C )=P(A)-P(A \cap B)\)</span> <strong>[only A happens]</strong></p>
+<p>c) <span class="math inline">\(P(A \cup B)=P(A)+P(B)-P(A \cap B)\)</span> <strong>[additive rule]</strong></p>
+<p>d) <span class="math inline">\(P(A^C \cap B^C )=P(A∪B)^C=1-P(A \cup B)\)</span>. <strong>[neither A NOR B happens]</strong></p>
+<p>e) <span class="math inline">\(P(only \ \ A \  \ \ or \ \ only \ \ B)=P(A \cap B^C)+P(A^C\cap B)\)</span></p>
+<p><span class="math inline">\(=P(A)+P(B)-2 P(A\cap B)\)</span></p>
+<p><strong>Example 4.8:</strong> In a class 65% students prefer tea and 35% students prefer coffee. While 15% students prefer both tea and coffee. If a student is selected at random from the class <strong>find</strong> the probability that</p>
+<ol type="i">
+<li><p>he/she prefers only coffee</p></li>
+<li><p>he/she prefers tea or coffee</p></li>
+<li><p>he/she prefers none (neither tea nor coffee)</p></li>
+</ol>
+<p><strong>Example 4.9</strong> <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 166</a>)</span>A local bank reports that 80 percent of its customers maintain a checking account, 60 percent have a savings account, and 50 percent have both. If a customer is chosen at random, what is the probability the customer has either a checking or a savings account? What is the probability the customer does not have either a checking or a savings account?</p>
+<p><strong>Example 4.10</strong> <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 166</a>)</span>All Seasons Plumbing has two service trucks that frequently need repair. If the probability the first truck is available is .75, the probability the second truck is available is .50, and the probability that both trucks are available is .30, what is the probability neither truck is available?</p>
+</section>
+<section id="conditional-probability" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="conditional-probability"><span class="header-section-number">3.11</span> Conditional Probability</h2>
+<p>The conditional probability of an event <span class="math inline">\(A\)</span>, <em>given</em> an event <span class="math inline">\(B\)</span> with <span class="math inline">\(P(B) &gt; 0\)</span>, is defined by,</p>
+<p><span class="math display">\[
+P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{n(A\cap B)}{n(B)}
+\]</span> <strong>Example 4.11</strong> The probability that a regularly scheduled flight departs on time is <span class="math inline">\(P(D) = 0.83\)</span>; the probability that it arrives on time is <span class="math inline">\(P(A) = 0.82\)</span>; and the probability that it departs and arrives on time is <span class="math inline">\(P(D \cap A) = 0.78\)</span>. Find the probability that a plane:</p>
+<ol type="a">
+<li><p>arrives on time, given that it departed on time, and</p></li>
+<li><p>departed on time, given that it has arrived on time.</p></li>
+</ol>
+</section>
+<section id="the-multiplication-rule" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="the-multiplication-rule"><span class="header-section-number">3.12</span> The Multiplication Rule</h2>
+<p>The multiplication rule is used to calculate the joint probability of two events.</p>
+<p>The joint probability of any two events A and B is</p>
+<p><span class="math display">\[ P(A\cap B)=P(B). P(A|B) \ \ [Considering \ \ B \ \ as \ \ prior] \]</span></p>
+<p>or, altering the notation,</p>
+<p><span class="math display">\[ P(A\cap B)=P(A). P(B|A) \ \ [Considering \ \ A \ \ as \ \ prior] \]</span></p>
+<p><strong>Example 4.12:</strong> Suppose a box contains 10 balls; 4 are black and 6 are white. If 2 balls are drawn at random successively without replacement , what is the probability that both balls are white?</p>
+<p><u>Solution:</u></p>
+<p>Let, W<sub>1</sub>= 1st ball is white ; W<sub>2</sub>=2nd ball is also white.</p>
+<p>According to question, <span class="math display">\[ P(both \ \ balls \ \ are \ \ white)=P(W_1\cap W_2)=P(W_1).P(W_2|W_1) \]</span></p>
+<p><span class="math display">\[ =\frac{6}{10}.\frac{5}{9}=\frac{1}{3} \]</span></p>
+<p><strong>Example 4.13</strong> Suppose <span class="math inline">\(P(A)=0.40\)</span> and <span class="math inline">\(P(B|A)=0.30\)</span>. What is the joint probability of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> ?</p>
+<p><strong>Example 4.14</strong> Suppose <span class="math inline">\(P(X_1)=0.75\)</span> and <span class="math inline">\(P(Y_2|X_1)=0.30\)</span>. What is the joint probability of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(Y_2\)</span> ?</p>
+</section>
+<section id="independent-events" class="level2" data-number="3.13">
+<h2 data-number="3.13" class="anchored" data-anchor-id="independent-events"><span class="header-section-number">3.13</span> Independent events</h2>
+<p>If two events A and B are independent, the probability that both of them occur is equal to the product of their individual probabilities i.e.</p>
+<p><span class="math display">\[ P(A\cap B)=P(A) P(B) \]</span></p>
+<ul>
+<li><strong>Corollary:</strong> If A and B are independent events then their complement events also be independent that is,</li>
+</ul>
+<p><span class="math display">\[ P(A^C\cap B^C)=P(A^C) P(B^C) \]</span></p>
+<ul>
+<li><strong>Independence Rule for Multiple events:</strong></li>
+</ul>
+<p><span class="math display">\[ P(A\cap B \cap C )=P(A) P(B) P(C)  \]</span></p>
+<p><strong>Example 4.15</strong> <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 182</a>)</span> You take a trip by air that involves three independent flights. If there is an 80 percent chance each specific leg of the trip is done on time, what is the probability all three flights arrive on time?</p>
+<p><strong>Example 4.16</strong> <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 182</a>)</span> The probability a HP network server is down is .05. If you have three independent servers, what is the probability that at least one of them is operational?</p>
+<p><u>Solution:</u></p>
+<p>Given, <span class="math inline">\(P(server \ \ is \ \ down)=0.05\)</span>.</p>
+<p>So, <span class="math inline">\(P(server \  \ is \ \ operational)=0.95\)</span></p>
+<p>Now, let <span class="math inline">\(O_i=\{ i^{th} \ \ server \ \ is \ \ operational\}\)</span></p>
+<p>So,</p>
+<p><span class="math inline">\(P(at \ \ least \ \ one\ \  of\ \  them\ \   is \  \ operational)\)</span></p>
+<p><span class="math inline">\(=P(O_1 \cup O_2 \cup O_3)=1-P(O_1^C \cap O_2^C \cap O_3^C)\)</span></p>
+<p><span class="math inline">\(=1-P(O_1^C) \cdot P(O_2^C) \cdot P(O_3^C)\)</span></p>
+<p><span class="math inline">\(=1-(0.05)(0.05)(0.05)=0.9999875\)</span>.</p>
+<p><strong>Example 4.17</strong> <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 182</a>)</span> Twenty-two percent of all liquid crystal displays (LCDs) are manufactured by Samsung. What is the probability that in a collection of three independent LCD purchases, at least one is a Samsung?</p>
+</section>
+<section id="bivariate-probabilities-joint-and-marginal-probability" class="level2" data-number="3.14">
+<h2 data-number="3.14" class="anchored" data-anchor-id="bivariate-probabilities-joint-and-marginal-probability"><span class="header-section-number">3.14</span> Bivariate Probabilities: Joint and Marginal Probability</h2>
+<p>The <strong>Intersection</strong> of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is the event that occurs when both A and B occur.</p>
+<p>It is denoted as A and B or <span class="math inline">\((A\cap B)\)</span>.</p>
+<p>The probability of the intersection is called the joint probability that is <span class="math inline">\(P(A\cap B)\)</span>.</p>
+<p><strong>Example 4.18:</strong> Suppose that our sample space <span class="math inline">\(S\)</span> is the population of <span class="math inline">\(900\)</span> adults in a small town who have completed the requirements for a college degree. We shall categorize them according to gender and employment status. The data are given in <a href="#tbl-table1" class="quarto-xref">Table&nbsp;<span>3.1</span></a> (also referred as <em>joint frequency table or cross-table</em>)</p>
+<div id="tbl-table1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-table1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.1: Categorization of the Adults in a Small Town
+</figcaption>
+<div aria-describedby="tbl-table1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Employed</th>
+<th style="text-align: center;">Unemployed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Male</strong></td>
+<td style="text-align: center;">460</td>
+<td style="text-align: center;">40</td>
+</tr>
+<tr class="even">
+<td><strong>Female</strong></td>
+<td style="text-align: center;">140</td>
+<td style="text-align: center;">260</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Question i:</strong> Construct a joint probability table</p>
+<p><u>Solution i:</u> Let,</p>
+<p><span class="math inline">\(A_1=\)</span> Male adults</p>
+<p><span class="math inline">\(A_2=\)</span> Female adults</p>
+<p><span class="math inline">\(B_1=\)</span> Employed adults</p>
+<p><span class="math inline">\(B_2=\)</span> Unemployed adults</p>
+<p>Here <span class="math inline">\(n(S)=900\)</span>. Now divide all cell frequency by <span class="math inline">\(900\)</span> and round to 2 decimal points, hence we get joint probability table below(see <a href="#tbl-table4" class="quarto-xref">Table&nbsp;<span>3.2</span></a>):</p>
+<div id="tbl-table4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-table4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.2: Joint probability table
+</figcaption>
+<div aria-describedby="tbl-table4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">B<sub>1</sub></th>
+<th style="text-align: center;">B<sub>2</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A<sub>1</sub></strong></td>
+<td style="text-align: center;">0.51</td>
+<td style="text-align: center;">0.04</td>
+</tr>
+<tr class="even">
+<td><strong>A<sub>2</sub></strong></td>
+<td style="text-align: center;">0.16</td>
+<td style="text-align: center;">0.29</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Joint probability:</strong> In <a href="#tbl-table4" class="quarto-xref">Table&nbsp;<span>3.2</span></a> the joint probabilities are:</p>
+<ol type="i">
+<li><p><span class="math inline">\(P(A_1\cap B_1)=0.51\)</span></p></li>
+<li><p><span class="math inline">\(P(A_1 \cap B_2)=0.04\)</span></p></li>
+<li><p><span class="math inline">\(P(A_2\cap B_1)=0.16\)</span> and</p></li>
+<li><p><span class="math inline">\(P(A_2\cap B_2)=0.29\)</span></p></li>
+</ol>
+<p><strong>Marginal probability:</strong> In <a href="#tbl-table4" class="quarto-xref">Table&nbsp;<span>3.2</span></a> the marginal probabilities are:</p>
+<ol type="i">
+<li><p><span class="math inline">\(P(A_1)=0.51+0.04=0.55\)</span></p></li>
+<li><p><span class="math inline">\(P(A_2)=0.16+0.29=0.45\)</span></p></li>
+<li><p><span class="math inline">\(P(B_1)=0.51+0.16=0.67\)</span></p></li>
+<li><p><span class="math inline">\(P(B_2)=0.04+0.29=0.33\)</span></p></li>
+</ol>
+<p>From a joint probability table we cab also compute <strong>conditional probabilities</strong>. For example,</p>
+<p><span class="math inline">\(P(A_1|B_1)=\frac{P(A_1\cap B_1)}{P(B_1)}=\frac{0.51}{0.67}\approx 0.7612\)</span></p>
+</section>
+<section id="independent-events-in-joint-probability-table" class="level2" data-number="3.15">
+<h2 data-number="3.15" class="anchored" data-anchor-id="independent-events-in-joint-probability-table"><span class="header-section-number">3.15</span> Independent Events in Joint probability table</h2>
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be a pair of events, each broken into mutually exclusive and collectively exhaustive event categories denoted by labels <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2\)</span>, . . . , <span class="math inline">\(A_H\)</span> and <span class="math inline">\(B_1\)</span>,<span class="math inline">\(B_2\)</span>, . . . , <span class="math inline">\(B_K\)</span>. If every event <span class="math inline">\(A_i\)</span> is statistically independent of every event <span class="math inline">\(B_j\)</span>, then <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent events <span class="citation" data-cites="newbold2013">(<a href="references.html#ref-newbold2013" role="doc-biblioref">Newbold, Carlson, and Thorne 2013</a>)</span>.</p>
+<p><strong>Example 4.19</strong> Students in a business statistics class were asked what grade they expected in the course and whether they worked on additional problems beyond those assigned by the instructor. The following table gives proportions of students in each of eight joint classifications <span class="citation" data-cites="newbold2013">(<a href="references.html#ref-newbold2013" role="doc-biblioref">Newbold, Carlson, and Thorne 2013</a>, exercise 3.68)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3517604648.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="399"></p>
+</figure>
+</div>
+<ol type="a">
+<li><p><strong>Find</strong> the probability that a randomly chosen student from this class worked on additional problems.</p></li>
+<li><p><strong>Find</strong> the probability that a randomly chosen student from this class expects an A.</p></li>
+<li><p><strong>Find</strong> the probability that a randomly chosen student expects an A given that he/she worked on additional problems .</p></li>
+<li><p><strong>Find</strong> the probability that a randomly chosen student worked on additional problems given that he/she expects an A .</p></li>
+<li><p>Are “worked additional problems” and “expected grade” statistically independent?</p></li>
+</ol>
+<p><u>Solution:</u></p>
+<p>Let, Y={Yes} and N={No}.</p>
+<p>The joint probability table with marginal probability table is given below:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>A</strong></th>
+<th style="text-align: center;"><strong>B</strong></th>
+<th style="text-align: center;"><strong>C</strong></th>
+<th style="text-align: center;"><strong>D (Below C)</strong></th>
+<th style="text-align: center;"><strong>Row total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Y</strong></td>
+<td style="text-align: center;">0.12</td>
+<td style="text-align: center;">0.06</td>
+<td style="text-align: center;">0.12</td>
+<td style="text-align: center;">0.02</td>
+<td style="text-align: center;"><strong>0.32</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>N</strong></td>
+<td style="text-align: center;">0.13</td>
+<td style="text-align: center;">0.21</td>
+<td style="text-align: center;">0.26</td>
+<td style="text-align: center;">0.08</td>
+<td style="text-align: center;"><strong>0.68</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Column total</strong></td>
+<td style="text-align: center;"><strong>0.25</strong></td>
+<td style="text-align: center;"><strong>0.27</strong></td>
+<td style="text-align: center;"><strong>0.38</strong></td>
+<td style="text-align: center;"><strong>0.10</strong></td>
+<td style="text-align: center;"><strong>1.00</strong></td>
+</tr>
+</tbody>
+</table>
+<p><u>Solution of (e):</u> To show whether “worked additional problems” and “expected grade” statistically independent we have to verify whether “Y, N” and “A”, “B”, “C” are independent events.</p>
+<p>Now from joint probability table, <span class="math inline">\(P(Y\cap A)=0.12\)</span>.</p>
+<p>And <span class="math inline">\(P(Y\cap A)=P(Y)\cdot P(A)=0.32\times 0.25=0.08\)</span>.</p>
+<p>Since <span class="math inline">\(P(Y\cap A) \ne P(Y) \cdot P(A)\)</span> so, <span class="math inline">\(Y\)</span> and <span class="math inline">\(A\)</span> are not independent. Hence, we do not need to test other combinations.</p>
+<p>In conclusion we can say that “worked additional problems” and “expected grade” are not statistically independent.</p>
+</section>
+<section id="exercises-4.1" class="level2" data-number="3.16">
+<h2 data-number="3.16" class="anchored" data-anchor-id="exercises-4.1"><span class="header-section-number">3.16</span> Exercises 4.1</h2>
+<p>4.1) <span class="citation" data-cites="anderson2011">(<a href="references.html#ref-anderson2011" role="doc-biblioref">Anderson and Sweeney 2011</a>)</span> Suppose that we have two events, A and B, with <span class="math inline">\(P(A)= 0.50\)</span>, <span class="math inline">\(P(B) = 0.60\)</span>, and <span class="math inline">\(P(A \cap B) = 0.40\)</span> .</p>
+<ol type="i">
+<li><p>Find <span class="math inline">\(P(A | B)\)</span>.</p></li>
+<li><p>Find <span class="math inline">\(P(B | A)\)</span>.</p></li>
+<li><p>Are A and B independent? Why or why not?</p></li>
+</ol>
+<p>4.2) Suppose P(A)=0.40 and P(B|A)=0.30. What is the joint probability of A and B?</p>
+<p>4.3) A local bank reports that 80 percent of its customers maintain a checking account, 60 percent have a savings account, and 50 percent have both. If a customer is chosen at random, what is the probability the customer has either a checking or a savings account? What is the probability the customer does not have either a checking or a savings account?</p>
+<p>4.4) <span class="citation" data-cites="keller2014">(<a href="references.html#ref-keller2014" role="doc-biblioref">Keller 2014</a>)</span> Suppose we have the following joint probabilities .</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;"><strong>A<sub>1</sub></strong></td>
+<td style="text-align: center;"><strong>A<sub>2</sub></strong></td>
+<td style="text-align: center;"><strong>A<sub>3</sub></strong></td>
+</tr>
+<tr class="even">
+<td><strong>B<sub>1</sub></strong></td>
+<td style="text-align: center;">0.15</td>
+<td style="text-align: center;">0.20</td>
+<td style="text-align: center;">0.10</td>
+</tr>
+<tr class="odd">
+<td><strong>B<sub>2</sub></strong></td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.05</td>
+</tr>
+</tbody>
+</table>
+<p>Compute the marginal probabilities.</p>
+<p>4.5) Refer to Exercise 4.</p>
+<ol type="a">
+<li><p>Compute <span class="math inline">\(P(A_2|B_2)\)</span>. Also compute <span class="math inline">\(P(\bar {A_2}|B_2)\)</span></p></li>
+<li><p>Compute <span class="math inline">\(P(B_1|A_2)\)</span>.</p></li>
+</ol>
+<p>4.6) Refer to Exercise 2.</p>
+<ol type="a">
+<li>Compute <span class="math inline">\(P(A_1 \ \ or \ \ A_2)\)</span>.</li>
+<li>Compute <span class="math inline">\(P(A_2\ \ or \ \ B_2)\)</span>.</li>
+</ol>
+<p>4.7) A survey was conducted among 100 college students about their preferred study method and performance in exams.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Low Score</th>
+<th style="text-align: center;">Medium Score</th>
+<th style="text-align: center;">High Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Group Study</strong></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td><strong>Self Study</strong></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">40</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li><p><strong>Construct</strong> a joint probability table.</p></li>
+<li><p><strong>Compute</strong> the probability that a randomly selected student did group study and scored medium?</p></li>
+<li><p><strong>Find</strong> the probability that a student prefers Self Study, regardless of score.</p></li>
+<li><p><strong>Determine</strong> the probability that a student either got a High Score or prefers Group Study.</p></li>
+<li><p>Given that a student scored Low, what is the probability they did group study?</p></li>
+<li><p>A student scored high. <strong>Find</strong> the probability that he did self study.</p></li>
+<li><p>Are preferred study method and performance in exam independent?</p></li>
+</ol>
+<p>4.8) A company surveys 600 customers about their income level and purchasing behavior of a premium product.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Did Not Buy</th>
+<th style="text-align: center;">Bought Once</th>
+<th style="text-align: center;">Bought Multiple Times</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Low Income</strong></td>
+<td style="text-align: center;">150</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="even">
+<td><strong>High Income</strong></td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">210</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li><p>What is the probability that a customer is high income and bought multiple times?</p></li>
+<li><p>What is the probability that a customer is from the low-income group?</p></li>
+<li><p>What is the probability that a customer is either high income or bought multiple times?</p></li>
+<li><p>What is the probability that a customer is high income, given that they bought multiple times?</p></li>
+<li><p>What is the probability that a customer bought once, given that they are low income?</p></li>
+<li><p>Are income level and purchasing behavior independent?</p></li>
+</ol>
+<p>4.9) A firm has classified its customers in two ways: (1) according to whether the account is overdue and (2) whether the account is new (less than 12 months) or old. An analysis of the firm’s records provided the input for the following table of joint probabilities.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;"><strong>Overdue</strong></td>
+<td style="text-align: center;"><strong>Not overdue</strong></td>
+</tr>
+<tr class="even">
+<td>New</td>
+<td style="text-align: center;">0.06</td>
+<td style="text-align: center;">0.13</td>
+</tr>
+<tr class="odd">
+<td>Old</td>
+<td style="text-align: center;">0.52</td>
+<td style="text-align: center;">0.29</td>
+</tr>
+</tbody>
+</table>
+<p>One account is randomly selected.</p>
+<ol type="a">
+<li><p>If the account is overdue, what is the probability that it is new?</p></li>
+<li><p>If the account is new, what is the probability that it is overdue?</p></li>
+<li><p>Is the age of the account related to whether it is overdue? Explain.</p></li>
+</ol>
+</section>
+<section id="probability-trees" class="level2" data-number="3.17">
+<h2 data-number="3.17" class="anchored" data-anchor-id="probability-trees"><span class="header-section-number">3.17</span> Probability Trees</h2>
+<p>Consider a sequential experiment where in the <strong>first stage</strong> either <span class="math inline">\(A_1\)</span> or <span class="math inline">\(A_2\)</span> can be happened with some probabilities . And in the <strong>second stage</strong> event <span class="math inline">\(B\)</span> can be happened. If <span class="math inline">\(B^C\)</span> is the complement of <span class="math inline">\(B\)</span> then this experiment can be shown in the following <strong>tree diagram.</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tree.png" class="quarto-figure quarto-figure-center figure-img" width="353" height="279"></p>
+</figure>
+</div>
+<p><strong>Example 4.20:</strong></p>
+<p>Two balls are drawn in succession, without replacement, from a box containing 3 blue and 2 white balls .</p>
+<ol type="i">
+<li>What is the probability that both balls will be white ?</li>
+</ol>
+<p><u>Solution:</u> Here, two balls are drawn in succession (one by one) without replacement. This experiment can be shown in the following tree:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3499457054.png" class="quarto-figure quarto-figure-center figure-img" width="363" height="299"></p>
+</figure>
+</div>
+<p>The probability of drawing a white ball on the first draw and a white ball on the second draw (both are white) is:</p>
+<p><span class="math inline">\(P(W_1\cap W_2)=P(W_1) P(W_2|W_1)=(\frac {2}{5}) (\frac {1}{4})=\frac {1}{10}\)</span></p>
+<ol start="2" type="i">
+<li>What is the probability that the second ball is white?</li>
+</ol>
+<p><u>Solution:</u></p>
+<p><span class="math inline">\(P(W_2)=P(W_1\cap W_2)+P(B_1\cap W_2)\)</span></p>
+<p><span class="math inline">\(=P(W_1)P(W_2|W_1)+P(B_1)P(W_2|B_1)\)</span></p>
+<p><span class="math inline">\(=(\frac{2}{5})(\frac{1}{4})+(\frac{3}{5})(\frac{2}{4})=\frac{1}{10}+\frac{3}{10}=\frac{4}{10}=\frac{2}{5}\)</span>.</p>
+</section>
+<section id="total-probability-rule-and-bayes-theorem" class="level2" data-number="3.18">
+<h2 data-number="3.18" class="anchored" data-anchor-id="total-probability-rule-and-bayes-theorem"><span class="header-section-number">3.18</span> Total Probability rule and Bayes’ Theorem</h2>
+<p>Suppose <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2\)</span>,and <span class="math inline">\(A_3\)</span> are mutually exclusive and exhaustive events, that is:</p>
+<p><span class="math inline">\(P(A_i \cap A_j)=0\)</span> for <span class="math inline">\(i\ne j=1,2,3\)</span>;</p>
+<p>and</p>
+<p><span class="math display">\[
+P(A_1 \cup A_2 \cup A_3)=1
+\]</span></p>
+<ul>
+<li><p>The <em>prior</em> probabilities are <span class="math inline">\(P(A_1)\)</span>, <span class="math inline">\(P(A_2)\)</span> and <span class="math inline">\(P(A_3)\)</span>.</p></li>
+<li><p>The <em>likelihood/conditional</em> probabilities are <span class="math inline">\(P(B|A_1)\)</span>, <span class="math inline">\(P(B|A_2)\)</span> and <span class="math inline">\(P(B|A_3)\)</span>(see <a href="#fig-venn" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>).</p></li>
+</ul>
+<div id="fig-venn" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="366">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-venn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="venn.png" id="fig-venn" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" width="366">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-venn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1
+</figcaption>
+</figure>
+</div>
+<p><strong>The total probability rule</strong></p>
+<p><span class="math display">\[
+P(B)=P(A_1).P(B|A_1)+P(A_2).P(B|A_2)+P(A_3).P(B|A_3)
+\]</span></p>
+<p><strong>Bayes’ theorem</strong></p>
+<p>The Bayes’ theorem is used to find the <em>posterior/revised/update</em> probabilities of <em>prior</em> probabilities.</p>
+<p><span class="math display">\[
+P(A_1|B)=\frac{P(A_1\cap B)}{P(B)}
+=\frac{P(A_1).P(B|A_1)}{P(A_1).P(B|A_1)+P(A_2).P(B|A_2)+P(A_3).P(B|A_3)}
+\]</span></p>
+<p>In the same way we can compute <span class="math inline">\(P(A_2|B)\)</span> and <span class="math inline">\(P(A_3|B)\)</span>.</p>
+<p><strong>Example 4.21:</strong> A marketing company is studying customer behavior by analyzing how individuals respond to different types of advertisements and whether those interactions lead to a purchase. Each customer is exposed to one of three types of ads: email with a probability of 0.3, social media with a probability of 0.5, and television with a probability of 0.2. The effectiveness of these ads varies: 20% of customers who receive an email make a purchase, while 40% respond positively to social media ads, and 50% of those shown a TV ad proceed to buy.</p>
+<ol type="a">
+<li><p><strong>Construct</strong> a probability tree from the above information.</p></li>
+<li><p><strong>Find</strong> the probability that a customer will make a purchase (regardless which type of ad he was exposed).</p></li>
+<li><p>Suppose a customer made a purchase. What is the probability that he saw the ad in social media?</p></li>
+</ol>
+</section>
+<section id="exercises-4.2" class="level2" data-number="3.19">
+<h2 data-number="3.19" class="anchored" data-anchor-id="exercises-4.2"><span class="header-section-number">3.19</span> Exercises 4.2</h2>
+<p>4.9) <span class="citation" data-cites="anderson2011">(<a href="references.html#ref-anderson2011" role="doc-biblioref">Anderson and Sweeney 2011</a>)</span> The prior probabilities for events <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2\)</span> are <span class="math inline">\(P(A_1) = .40\)</span> and <span class="math inline">\(P(A2) = .60\)</span>. It is also known that <span class="math inline">\(P(A_1\cap A_2) = 0\)</span>. Suppose <span class="math inline">\(P(B | A_1) = .20\)</span> and <span class="math inline">\(P(B | A_2)= .05\)</span>.</p>
+<ol type="a">
+<li><p>Are <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2\)</span> mutually exclusive? Explain.</p></li>
+<li><p>Compute <span class="math inline">\(P(A_1 \cap B)\)</span> and <span class="math inline">\(P(A_2 \cap B)\)</span>.</p></li>
+<li><p>Compute <span class="math inline">\(P(B)\)</span>.</p></li>
+<li><p>Apply Bayes’ theorem to compute <span class="math inline">\(P(A_1 | B)\)</span> and <span class="math inline">\(P(A_2 | B)\)</span>.</p></li>
+</ol>
+<p>4.10) <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 171</a>)</span> The Ludlow Wildcats baseball team, a minor league team in the Cleveland Indians organization, plays 70 percent of their games at night and 30 percent during the day. The team wins 50 percent of their night games and 90 percent of their day games. According to today’s newspaper, they won yesterday. What is the probability the game was played at night?</p>
+<p>4.11) <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 171</a>)</span> Dr.&nbsp;Stallter has been teaching basic statistics for many years. She knows that 80 percent of the students will complete the assigned problems. She has also determined that among those who do their assignments, 90 percent will pass the course. Among those students who do not do their homework, 60 percent will pass. Mike Fishbaugh took statistics last semester from Dr.&nbsp;Stallter and received a passing grade. What is the probability that he completed the assignments?</p>
+<p>4.12) <span class="citation" data-cites="anderson2011">(<a href="references.html#ref-anderson2011" role="doc-biblioref">Anderson and Sweeney 2011</a>)</span> A local bank reviewed its credit card policy with the intention of recalling some of its credit cards. In the past approximately 5% of cardholders defaulted, leaving the bank unable to collect the outstanding balance. Hence, management established a prior probability of .05 that any particular cardholder will default. The bank also found that the probability of missing a monthly payment is .20 for customers who do not default. Of course, the probability of missing a monthly payment for those who default is 1.</p>
+<ol type="a">
+<li><p>Given that a customer missed one or more monthly payments, compute the posterior probability that the customer will default.</p></li>
+<li><p>The bank would like to recall its card if the probability that a customer will default is greater than .20. Should the bank recall its card if the customer misses a monthly payment? Why or why not?</p></li>
+</ol>
+<p>4.13) <span class="citation" data-cites="black2012">(<a href="references.html#ref-black2012" role="doc-biblioref">Black 2012</a>)</span>In a manufacturing plant, machine A produces 10% of a certain product, machine B produces 40% of this product, and machine C produces 50% of this product. Five percent of machine A products are defective, 12% of machine B products are defective, and 8% of machine C products are defective. The company inspector has just sampled a product from this plant and has found it to be defective. Determine the revised probabilities that the sampled product was produced by machine A,machine B, or machine C .</p>
+<p>4.14) <span class="citation" data-cites="black2012">(<a href="references.html#ref-black2012" role="doc-biblioref">Black 2012</a>)</span> Suppose 70% of all companies are classified as small companies and the rest as large companies. Suppose further, 82% of large companies provide training to employees, but only 18% of small companies provide training. A company is randomly selected without knowing if it is a large or small company; however, it is determined that the company provides training to employees. What are the prior probabilities that the company is a large company or a small company? What are the revised probabilities that the company is large or small? Based on your analysis, what is the overall percentage of companies that offer training?</p>
+<p>4.15) <span class="citation" data-cites="black2012">(<a href="references.html#ref-black2012" role="doc-biblioref">Black 2012</a>)</span> Alex, Alicia, and Juan fill orders in a fast-food restaurant. Alex incorrectly fills 20% of the orders he takes. Alicia incorrectly fills 12% of the orders she takes. Juan incorrectly fills 5% of the orders he takes. Alex fills 30% of all orders, Alicia fills 45% of all orders, and Juan fills 25% of all orders. An order has just been filled.</p>
+<ol type="a">
+<li><p>What is the probability that Alicia filled the order?</p></li>
+<li><p>If the order was filled by Juan, what is the probability that it was filled correctly?</p></li>
+<li><p>Who filled the order is unknown, but the order was filled incorrectly. What are the revised probabilities that Alex, Alicia, or Juan filled the order?</p></li>
+<li><p>Who filled the order is unknown, but the order was filled correctly. What are the revised probabilities that Alex, Alicia, or Juan filled the order?</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Review exercises
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>1) One urn has 3 blue and 2 white balls; a second urn has 1 blue and 3 white balls. A single fair die is rolled and if 1 or 2 comes up, a ball is drawn out of the first urn; otherwise, a ball is drawn out of the second urn. If the drawn ball is blue, what is the probability that it came out of the first urn? Out of the second urn?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Urn_model.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="258"></p>
+</figure>
+</div>
+<p>2) One bag contains 4 white balls and 3 black balls, and a second bag contains 3 white balls and 5 black balls. One ball is drawn from the first bag and placed unseen in the second bag. What is the probability that a ball now drawn from the second bag is black? <em>(<strong>Hints:</strong> Apply probability tree)</em></p>
+<p>3) From 4 red, 5 green, and 6 yellow apples, <strong>find</strong> the probability that, out of 9 randomly selected apples, exactly 3 of each color are selected.</p>
+<p>4) Pollution of the rivers in the United States has been a problem for many years. Consider the following events:</p>
+<p>A: the river is polluted,</p>
+<p>B : a sample of water tested detects pollution,</p>
+<p>C : fishing is permitted.</p>
+<p>Assume P(A) = 0.3, P(B|A) = 0.75, P(B|A′) = 0.20, <span class="math inline">\(P(C|A \cap B)\)</span> = 0.20, <span class="math inline">\(P(C|A′\cap B)\)</span> = 0.15, <span class="math inline">\(P(C|A \cap B′)\)</span> = 0.80, and <span class="math inline">\(P(C|A′ \cap B′)\)</span> = 0.90.</p>
+<ol type="a">
+<li><p>Find <span class="math inline">\(P(A \cap B \cap C)\)</span>.</p></li>
+<li><p>Find <span class="math inline">\(P(B′ \cap C)\)</span>.</p></li>
+<li><p>Find P(C).</p></li>
+<li><p>Find the probability that the river is polluted, given that fishing is permitted and the sample tested did not detect pollution.</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="random-variables" class="level2" data-number="3.20">
+<h2 data-number="3.20" class="anchored" data-anchor-id="random-variables"><span class="header-section-number">3.20</span> Random variables</h2>
+<p>A <strong>variable</strong> is said to be <strong>random</strong> if its values are determined by a random experiment. In other word, <strong>random variable</strong> is a numerical description of the outcome of an experiment.</p>
+<ul>
+<li><p>A random variable often denoted with an uppercase letter (say <span class="math inline">\(X\)</span>)</p></li>
+<li><p>The value of a random variable is denoted with a lowercase letter (say <span class="math inline">\(x\)</span>)</p></li>
+</ul>
+<p><strong>Illustration</strong> Consider a random experiment of tossing a coin (fair/unfair) 2 times. Then the sample space is</p>
+<p><span class="math display">\[
+S=\{ HH,HT,TH,TT \}
+\]</span></p>
+<p>Now let, <span class="math inline">\(X= number\ \  of\ \  heads \ \ occur\)</span></p>
+<p>From the sample space we can see that <span class="math inline">\(X\)</span> can take following values:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Sample point</strong></td>
+<td style="text-align: center;"><span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(HH\)</span></td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(HT\)</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(TH\)</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(TT\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<p>Since the values of <span class="math inline">\(X\)</span> completely determined by the outcomes of the random experiment, so <span class="math inline">\(X\)</span> is a random variable (discrete).</p>
+<section id="types-of-random-variable" class="level3" data-number="3.20.1">
+<h3 data-number="3.20.1" class="anchored" data-anchor-id="types-of-random-variable"><span class="header-section-number">3.20.1</span> Types of random variable</h3>
+<p>There are two types of random variables, <strong>discrete</strong> and <strong>continuous</strong>.</p>
+<p>A <strong>discrete random variable</strong> can assume only a certain number of separated values. A discrete random variable is usually the result of <em>counting</em> something. <u>For example,</u> number of customers arrive, number of calls receive etc.</p>
+<p>A <strong>continuous random variable</strong> is one whose values are uncountable or which can take any value in a given interval. Generally a continuous random variable is usually the result of <em>measuring</em> something.</p>
+<p><strong>Task</strong> Which of these variables are discrete and which are continuous random variables?</p>
+<p>a. The number of new accounts established by a salesperson in a year.</p>
+<p>b. The time between customer arrivals to a bank ATM.</p>
+<p>c. The number of customers in Big Nick’s barber shop.</p>
+<p>d. The amount of fuel in your car’s gas tank.</p>
+<p>e. The number of minorities on a jury.</p>
+<p>f. The outside temperature today.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-anderson2011" class="csl-entry" role="listitem">
+Anderson, David R., and Dennis J. Sweeney. 2011. <em>Statistics for Business and Economics</em>. 11e [ed.]. Australia ; Mason, Ohio: South-Western Cengage Learning.
+</div>
+<div id="ref-black2012" class="csl-entry" role="listitem">
+Black, Ken. 2012. <em>Business statistics: for contemporary decision making</em>. 7th ed. Hoboken, NJ: Wiley.
+</div>
+<div id="ref-keller2014" class="csl-entry" role="listitem">
+Keller, Gerald. 2014. <em>Statistics for Management and Economics</em>. 10e ed. Stamford, CT, USA : Cengage Learning.
+</div>
+<div id="ref-lind2012" class="csl-entry" role="listitem">
+Lind, Douglas A., William G. Marchal, and Samuel Adam Wathen. 2012. <em>Statistical Techniques in Business &amp; Economics</em>. 15th ed. New York, NY: McGraw-Hill/Irwin.
+</div>
+<div id="ref-newbold2013" class="csl-entry" role="listitem">
+Newbold, Paul, William L. Carlson, and Betty M. Thorne. 2013. <em>Statistics for business and economics</em>. 8. ed., global ed. Always learning. Boston, Mass. Munich: Pearson.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./3descriptive_numer_measures.html" class="pagination-link" aria-label="Descriptive statistics: Numerical Measures">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics: Numerical Measures</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./5randomvariable_and_Discrete_dist.html" class="pagination-link" aria-label="Discrete Probability Distributions">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Probability Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

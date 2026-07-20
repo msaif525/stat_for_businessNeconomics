@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="An introductory e‑book on Statistics for Business and Economics with practical examples, exercises, and visualizations.">
+
+<title>13&nbsp; Correlation and Simple Linear Regression – Statistics for Business and Economics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./summary.html" rel="next">
+<link href="./13Chi_squaredTest.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-066b562477012fc308cfc884aa1e7cf5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./14Correlation.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Correlation and Simple Linear Regression</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Statistics for Business and Economics</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-save"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+      </ul>
+    </div>
+    <a href="https://github.com/Saifuddin86/stat_for_businessNeconomics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Statistics-for-Business-and-Economics.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Statistics-for-Business-and-Economics.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3descriptive_numer_measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics: Numerical Measures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5randomvariable_and_Discrete_dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6continuous_Dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Continuous Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./7Further_topics_on_rv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Further topics on random variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./8sampling_and_sampling_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Sampling and Sampling distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10hypothesis_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis test: Introduction and testing one population parameter</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11Hypotheis_test(TWO population).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis test concerning TWO population parameters</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12ANOVA_oneway.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13Chi_squaredTest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chi-squared Test</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14Correlation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Correlation and Simple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#scatter-plot-graphical-method-to-explore-correlation" id="toc-scatter-plot-graphical-method-to-explore-correlation" class="nav-link active" data-scroll-target="#scatter-plot-graphical-method-to-explore-correlation"><span class="header-section-number">13.1</span> Scatter plot: Graphical method to explore correlation</a></li>
+  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance"><span class="header-section-number">13.2</span> Covariance</a></li>
+  <li><a href="#coefficient-of-correlation" id="toc-coefficient-of-correlation" class="nav-link" data-scroll-target="#coefficient-of-correlation"><span class="header-section-number">13.3</span> Coefficient of Correlation</a></li>
+  <li><a href="#properties-of-coefficient-of-correlation" id="toc-properties-of-coefficient-of-correlation" class="nav-link" data-scroll-target="#properties-of-coefficient-of-correlation"><span class="header-section-number">13.4</span> Properties of coefficient of correlation</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-of-correlation-coefficient" id="toc-interpretation-of-correlation-coefficient" class="nav-link" data-scroll-target="#interpretation-of-correlation-coefficient"><span class="header-section-number">13.4.1</span> Interpretation of correlation coefficient</a></li>
+  <li><a href="#computing-the-coefficient-of-correlation" id="toc-computing-the-coefficient-of-correlation" class="nav-link" data-scroll-target="#computing-the-coefficient-of-correlation"><span class="header-section-number">13.4.2</span> Computing the Coefficient of Correlation</a></li>
+  <li><a href="#exercises-constructing-a-scatter-plot-and-determining-correlation" id="toc-exercises-constructing-a-scatter-plot-and-determining-correlation" class="nav-link" data-scroll-target="#exercises-constructing-a-scatter-plot-and-determining-correlation"><span class="header-section-number">13.4.3</span> Exercises: Constructing a Scatter Plot and Determining Correlation</a></li>
+  <li><a href="#coefficient-of-determination" id="toc-coefficient-of-determination" class="nav-link" data-scroll-target="#coefficient-of-determination"><span class="header-section-number">13.4.4</span> Coefficient of determination</a></li>
+  <li><a href="#correlation-vs.-causation" id="toc-correlation-vs.-causation" class="nav-link" data-scroll-target="#correlation-vs.-causation"><span class="header-section-number">13.4.5</span> Correlation vs.&nbsp;causation</a></li>
+  <li><a href="#effect-of-outlier-on-correlation-coefficient" id="toc-effect-of-outlier-on-correlation-coefficient" class="nav-link" data-scroll-target="#effect-of-outlier-on-correlation-coefficient"><span class="header-section-number">13.4.6</span> Effect of outlier on correlation coefficient</a></li>
+  </ul></li>
+  <li><a href="#rank-correlation" id="toc-rank-correlation" class="nav-link" data-scroll-target="#rank-correlation"><span class="header-section-number">13.5</span> Rank correlation</a></li>
+  <li><a href="#simple-linear-regression-slr" id="toc-simple-linear-regression-slr" class="nav-link" data-scroll-target="#simple-linear-regression-slr"><span class="header-section-number">13.6</span> Simple linear regression (SLR)</a>
+  <ul class="collapse">
+  <li><a href="#population-regression-function-prf" id="toc-population-regression-function-prf" class="nav-link" data-scroll-target="#population-regression-function-prf"><span class="header-section-number">13.6.1</span> <strong>Population regression function (PRF)</strong></a></li>
+  <li><a href="#ordinary-least-square-ols-estimate-of-ey_ix_i" id="toc-ordinary-least-square-ols-estimate-of-ey_ix_i" class="nav-link" data-scroll-target="#ordinary-least-square-ols-estimate-of-ey_ix_i"><span class="header-section-number">13.6.2</span> Ordinary least square (OLS) estimate of <span class="math inline">\(E(y_i/x_i)\)</span></a></li>
+  <li><a href="#point-prediction-of-y-for-a-give-x" id="toc-point-prediction-of-y-for-a-give-x" class="nav-link" data-scroll-target="#point-prediction-of-y-for-a-give-x"><span class="header-section-number">13.6.3</span> Point prediction of <span class="math inline">\(y\)</span> for a give <span class="math inline">\(x\)</span></a></li>
+  <li><a href="#partition-of-sum-squares" id="toc-partition-of-sum-squares" class="nav-link" data-scroll-target="#partition-of-sum-squares"><span class="header-section-number">13.6.4</span> Partition of sum squares</a></li>
+  <li><a href="#coefficient-of-determination-goodness-of-fit" id="toc-coefficient-of-determination-goodness-of-fit" class="nav-link" data-scroll-target="#coefficient-of-determination-goodness-of-fit"><span class="header-section-number">13.6.5</span> Coefficient of determination (Goodness of fit)</a></li>
+  <li><a href="#some-problems-on-slr" id="toc-some-problems-on-slr" class="nav-link" data-scroll-target="#some-problems-on-slr"><span class="header-section-number">13.6.6</span> Some problems on SLR</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Correlation and Simple Linear Regression</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In real world we often observe that a change in one variable is associated with the change in another variable.</p>
+<p>In statistics, <strong>correlation</strong> refers to <em>degree</em> and <em>direction</em> of <strong>linear relationship</strong> between two quantitative (interval or ratio scale ) variables. For example-</p>
+<ul>
+<li>As <em>income</em> increases <em>expense</em> also increases (positive correlation);</li>
+<li>As <em>resistance</em> increases <em>current flow</em> decreases (negative correlation) etc.</li>
+</ul>
+<p>To understand the nature and to measure the <strong>linear relationship (correlation)</strong> between two quantitative variable we use some techniques. In the following section we will discuss about that.</p>
+<section id="scatter-plot-graphical-method-to-explore-correlation" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="scatter-plot-graphical-method-to-explore-correlation"><span class="header-section-number">13.1</span> Scatter plot: Graphical method to explore correlation</h2>
+<p>A <strong>scatter plot</strong> shows the relationship between two quantitative variables measured for the same individuals. The values of one variable appear on the horizontal axis, and the values of the other variable appear on the vertical axis. Each individual in the data appears as a point on the graph.</p>
+<ul>
+<li>A scatterplot <em>displays</em> the strength, direction, and form of the relationship between two quantitative variables (<em>see</em> <a href="#fig-scatter" class="quarto-xref">Figure&nbsp;<span>13.1</span></a>).</li>
+</ul>
+<div id="fig-scatter" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Scatter.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.1: Types of correlations that can be represented using a scatter plot
+</figcaption>
+</figure>
+</div>
+<p>Lets draw a scatter plot for the following data.</p>
+<div class="cell" data-tbl-cap-location="top">
+<div id="tbl-xydata" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-cap-location="top">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-xydata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;13.1: Data
+</figcaption>
+<div aria-describedby="tbl-xydata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">1</th>
+<th style="text-align: right;">2</th>
+<th style="text-align: right;">3</th>
+<th style="text-align: right;">4</th>
+<th style="text-align: right;">5</th>
+<th style="text-align: right;">6</th>
+<th style="text-align: right;">7</th>
+<th style="text-align: right;">8</th>
+<th style="text-align: right;">9</th>
+<th style="text-align: right;">10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">x</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">y</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">46</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scatterplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="14Correlation_files/figure-html/fig-scatterplot-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.2: Sctter plot between X and Y
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In fact, the scatter lot suggests that a straight line could be used as an approximation of the relationship. In the following discussion, we introduce <strong>covariance, coefficient of correlation, and coefficient of determination</strong> as descriptive measures which provide <em>direction</em> and <em>strength</em> of the linear relationship between two variables.</p>
+</section>
+<section id="covariance" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="covariance"><span class="header-section-number">13.2</span> Covariance</h2>
+<p>The covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as follows</p>
+<p><strong>Population covariance</strong></p>
+<p><span class="math display">\[
+\sigma_{XY}=\frac{\sum_{i=1}^N (x_i-\mu_X)(y_i-\mu_Y)}{N}
+\]</span></p>
+<p><strong>Sample covariance</strong></p>
+<p><span class="math display">\[
+s_{XY}=\frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{n-1}
+\]</span></p>
+<p><strong>Shortcut for Sample Covariance</strong></p>
+<p><span class="math display">\[
+s_{XY}=\frac{\sum xy -n \bar x \bar y }{n-1}
+\]</span> Or,</p>
+<p><span id="eq-covshort"><span class="math display">\[
+s_{XY}=\frac{1}{n-1}\left[ \sum xy -\frac{\sum x \sum y}{n}     \right ]   
+\tag{13.1}\]</span></span></p>
+<p><strong>Example:</strong> Compute sample covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> from <a href="#tbl-xydata" class="quarto-xref">Table&nbsp;<span>13.1</span></a>.</p>
+<p><u><strong>Solution:</strong></u></p>
+<p>Here, <span class="math inline">\(n=10 ; \sum x=30 ; \sum y =510\)</span>.</p>
+<p><span class="math inline">\(\sum xy =x_1y_1+x_2y_2+ \cdot \cdot \cdot+x_ny_n= 1629\)</span></p>
+<p>Hence the sample covariance,</p>
+<p><span class="math display">\[
+s_{XY}=\frac{1}{n-1} \left[\sum xy - \frac{\sum x \sum y}{n}   \right]
+\]</span></p>
+<p><span class="math display">\[
+=\frac{1}{10-1} \left[1629 - \frac{30\times 510}{10} \right]
+\]</span></p>
+<p><span class="math display">\[
+\therefore s_{XY}=11
+\]</span></p>
+<p>Since, <span class="math inline">\(s_{XY}&gt;0\)</span> so there exists positive correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p><strong>Drawback of covariance</strong></p>
+<p>According to <span class="citation" data-cites="keller2014">Keller (<a href="references.html#ref-keller2014" role="doc-biblioref">2014</a>)</span> , “Unfortunately, the magnitude may be difficult to judge. For example, if you’re told that the covariance between two variables is 500, does this mean that there is a strong linear relationship? The answer is that it is impossible to judge without additional statistics. Fortunately, we can improve on the information provided by this statistic by creating another one.”</p>
+</section>
+<section id="coefficient-of-correlation" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="coefficient-of-correlation"><span class="header-section-number">13.3</span> Coefficient of Correlation</h2>
+<p>The <strong>Pearson product-moment coefficient of correlation</strong> is defined as the covariance divided by the standard deviations of the variables.</p>
+<p><strong>Population correlation coefficient</strong></p>
+<p><span class="math display">\[
+\rho=\frac{\sigma_{XY}}{\sigma_X \times \sigma_Y}\ \ ;\ \ -1\le\rho \le +1
+\]</span></p>
+<p><strong>Sample correlation coefficient</strong></p>
+<p><span id="eq-sampleR"><span class="math display">\[
+r=\frac{s_{XY}}{s_X \times s_Y}\ \ ;\ \ -1\le r \le +1
+\tag{13.2}\]</span></span></p>
+<p>Where</p>
+<p><span class="math inline">\(s_{XY}\)</span> is sample covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> <span class="math inline">\(s_X\)</span> is sample standard deviation of <span class="math inline">\(X\)</span> and <span class="math inline">\(s_Y\)</span> is sample standard deviation of <span class="math inline">\(Y\)</span>.</p>
+<p><strong>Note:</strong> The sample correlation coefficient can be expressed in other forms:</p>
+<ol type="a">
+<li></li>
+</ol>
+<p><span class="math display">\[
+r=\frac{\sum(x_i-\bar x)(y_i-\bar y)}{\sqrt {\sum (x_i-\bar x)^2}\sqrt{\sum (y_i-\bar y)^2}}
+\]</span></p>
+<ol start="2" type="a">
+<li></li>
+</ol>
+<p><span class="math display">\[
+r=\frac{n \sum xy-(\sum x) (\sum y)}{\sqrt {\left [n\sum x^2-(\sum x)^2 \right] } \sqrt{\left [n\sum y^2-(\sum y)^2 \right]}}
+\]</span></p>
+<ol start="3" type="a">
+<li></li>
+</ol>
+<p><span class="math display">\[
+r=\frac{1}{n-1} \sum_{i=1}^n z_{x_i} z_{y_i}
+\]</span></p>
+<p>Where, <span class="math inline">\(z_x\)</span> and <span class="math inline">\(z_y\)</span> are the z-score of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> respectively.</p>
+</section>
+<section id="properties-of-coefficient-of-correlation" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="properties-of-coefficient-of-correlation"><span class="header-section-number">13.4</span> Properties of coefficient of correlation</h2>
+<ol type="1">
+<li><p>The value of <span class="math inline">\(\rho\)</span> is always between -1 and 1 inclusive. That is <span class="math inline">\(-1\le \rho\le+1\)</span>.</p></li>
+<li><p>If all values of either variable are converted to a different scale, the value of <span class="math inline">\(\rho\)</span> does not change (NOT affected by change of <em>origin</em> and <em>scale</em>).</p></li>
+<li><p>The value of <span class="math inline">\(\rho\)</span> is not affected by the choice of X or Y. Interchange all x values and y values, and the value of <span class="math inline">\(\rho\)</span> will not change (<span class="math inline">\(\rho\)</span> is a symmetric measure).</p></li>
+<li><p><span class="math inline">\(\rho\)</span> measures the strength of a <em>linear relationship</em>. It is not designed to measure the strength of a relationship that is not linear.</p></li>
+<li><p><span class="math inline">\(\rho\)</span> is very sensitive to outliers in the sense that a single outlier could dramatically affect its value.</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Proof of <span class="math inline">\(-1\le\rho\le+1\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>From Cauchy–Schwarz Inequality we know that,</p>
+<p><span class="math display">\[
+(E[XY])^2\le E[X^2] E[Y^2]
+\]</span></p>
+<p>Now center the variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with respect to their mean we have,</p>
+<p><span class="math display">\[
+(E[(X-\mu_X)(Y-\mu_Y)])^2 \le E[(X-\mu_X)^2] E[(Y-\mu_Y)^2]
+\]</span></p>
+<p><span class="math display">\[
+\Rightarrow [Cov(X,Y)]^2 \le Var(X)  \cdot Var(Y)
+\]</span></p>
+<p><span class="math display">\[
+\Rightarrow (\sigma_{XY})^2 \le \sigma^2_X \sigma^2_Y
+\]</span></p>
+<p><span class="math display">\[
+\Rightarrow | \sigma_{XY}| \le \sigma_X \sigma_Y
+\]</span></p>
+<p><span class="math display">\[
+\Rightarrow |\frac{\sigma_{XY}}{\sigma_X \sigma_Y}\le 1|
+\]</span></p>
+<p><span class="math display">\[
+\Rightarrow |\rho|\le 1
+\]</span></p>
+<p>Which implies that <span class="math inline">\(-1 \le \rho\le +1\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Effect of change of origin and scale on <span class="math inline">\(\rho\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let, <span class="math inline">\(U=\frac{X-a}{b}\)</span> and <span class="math inline">\(V=\frac{Y-c}{d}\)</span>. Here <span class="math inline">\(a,b,c,d\)</span> are any arbitrary real numbers.</p>
+<p>We have to prove that, <span class="math inline">\(\rho_{XY}=\rho_{UV}\)</span>.</p>
+<p><strong>Proof:</strong></p>
+<p>So we have,</p>
+<p><span class="math inline">\(X=a+bU\)</span> ; and <span class="math inline">\(\bar X =a+b \bar U\)</span>. Similarly</p>
+<p><span class="math inline">\(Y=c+dV\)</span> ; and <span class="math inline">\(\bar Y=c+d \bar V\)</span></p>
+<p>Now,</p>
+<p><span class="math inline">\(\sigma_{XY}=\frac {\sum(X-\bar X)(Y-\bar Y)}{N}=\frac{bd\sum(U-\bar U)(V-\bar V)}{N}=bd\times \sigma_{UV}\)</span></p>
+<p><span class="math inline">\(\sigma_X^2=Var(X)=Var(a+bU)=b^2 Var(U)=b^2 \sigma^2_U\)</span></p>
+<p>Hence, <span class="math inline">\(\sigma_X=b\sigma_U\)</span> (standard deviation is always <span class="math inline">\(\ge0\)</span>).</p>
+<p>Similarly, <span class="math inline">\(\sigma_Y=d\sigma_V\)</span></p>
+<p>Finally we have,</p>
+<p><span class="math display">\[
+\rho_{XY}=\frac{\sigma_{XY}}{\sigma_X \sigma_Y}=\frac{bd\times \sigma_{UV}}{b\sigma_U \times d\sigma_V}=\frac{\sigma_{UV}}{\sigma_U \sigma_V}=\rho_{UV} \ \ \ \  (PROVED.)
+\]</span></p>
+</div>
+</div>
+<section id="interpretation-of-correlation-coefficient" class="level3" data-number="13.4.1">
+<h3 data-number="13.4.1" class="anchored" data-anchor-id="interpretation-of-correlation-coefficient"><span class="header-section-number">13.4.1</span> Interpretation of correlation coefficient</h3>
+<ol type="a">
+<li><p><span class="math inline">\(r=-1\)</span> implies <em>perfect negative</em> correlation,</p></li>
+<li><p><span class="math inline">\(r=+1\)</span> implies <em>perfect positive</em> correlation,</p></li>
+<li><p><span class="math inline">\(r\approx 0\)</span> implies no correlation or very weak correlation,</p></li>
+<li><p>As <span class="math inline">\(r\)</span> close to <span class="math inline">\(-1\)</span> , the degree of <em>negative</em> correlation becomes stronger,</p></li>
+<li><p>As <span class="math inline">\(r\)</span> close to <span class="math inline">\(+1\)</span> , the degree of <em>positive</em> correlation becomes stronger.</p></li>
+</ol>
+</section>
+<section id="computing-the-coefficient-of-correlation" class="level3" data-number="13.4.2">
+<h3 data-number="13.4.2" class="anchored" data-anchor-id="computing-the-coefficient-of-correlation"><span class="header-section-number">13.4.2</span> Computing the Coefficient of Correlation</h3>
+<p>Let us compute sample correlation coefficient between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> from <a href="#tbl-xydata" class="quarto-xref">Table&nbsp;<span>13.1</span></a>.</p>
+<p>Here, <span class="math inline">\(n=10 ; \sum x=30 ; \sum y =510\)</span>.</p>
+<p><span class="math inline">\(\sum xy =x_1y_1+x_2y_2+ \cdot \cdot \cdot+x_ny_n= 1629\)</span></p>
+<p><span class="math inline">\(\sum x^2=2^2+5^2 +...+2^2=110\)</span></p>
+<p><span class="math inline">\(\sum y^2=50^2+57^2 +...+46^2=26576\)</span></p>
+<p><span class="math inline">\(\bar x =3\)</span></p>
+<p><span class="math inline">\(\bar y =51\)</span></p>
+<p>So,</p>
+<p><span class="math display">\[
+s_X=\sqrt { \frac{\sum x^2 -n \ \  \bar x^2}{n-1}}=1.490712
+\]</span></p>
+<p><span class="math display">\[
+s_Y=\sqrt { \frac{\sum y^2 -n \ \ \bar y^2}{n-1}}=7.930252
+\]</span></p>
+<p><span class="math display">\[
+s_{XY}=\frac{\sum xy -n \ \ \bar x \ \ \bar y }{n-1}=11
+\]</span></p>
+<p>Hence,</p>
+<p><span class="math display">\[
+r=\frac{s_{XY}}{s_X \times s_Y}=\frac{11}{1.490712\times 7.930252}=0.9305
+\]</span></p>
+<p>which is close to 1. So the correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is <em>strong</em> and <em>positive</em>.</p>
+</section>
+<section id="exercises-constructing-a-scatter-plot-and-determining-correlation" class="level3" data-number="13.4.3">
+<h3 data-number="13.4.3" class="anchored" data-anchor-id="exercises-constructing-a-scatter-plot-and-determining-correlation"><span class="header-section-number">13.4.3</span> Exercises: Constructing a Scatter Plot and Determining Correlation</h3>
+<p>In Exercises 1–4, (a) display the data in a scatter plot, (b) calculate the sample correlation coefficient <span class="math inline">\(r\)</span>, and (c) describe the type of correlation and interpret the correlation in the context of the data.</p>
+<ol type="1">
+<li><strong>Age and Blood Pressure.</strong> The ages (in years) of 10 men and their systolic blood pressures (in millimeters of mercury) <span class="citation" data-cites="larson2015">(<a href="references.html#ref-larson2015" role="doc-biblioref">Larson and Farber 2015, 482</a>)</span></li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Age, x</strong></td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">39</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">57</td>
+<td>22</td>
+</tr>
+<tr class="even">
+<td><strong>Systolic blood pressure, y</strong></td>
+<td style="text-align: center;">109</td>
+<td style="text-align: center;">122</td>
+<td style="text-align: center;">143</td>
+<td style="text-align: center;">132</td>
+<td style="text-align: center;">199</td>
+<td style="text-align: center;">185</td>
+<td style="text-align: center;">199</td>
+<td style="text-align: center;">130</td>
+<td style="text-align: center;">175</td>
+<td>118</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li><strong>Driving Speed and Fuel Efficiency.</strong> A department of transportation’s study on driving speed and miles per gallon for midsize automobiles resulted in the following data <span class="citation" data-cites="anderson2020">(<a href="references.html#ref-anderson2020" role="doc-biblioref">Anderson 2020a, 149</a>)</span>:</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Speed (Miles per Hour)</strong></td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">55</td>
+</tr>
+<tr class="even">
+<td><strong>Miles per Gallon</strong></td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">25</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" type="1">
+<li>Are the marks one receives in a course related to the amount of time spent studying the subject? To analyze this mysterious possibility, a student took a random sample of 10 students who had enrolled in an accounting class last semester. He asked each to report his or her mark in the course and the total number of hours spent studying accounting. These data are listed here <span class="citation" data-cites="keller2014">(<a href="references.html#ref-keller2014" role="doc-biblioref">Keller 2014</a>)</span>.</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Study time</strong></td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">37</td>
+<td style="text-align: center;">47</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">44</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="even">
+<td><strong>Marks</strong></td>
+<td style="text-align: center;">77</td>
+<td style="text-align: center;">63</td>
+<td style="text-align: center;">79</td>
+<td style="text-align: center;">86</td>
+<td style="text-align: center;">51</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">83</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">65</td>
+<td style="text-align: center;">47</td>
+</tr>
+</tbody>
+</table>
+<ol start="4" type="1">
+<li>The owner of a paint store was attempting to analyse the relationship between advertising and sales, and recorded the monthly advertising budget ($’000) and the sales ($m) for a sample of 12 months. The data are listed here</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Advertising</strong></td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">54</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">95</td>
+<td style="text-align: center;">99</td>
+</tr>
+<tr class="even">
+<td><strong>Sales</strong></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">8.9</td>
+<td style="text-align: center;">10.7</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">10.4</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">14.4</td>
+<td style="text-align: center;">15.9</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="coefficient-of-determination" class="level3" data-number="13.4.4">
+<h3 data-number="13.4.4" class="anchored" data-anchor-id="coefficient-of-determination"><span class="header-section-number">13.4.4</span> Coefficient of determination</h3>
+<p>The coefficient of determination measures the amount of variation in the dependent variable that is explained by the variation in the independent variable.</p>
+<p>For example, if <span class="math inline">\(r=0.8764\)</span> between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> then <strong>coefficient of determination</strong> <span class="math inline">\(r^2=(0.8764)^2 \approx 0.7681\)</span>.</p>
+<p><strong>Interpretation:</strong> The <span class="math inline">\(r^2=0.7681\)</span> tells us that 76.81% variation in <span class="math inline">\(Y\)</span> (dependent variable) can be explained by <span class="math inline">\(X\)</span> (independent variable).<br>
+</p>
+</section>
+<section id="correlation-vs.-causation" class="level3" data-number="13.4.5">
+<h3 data-number="13.4.5" class="anchored" data-anchor-id="correlation-vs.-causation"><span class="header-section-number">13.4.5</span> Correlation vs.&nbsp;causation</h3>
+<p><em>Correlation</em> does not always imply <em>causation</em>. For example,</p>
+<ul>
+<li><p>A study<span class="citation" data-cites="messerli2012">(<a href="references.html#ref-messerli2012" role="doc-biblioref">Messerli 2012</a>)</span> found that there was a significant (<span class="math inline">\(r=0.791\)</span>) positive correlation between <em>chocolate consumption per capita</em> and <em>number of Nobel laureates per 10 million persons</em>. This does not necessarily implies that more a country consumes chocolate, more the chance of getting a Nobel prize. Rather differences in socioeconomic status from country to country and geographic and climatic factors may play some role to win a Nobel prize.</p></li>
+<li><p>We might find that there is a positive correlation between the time spent driving on road and the number of accidents but this does not mean that spending more time on road causes accident.Because in that case, in order to avoid accidents one may drive fast so that time spent on road is less <span class="citation" data-cites="selvamuthu2024">(<a href="references.html#ref-selvamuthu2024" role="doc-biblioref">Selvamuthu and Das 2024</a>)</span>.</p></li>
+</ul>
+</section>
+<section id="effect-of-outlier-on-correlation-coefficient" class="level3" data-number="13.4.6">
+<h3 data-number="13.4.6" class="anchored" data-anchor-id="effect-of-outlier-on-correlation-coefficient"><span class="header-section-number">13.4.6</span> Effect of outlier on correlation coefficient</h3>
+<p>The correlation coefficient is heavily affected by outlier (see <a href="#fig-outlieronr1" class="quarto-xref">Figure&nbsp;<span>13.3</span></a>). It changes the magnitude of the correlation coefficient.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-outlieronr1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-outlieronr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="14Correlation_files/figure-html/fig-outlieronr1-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-outlieronr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.3: Effect of outlier on the magnitude of correlation coefficient (r)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Even sometime the outlier(s) can change the sign of the correlation coefficient (see <a href="#fig-outlieronr2" class="quarto-xref">Figure&nbsp;<span>13.4</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-outlieronr2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-outlieronr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="14Correlation_files/figure-html/fig-outlieronr2-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-outlieronr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.4: Effect of outlier on the sign of correlation coefficient (r)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="rank-correlation" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="rank-correlation"><span class="header-section-number">13.5</span> Rank correlation</h2>
+<p>To measure the association between two ordinal or rank-ordered data we use the <strong>Spearman Rank-correlation coefficient (RCC).</strong> Even if in presence of outliers in interval or ratio scale data we can use RCC. The sample Spearman RCC is computed as follows:</p>
+<p><span id="eq-Rcc"><span class="math display">\[
+r_s=1-\frac{6\sum_{i=1}^n d_i^2}{n(n^2-1)}
+\tag{13.3}\]</span></span></p>
+<p>Where,</p>
+<p><span class="math inline">\(n\)</span> = the number of observations in the sample</p>
+<p><span class="math inline">\(x_i\)</span> = the rank of observation <span class="math inline">\(i\)</span> with respect to the first variable</p>
+<p><span class="math inline">\(y_i\)</span> = the rank of observation <span class="math inline">\(i\)</span> with respect to the second variable</p>
+<p><span class="math inline">\(d_i\)</span> = <span class="math inline">\(x_i-y_i\)</span></p>
+<p>The interpretation is as usual as Pearson correlation coefficient.</p>
+<p><strong>Problem 15.1</strong> Two sportswriters have ranked 10 Olympic sports according to how interesting they are to watch in person, with the results shown here. <strong>Calculate</strong> and <strong>interpret</strong> the Spearman coefficient of rank correlation.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Olympic Sport</th>
+<th style="text-align: center;">Bob’s Ranking</th>
+<th style="text-align: center;">Tom’s Ranking</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Track &amp; field</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td>Basketball</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td>Volleyball</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td>Swimming</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td>Boxing</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td>Ice skating</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td>Weight lifting</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="even">
+<td>Wrestling</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="odd">
+<td>Judo</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td>Equestrian</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Problem 15.2</strong> Quality of Teaching Assessments. A student organization surveyed both current students and recent graduates to obtain information on the quality of teaching at a particular university. An analysis of the responses provided the following teaching-ability rankings. Do the rankings given by the current students agree with the rankings given by the recent graduates ? <span class="citation" data-cites="anderson2020a">(<a href="references.html#ref-anderson2020a" role="doc-biblioref">Anderson 2020b</a>)</span></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Professor</th>
+<th style="text-align: center;">Current Students</th>
+<th style="text-align: center;">Recent Graduates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">10</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="simple-linear-regression-slr" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="simple-linear-regression-slr"><span class="header-section-number">13.6</span> Simple linear regression (SLR)</h2>
+<p>In regression analysis we try to estimate or predict the <strong>outcome/ response</strong> of one variable (dependent variable) on the basis of other variables (independent variable). For example, sales of certain product depends of price, advertising cost, quality of the product, brand etc.</p>
+<p>It involves developing a mathematical model or equation that describes the relationship between the <strong>dependent variable</strong> and the <strong>independent variables.</strong></p>
+<p>In the following section we will discuss about the <strong>Simple linear regression (SLR)</strong> where a independent variable and a dependent variable are involved.</p>
+<section id="population-regression-function-prf" class="level3" data-number="13.6.1">
+<h3 data-number="13.6.1" class="anchored" data-anchor-id="population-regression-function-prf"><span class="header-section-number">13.6.1</span> <strong>Population regression function (PRF)</strong></h3>
+<p><span id="eq-PRF"><span class="math display">\[
+y_i=\beta_0+\beta_1 x_i+\epsilon_i \hspace{10pt} ; i=1,2,3,..., N
+\tag{13.4}\]</span></span></p>
+<p>Where,</p>
+<p><span class="math inline">\(y\)</span>= dependent variable</p>
+<p><span class="math inline">\(x\)</span>= independent variable</p>
+<p><span class="math inline">\(\beta_0\)</span> =y-intercept</p>
+<p><span class="math inline">\(\beta_1\)</span>= slope of the line/ regression coefficient</p>
+<p><span class="math inline">\(\varepsilon\)</span> = error variable</p>
+<p><strong>Assumptions</strong></p>
+<ol type="i">
+<li><p>The errors are <em>independently</em>, <em>identically</em> normally distributed with <strong>constant variance</strong> <span class="math inline">\(\sigma_\varepsilon ^2\)</span> that is <span class="math inline">\(\varepsilon_i \overset{\text{i.i.d.}}{\sim} \mathcal{N}(0, \sigma_\epsilon^2)\)</span> .</p></li>
+<li><p>The independent variable should not be correlated with the error term (no endogeneity)</p></li>
+</ol>
+<p>Taking conditional expectation of of <strong>PRF</strong> for a given <span class="math inline">\(x_i\)</span> we have</p>
+<p><span id="eq-expectedprf"><span class="math display">\[
+E(y_i/x_i)=\beta_0+\beta_1 x_i
+\tag{13.5}\]</span></span></p>
+<p>From sample data we have to estimate <span class="math inline">\(E(y_i/x_i)\)</span> which is equivalent to estimate <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
+</section>
+<section id="ordinary-least-square-ols-estimate-of-ey_ix_i" class="level3" data-number="13.6.2">
+<h3 data-number="13.6.2" class="anchored" data-anchor-id="ordinary-least-square-ols-estimate-of-ey_ix_i"><span class="header-section-number">13.6.2</span> Ordinary least square (OLS) estimate of <span class="math inline">\(E(y_i/x_i)\)</span></h3>
+<p>Let we have <span class="math inline">\(n\)</span> pairs of sample data: <span class="math inline">\(\{X,Y\}=\{ (x_1,y_1), (x_2,y_2),..., (x_n, y_n) \}\)</span>. From the sample data suppose the <strong>estimated regression line of</strong> <span class="math inline">\(E(y_i/x_i)\)</span> <strong>is</strong></p>
+<p><span class="math display">\[
+\hat y_i= \hat \beta_0+\hat \beta_1 x_i \hspace {10pt}; i=1,2,....,n
+\]</span></p>
+<p>So,</p>
+<p><span class="math display">\[
+y_i=\hat y_i +e_i \hspace{10pt} ; i=1,2, ..., n
+\]</span></p>
+<p>Where, <span class="math inline">\(e_i\)</span> is the <strong>estimated error</strong> or <strong>residual.</strong></p>
+<p>Now, the <strong>residuals sum of square (RSS)</strong> is given as:</p>
+<p><span id="eq-ssr"><span class="math display">\[
+RSS=\sum_{i=1}^n e_i^2=\sum_{i=1}^n (y_i-\hat y_i)^2=\sum_{i=1}^n (y_i-\hat \beta_0-\hat \beta_1x_i)^2
+\tag{13.6}\]</span></span></p>
+<p>In <strong>OLS</strong> method we <em>minimize</em> the <strong>RSS</strong>with respect to <span class="math inline">\(\hat \beta_0\)</span> and <span class="math inline">\(\hat \beta_1\)</span>. To minimize <strong>RSS</strong>we have to set two equations using <em>partial derivative:</em></p>
+<p><span id="eq-ols1"><span class="math display">\[
+\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_0}=0
+\tag{13.7}\]</span></span></p>
+<p><span id="eq-ols2"><span class="math display">\[
+\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_1}=0
+\tag{13.8}\]</span></span></p>
+<p>By solving the two equations we will have the <strong>OLS estimates</strong> of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> as follows:</p>
+<p><span class="math display">\[
+\hat \beta_0=\bar y-\hat \beta_1 \bar x
+\]</span>and</p>
+<p><span class="math display">\[
+\hat \beta_1=\frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)} {\sum_{i=1}^n (x_i-\bar x)^2}=\frac{s_{xy}}{s^2_x}
+\]</span></p>
+<p>Or,</p>
+<p><span class="math display">\[
+\hat \beta_1=r_{xy} \left (\frac{s_y}{s_x}\right )
+\]</span></p>
+<p>Thus, the <strong>estimated regression</strong> line is given by</p>
+<p><span class="math display">\[
+\hat y_i=\hat \beta_0+\hat \beta_1 x_i
+\]</span></p>
+</section>
+<section id="point-prediction-of-y-for-a-give-x" class="level3" data-number="13.6.3">
+<h3 data-number="13.6.3" class="anchored" data-anchor-id="point-prediction-of-y-for-a-give-x"><span class="header-section-number">13.6.3</span> Point prediction of <span class="math inline">\(y\)</span> for a give <span class="math inline">\(x\)</span></h3>
+<p>Given <span class="math inline">\(x=x_g\)</span>. Then the estimated <span class="math inline">\(y\)</span> for given <span class="math inline">\(x\)</span> is</p>
+<p><span class="math display">\[
+\hat y_g=\hat \beta _0+\hat \beta_1 \times x_g
+\]</span></p>
+</section>
+<section id="partition-of-sum-squares" class="level3" data-number="13.6.4">
+<h3 data-number="13.6.4" class="anchored" data-anchor-id="partition-of-sum-squares"><span class="header-section-number">13.6.4</span> Partition of sum squares</h3>
+<ol type="i">
+<li>Total sum of square,</li>
+</ol>
+<p><span class="math display">\[
+SS(Total)=\sum_{i=1}^n (y_i-\bar y)^2=(n-1) s^2_y
+\]</span></p>
+<ol start="2" type="i">
+<li>Regression sum of square,</li>
+</ol>
+<p><span class="math display">\[
+SSR=\sum_{i=1}^n (\hat y_i-\bar y)^2
+\]</span></p>
+<p>In the case of <strong>SLR</strong>, SSR can be written as <span class="math display">\[SSR=\hat \beta_1^2\sum_{i=1}^n (x_i-\bar x)^2=\hat \beta_1^2 (n-1)s_x^2\]</span></p>
+<ol start="3" type="i">
+<li>Sum of square of error,</li>
+</ol>
+<p><span class="math display">\[
+SSE=\sum_{i=1}^n (y_i-\hat y_i)^2=SS(Total)-SSR
+\]</span></p>
+</section>
+<section id="coefficient-of-determination-goodness-of-fit" class="level3" data-number="13.6.5">
+<h3 data-number="13.6.5" class="anchored" data-anchor-id="coefficient-of-determination-goodness-of-fit"><span class="header-section-number">13.6.5</span> Coefficient of determination (Goodness of fit)</h3>
+<p><span class="math display">\[
+R^2=\frac{SSR}{SS(Total)}  \hspace{10pt}; \hspace{10pt} 0\le R^2\le1
+\]</span></p>
+<p><strong>Interpretation:</strong> The <span class="math inline">\(R^2\)</span> explains the amount of variation in <span class="math inline">\(Y\)</span> (dependent variable) by the estimated model.</p>
+<p>In the case of <strong>SLR,</strong></p>
+<p><span class="math display">\[
+R^2=r_{xy}^2=\frac{s^2_{xy}}{s_x^2 \times s^2_y}
+\]</span></p>
+<p>We can also write <span class="math inline">\(R^2\)</span> as:</p>
+<p><span class="math display">\[
+R^2=\frac{\hat \beta_1^2 \sum(x-\bar x)^2}{\sum(y-\bar y)^2}
+\]</span></p>
+</section>
+<section id="some-problems-on-slr" class="level3" data-number="13.6.6">
+<h3 data-number="13.6.6" class="anchored" data-anchor-id="some-problems-on-slr"><span class="header-section-number">13.6.6</span> Some problems on SLR</h3>
+<p><strong>Problem 15.3 :</strong> The owner of a paint store was attempting to analyse the relationship between advertising and sales, and recorded the monthly advertising budget ($’000) and the sales ($m) for a sample of 12 months. The data are listed here:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Advertising</strong></td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">54</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">95</td>
+<td style="text-align: center;">99</td>
+</tr>
+<tr class="even">
+<td><strong>Sales</strong></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">8.9</td>
+<td style="text-align: center;">10.7</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">10.4</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">14.4</td>
+<td style="text-align: center;">15.9</td>
+</tr>
+</tbody>
+</table>
+<p>i) <strong>Identify</strong> the dependent and independent variable.</p>
+<p>ii) <strong>Plot</strong> the data. Is it appear to be linear?</p>
+<p>iii) Now, <strong>fit</strong>/ <strong>estimate</strong> a linear regression line.</p>
+<p>iv) <strong>Interpret</strong> the regression/slope coefficient.</p>
+<p>v) <strong>Predict</strong> the sales for the advertising cost $70, 000.</p>
+<p>vi) <strong>Comment</strong> about goodness of fit of the estimated model.</p>
+<p><strong>Problem 15.4</strong> <strong>Age and Blood Pressure.</strong>&nbsp;The ages (in years) of 10 men and their systolic blood pressures (in millimeters of mercury).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Age</strong></td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">39</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">57</td>
+<td>22</td>
+</tr>
+<tr class="even">
+<td><strong>Systolic blood pressure (SBP)</strong></td>
+<td style="text-align: center;">109</td>
+<td style="text-align: center;">128</td>
+<td style="text-align: center;">143</td>
+<td style="text-align: center;">145</td>
+<td style="text-align: center;">180</td>
+<td style="text-align: center;">185</td>
+<td style="text-align: center;">185</td>
+<td style="text-align: center;">199</td>
+<td style="text-align: center;">175</td>
+<td>118</td>
+</tr>
+</tbody>
+</table>
+<ol type="i">
+<li><p><strong>Identify</strong> the dependent and independent variable.</p></li>
+<li><p><strong>Plot</strong> the data. Is it appear to be linear?</p></li>
+<li><p>Now, <strong>fit</strong>/ <strong>estimate</strong> a linear regression line.</p></li>
+<li><p><strong>Interpret</strong> the regression/slope coefficient.</p></li>
+<li><p><strong>Predict</strong> the SBP for the age of a person is 40 years .</p></li>
+<li><p><strong>Comment</strong> about goodness of fit of the estimated model.</p></li>
+</ol>
+<p><u><strong>Solution:</strong></u></p>
+<p>Let, <span class="math inline">\(Y\)</span>=Systolic blood pressure, SBP and <span class="math inline">\(X\)</span> = age (in years)</p>
+<p><strong>i)</strong> Here SBP is dependent variable and age is independent variable</p>
+<p><strong>ii) Scatter plot of Age versus SBP</strong></p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-slr" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-slr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="14Correlation_files/figure-html/fig-slr-1.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-slr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.5: Sacter plot of Age and SBP
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The scatter plot appears to be linear.</p>
+<p><strong>iii)</strong> Let the estimated regression line is :</p>
+<p><span class="math display">\[
+\hat y_i=\hat \beta_0 +\hat \beta_1 x_i \hspace{40pt} (1)
+\]</span></p>
+<p>From sample data;</p>
+<p><span class="math inline">\(n=10, \sum x =416  , \sum y=1512 , \sum x^2 =20398\)</span>,</p>
+<p><span class="math inline">\(\sum y^2=237414, \sum xy=67977\)</span></p>
+<p><span class="math inline">\(\bar x=41.6 , \hspace{10pt} \bar y=151.2\)</span></p>
+<p>So,</p>
+<p><span class="math display">\[
+s_{xy}=\frac{\sum xy-n \cdot \bar x \cdot \bar y}{n-1}=\frac{67977-10\times 41.6\times 151.2}{10-1}=564.2
+\]</span></p>
+<p><span class="math display">\[
+s^2_x=\frac{\sum x^2 -n\times \bar x^2}{n-1}=343.6
+\]</span></p>
+<p><span class="math display">\[
+s^2_y=\frac{\sum y^2 -n\times \bar y^2}{n-1}=977.7333
+\]</span></p>
+<p>Hence,</p>
+<p><span class="math display">\[
+\hat \beta_1=\frac{s_{xy}}{s^2_x}=\frac{564.2}{343.6}=1.642026\approx 1.642
+\]</span></p>
+<p>and,</p>
+<p><span class="math display">\[
+\hat \beta_0=\bar y-\hat \beta_1 \bar x=151.2-1.642026\times41.6=82.89172\approx82.8917
+\]</span></p>
+<p><span class="math display">\[
+\therefore \hat y_i=82.8917+1.642\hspace{3pt}x_i \hspace{5pt}
+\]</span></p>
+<ol start="4" type="i">
+<li><strong>Interpretation of the regression/slope coefficient:</strong></li>
+</ol>
+<p>Here <span class="math inline">\(\hat \beta_1=1.642\)</span> implies that as one year increases, the SBP will increases by 1.642 Hg m on average.</p>
+<ol start="22" type="a">
+<li><strong>Predict the SBP for the age of a person is 40 years:</strong></li>
+</ol>
+<p>For <span class="math inline">\(x=40\)</span> years, the predicted SBP (in Hg m) is</p>
+<p><span class="math inline">\(\hat y_g =82.8917+1.642\times 40=148.5728\)</span> Hg m</p>
+<ol start="6" type="i">
+<li><strong>Comment about goodness of fit of the estimated model:</strong></li>
+</ol>
+<p>The goodness of fit measure is</p>
+<p><span class="math display">\[
+R^2=\frac{s^2_{xy} }{s^2_x \cdot s^2_y}=\frac{(564.2)^2}{(343.6)(977.7333)}=0.9475
+\]</span></p>
+<p>Hence, <span class="math inline">\(R^2=0.9475\)</span> implies that 94.75% variation in “SBP” can be explained by the estimated model.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-anderson2020" class="csl-entry" role="listitem">
+Anderson, David R. 2020a. <em>Statistics for Business &amp; Economics</em>. 14e ed. Boston, MA: Cengage.
+</div>
+<div id="ref-anderson2020a" class="csl-entry" role="listitem">
+———. 2020b. <em>Statistics for Business &amp; Economics</em>. 14e ed. Boston, MA: Cengage.
+</div>
+<div id="ref-keller2014" class="csl-entry" role="listitem">
+Keller, Gerald. 2014. <em>Statistics for Management and Economics</em>. 10e ed. Stamford, CT, USA : Cengage Learning.
+</div>
+<div id="ref-larson2015" class="csl-entry" role="listitem">
+Larson, Ron, and Betsy Farber. 2015. <em>Elementary statistics: picturing the world</em>. 6. ed., global ed. Always Learning. Boston, Mass.: Pearson.
+</div>
+<div id="ref-messerli2012" class="csl-entry" role="listitem">
+Messerli, Franz H. 2012. <span>“Chocolate Consumption, Cognitive Function, and Nobel Laureates.”</span> <em>New England Journal of Medicine</em> 367 (16): 1562–64. <a href="https://doi.org/10.1056/nejmon1211064">https://doi.org/10.1056/nejmon1211064</a>.
+</div>
+<div id="ref-selvamuthu2024" class="csl-entry" role="listitem">
+Selvamuthu, Dharmaraja, and Dipayan Das. 2024. <em>Introduction to Probability, Statistical Methods, Design of Experiments and Statistical Quality Control</em>. Springer Nature Singapore. <a href="https://doi.org/10.1007/978-981-99-9363-5">https://doi.org/10.1007/978-981-99-9363-5</a>.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./13Chi_squaredTest.html" class="pagination-link" aria-label="Chi-squared Test">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chi-squared Test</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./summary.html" class="pagination-link" aria-label="Summary">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

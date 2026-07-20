@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="An introductory e‑book on Statistics for Business and Economics with practical examples, exercises, and visualizations.">
+
+<title>12&nbsp; Chi-squared Test – Statistics for Business and Economics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./14Correlation.html" rel="next">
+<link href="./12ANOVA_oneway.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-066b562477012fc308cfc884aa1e7cf5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./13Chi_squaredTest.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chi-squared Test</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Statistics for Business and Economics</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-save"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+      </ul>
+    </div>
+    <a href="https://github.com/Saifuddin86/stat_for_businessNeconomics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Statistics-for-Business-and-Economics.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Statistics-for-Business-and-Economics.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3descriptive_numer_measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics: Numerical Measures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5randomvariable_and_Discrete_dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discrete Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6continuous_Dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Continuous Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./7Further_topics_on_rv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Further topics on random variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./8sampling_and_sampling_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Sampling and Sampling distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10hypothesis_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis test: Introduction and testing one population parameter</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11Hypotheis_test(TWO population).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis test concerning TWO population parameters</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12ANOVA_oneway.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13Chi_squaredTest.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chi-squared Test</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Correlation and Simple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#goodness-of-fit-test" id="toc-goodness-of-fit-test" class="nav-link active" data-scroll-target="#goodness-of-fit-test"><span class="header-section-number">12.1</span> Goodness of Fit Test</a>
+  <ul class="collapse">
+  <li><a href="#a-multinomial-population" id="toc-a-multinomial-population" class="nav-link" data-scroll-target="#a-multinomial-population"><span class="header-section-number">12.1.1</span> A Multinomial Population</a></li>
+  <li><a href="#normal-population-continuous" id="toc-normal-population-continuous" class="nav-link" data-scroll-target="#normal-population-continuous"><span class="header-section-number">12.1.2</span> Normal population (continuous)</a></li>
+  <li><a href="#uniform-distribution-continuous" id="toc-uniform-distribution-continuous" class="nav-link" data-scroll-target="#uniform-distribution-continuous"><span class="header-section-number">12.1.3</span> Uniform distribution (continuous)</a></li>
+  </ul></li>
+  <li><a href="#test-for-independence-categorical-data" id="toc-test-for-independence-categorical-data" class="nav-link" data-scroll-target="#test-for-independence-categorical-data"><span class="header-section-number">12.2</span> Test for Independence (Categorical Data)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chi-squared Test</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="goodness-of-fit-test" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="goodness-of-fit-test"><span class="header-section-number">12.1</span> Goodness of Fit Test</h2>
+<p>In this section we use a chi-square test to determine whether a population being sampled has a specific probability distribution.</p>
+<section id="a-multinomial-population" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="a-multinomial-population"><span class="header-section-number">12.1.1</span> A Multinomial Population</h3>
+<p><strong>Multinomial Experiment</strong></p>
+<p>A multinomial experiment is one that possesses the following properties.</p>
+<ol type="1">
+<li><p>The experiment consists of a fixed number <span class="math inline">\(n\)</span> of trials.</p></li>
+<li><p>The outcome of each trial can be classified into one of <span class="math inline">\(k\)</span> categories, called <span class="math inline">\(cells\)</span>.</p></li>
+<li><p>The probability <span class="math inline">\(p_i\)</span> that the outcome will fall into cell <span class="math inline">\(i\)</span> remains constant for each trial. Moreover, <span class="math inline">\(p_1 + p_2 + ...+ p_k = 1\)</span></p></li>
+<li><p>Each trial of the experiment is independent of the other trials.</p></li>
+</ol>
+<p><strong>Testing Market Shares</strong></p>
+<p>Company A has recently conducted aggressive advertising campaigns to maintain and possibly increase its share of the market (currently <span class="math inline">\(45\%\)</span>) for fabric softener. Its main competitor, company B, has <span class="math inline">\(40\%\)</span> of the market, and a number of other competitors account for the remaining <span class="math inline">\(15\%\)</span>.</p>
+<p>To determine whether the market shares changed after the advertising campaign, the marketing manager for company A solicited the preferences of a random sample of 200 customers of fabric softener.</p>
+<p>Of the <strong>200</strong> customers, <em>102 indicated a preference for company A’s product</em>, <em>82 preferred company B’s fabric softener</em>, and the remaining <em>16 preferred the products of one of the competitors</em>. Can the analyst infer at the <span class="math inline">\(5\%\)</span> significance level that customer preferences have changed from their levels before the advertising campaigns were launched?</p>
+<p>We recognize this experiment as a multinomial experiment, and we identify the technique as the chi-squared goodness-of-fit test. Because we want to know whether the market shares have changed, we specify those precampaign market shares in the null hypothesis.</p>
+<p><span class="math display">\[
+H_0: p_1=0.45;\ \ p_2=0.40; \ \  p_3=0.15
+\]</span></p>
+<p>The alternative hypothesis attempts to answer our question, Have the proportions changed? Thus,</p>
+<p><span class="math display">\[
+H_1: At \ \ least \  \ one \ \ p_i \ \ is \ \ not\ \  equal\ \  to\ \  its\ \  specified\ \  value
+\]</span></p>
+<p><strong>Chi-Squared Goodness-of-Fit Test Statistic</strong></p>
+<p><span class="math display">\[
+\chi^2 =\sum_{i=1}^k \frac{(f_i-e_i)^2}{e_i}
+\]</span> <span class="math inline">\(Where, \ \ f_i=observed \ \ frequency \ \ and \ \ e_i=expected \ \ frequency\)</span></p>
+<p><strong>Note that,</strong> <span class="math inline">\(e_i=n*p_i\)</span></p>
+<p>The sampling distribution of the test statistic is approximately chi-squared distributed with <span class="math inline">\(k-1\)</span> degrees of freedom, provided that the sample size is large.</p>
+<p><strong>Test Statistic calculation</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Company</strong></th>
+<th style="text-align: center;"><strong>Observed frequency,</strong> <span class="math inline">\(f_i\)</span></th>
+<th style="text-align: center;"><strong>Expected frequency,</strong> <span class="math inline">\(e_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\((f_i-e_i)\)</span></th>
+<th><span class="math inline">\(\frac{(f_i-e_i)^2}{e_i}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">102</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">12</td>
+<td>1.60</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">82</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">2</td>
+<td>0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Other</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">-14</td>
+<td>6.53</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Total</strong></td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;"></td>
+<td><span class="math inline">\(\chi^2=8.18\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical value</strong></p>
+<p>At <span class="math inline">\(\alpha =0.05\)</span> and for <span class="math inline">\(df=3-1=2\)</span>, <span class="math inline">\(\chi^2_\alpha=5.99\)</span> .</p>
+<p><strong>Decision</strong></p>
+<p>Since <span class="math inline">\(\chi^2 &gt; \chi^2_{\alpha}\)</span> so reject null hypothesis.</p>
+<p><strong>Interpretation/ Conclusion</strong></p>
+<p>There is sufficient evidence at the <span class="math inline">\(5\%\)</span> significance level to infer that the proportions have changed since the advertising campaigns were implemented.</p>
+<p><strong>Problem 14.1</strong> Test the following hypotheses by using the <span class="math inline">\(\chi^2\)</span> goodness of fit test. <span class="math display">\[
+H_0: p_A=0.40 ;\ \ p_B=0.40; \ \ p_C=0.20
+\]</span></p>
+<p><span class="math display">\[
+H_a: At \ \ least \ \ one \ \ p \ \ is \ \ not \ \ equal \  \ to \ \ H_0 \ \ value
+\]</span><br>
+</p>
+<p>A sample of size 200 yielded 60 in category A, 120 in category B, and 20 in category C. Use <span class="math inline">\(\alpha =0.01\)</span> and test to see whether the proportions are as stated in H0.</p>
+<p><strong>Problem 14.2</strong> Television Audiences Across Networks. During the first 13 weeks of the television season, the Saturday evening 8 p.m. to 9 p.m. audience proportions were recorded as ABC 29%, CBS 28%, NBC 25%, and independents 18%. A sample of 300 homes two weeks after a Saturday night schedule revision yielded the following viewing audience data: ABC 95 homes, CBS 70 homes, NBC 89 homes, and independents 46 homes. <strong>Test</strong> with a = .05 to determine whether the viewing audience proportions changed.<br>
+</p>
+<p><strong>Problem 14.3</strong> M&amp;M Candy Colors. Mars, Inc.&nbsp;manufactures M&amp;M’s, one of the most popular candy treats in the world. The milk chocolate candies come in a variety of colors including blue, brown, green, orange, red, and yellow. The overall proportions for the colors are .24 blue, .13 brown, .20 green, .16 orange, .13 red, and .14 yellow. In a sampling study, several bags of M&amp;M milk chocolates were opened and the following color counts were obtained.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>Color</strong></td>
+<td style="text-align: center;">Blue</td>
+<td style="text-align: center;">Brown</td>
+<td style="text-align: center;">Green</td>
+<td style="text-align: center;">Orange</td>
+<td style="text-align: center;">Red</td>
+<td style="text-align: center;">Yellow</td>
+</tr>
+<tr class="even">
+<td><strong>Count</strong></td>
+<td style="text-align: center;">105</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">89</td>
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">80</td>
+</tr>
+</tbody>
+</table>
+<p>Use a 0.05 level of significance and the sample data to test the hypothesis that the overall proportions for the colors are as stated above. What is your conclusion?</p>
+<p><strong>Problem 14.4</strong> Traffic Accidents by Day of Week. The National Highway Traffic Safety Administration reported the percentage of traffic accidents occurring each day of the week. Assume that a sample of 420 accidents provided the following data.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Day</th>
+<th style="text-align: center;">Sun</th>
+<th style="text-align: center;">Mon</th>
+<th style="text-align: center;">Tue</th>
+<th style="text-align: center;">Wed</th>
+<th style="text-align: center;">Thur</th>
+<th style="text-align: center;">Fri</th>
+<th style="text-align: center;">Sat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>No.&nbsp;of aacidents</strong></td>
+<td style="text-align: center;">66</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">53</td>
+<td style="text-align: center;">47</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">69</td>
+<td style="text-align: center;">80</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conduct</strong> a hypothesis test to determine if the proportion of traffic accidents is the same for each day of the week. Using a .05 level of significance, what is your conclusion?</p>
+</section>
+<section id="normal-population-continuous" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="normal-population-continuous"><span class="header-section-number">12.1.2</span> Normal population (continuous)</h3>
+<p>To test whether a variable follows <strong>normal distribution</strong> with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> we will illustrate the following example.</p>
+<p><strong>Problem 14.5</strong> A random sample of 500 car batteries was taken and the life of each battery was measured. Letting X denote battery life in years, suppose that the sample revealed the following distribution of battery life:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Life (in years)</strong></th>
+<th style="text-align: center;"><strong>Frequency</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(X&lt;1\)</span></td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1&lt;X \le 2\)</span></td>
+<td style="text-align: center;">94</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(2&lt;X \le 3\)</span></td>
+<td style="text-align: center;">170</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(3 &lt;X \le 4\)</span></td>
+<td style="text-align: center;">188</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(4&lt;X \le 5\)</span></td>
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(5&lt;X\)</span></td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td style="text-align: center;">500</td>
+</tr>
+</tbody>
+</table>
+<p>Based on this data, test whether battery life follows a normal distribution with <span class="math inline">\(\mu = 2.8\)</span> and <span class="math inline">\(\sigma^2 = 1.1^2\)</span>. Clearly state your hypotheses and use a significance level of <span class="math inline">\(\alpha = 5\%\)</span>.<br>
+<br>
+<u><strong>Solution:</strong></u></p>
+<p><strong>Hypotheses</strong></p>
+<p><em>H<sub>0</sub>:</em> The battery life follows a normal distribution with <span class="math inline">\(\mu = 2.8\)</span> and <span class="math inline">\(\sigma^2 = 1.1^2\)</span>..</p>
+<p><em>Ha:</em>The battery life does not follow a normal distribution.</p>
+<p><strong>Test Statistic calculation</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 25%">
+<col style="width: 13%">
+<col style="width: 8%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Life (in years)</strong></th>
+<th style="text-align: left;"><strong>Probability</strong></th>
+<th style="text-align: center;"><span class="math inline">\(e_i=np_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(f_i\)</span></th>
+<th><span class="math inline">\(\frac{(f_i-e_i)^2}{e_i}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(X&lt;1\)</span></td>
+<td style="text-align: left;"><p><span class="math inline">\(P(X&lt;1)\)</span></p>
+<p><span class="math inline">\(=P(Z&lt;-1.64)\)</span></p>
+<p><span class="math inline">\(=0.0505\)</span></p></td>
+<td style="text-align: center;">25.25</td>
+<td style="text-align: center;">12</td>
+<td>6.9530</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1&lt;X \le 2\)</span></td>
+<td style="text-align: left;"><p><span class="math inline">\(P(1&lt;X \le 2)\)</span></p>
+<p><span class="math inline">\(=P(-1.64&lt;Z\le -0.73)\)</span></p>
+<p><span class="math inline">\(=0.1826\)</span></p></td>
+<td style="text-align: center;">91.30</td>
+<td style="text-align: center;">94</td>
+<td>0.0798</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(2&lt;X \le 3\)</span></td>
+<td style="text-align: left;">0.3386</td>
+<td style="text-align: center;">169.30</td>
+<td style="text-align: center;">170</td>
+<td>0.0029</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(3 &lt;X \le 4\)</span></td>
+<td style="text-align: left;">0.2902</td>
+<td style="text-align: center;">145.10</td>
+<td style="text-align: center;">188</td>
+<td>12.6837</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(4&lt;X \le 5\)</span></td>
+<td style="text-align: left;">0.1149</td>
+<td style="text-align: center;">57.45</td>
+<td style="text-align: center;">28</td>
+<td>15.0966</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(5&lt;X\)</span></td>
+<td style="text-align: left;">0.0228</td>
+<td style="text-align: center;">11.40</td>
+<td style="text-align: center;">8</td>
+<td>1.0140</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td><span class="math inline">\(\chi^2=35.83\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="13Chi_squaredTest_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Critical value</strong></p>
+<p>At <span class="math inline">\(\alpha=0.05\)</span> , and for <span class="math inline">\(df\)</span>=6-1=5, <span class="math inline">\(\chi^2_{\alpha,5}=11.1\)</span></p>
+<p><strong>Decision</strong></p>
+<p>Since <span class="math inline">\(\chi^2&gt;\chi^2_{\alpha,5}\)</span> so we can reject the null hypothesis.</p>
+</section>
+<section id="uniform-distribution-continuous" class="level3" data-number="12.1.3">
+<h3 data-number="12.1.3" class="anchored" data-anchor-id="uniform-distribution-continuous"><span class="header-section-number">12.1.3</span> Uniform distribution (continuous)</h3>
+<p>To test whether a variable follows <strong>uniform distribution</strong> between <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span> we will illustrate the following example.</p>
+<p><strong>Problem 14.6</strong> Suppose X, the amount of time a person stays in bed after their alarm goes off, is uniformly distributed between 5 and <span class="math inline">\(b\)</span> minutes.Over 100 days, how long they slept past their alarm (X) were recorded (in minutes). However, only the number of days for which X within certain ranges was reported in the table below:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Time stays in bed</th>
+<th style="text-align: center;">No.&nbsp;of days</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>5&lt;X&lt;7</strong></td>
+<td style="text-align: center;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>7&lt;X&lt;8</strong></td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>8&lt;X&lt;10</strong></td>
+<td style="text-align: center;">38</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Total</strong></td>
+<td style="text-align: center;"><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Based on the data given above, test whether <span class="math inline">\(b\)</span> is equal to 10. Clearly state your hypotheses and use a significance level of <span class="math inline">\(\alpha = 5\%\)</span>.</p>
+<p><u><strong>Solution:</strong></u></p>
+<p>If the X, the amount of time a person stays in bed after their alarm goes off, is uniformly distributed between 5 and <span class="math inline">\(b\)</span> minutes then the data will fit the <strong>uniform distribution</strong> with parameter 5 to b=10 minutes. So following hypotheses can be formed:</p>
+<p><strong>Hypothesis</strong></p>
+<p>H0: The amount of time a person stays in bed after their alarm goes off, is uniformly distributed between 5 and <span class="math inline">\(b=10\)</span> minutes</p>
+<p>Ha: The amount of time a person stays in bed after their alarm goes off, is NOT uniformly distributed between 5 and <span class="math inline">\(b=10\)</span> minutes.</p>
+<p><strong>Test statistic calculation</strong></p>
+<p>If <span class="math inline">\(X\sim U(5,10)\)</span> then PDF, <span class="math display">\[f(x)=\frac{1}{10-5}=\frac{1}{5};\ \ 5&lt;x&lt;10\]</span></p>
+<p>So, <span class="math inline">\(P(5&lt;X&lt;7)=(7-5)*\frac{1}{5}=\frac{2}{5}\)</span> and so on</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Bed time (in mins)</strong></th>
+<th style="text-align: center;"><span class="math inline">\(f_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(p_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(e_i=np_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\frac{(f_i-e_i)^2}{e_i}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5&lt;X&lt;7</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;"><span class="math inline">\(\frac{2}{5}\)</span></td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">0.00</td>
+</tr>
+<tr class="even">
+<td>7&lt;X&lt;8</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{5}\)</span></td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">0.20</td>
+</tr>
+<tr class="odd">
+<td>8&lt;X&lt;10</td>
+<td style="text-align: center;">38</td>
+<td style="text-align: center;"><span class="math inline">\(\frac{2}{5}\)</span></td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">0.10</td>
+</tr>
+<tr class="even">
+<td><strong>Totals</strong></td>
+<td style="text-align: center;"><strong>100</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\chi^2=0.3\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical value</strong> At <span class="math inline">\(\alpha=5\%\)</span> and <span class="math inline">\(df=3-1=2\)</span>, <span class="math inline">\(\chi^2_{\alpha,2}=5.99\)</span>.</p>
+<p><strong>Decision</strong> Since, <span class="math inline">\(\chi^2&lt;\chi^2_{\alpha,2}\)</span> so we cannot reject null hypothesis. Hence the amount of time a person stays in bed after their alarm goes off, is uniformly distributed between 5 and <span class="math inline">\(b=10\)</span> minutes.</p>
+<p><strong>Problem 14.7</strong> Suppose Y , the number of minutes they are late to work is uniformly distributed between 0 and <span class="math inline">\(b\)</span> minutes. Over 100 days, how late they were to work (Y ) were recorded (in minutes). However, only the number of days for which Y fell within certain ranges was reported in the table below:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Time late to work</th>
+<th style="text-align: center;">No.&nbsp;of days</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>0&lt;Y&lt;2</strong></td>
+<td style="text-align: center;">39</td>
+</tr>
+<tr class="even">
+<td><strong>2&lt;Y&lt;3</strong></td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr class="odd">
+<td><strong>3&lt;Y&lt;5</strong></td>
+<td style="text-align: center;">36</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td style="text-align: center;"><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Based on the data given above, test whether <span class="math inline">\(b\)</span> is equal to 5. Clearly state your hypotheses and use a significance level of <span class="math inline">\(\alpha = 5\%\)</span>.</p>
+</section>
+</section>
+<section id="test-for-independence-categorical-data" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="test-for-independence-categorical-data"><span class="header-section-number">12.2</span> Test for Independence (Categorical Data)</h2>
+<p>To determine whether two categorical variables are independent summarized in a contingency table we use <strong>Chi-squared test of association /independence</strong>. That is, to determine whether the distribution of one categorical variable is the same across all categories of the other categorical variable.<br>
+</p>
+<p><strong>Consider the following example:</strong></p>
+<p>In an experiment to study the dependence of hypertension on smoking habits, the following data were taken on 180 individuals:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 21%">
+<col style="width: 27%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;"><strong>Non-smokers</strong></th>
+<th style="text-align: center;"><strong>Moderate Smokers</strong></th>
+<th style="text-align: center;"><strong>Heavy Smokers</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Hypertension</strong></td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>No hypertension</strong></td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">19</td>
+</tr>
+</tbody>
+</table>
+<p>Test the hypothesis that the presence or absence of <em>hypertension</em> is independent of <em>smoking habits</em>. Use a 0.05 level of significance.</p>
+<p><strong>Solution:</strong> We have to test the following hypothesis:</p>
+<p><span class="math inline">\(H_0:The \ \ column\ \ variable\ \ is\ \  independent\ \  of\ \ the\ \ row\ \ variable\)</span></p>
+<p><span class="math inline">\(H_a:The \ \ column\ \ variable\ \ is\ \ not\ \   independent\ \  of\ \ the\ \ row\ \ variable\)</span></p>
+<p><strong>Test statistic</strong></p>
+<p><span class="math display">\[
+\chi^2=\sum_{i=1}^r\sum_{j=1}^c \frac {(f_{ij}-e_{ij})^2}{e_{ij}}
+\]</span></p>
+<p>The sampling distribution of the test statistic is approximately chi-squared distributed with <span class="math inline">\((r-1)\times (c-1)\)</span> degrees of freedom, provided that the sample size is large.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(f_{ij}=\)</span> Observed frequency of <span class="math inline">\((i,j)^{th}\)</span> cell;</p>
+<p><span class="math inline">\(e_{ij}=\)</span>Expected frequency of <span class="math inline">\((i,j)^{th}\)</span> cell=<span class="math inline">\(\frac{Row \ \ i \ \ total \times Column \ \ j  \ \ total}{Sample \ \ size (n)}\)</span><br>
+</p>
+</div>
+</div>
+<p><strong>Table: Contingency table with Row total and Column total</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Non-smokers</th>
+<th style="text-align: center;">Moderate Smokers</th>
+<th style="text-align: center;">Heavy Smokers</th>
+<th style="text-align: center;"><strong>Row Total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Hypertension</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;"><strong>87</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">No hypertension</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;"><strong>93</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Column Total</strong></td>
+<td style="text-align: center;"><strong>69</strong></td>
+<td style="text-align: center;"><strong>62</strong></td>
+<td style="text-align: center;"><strong>49</strong></td>
+<td style="text-align: center;"><u><strong>180</strong></u></td>
+</tr>
+</tbody>
+</table>
+<p>For example,</p>
+<p><span class="math display">\[
+\boldsymbol {e_{11}=\frac{87\times69}{180}}
+\]</span></p>
+<p><strong>Chi-square Statistic calculation</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Observed,</strong> <span class="math inline">\(f_i\)</span></th>
+<th style="text-align: center;"><strong>Expected,</strong> <span class="math inline">\(e_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\frac{(f_i-e_i)^2}{e_i}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">33.35</td>
+<td style="text-align: center;">4.57</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">29.97</td>
+<td style="text-align: center;">1.21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">23.68</td>
+<td style="text-align: center;">1.68</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">35.65</td>
+<td style="text-align: center;">4.28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">32.03</td>
+<td style="text-align: center;">1.14</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">25.32</td>
+<td style="text-align: center;">1.14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\chi^2=14.46\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical value</strong> At <span class="math inline">\(\alpha =0.01\)</span> and with <span class="math inline">\(df=(2-1)*(3-1)=2\)</span>, <span class="math inline">\(\chi^2_\alpha =9.21\)</span></p>
+<p><strong>Decision</strong> Since <span class="math inline">\(\chi^2 &gt; \chi^2_\alpha\)</span> so reject the null hypothesis.</p>
+<p><strong>Interpretation/conclusion</strong> There is sufficient evidence at the <span class="math inline">\(5\%\)</span> significance level to infer that the <em>smoking habits (column variable)</em> is not independent of the <em>the presence or absence of hypertension (row variable)</em>, rather the two variables are associated.</p>
+<p><strong>Problem 14.8</strong> Suppose X, the amount of time a person stays in bed after their alarm goes off, is uniformly distributed between 5 and 10 minutes. Also, suppose Y , the number of minutes they are late to work is uniformly distributed between 0 and 5 minutes. Over 100 days, how long they slept past their alarm (X) and how late they were to work (Y ) were recorded (in minutes). However, only the number of days for which X and Y fell within certain ranges was reported in the table below:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;"><strong>5&lt;X&lt;7</strong></th>
+<th style="text-align: center;"><strong>7&lt;X&lt;8</strong></th>
+<th style="text-align: center;"><strong>8&lt;X&lt;10</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>0&lt;Y&lt;2</strong></td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td><strong>2&lt;Y&lt;3</strong></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="odd">
+<td><strong>3&lt;Y&lt;5</strong></td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">14</td>
+</tr>
+</tbody>
+</table>
+<p>Based on the data above, <strong>test</strong> whether X and Y are independent (that is, whether the rows and columns are independent). Clearly state your hypotheses and use a significance level of <span class="math inline">\(\alpha=5\%\)</span> .</p>
+<p><strong>Problem 14.9</strong> The contingency table shows the results of a random sample of students by the location of school and the number of those students achieving basic skill levels in three subjects. At <span class="math inline">\(\alpha = 0.01\)</span>, <strong>test</strong> the hypothesis that the variables (Subject vs.&nbsp;Location) are independent.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Reading</th>
+<th style="text-align: center;">Math</th>
+<th style="text-align: center;">Science</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Urban</strong></td>
+<td style="text-align: center;">43</td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">38</td>
+</tr>
+<tr class="even">
+<td><strong>Suburban</strong></td>
+<td style="text-align: center;">63</td>
+<td style="text-align: center;">66</td>
+<td style="text-align: center;">65</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Problem 14.10</strong> TheAthlete Injury Data by Stretching Status is given below:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 37%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;"><strong>Athlete has: Stretched</strong></th>
+<th style="text-align: center;"><strong>Athlete has: Not stretched</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Injury</strong></td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="even">
+<td><strong>No injury</strong></td>
+<td style="text-align: center;">211</td>
+<td style="text-align: center;">189</td>
+</tr>
+</tbody>
+</table>
+<p>Do these data suggest that the result of the athlete’s activity (Injury vs.&nbsp;No injury) is statistically independent of whether the athlete stretched prior to the activity (Stretched vs.&nbsp;Not stretched)?</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./12ANOVA_oneway.html" class="pagination-link" aria-label="Analysis of Variance">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./14Correlation.html" class="pagination-link" aria-label="Correlation and Simple Linear Regression">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Correlation and Simple Linear Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
