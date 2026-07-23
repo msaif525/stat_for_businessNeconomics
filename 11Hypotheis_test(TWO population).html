@@ -166,7 +166,7 @@ window.Quarto = {
           </li>
       </ul>
     </div>
-    <a href="https://github.com/Saifuddin86/stat_for_businessNeconomics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/msaif525/stat_for_businessNeconomics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
@@ -593,10 +593,10 @@ window.Quarto = {
 <p><span class="math inline">\(\mu_B\)</span> be the population mean of <span class="math inline">\(X\)</span>under condition B</p>
 <p>So the difference between the means is <span class="math inline">\(\mu_d=\mu_A-\mu_B\)</span></p>
 <p>To test the <strong>hypotheses:</strong></p>
-<p><span class="math display">\[H_0: \mu_d=0\]</span></p>
+<p><span class="math display">\[H_0: \mu_d=D_0\]</span></p>
 <p><span class="math display">\[H_1: \mu_d \ne 0\]</span></p>
 <p>the t<strong>est statistic</strong> is:</p>
-<p><span class="math display">\[t=\frac{\bar d -\mu_d}{s_d/ \sqrt{n} }\]</span></p>
+<p><span class="math display">\[t_0=\frac{\bar d -D_0}{s_d/ \sqrt{n} }\]</span></p>
 <p>which is Student t distributed with <span class="math inline">\(n-1\)</span> degrees of freedom, provided that the differences are normally distributed.</p>
 <p>The rejection rule is similar as one-sample t-test.<br>
 </p>
@@ -690,7 +690,7 @@ window.Quarto = {
 <th style="text-align: center;">Employee</th>
 <th style="text-align: center;">Before</th>
 <th style="text-align: center;">After</th>
-<th style="text-align: center;">Difference, <span class="math inline">\(d=After-Before\)</span></th>
+<th style="text-align: center;">Difference, <span class="math inline">\(d=\mathrm {After-Before}\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -763,15 +763,15 @@ window.Quarto = {
 </tbody>
 </table>
 <p><strong>Using calculator;</strong></p>
-<p><span class="math inline">\(\sum d=-309\)</span></p>
+<p><span class="math inline">\(\sum d=-259\)</span></p>
 <p><span class="math inline">\(\bar d= \frac{\sum d}{n}=\frac{-259}{11}=-28.09\)</span></p>
 <p><span class="math inline">\(s_D=\sqrt \frac{\sum d^2-n(\bar d)^2}{n-1}=25.81\)</span></p>
 <p><strong>Test statistic</strong></p>
-<p><span class="math display">\[t=\frac{\bar d-\mu_D}{s_D/\sqrt n}=\frac{-28.09-0}{25.81/\sqrt 11}=-3.609\]</span></p>
+<p><span class="math display">\[t_0=\frac{\bar d-D_0}{s_D/\sqrt n}=\frac{-28.09-0}{25.81/\sqrt 11}=-3.609\]</span></p>
 <p><strong>Critical value</strong></p>
 <p><strong>For</strong><span class="math inline">\(\alpha=0.05\)</span> and <span class="math inline">\(df=n-1=11-1=10\)</span>;</p>
-<p><span class="math display">\[-t_{\alpha/2}=t_{0.025}=-2.228\]</span></p>
-<p>Since <span class="math inline">\(t\)</span> falls in CR (<span class="math inline">\(t&lt;-t_{\alpha/2}\)</span>), so reject <span class="math inline">\(H_0\)</span>.</p>
+<p><span class="math display">\[-t_{\alpha/2}=-t_{0.025}=-2.228\]</span></p>
+<p>Since <span class="math inline">\(t_0\)</span> falls in CR (<span class="math inline">\(t_0&lt;-t_{\alpha/2}\)</span>), so reject <span class="math inline">\(H_0\)</span>.</p>
 <p>Hence we can conclude with 95% confidence that the cholesterol reading before and after nurse’s lecture are not same; actually after lecture mean cholesterol reading was decreased.</p>
 <p><strong>Problem 12.7 <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012</a>)</span></strong> Advertisements by Sylph Fitness Center claim that completing its course will result in losing weight. A random sample of eight recent participants showed the following weights before and after completing the course. At the 0.01 significance level, can we conclude the students lost weight?</p>
 <table class="caption-top table">
