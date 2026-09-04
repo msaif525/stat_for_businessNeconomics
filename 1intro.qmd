@@ -4,89 +4,118 @@
 
 **Statistics** is defined as the art and science of collecting, analyzing, presenting, and interpreting data.
 
-*Particularly* in business and economics, the information provided by collecting, analyzing, presenting, and interpreting data gives managers and decision makers a better understanding of the business and economic environment and thus enables them to make more informed and better decisions.
+*Particularly* in business and economics, the information provided by **collecting**, **analyzing**, **presenting**, and **interpreting** **data** gives managers and decision makers a better understanding of the business and economic environment and thus enables them to make more informed and better decisions.
+
+## Types of statistics
+
+**Descriptive Statistics**
+
+Most of the statistical information in newspapers, magazines, company reports, and other publications consists of data that are summarized and presented in a form that is easy for the reader to understand. Such summaries of data, which may be tabular, graphical, or numerical, are referred to as **descriptive statistics**.
+
+**Inferential statistics (Statistical Inference)**
+
+Many situations require information about a large group of elements (individuals, companies, voters, households, products, customers, and so on). But, because of time, cost, and other considerations, data can be collected from only a small portion of the group. The larger group of elements in a particular study is called the **population**, and the smaller group is called the **sample**. Formally, we use the following definitions.
+
+- **Population** A population is the set of all elements of interest in a particular study.
+
+- **Sample** A sample is a subset of the population.
+
+The process of conducting a survey to collect data for the entire population is called a **census**.
+
+The process of conducting a survey to collect data for a sample is called a **sample survey**.
+
+As one of its major contributions, statistics uses data from a sample to make estimates and test hypotheses about the characteristics of a population through a process referred to as **statistical inference**.
 
 ## Applications in Business and Economics
 
--   **Accounting** Public accounting firms use *statistical sampling* procedures when conducting audits for their clients.
+**Business Applications**
 
--   **Finance** Financial analysts use a variety of statistical information to guide their investment recommendations.
+- **Marketing:** Market segmentation, customer surveys, A/B testing for marketing campaigns, and sales forecasting.
 
--   **Marketing** Electronic scanners at retail checkout counters collect data for a variety of marketing research applications.
+- **Finance:** Risk assessment, portfolio analysis, and stock price trend evaluation.
 
--   **Production** Today’s emphasis on quality makes quality control an important application of statistics in production.
+- **Operations:** Quality control using control charts, inventory management, and ongoing process improvement.
 
--   **Economics** Economists frequently provide forecasts about the future of the economy or some aspect of it. They use a variety of statistical information in making such forecasts.
+- **Human Resources:** Employee performance analysis and salary benchmarking.
+
+**Economics Applications**
+
+- **Macroeconomics:** GDP growth analysis, inflation tracking, and unemployment rate estimation.
+
+- **Microeconomics:** Demand and supply estimation alongside price elasticity analysis.
+
+- **Policy Analysis:** Evaluating the economic impacts of tax changes and minimum wage adjustments.
+
+- **Econometrics:** Employing regression models to empirically test economic theories, such as the relationship between income and consumption.
+
+**Common Statistical Techniques Across Both Fields**
+
+- **Descriptive Statistics:** Utilizing metrics like the mean and variance to summarize and interpret baseline data.
+
+- **Hypothesis Testing:** Testing specific assumptions, such as evaluating whether a new pricing strategy leads to a measurable increase in sales.
+
+- **Regression Analysis:** Modeling relationships to predict key variables like demand, sales volume, or pricing.
+
+- **Time Series Analysis:** Analyzing historical trends over time to forecast future metrics, such as revenue streams or stock prices.
+
+- **Probability Distributions:** Quantifying uncertainty to model operational defect rates and financial risks.
 
 ## Data
 
 **Data** are the facts and figures collected, analyzed, and summarized for presentation and interpretation. All the data collected in a particular study are referred to as the data set for the study.
 
-@tbl-tab1.1 shows a data set containing information for 25 mutual funds that are part of the *Morningstar Funds500* for 2008.
+@tbl-tab1_1 shows a data set containing information for 10 restaurant.
 
-| Fund Name | Fund Type | Net Asset Value (\$) | 5-Year Average Return (%) | Expense Ratio (%) | Morningstar Rank |
-|:---|:--:|:--:|:--:|:--:|:--:|
-| American Century Intl. Disc | IE | 14.37 | 30.53 | 1.41 | 3-Star |
-| American Century Tax-Free Bond | FI | 10.73 | 3.34 | 0.49 | 4-Star |
-| American Century Ultra | DE | 29.84 | 15.04 | 0.97 | 3-Star |
-| Artisan Small Cap | DE | 16.52 | 18.87 | 1.25 | 4-Star |
-| Brown Cap Small | DE | 33.97 | 15.53 | 1.08 | 3-Star |
-| DFA U.S. Micro Cap | DE | 18.33 | 17.57 | 0.52 | 5-Star |
-| Fidelity Contrafund | DE | 49.80 | 12.36 | 0.89 | 4-Star |
-| Fidelity Overseas | IE | 48.99 | 23.06 | 1.06 | 3-Star |
-| Fidelity Sel Electronics | DE | 22.40 | 17.70 | 0.89 | 4-Star |
-| Fidelity Sh-Term Bond | FI | 17.46 | 4.10 | 0.45 | 3-Star |
-| Gabelli Asset AAA | DE | 48.84 | 15.70 | 1.36 | 4-Star |
-| Kalmar Grwth Sm Cp | DE | 40.13 | 16.20 | 1.25 | 3-Star |
-| Mairs & Power Grwth | DE | 27.64 | 12.70 | 0.69 | 5-Star |
-| Matthews Pacific Tiger | IE | 40.07 | 19.51 | 1.05 | 4-Star |
-| Oakmark I | DE | 37.78 | 9.57 | 1.06 | 4-Star |
-| PIMCO Emerg Mkts Bd D | FI | 26.39 | 12.31 | 1.00 | 3-Star |
-| RS Value A | DE | 22.67 | 15.14 | 1.44 | 3-Star |
-| T. Rowe Price Latin Am. | IE | 33.59 | 32.06 | 1.24 | 4-Star |
-| T. Rowe Price Mid Val | DE | 26.37 | 14.40 | 0.80 | 4-Star |
-| Thornburg Int'l Val | IE | 21.10 | 23.64 | 1.40 | 5-Star |
-| USAA Income | FI | 12.10 | 5.13 | 0.62 | 3-Star |
-| Vanguard Sel Val | DE | 21.23 | 16.20 | 0.44 | 4-Star |
-| Vanguard Sh-Tm TE | FI | 11.20 | 3.80 | 0.13 | 3-Star |
-| Vanguard Sm Cp Idx | DE | 25.32 | 17.01 | 0.23 | 5-Star |
-| Wasatch Sm Cp Growth | DE | 35.41 | 13.98 | 1.19 | 4-Star |
+| Restaurant Name | Cuisine Type | Average Meal Price (\$) | Customer Satisfaction (%) | Delivery Fee (\$) | Quality Rating |
+|:-----------|:----------:|:--------------:|:----------:|:----------:|:----------:|
+| Bella Italia | Italian | 22.50 | 88.5 | 3.50 | 4-Star |
+| Taco Fiesta | Mexican | 11.20 | 79.0 | 1.99 | 3-Star |
+| Dragon Wok | Asian | 14.80 | 92.4 | 2.50 | 5-Star |
+| Burger Barn | American | 13.50 | 81.0 | 2.00 | 3-Star |
+| Green Leaf Cafe | Vegetarian | 16.00 | 85.2 | 3.00 | 4-Star |
+| Tokyo Ramen | Asian | 15.75 | 94.0 | 2.50 | 5-Star |
+| Mama Mia Pasta | Italian | 24.00 | 76.8 | 4.00 | 3-Star |
+| The Daily Bagel | Bakery | 8.50 | 83.5 | 1.50 | 4-Star |
+| Sizzling Steakhouse | American | 32.00 | 90.1 | 4.50 | 5-Star |
+| Curry Express | Indian | 15.00 | 86.4 | 2.75 | 4-Star |
 
-: Data Set For 25 Mutual Funds {#tbl-tab1.1}
+: Summary of 10 sampled local dining establishments
 
 ## Elements, Variables, and Observations
 
-**Elements** are the entities on which data are collected. For the data set in Table 1.1 each individual mutual fund is an element: the element names appear in the first column. With 25 mutual funds, the data set contains 25 elements.
+**Elements** are the entities on which data are collected.
 
-A **variable** is a characteristic of interest for the elements.
+For the data set in @tbl-tab1_1, each individual restaurant is an element: the element names appear in the first column. With 10 restaurants, the data set contains 10 elements.
 
-The data set in Table 1.1 includes the following five variables:
+A **variable** is a *characteristic* of interest for the elements. The data set includes the following five variables:
 
--   *Fund Type*: The type of mutual fund
+- **Cuisine Type:** The culinary category or style of food served by the restaurant.
 
--   *Net Asset Value (\$)*: The closing price per share on December 31, 2007
+- **Average Meal Price (\$):** The average cost of a standard meal per customer in US dollars.
 
--   *5-Year Average Return (%)*: The average annual return for the fund over the past 5 years
+- **Customer Satisfaction (%):** The percentage score reflecting positive feedback from surveyed diners.
 
--   *Expense Ratio*: The percentage of assets deducted each fiscal year for fund expenses
+- **Delivery Fee (\$):** The flat fee charged for delivering an order to the customer.
 
--   *Morningstar Rank*: The overall risk-adjusted star rating for each fund; Morningstar ranks go from a low of 1-Star to a high of 5-Stars
+- **Quality Rating:** The overall customer or inspection rating assigned to the establishment, ranging from 1-Star to 5-Stars.
 
-**Observation** *Measurements* collected on each variable for every element in a study provide the data. The set of measurements obtained for a particular element is called an *observation*.
+An **observation** is the set of measurements obtained for a particular element.
 
--   Referring to Table 1.1 we see that the set of measurements for the first observation (American Century Intl. Disc) is IE, 14.37, 30.53, 1.41, and 3-Star.
+The set of measurements obtained for a particular element is called an observation.
+
+- Referring to @tbl-tab1_1, we see that the set of measurements for the first observation (Bella Italia) is Italian, 22.50, 88.5, 3.50, and 4-Star.
 
 ## Scales of Measurement
 
 Data collection requires one of the following scales of measurement: *nominal*, *ordinal*, *interval*, or *ratio* .
 
--   When the data for a variable consist of labels or names used to identify an attribute of the element, the scale of measurement is considered a *nominal* scale ( **Example: Fund Type**).
+- When the data for a variable consist of labels or names used to identify an attribute of the element, the scale of measurement is considered a *nominal* scale ( **Example: Cuisine Type**).
 
--   The scale of measurement for a variable is called an *ordinal* scale if the data exhibit the properties of nominal data and the order or rank of the data is meaningful ( **Example: Morningstar Rank**).
+- The scale of measurement for a variable is called an *ordinal* scale if the data exhibit the properties of nominal data and the order or rank of the data is meaningful ( **Example: Quality Rating**).
 
--   The scale of measurement for a variable is an *interval* scale if the data have all the properties of ordinal data and the interval between values is expressed in terms of a fixed unit of measure. Interval data are always numeric ( **Example: Temperature** ).
+- The scale of measurement for a variable is an *interval* scale if the data have all the properties of ordinal data and the interval between values is expressed in terms of a fixed unit of measure. Interval data are always numeric ( **Example: Temperature** ).
 
--   The scale of measurement for a variable is a *ratio* scale if the data have all the properties of interval data and the ratio of two values is meaningful ( **Example: distance, height, weight,time etc.**).
+- The scale of measurement for a variable is a *ratio* scale if the data have all the properties of interval data and the ratio of two values is meaningful ( **Example: distance, height, weight,time etc.**).
 
 *This scale requires that a zero value be included to indicate that nothing exists for the variable at the zero point.*
 
@@ -96,27 +125,27 @@ Data can be classified as either *quantitative or categorical* .
 
 **Quantitative Data (Numerical Data)**
 
--   Data that represents numerical values.
+- Data that represents numerical values.
 
--   Example: Heights of people, temperatures, test scores.
+- **Example**: Heights of people, temperatures, test scores.
 
--   Subtypes:
+- Subtypes:
 
-    -   **Discrete Data**: Countable values (e.g., number of students in a class).
+  - **Discrete Data**: *Countable* values (e.g., number of students in a class).
 
-    -   **Continuous Data**: Measurable values that can take any value within a range (e.g., weight, time).
+  - **Continuous Data**: *Measurable* values that can take **any value** within a range (e.g., weight, time).
 
 **Qualitative Data (Categorical Data)**
 
--   Data that represents categories or labels.
+- Data that represents categories or labels.
 
--   Example: Colors of cars, types of animals, survey responses (e.g., yes/no).
+- Example: Colors of cars, types of animals, survey responses (e.g., yes/no).
 
--   Subtypes:
+- Subtypes:
 
-    -   **Nominal Data**: Categories without a natural order (e.g., gender, blood type).
+  - **Nominal Data**: Categories without a natural order (e.g., gender, blood type).
 
-    -   **Ordinal Data**: Categories with a meaningful order (e.g., rankings, education levels).
+  - **Ordinal Data**: Categories with a meaningful order (e.g., rankings, education levels).
 
 The statistical analysis appropriate for a particular variable depends upon whether the variable is categorical or quantitative.
 
@@ -124,29 +153,41 @@ The statistical analysis appropriate for a particular variable depends upon whet
 
 For purposes of statistical analysis, distinguishing between cross-sectional data and time series data is important.
 
-**Cross-sectional data** are data collected at the same or approximately the same point in time. The data in @tbl-tab1.1 are cross-sectional because they describe the five variables for the 25 mutual funds at the same point in time.
+**Cross-sectional data** are data collected at the **same** or **approximately the same point in time**. The data in @tbl-tab1_1 are cross-sectional because they describe the five variables for the 25 mutual funds at the same point in time.
 
-**Time series data** are data collected over several time periods. For example, the time series in Figure 1.1 shows the U.S. average price per gallon of conventional regular gasoline between 2006 and 2009.
+**Time series data** are data collected **over several time periods**. For example, the time series in @fig-figGDP_BD shows the GDP gowth (%) of Bangladesh 1990 and 2024.
 
-![U.S. Average price per gallon for conventional regular gasoline](FIGURE%201.1.png){#fig-fig1.1}
+```{r}
+#| label: fig-figGDP_BD
+#| fig-cap: Bangladesh GDP Growth Rate (1990–2024)
 
-## Descriptive Statistics
+library(ggplot2)
+gdp_data <- data.frame(
+  Year = 1990:2024,
+  Growth = c(5.62, 3.34, 5.04, 4.57, 4.08, 4.93, 4.62, 5.40,
+             5.23, 4.67, 5.29, 5.08, 4.42, 4.74, 5.24, 6.54,
+             6.67, 7.06, 6.01, 5.05, 5.57, 6.46, 6.52, 6.01,
+             6.06, 6.55, 7.11, 6.59, 7.32, 7.88, 3.45, 6.94,
+             7.10, 5.78, 5.40)
+)
 
-Most of the statistical information in newspapers, magazines, company reports, and other publications consists of data that are summarized and presented in a form that is easy for the reader to understand. Such summaries of data, which may be tabular, graphical, or numerical, are referred to as **descriptive statistics**.
+ggplot(gdp_data, aes(x = Year, y = Growth)) +
+  geom_line(color = "steelblue", linewidth = 1) +
+  labs(x = "Year", y = "Growth Rate (%)") +
+  scale_x_continuous(breaks = seq(1990,2024,by=5))+ 
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 0, vjust = 0.5))
+```
 
-## Inferential statistics (Statistical Inference)
+## Data vs. Information
 
-Many situations require information about a large group of elements (individuals, companies, voters, households, products, customers, and so on). But, because of time, cost, and other considerations, data can be collected from only a small portion of the group. The larger group of elements in a particular study is called the **population**, and the smaller group is called the **sample**. Formally, we use the following definitions.
+**Data:** The raw, unorganized facts, symbols, or measurements collected from a source. On its own, data is "context-poor" and typically lacks meaning.
 
--   **Population** A population is the set of all elements of interest in a particular study.
+- **Examples:** Individual test scores, a list of daily temperatures, or raw survey responses.
 
--   **Sample** A sample is a subset of the population.
+**Information:** Data that has been processed, organized, or structured to make it meaningful and useful. It provides context and answers specific questions.
 
-The process of conducting a survey to collect data for the entire population is called a **census**.
-
-The process of conducting a survey to collect data for a sample is called a **sample survey**.
-
-As one of its major contributions, statistics uses data from a sample to make estimates and test hypotheses about the characteristics of a population through a process referred to as **statistical inference**.
+- **Examples:** The average test score of a class, a trend line showing rising temperatures, or a summary report of survey findings.
 
 ## Exercise
 

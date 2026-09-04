@@ -4,3 +4,7 @@
 .Ruserdata
 /.quarto/
 5randomvariable_and_discrete probability dist.qmd
+6continuous_r.v.qmd
+
+**/*.quarto_ipynb
+.positai
