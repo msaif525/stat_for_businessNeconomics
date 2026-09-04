@@ -79,7 +79,7 @@ As one of its major contributions, statistics uses data from a sample to make es
 | Sizzling Steakhouse | American | 32.00 | 90.1 | 4.50 | 5-Star |
 | Curry Express | Indian | 15.00 | 86.4 | 2.75 | 4-Star |
 
-: Summary of 10 sampled local dining establishments {tbl-tbl-tab1_1}
+: Summary of 10 sampled local dining establishments {#tbl-tab1_1}
 
 ## Elements, Variables, and Observations
 
