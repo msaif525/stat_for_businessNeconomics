@@ -20,11 +20,11 @@ Statistical hypothesis are stated in two forms- (i) Null hypothesis ($H_0$) and 
 
 Both null and alternative hypothesis are the written about the parameter of interest based on the claim.
 
--   We will always state the null hypothesis as an **equality claim**.
+- We will always state the null hypothesis as an **equality claim**.
 
--   However, when the alternative hypothesis is stated with the **"\< "** sign, the implicit claim in the null hypothesis can be taken as **" ≥ "** or **"="** sign.
+- However, when the alternative hypothesis is stated with the **"\< "** sign, the implicit claim in the null hypothesis can be taken as **" ≥ "** or **"="** sign.
 
--   When the alternative hypothesis is stated with the **"\>"** sign, the implicit claim in the null hypothesis can be taken as **"≤"** or **"="** sign.
+- When the alternative hypothesis is stated with the **"\>"** sign, the implicit claim in the null hypothesis can be taken as **"≤"** or **"="** sign.
 
 ## Developing hypotheses
 
@@ -62,31 +62,27 @@ $H_1: \mu \ne 72$
 
 ## Types of test based on alternative hypothesis $H_1$
 
--   $H_1: \mu< \mu_0$ (Lower tailed)
+- $H_1: \mu< \mu_0$ (Lower tailed)
 
--   $H_1: \mu> \mu_0$ (Upper tailed)
+- $H_1: \mu> \mu_0$ (Upper tailed)
 
--   $H_1: \mu \ne \mu_0$ (Two-tailed)
+- $H_1: \mu \ne \mu_0$ (Two-tailed)
 
-## Types of error in hypothesis test
+## Types of error in hypothesis test and P-value
 
 While testing a statistical hypothesis concerning population parameter we commit two types of errors.
 
--   **Type I error** occurs when we **reject** a **TRUE** $H_0$
+- **Type I error** occurs when we **reject** a **TRUE** $H_0$
 
--   **Type II error** occurs when we **FAIL to reject** a **FALSE** $H_0$
+- **Type II error** occurs when we **FAIL to reject** a **FALSE** $H_0$
 
--   The **Level of significance** is the probability of comiting **Type** **I error**. It is denoted by $\alpha$.
+- The **Level of significance** is the probability of comiting **Type** **I error**. It is denoted by $\alpha$.
 
-$$
-\alpha= P(Type \ \ I \ \ error)
-$$
+$$\alpha= P(Type \ \ I \ \ error)$$
 
--   The probability of committing a **Type II error**, denoted by $\beta$.
+- The probability of committing a **Type II error**, denoted by $\beta$.
 
-$$
-\beta =P(Type \ \ II \ \ error)
-$$
+$$\beta =P(Type \ \ II \ \ error)$$
 
 ::: callout-important
 ## Note
@@ -94,15 +90,35 @@ $$
 **Type I** **error** is more serious than **Type II** error. Because rejecting a TRUE statement is more devastating than FAIL to reject a FALSE statement. So, we always try to keep our probability of Type I error as small as possible (1% or at most 5%). For more detail see [@keller2014].
 :::
 
+- **P-value:** If the null hypothesis is true, then a P-value (or probability value) of a hypothesis test is the probability of obtaining a sample statistic with a value as extreme or more extreme than the one determined from the sample data.
+
+  The smaller the P-value of the test, the more evidence there is to reject the null hypothesis. A very small P-value indicates an unusual event
+
+::: callout-important
+## P-value Explanation
+
+A hypothesis test functions like a **legal trial**. You start by assuming the **null hypothesis (**$H_0$) is true, just as a jury assumes *a defendant is innocent until proven guilty.*
+
+The data you collect acts as the evidence. By comparing this evidence to your initial assumption, you calculate a **p-value** (ranging from 0 to 1), which quantifies how well the sample data "fits" with $H_0$.
+
+- **A high p-value** suggests the evidence is consistent with the null hypothesis.
+
+- **A low p-value** indicates a sharp disagreement between the data and the null hypothesis.
+
+When the p-value is small enough, it provides "beyond a reasonable doubt" proof that the initial assumption is unlikely. At this point, you **reject the null hypothesis** and shift your belief to the **alternative hypothesis (**$H_1$).
+:::
+
 **So, how these hypotheses will be tested?**
 
 To test a hypothesis we have to determine
 
--   a **test-statistic**; and
+- a **test-statistic**; and
 
--   **Critical/Rejection region** based on the sampling distribution of test-statistic for a given $\alpha$ ;
+- **Critical/Rejection region** based on the sampling distribution of test-statistic for a given $\alpha$ ;
 
--   If the value of test-statistic **falls** in **Critical/Rejection region**, then we reject Null ($H_0$) hypothesis; otherwise not.
+- If the value of test-statistic **falls** in **Critical/Rejection region**, then we reject Null ($H_0$) hypothesis; otherwise not. Or,
+
+- If **P-value**$\le\alpha$ then we reject Null ($H_0$) hypothesis.
 
 ## Hypothesis testing concerning population mean ($\mu$)
 
@@ -116,19 +132,107 @@ The following two hypotheses tests are used concerning population mean ($\mu$):
 
 When sampling is from a **normally distributed population** or **sample size is sufficiently large** and t**he population variance is known**, the test statistic for testing $H_0: \mu=\mu_0$ at $\alpha$ is
 
-$$
-z=\frac{\bar x-\mu_0}{\sigma /\sqrt n}
-$$
+$$z_0=\frac{\bar x-\mu_0}{\sigma /\sqrt n}$$
 
 **Decision (Critical value approach):** If calculated $z$ falls in rejection region (CR) , then reject $H_0$ . Otherwise, do not reject $H_0$.
 
--   For lower tailed test, reject $H_0$ if $z<-z_\alpha$ ;
+- For lower tailed test, reject $H_0$ if $z_0<-z_\alpha$ ;
 
--   For upper tailed test, reject $H_0$ if $z> z_\alpha$ ;
+- For upper tailed test, reject $H_0$ if $z_0> z_\alpha$ ;
 
--   For two-tailed test, reject $H_0$ if $z<-z_{\alpha/2}$ or $z>z_{\alpha/2}$ .
+- For two-tailed test, reject $H_0$ if $z_0<-z_{\alpha/2}$ or $z_0>z_{\alpha/2}$ .
 
-**Problem 10.1** The waiting time for customers at MacBurger Restaurants follows a normal distribution with a mean of 3 minutes and a standard deviation of 1 minute. At the Warren Road MacBurger, the quality-assurance department sampled 50 customers and found that the mean waiting time was 2.75 minutes. At the 0.05 significance level, can we conclude that the mean waiting time is less than 3 minutes?
+**Decision (P-value approach)**
+
++----------------------------------+--------------------------+
+| Alternative Hypothesis           | P-value                  |
++==================================+==========================+
+| $H_1 : \mu<\mu_0$ (Lower-tailed) | $P(Z<z_0)$               |
++----------------------------------+--------------------------+
+| $H_1 : \mu>\mu_0$ (Upper-tailed) | $P(Z>z_0)$               |
++----------------------------------+--------------------------+
+| $H_1 : \mu\ne\mu_0$ (Two-tailed) | $P(Z<-|z_0|)+P(Z>|z_0|)$ |
+|                                  |                          |
+|                                  | $=2P(Z<-|z_0|)$          |
+|                                  |                          |
+|                                  | $=2P(Z>|z_0)|$           |
++----------------------------------+--------------------------+
+
+::: callout-note
+## E x e r c i s e s 10.1
+
+**Methods**
+
+1)  **Consider the following hypothesis test:**
+
+$$\begin{aligned}
+H_0: \mu &\geq 20 \\
+H_a: \mu &< 20
+\end{aligned}$$
+
+A sample of 50 provided a sample mean of 19.4. The population standard deviation is 2.
+
+a.  Compute the value of the test statistic.
+b.  What is the $p$-value?
+c.  Using $\alpha = 0.05$, what is your conclusion?
+d.  What is the rejection rule using the critical value? What is your conclusion?
+
+**Solution:**
+
+a\. Test statistic, $z_0=\frac{\bar x-\mu_0}{\sigma /\sqrt {n}}=\frac{19.4-20}{2/\sqrt {50}}=-2.12132\approx -2.12$
+
+b\. For lower-tail test, **P-value** $=P(Z<z_0)=P(Z<-2.12)=0.0170$
+
+c\. Since **P-value** \< $\alpha$ ; so reject $H_0$.
+
+d\. For $\alpha =0.05$, critical value is $-z_{\alpha}=-1.645$. Since $z_0<-z_{\alpha}$ that is $z_0$ falls in **Critical region (CR)** so we reject the $H_0$.
+
+2)  **Consider the following hypothesis test:**
+
+$$\begin{aligned}
+H_0: \mu &\leq 25 \\
+H_a: \mu &> 25
+\end{aligned}$$
+
+A sample of 40 provided a sample mean of 26.4. The population standard deviation is 6.
+
+a.  **Compute** the value of the test statistic.
+b.  What is the $p$-value?
+c.  At $\alpha = 0.01$, what is your conclusion?
+d.  What is the rejection rule using the critical value? What is your conclusion?
+
+**Solution:** Do it yourself.
+
+3)  **Consider the following hypothesis test:**
+
+$$\begin{aligned}
+H_0: \mu &= 15 \\
+H_a: \mu &\neq 15
+\end{aligned}$$
+
+A sample of 50 provided a sample mean of 14.15. The population standard deviation is 3.
+
+a.  Compute the value of the test statistic.
+b.  What is the $p$-value?
+c.  At $\alpha = 0.05$, what is your conclusion?
+d.  What is the rejection rule using the critical value? What is your conclusion?
+
+**Solution:**
+
+a\. Test statistic, $z_0=\frac{\bar x-\mu_0}{\sigma /\sqrt {n}}=\frac{14.15-15}{3/\sqrt {50}}=-2.003\approx -2.00$.
+
+b\. For TWO-tailed test, P-value $=P(Z<-2.00)+P(Z>2.00)=0.0228+0.0228=0.0456$.
+
+c\. Since **P-value** \< $\alpha$ ; so reject $H_0$.
+
+d\. For $\alpha =0.05$, critical value is $\pm z_{\alpha/2}=\pm1.96$. Since $z_0<-z_{\alpha/2}$ that is $z_0$ falls in **Critical region (CR)** so we reject the $H_0$.
+:::
+
+**Problem 10.1** The waiting time for customers at MacMillan Restaurants follows a normal distribution with a mean of 3 minutes and a standard deviation of 1 minute. At the Mirpur Road MacMillan, the quality-assurance department sampled 50 customers and found that the mean waiting time was 2.75 minutes.
+
+a\) At the 0.05 significance level, can we conclude that the mean waiting time is less than 3 minutes?
+
+b\) **Compute** P-value and conclude whether the mean waiting time is less than 3 minutes
 
 **Problem 10.2** At the time she was hired as a server at the Grumney Family Restaurant, Beth Brigden was told, “You can average \$80 a day in tips.” Assume the population of daily tips is normally distributed with a standard deviation of \$3.24. Over the first 35 days she was employed at the restaurant, the mean daily amount of her tips was \$84.85. At the 0.01 significance level, can Ms. Brigden conclude that her daily tips average more than \$80?\
 
@@ -138,33 +242,64 @@ $$
 
 When sampling is from a **normally distributed population** or **sample size is sufficiently large** and t**he population variance is unknown**, the test statistic for testing $H_0: \mu=\mu_0$ at $\alpha$ is
 
-$$
-t=\frac{\bar x-\mu_0}{s /\sqrt n}
-$$
+$$t_0=\frac{\bar x-\mu_0}{s /\sqrt n}$$
 
 Test statistic $t$ follows a Student’s 𝑡 distribution with $(n - 1)$ degrees of freedom.
 
 **Decision (Critical value approach):** If calculated $t$ falls in rejection region (CR) , then reject $H_0$ . Otherwise, do not reject $H_0$.
 
--   For lower tailed test, reject $H_0$ if $t<-t_\alpha$ ;
+- For lower tailed test, reject $H_0$ if $t_0<-t_\alpha$ ;
 
--   For upper tailed test, reject $H_0$ if $t> t_\alpha$ ;
+- For upper tailed test, reject $H_0$ if $t_0> t_\alpha$ ;
 
--   For two-tailed test, reject $H_0$ if $t<-t_{\alpha/2}$ or $t>t_{\alpha/2}$ .
+- For two-tailed test, reject $H_0$ if $t_0<-t_{\alpha/2}$ or $t_0>t_{\alpha/2}$ .
+
+**P-value calculation for t-statistic:**
+
+Exact P-value calculation needs using of calculus applied to PDF of t-distribution. But there are a number of tools like `Excel, Spreadsheet, R`, etc. which provide P-value.
+
+a\) In `R` , `pt(q, df, lower.tail=TRUE)` is used to compute **left-tail area** of a given value of `q`.
+
+b\) In `Excel`, `=T.DIST.RT(x,deg_freedom)` is used to compute **right-tail area** of a given value of `x`.
 
 **Problem 10.4** Annual per capita consumption of milk is 21.6 gallons (*Statistical Abstract of the United States: 2006*). Being from the Midwest, you believe milk consumption is higher there and wish to support your opinion. A sample of 16 individuals from the Midwestern town of Webster City showed a sample mean annual consumption of 24.1 gallons with a standard deviation of $s=4.8$ .
 
-a\) Develop a hypothesis test that can be used to determine whether the mean annual consumption in Webster City is higher than the national mean.
+a\) **Develop** a hypothesis test that can be used to determine whether the mean annual consumption in Webster City is higher than the national mean.
 
-b\) Test the hypothesis at $\alpha=0.05$ .
+b\) **Test** the hypothesis at $\alpha=0.05$ .
 
-c\) Draw a conclusion.
+c\) **Draw** a conclusion.
 
 **Problem 10.5** The mean length of a small counterbalance bar is 43 millimeters. The production supervisor is concerned that the adjustments of the machine producing the bars have changed. He asks the Engineering Department to investigate. Engineer selects a random sample of 10 bars and measures each. The results are reported below in millimeters.
 
 42, 39, 42, 45, 43, 40, 39, 41, 40, 42
 
 Is it reasonable to conclude that there has been a change in the mean length of the bars?
+
+## Hypothesis test of a Population variance
+
+When sampling is from a **normally distributed population** or **sample size is sufficiently large** the test statistic to test the $H_o: \sigma^2=\sigma^2 _0$ is at $\alpha$ level of significance:
+
+$$\chi^2_0=\frac{(n-1)s^2}{\sigma^2_0}$$
+
+Where $\chi^2 _0$ follows the $\chi^2$-distribution with degrees of freedom $\nu=n-1$ .
+
+**Decision rule for rejecting** $H_0$**:**
+
+| Alternative hypothesis | Rejection rule |
+|----|----|
+| $H_1:\sigma^2<\sigma^2_0$ | $\chi^2_0<\chi^2_{1-\alpha}$ |
+| $H_1:\sigma^2>\sigma^2_0$ | $\chi^2_0>\chi^2_{\alpha}$ |
+| $H_1: \sigma^2 \ne \sigma^2_0$ | $\chi^2_0<\chi^2_{1-\alpha/2}$ OR $\chi^2_0>\chi^2_{\alpha/2}$ |
+
+**Problem :** A manufacturer of car batteries claims that the life of the company’s batteries is approximately normally distributed with a standard deviation equal to 0.9 year. If a random sample of 10 of these batteries has a standard deviation of 1.2 years, do you think that $\sigma$ \>0.9 year? Use a 0.05 level of significance.
+
+**Problem :** The content of containers of a particular lubricant is known to be normally distributed with a variance of 0.03 liter. A random sample of 10 containers are `10.2, 9.7, 10.1, 10.3, 10.1, 9.8, 9.9, 10.4, 10.3, and 9.8` liters. Test the hypothesis that $\sigma^2=0.03$ against the alternative that $\sigma^2 \ne 0.03$.\
+\
+\
+\
+
+## Hypothesis test of a Population proportion
 
 ## Normality test
 
@@ -186,26 +321,23 @@ A number of normality tests are available; of them a common test is **Shapiro-Wi
 
 **Shapiro-Wilk Test Statistic W**
 
-$$
-W=\frac{(\sum_{i=1}^n a_i x_{(i)})^2}{\sum_{i=1}^n (x_i-\bar x)^2}
-$$
+$$W=\frac{(\sum_{i=1}^n a_i x_{(i)})^2}{\sum_{i=1}^n (x_i-\bar x)^2}$$
 
 Where,
 
--   $x_{(i)}$ : the $i^{th}$ **order statistic** (i.e., the *i*-th smallest value in the sample)
+- $x_{(i)}$ : the $i^{th}$ **order statistic** (i.e., the *i*-th smallest value in the sample)
 
--    $\bar x$: the **sample mean**
+- $\bar x$: the **sample mean**
 
--    $a_i$ : constants calculated based on the **expected values and variances** of order statistics from a **standard normal distribution (**Tabulated in Shapiro Wilk Table)
+- $a_i$ : constants calculated based on the **expected values and variances** of order statistics from a **standard normal distribution (**Tabulated in Shapiro Wilk Table)
 
--   $n$: sample size
-
+- $n$: sample size
 
 **Hypotheses:**
 
--    **Null Hypothesis** $H_0$: The data are **normally distributed**.
+- **Null Hypothesis** $H_0$: The data are **normally distributed**.
 
--   **Alternative** $H_1$: The data are **not normally distributed**.
+- **Alternative** $H_1$: The data are **not normally distributed**.
 
 We reject $H_0$ if the **p-value** is less than our significance level (e.g., 0.05).
 
@@ -220,8 +352,7 @@ shapiro.test(uniform.data)
 
 ```
 
-The p-value<0.05 implies (reject $H_0$) that the data is not normally distributed. 
-
+The p-value\<0.05 implies (reject $H_0$) that the data is not normally distributed.
 
 ```{r}
 set.seed(313)
@@ -229,4 +360,4 @@ normal.data<-rnorm(100,5,1.5)
 shapiro.test(normal.data) 
 ```
 
-The p-value>0.05 implies (do not reject $H_0$) that the data is  normally distributed. 
+The p-value $>0.05$ implies (do not reject $H_0$) that the data is normally distributed.

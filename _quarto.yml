@@ -23,7 +23,7 @@ book:
     - 3descriptive_numer_measures.qmd
     - 4Probability.qmd
     - 5randomvariable_and_Discrete_dist.qmd
-    #- 6.1discrete_r.v_special.qmd
+    ##- 6.1discrete_r.v_special.qmd
     - 6continuous_Dist.qmd
     - 7Further_topics_on_rv.qmd
     - 8sampling_and_sampling_distributions.qmd

@@ -11,7 +11,7 @@ editor_options:
 
 A frequency distribution is a tabular summary of data showing the number (frequency) of items in each of several non overlapping classes.
 
-**Example 2.1** Consider the following data shown in @tbl-tbl1.
+**Example 2.1** Consider the following data shown in @tbl-tbl2_1.
 
 |              |              |              |
 |:-------------|:-------------|:-------------|
@@ -33,7 +33,7 @@ A frequency distribution is a tabular summary of data showing the number (freque
 | Coke Classic | Diet Coke    | Sprite       |
 | Coke Classic | Pepsi        |              |
 
-: Data from a sample of 50 soft drink purchases {#tbl-tbl1}
+: Data from a sample of 50 soft drink purchases
 
 Now we will construct a frequency distribution by simply counting each type of soft-drink.
 
@@ -51,15 +51,15 @@ MBA %>% count(`Soft Drink`) %>% kable(col.names = c("Soft Drink","Frequency"),al
 
 **Relative Frequency and Percent Frequency Distributions**
 
--   Relative Frequency $=\frac{Frequency \ \ of \ \ the \ \ class}{n}$
+- Relative Frequency $=\frac{Frequency \ \ of \ \ the \ \ class}{n}$
 
--   The *percent frequency* of a class is the relative frequency multiplied by 100.
+- The *percent frequency* of a class is the relative frequency multiplied by 100.
 
 ### Bar Charts and Pie Charts
 
--   **Bar chart:** A graphical device for depicting qualitative data that have been summarized in a frequency, relative frequency, or percent frequency distribution.
+- **Bar chart:** A graphical device for depicting qualitative data that have been summarized in a frequency, relative frequency, or percent frequency distribution.
 
--   **Pie chart:** A graphical device for presenting data summaries based on subdivision of a circle into sectors that correspond to the relative frequency for each class.
+- **Pie chart:** A graphical device for presenting data summaries based on subdivision of a circle into sectors that correspond to the relative frequency for each class.
 
 From the frequency table of soft drinks purchase, we will develop relative and percent frequency distribution (see @tbl-tbl3) and will construct a **bar-chart** and **pie-chart**.
 
@@ -346,9 +346,9 @@ fd2 %>% ggplot(aes(x=Audit_clas,y=n))+geom_col(width =1,col="black",fill="steelb
 
 A dataset of **Marks** (out of 100) was collected from two student groups:
 
--   **70 Female students**
+- **70 Female students**
 
--   **40 Male students**
+- **40 Male students**
 
 The goal is to compare the distribution of marks between these two groups.
 
@@ -356,19 +356,19 @@ The **frequency histogram** shows how many students fall into each marks range (
 
 A **relative frequency histogram** shows the **proportion** of students in each bin **within each group**. By dividing counts by the total number in the group:
 
--   It **normalizes** the data,
+- It **normalizes** the data,
 
--   Allows for **fair comparisons** between groups of different sizes,
+- Allows for **fair comparisons** between groups of different sizes,
 
--   Highlights **true differences in distribution**, not just differences in group size.
+- Highlights **true differences in distribution**, not just differences in group size.
 
 **Example Observation**
 
 From the RF histogram:
 
--   Around **40% of males** scored between 50–60.
+- Around **40% of males** scored between 50–60.
 
--   Around **39% of females** scored between 50–60.
+- Around **39% of females** scored between 50–60.
 
 This comparison is **valid** only because the histograms show **relative frequency**, not raw counts.
 
@@ -742,7 +742,7 @@ axis(1, at = seq(180,2180,250))
 You’re given data from a cross-sectional survey of 30 individuals. Variables include Age, Gender, Monthly Income, Hours of Exercise/Week , Fitness Level, Favorite Fruit and Temperature preference. This data-set enables practice with data visualization, scale classification, and relationship analysis using tools like bar charts, scatter plots, and histograms.
 
 | **ID** | **Age** | **Gender** | **Monthly Income (USD)** | **Hours of Exercise/Week** | **Favorite Fruit** | **Fitness Level** | **Temperature Preference (°C)** |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
 | 1 | 25 | Male | 1520.75 | 2.5 | Mango | Fair | 23 |
 | 2 | 32 | Female | 2280.50 | 1.2 | Apple | Poor | 22 |
 | 3 | 20 | Male | 925.10 | 4.8 | Banana | Good | 19 |

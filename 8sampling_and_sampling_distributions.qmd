@@ -8,13 +8,17 @@ editor_options:
 
 ## Some preliminary idea [@anderson2020]
 
--   An **element** is the entry on which data are collected.
+- An **element** is the entry on which data are collected.
 
--   A **population** is the collection of all the elements of interest.
+- A **population** is the collection of all the elements of interest.
 
--   A **sample** is a subset of the population.
+- A **sample** is a subset of the population.
 
--   A **sampling frame** is the ***list*** of all the elements in the population of interest.
+- A **sampling frame** is the ***list*** of all the elements in the population of interest.
+
+- A numerical measure (e.g., mean, median, standard deviation, proportion) computed from population is referred as **population parameter**.
+
+- A numerical measure (e.g., mean, median, standard deviation, proportion) computed from sample is referred as **sample statistic**.
 
 ## **Sampling from a Finite Population**
 
@@ -22,9 +26,11 @@ editor_options:
 
 A **simple random sample (SRS)** of size $n$ from a *finite* population of size $N$ is a sample selected such that each possible sample of size $n$ has the same probability of being selected.
 
--   Sampling can be *with* replacement (**SWR**).
+- Sampling can be *with* replacement (**SWR**).
 
--   Sampling can be *without* replacement **(SWOR)**(recommended).
+- Sampling can be *without* replacement **(SWOR)**.
+
+- In both case, the probability of a particular element being selected in $n/N$.
 
 ## **Sampling from an Infinite Population**
 
@@ -45,15 +51,11 @@ A **random sample** of size $n$ from an *infinite* *population* is a sample sele
 
 2\) The *number* of ways simple random samples by **SWR** of size $n$ that can be selected from a finite population of size $N$ is
 
-$$
-N^n
-$$
+$$N^n$$
 
 3\) The *number* of ways **different** simple random samples by **SWOR** of size $n$ that can be selected from a finite population of size $N$ is
 
-$$
-{N \choose{n}}=\frac{N!}{n!(N-n)!}
-$$
+$${N \choose{n}}=\frac{N!}{n!(N-n)!}$$
 
 4\) Some other probability sampling methods are *stratified random sampling, cluster sampling,* and *systematic sampling*. We will discuss these methods later.
 
@@ -62,34 +64,76 @@ $$
 
 ### Selecting simple random sample using R
 
-Suppose we have a variable $X$ and let it contains $N=5$ elements as follows:
+Suppose we have a variable $X$ and let it contains $N=4$ elements as follows:
 
-$X=\{1,3,5,7,9\}$
+$X=\{3,5,7,9\}$
 
-Using `R` we can draw several simple random samples of size $n=3$.
+Using `R` we can draw several simple random samples of size $n=2$.
 
 Now we draw a random sample (by using both SWR and SWOR )using `sample()` function in base `R`.
 
+**Sampling without replacement (SWOR)**
+
 ```{r echo=TRUE}
 set.seed(2103) # To keep reproducibility
-X=c(1,3,5,7,9) # The elemnets in X variable
+X=c(3,5,7,9) # The elemnets in X variable
 
 # Drawing a random sample without replacement
-sample(X,3, replace = FALSE)
-
-# Drawing a random sample with replacement
-sample(X,3, replace = TRUE)
+sample(X,2, replace = FALSE)
 
 ```
 
-**The all possible that is** ${N\choose n}={5\choose 3}=10$ **samples (by *SWOR*) are :**
+The all possible that is ${N\choose n}={4\choose 2}=6$ samples (by *SWOR*) are :
 
 ```{r echo=FALSE}
-samples<-combn(X,3)
+samples_swor<-combn(X,2)
 #class(samples)
-colnames(samples)<-c("Sample1","Sample2","Sample3","Sample4","Sample5","Sample6","Sample7","Sample8","Sample9","Sample10")
-t(samples)
+colnames(samples_swor)<-c("Sample1","Sample2","Sample3","Sample4","Sample5","Sample6")
+#t(samples_swor)
+
 ```
+
+| Sample \# | Sample | Probability |
+|:---------:|:------:|:-----------:|
+|     1     |  3,5   |     1/6     |
+|     2     |  3,7   |     1/6     |
+|     3     |  3,9   |     1/6     |
+|     4     |  5,7   |     1/6     |
+|     5     |  5,9   |     1/6     |
+|     6     |  7,9   |     1/6     |
+
+: Samples of size n=2 Without replacement
+
+**Sampling with replacement (SWR)**
+
+The all possible that is $N^n=4^2=16$ samples (by *SWR*) are :
+
+```{r echo=TRUE}
+# Drawing a random sample with replacement
+sample(X,2, replace = TRUE)
+sampls_swr=expand.grid(X, X)
+```
+
+| Sample \# | Sample | Probability |
+|:---------:|:------:|:-----------:|
+|     1     |  3,3   |    1/16     |
+|     2     |  3,5   |    1/16     |
+|     3     |  3,7   |    1/16     |
+|     4     |  3,9   |    1/16     |
+|     5     |  5,3   |    1/16     |
+|     6     |  5,5   |    1/16     |
+|     7     |  5,7   |    1/16     |
+|     8     |  5,9   |    1/16     |
+|     9     |  7,3   |    1/16     |
+|    10     |  7,5   |    1/16     |
+|    11     |  7,7   |    1/16     |
+|    12     |  7,9   |    1/16     |
+|    13     |  9,3   |             |
+|    14     |  9,5   |    1/16     |
+|    15     |  9,7   |    1/16     |
+|    16     |  9,9   |    1/16     |
+
+: Samples of size n=2 with replacement
 
 ## Sampling distribution
 
@@ -131,7 +175,7 @@ all_sampl<-combn(X,2)
 |    5,9     |             7             |
 |    7,9     |             8             |
 
-: All Samples of Size 2 and Their Means {#tbl-tab8.3}
+: All Samples of Size 2 and Their Means
 
 **Task-3:** **Construct** a probability distribution of sample means, $\bar X$ (discrete) and **plot** it.
 
@@ -147,7 +191,7 @@ all_sampl<-combn(X,2)
 |    7     | $\frac{1}{10}$ |
 |    8     | $\frac{1}{10}$ |
 
-: Sampling distribution of $\bar x$ {#tbl-tab8.4}
+: Sampling distribution of $\bar x$
 
 ```{r}
 #| label: fig-samdist
@@ -171,15 +215,15 @@ sam_dist %>% mutate(px_bar=f/sum(f)) %>% ggplot(aes(x=x_bar,y=px_bar))+
   theme(axis.title = element_text(face = "bold"))
 ```
 
-**Task-4:** **Find** the $E(\bar x)$ . Does $E(\bar x)$ same as population mean $\mu$?
+**Task-4:** **Find** the $E(\bar X)$ . Does $E(\bar X)$ same as population mean $\mu$?
 
 [Solution:]{.underline}
 
-$E(\bar x)=\sum \bar x \cdot f(\bar x)$
+$E(\bar X)=\sum \bar x \cdot f(\bar x)$
 
 $=2(1/10)+3(1/10)+4(2/10)+\cdot \cdot \cdot+8(1/10)=5$
 
-We can see that $E(\bar x) =5$ is same as $\mu=5$.
+We can see that $E(\bar X) =5$ is same as $\mu=5$.
 
 **NOTE:** This phenomenon is known as the **unbiasedness** of a sample statistic or an estimator. We will discuss it briefly in next chapter.
 
@@ -197,36 +241,34 @@ iv\) **Find** the $E(\bar X)$ . Does $E(\bar X)$ same as population mean $\mu$?
 
 The sampling distribution of $\bar X$ is the probability distribution of all possible values of the sample mean $\bar X$.\
 
--   Expected value of $\bar X$:
+- Expected value of $\bar X$:
 
-$$
-E(\bar X)=\mu_{\bar x}=\mu
-$$
+$$E(\bar X)=\mu_{\bar X}=\mu$$
 
-If samples are drawn from a *infinite population (*or *finite but* $n/N\le 0.05$ [@anderson2020] or in the case of **SWR** then the
+- Standard deviation of $\bar X$ :
 
--   Standard deviation ox $\bar X$:
+  **CASE I:** Sampling without replacement **(SWR)** or if $N$ is **infinite** (or finite but $\frac{n}{N}\le 0.05$)
 
-$$
-\sigma_{\bar x}=\frac{\sigma}{\sqrt n}
-$$
+  $$\sigma_{\bar X}=\frac{\sigma}{\sqrt n}$$
 
-Standard deviation of $\bar x$ is also known as **Standard error of** $\bar x$ or $s.e(\bar x)$.
+  **CASE II:** Sampling without replacement **(SWOR)** and $N$ is **finite**:
 
-**But** what is the **form** of the sampling distribution of $\bar x$?
+$$\sigma_{\bar X}=\frac{\sigma}{\sqrt n}\sqrt{\frac{N-n}{N-1}}$$
+
+Standard deviation of $\bar X$ is also known as **Standard error of** $\bar X$ or $s.e(\bar X)$.
+
+**But** what is the **form** of the sampling distribution of $\bar X$?
 
 ### Central limit theorem (CLT)
 
-The sampling distribution of the mean of a random sample drawn from any population is approximately normal for a sufficiently large sample size. The larger the sample size, the more closely the sampling distribution of $\bar x$ will resemble a normal distribution.
+The sampling distribution of the mean of a random sample drawn from any population is approximately normal for a sufficiently large sample size. The larger the sample size, the more closely the sampling distribution of $\bar X$ will resemble a normal distribution.
 
 ::: callout-note
 ## The Central Limit Theorem
 
 Let, $X_1$,$X_2$, .... be a sequence of independently and identically distributed random variables with common mean $\mu$ and common variance $\sigma^2$. We define
 
-$$
-Z=\frac{\bar x -\mu_{\bar X}}{\sigma_{\bar X}}
-$$
+$$Z=\frac{\bar X -\mu_{\bar X}}{\sigma_{\bar X}}$$
 
 Then the $Z$ will be approximately normally distributed as the sample size $n \rightarrow\infty$.
 :::
@@ -333,7 +375,7 @@ b\. If a customer buys a carton of four bottles, what is the probability that th
 
 **Problem 8.3** A scientist is studying the heights of men in Australia. The true population mean $\mu$ is unknown but the true population standard deviation is assumed to be 2.5 inches. Suppose the scientist randomly samples 100 men. **Find** the probability that the difference between the sample mean and the true population mean is less than 0.5 inches.
 
-**Problem 8.4** In winter, it tends to rain a lot in Canberra. Suppose that the amount of rain that falls on any given winter day in Canberra is normally distributed with a mean of $2.3 mm$ and a variance of $1.1 \ \ mm^2$.\
+**Problem 8.4** In rainy season, it tends to rain a lot in Dhaka. Suppose that the amount of rain that falls on any given winter day in Dhaka is normally distributed with a mean of $2.3 mm$ and a variance of $1.21 \ \ mm^2$. Assume rainfalls are independent from day to day.\
 \
 (a) **Find** the probability that between 1.9 and 3.4 mm of rain fell today.
 
@@ -345,21 +387,15 @@ b\. If a customer buys a carton of four bottles, what is the probability that th
 
 The sample proportion $\hat p$ is the point estimator of the population proportion $p$. The formula for computing the sample proportion is
 
-$$
-\hat p=\frac {x}{n}
-$$ Where,
+$$\hat p=\frac {x}{n}$$ Where,
 
 $x=$ number of *successes* in the sample of size $n$.
 
 **Case-I (small sample):** If $X\sim Bin(n,p)$ then $\hat p$ also follows **binomial distribution** with
 
-$$
-Mean: E(\hat p)=p
-$$
+$$Mean: E(\hat p)=p$$
 
-$$
-Variance: \sigma^2_{\hat p}=\frac{p(1-p)}{n}
-$$\
+$$Variance: \sigma^2_{\hat p}=\frac{p(1-p)}{n}$$\
 
 **Case-II (large sample):** When the sample size is large enough so that $np$ and $n(1-p)$ are greater than or equal to $5$ then $\hat p$ will be approximately normally distributed with
 
@@ -378,37 +414,33 @@ d.  What is the probability that the sample proportion exceeds 0.8?
 
 ## Sampling Distribution of the Sample Variances
 
-Like as sample mean, **sample variance** is also considered as a random variable due to sampling variability. If we a random sample $\{x_1,x_2, . . . , x_n\}$ is a random sample of size $n$ then the quantity
+Like as sample mean, **sample variance** is also considered as a random variable due to sampling variability.
 
-$$
-s^2=\frac{1}{n-1} \sum_{i=1}^n (x_i-\bar x)^2 
-$$
+If we have a random sample $\{X_1,X_2, . . . , X_n\}$ of size $n$ then the quantity
+
+$$S^2=\frac{1}{n-1} \sum_{i=1}^n (X_i-\bar X)^2 $$
 
 is called the **sample variance**.
 
 ::: callout-note
 ## Sampling Distribution of the Sample Variances
 
-If $s^2$ is the variance of a random sample of size $n$ taken from a normal population having the variance $\sigma^2$, then the statistic
+If $S^2$ is the variance of a random sample of size $n$ taken from a normal population having the variance $\sigma^2$, then the statistic
 
-$$
-\chi^2=\frac{(n-1)s^2}{\sigma^2}=\frac{\sum_{i=1}^n (x_i-\bar x)^2}{\sigma^2}
-$$
+$$\chi^2=\frac{(n-1)S^2}{\sigma^2}=\frac{\sum_{i=1}^n (X_i-\bar X)^2}{\sigma^2}$$
 
 has a **Chi-squared distribution** with $\nu =n-1$ degrees of freedom.
 :::
 
-**Mean of** $s^2$: $E(s^2)=\sigma^2$
+**Mean of** $S^2$: $E(S^2)=\sigma^2$
 
-**Variance of** $s^2$**:** $Var(s^2)=\frac{2\sigma^4}{(n-1)}$
+**Variance of** $S^2$**:** $Var(S^2)=\frac{2\sigma^4}{(n-1)}$
 
 **How to to determine the area under the curve of** $\chi^2$ **distribution?**
 
 In every statistics textbook area under the $\chi^2$ distribution can be determined for a given **degrees of freedom.** The distribution is defined for only positive values, since variances are all positive values. For a given probability or area say $\alpha$ and degrees of freedom $\nu$ we can determine the value of $\chi^2$ to the upper tail such that:
 
-$$
-P(\chi^2>\chi^2_{\alpha})=\alpha
-$$
+$$P(\chi^2>\chi^2_{\alpha})=\alpha$$
 
 ![The chi-squared distribution](chi.squared.png){#fig-chi.squared width="372"}
 
@@ -432,13 +464,9 @@ Let, $X$ be the impurity concentration
 
 Given, $\sigma^2=1.75$; $n=20$ . We have to compute
 
-$$
-P[s^2>3.10]=P\left[  \frac{(n-1)s^2}{\sigma^2}>\frac{(20-1)(3.10)}{1.75} \right ]
-$$
+$$P[s^2>3.10]=P\left[  \frac{(n-1)s^2}{\sigma^2}>\frac{(20-1)(3.10)}{1.75} \right ]$$
 
-$$
-=P\left[ \chi^2>33.657 \right]\approx 0.01
-$$
+$$=P\left[ \chi^2>33.657 \right]\approx 0.01$$
 
 So there is approximately 1% chance that the sample variance exceeds 3.10.
 
@@ -446,24 +474,18 @@ So there is approximately 1% chance that the sample variance exceeds 3.10.
 
 Let $Z\sim N(0,1)$ and $V\sim \chi^2 _\nu$ . If $Z$ and $V$ are independent then the random variable
 
-$$
-T=\frac{Z}{\sqrt {V/\nu}}
-$$
+$$T=\frac{Z}{\sqrt {V/\nu}}$$
 
 said to have a *Student-t distribution with* $\nu$ *degrees of freedom.* The PDF of $T$ is
 
-$$
-f(t)=\frac{\Gamma [(\nu+1)/2]}{\sqrt{ \pi\nu} \ \ \Gamma{(\nu/2)}}\left(1+\frac{t^2}{\nu}\right)^{-(\nu+1)/2} ; -\infty<t<\infty.
-$$
+$$f(t)=\frac{\Gamma [(\nu+1)/2]}{\sqrt{ \pi\nu} \ \ \Gamma{(\nu/2)}}\left(1+\frac{t^2}{\nu}\right)^{-(\nu+1)/2} ; -\infty<t<\infty.$$
 
 ::: callout-note
 ## Theorem
 
-Given a random sample of $n$ observations, with sample mean $\bar x$ and sample standard deviation $s$, from a normally distributed population with mean $\mu$, the random variable $t$ follows the *Student’s t distribution* with $\nu=(n - 1)$ degrees of freedom and is given by
+Given a random sample of $n$ observations, with sample mean $\bar X$ and sample standard deviation $S$, from a normally distributed population with mean $\mu$, the random variable $T$ follows the *Student’s t distribution* with $\nu=(n - 1)$ degrees of freedom and is given by
 
-$$
-t=\frac{\bar x-\mu}{s/\sqrt n}
-$$
+$$T=\frac{\bar X-\mu}{S/\sqrt n}$$
 :::
 
 **Properties:**
@@ -482,15 +504,11 @@ From $t$ -distribution table we can determine the value of $t$ for a given $area
 
 For example, with $n=11$ and area in upper tail 0.05 the the value of $t$ is $1.812$. That is
 
-$$
-P(T>1.812)=0.05 
-$$
+$$P(T>1.812)=0.05 $$
 
 Due to symmetry
 
-$$
-P(T<-1.812)=0.05
-$$
+$$P(T<-1.812)=0.05$$
 
 ![t-distribution. Source: Appendix B, TABLE 3 (Anderson 2020)](images/clipboard-2207596259.png)
 
@@ -498,10 +516,20 @@ $$
 
 ### The *F* -Distribution with Two Sample Variances
 
-If $s_1^2$ and $s_2^2$ are the variances of independent random samples of size $n_1$ and $n_2$ taken from normal populations with variances $\sigma_1^2$ and $\sigma_2^2$, respectively, then the random variable
+If $S_1^2$ and $S_2^2$ are the variances of independent random samples of size $n_1$ and $n_2$ taken from normal populations with variances $\sigma_1^2$ and $\sigma_2^2$, respectively, then the random variable
 
-$$
-F=\frac{s_1^2/\sigma_1^2}{s_2^2/\sigma_2^2}
-$$
+$$F=\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}$$
 
 has an $F$ distribution with numerator degrees of freedom $(n_1-1)$ and denominator degrees of freedom $(n_2-1)$.
+
+## Other Sampling methods
+
+### Probability sampling
+
+**Stratified Random Sampling**
+
+**Cluster Sampling**
+
+**Systematic Sampling**
+
+### Non-probability sampling

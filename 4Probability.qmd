@@ -357,8 +357,6 @@ Since $P(Y\cap A) \ne P(Y) \cdot P(A)$ so, $Y$ and $A$ are not independent. Henc
 
 In conclusion we can say that "worked additional problems" and "expected grade" are not statistically independent.
 
-
-
 ## Exercises 4.1
 
 4.1) [@anderson2011] Suppose that we have two events, A and B, with $P(A)= 0.50$, $P(B) = 0.60$, and $P(A \cap B) = 0.40$ .
@@ -450,7 +448,6 @@ b.  If the account is new, what is the probability that it is overdue?
 
 c.  Is the age of the account related to whether it is overdue? Explain.
 
-
 ## Probability Trees
 
 Consider a sequential experiment where in the **first stage** either $A_1$ or $A_2$ can be happened with some probabilities . And in the **second stage** event $B$ can be happened. If $B^C$ is the complement of $B$ then this experiment can be shown in the following **tree diagram.**
@@ -480,8 +477,6 @@ $P(W_2)=P(W_1\cap W_2)+P(B_1\cap W_2)$
 $=P(W_1)P(W_2|W_1)+P(B_1)P(W_2|B_1)$
 
 $=(\frac{2}{5})(\frac{1}{4})+(\frac{3}{5})(\frac{2}{4})=\frac{1}{10}+\frac{3}{10}=\frac{4}{10}=\frac{2}{5}$.
-
-
 
 ## Total Probability rule and Bayes' Theorem
 
@@ -561,3 +556,85 @@ b.  If the order was filled by Juan, what is the probability that it was filled 
 c.  Who filled the order is unknown, but the order was filled incorrectly. What are the revised probabilities that Alex, Alicia, or Juan filled the order?
 
 d.  Who filled the order is unknown, but the order was filled correctly. What are the revised probabilities that Alex, Alicia, or Juan filled the order?
+
+::: callout-note
+## Review exercises
+
+1\) One urn has 3 blue and 2 white balls; a second urn has 1 blue and 3 white balls. A single fair die is rolled and if 1 or 2 comes up, a ball is drawn out of the first urn; otherwise, a ball is drawn out of the second urn. If the drawn ball is blue, what is the probability that it came out of the first urn? Out of the second urn?
+
+![](Urn_model.png){fig-align="center" width="258"}
+
+2\) One bag contains 4 white balls and 3 black balls, and a second bag contains 3 white balls and 5 black balls. One ball is drawn from the first bag and placed unseen in the second bag. What is the probability that a ball now drawn from the second bag is black? *(**Hints:** Apply probability tree)*
+
+3\) From 4 red, 5 green, and 6 yellow apples, **find** the probability that, out of 9 randomly selected apples, exactly 3 of each color are selected.
+
+4\) Pollution of the rivers in the United States has been a problem for many years. Consider the following events:
+
+A: the river is polluted,
+
+B : a sample of water tested detects pollution,
+
+C : fishing is permitted.
+
+Assume P(A) = 0.3, P(B|A) = 0.75, P(B|A′) = 0.20, $P(C|A \cap B)$ = 0.20, $P(C|A′\cap B)$ = 0.15, $P(C|A \cap B′)$ = 0.80, and $P(C|A′ \cap B′)$ = 0.90.
+
+(a) Find $P(A \cap B \cap C)$.
+
+(b) Find $P(B′ \cap C)$.
+
+(c) Find P(C).
+
+(d) Find the probability that the river is polluted, given that fishing is permitted and the sample tested did not detect pollution.
+
+:::
+
+
+## Random variables
+
+A **variable** is said to be **random** if its values are determined by a random experiment. In other word, **random variable** is a numerical description of the outcome of an experiment.
+
+-   A random variable often denoted with an uppercase letter (say $X$)
+
+-   The value of a random variable is denoted with a lowercase letter (say $x$)
+
+**Illustration** Consider a random experiment of tossing a coin (fair/unfair) 2 times. Then the sample space is
+
+$$
+S=\{ HH,HT,TH,TT \}
+$$
+
+Now let, $X= number\ \  of\ \  heads \ \ occur$
+
+From the sample space we can see that $X$ can take following values:
+
+|                  |     |
+|:----------------:|:---:|
+| **Sample point** | $x$ |
+|       $HH$       |  2  |
+|       $HT$       |  1  |
+|       $TH$       |  1  |
+|       $TT$       |  0  |
+
+Since the values of $X$ completely determined by the outcomes of the random experiment, so $X$ is a random variable (discrete).
+
+### Types of random variable
+
+There are two types of random variables, **discrete** and **continuous**.
+
+A **discrete random variable** can assume only a certain number of separated values. A discrete random variable is usually the result of *counting* something. [For example,]{.underline} number of customers arrive, number of calls receive etc.
+
+A **continuous random variable** is one whose values are uncountable or which can take any value in a given interval. Generally a continuous random variable is usually the result of *measuring* something.
+
+**Task** Which of these variables are discrete and which are continuous random variables?
+
+a\. The number of new accounts established by a salesperson in a year.
+
+b\. The time between customer arrivals to a bank ATM.
+
+c\. The number of customers in Big Nick’s barber shop.
+
+d\. The amount of fuel in your car’s gas tank.
+
+e\. The number of minorities on a jury.
+
+f\. The outside temperature today.

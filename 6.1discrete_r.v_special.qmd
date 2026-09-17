@@ -219,15 +219,51 @@ Where, $\mu$ is the expected value or mean number of occurrences in an interval.
 **Variance:** $Var(X)=\mu$\
 [**We write,**]{.underline} $X \sim Pois(\mu)$
 
-**Finding probability of Poisson r.v**
+### **Finding probability of Poisson r.v**
 
-Let, $X$ be a Poisson r.v with $\mu=2.5$. Find the following probabilities.
+Let, $X$ be a Poisson r.v with $\mu=2.5$. Find the following probabilities using PMF:
 
-a\) $P(X=2)$
+i\) $P(X=2)$
 
-b\) $P(X<=1)$
+ii\) $P(X<=1)$
 
-c\) $P(X>3)$
+iii\) $P(X>3)$
+
+### The recursion formula for Poisson PMF
+
+If $X\sim Pois(\mu)$ then
+
+$P(X=k)=\frac{e^{-\mu} \mu^k }{k!}$ and
+
+$P(X=k-1)=\frac{e^{-\mu} \mu^{k-1} }{(k-1)!}$
+
+Hence we have
+
+$$
+\frac{P(X=k)}{P(X=k-1)}=\frac{\mu}{k}
+$$
+
+$$
+Hence, \ \ P(X=k)=\frac{\mu}{k}P(X=k-1)
+$$
+
+So, for $k=1$, $P(X=1)=\frac{\mu}{1}P(X=0)$ Or,
+
+$$
+f(1)=\frac{\mu}{1}f(0)
+$$
+
+$$
+f(2)=\frac{\mu}{2}f(1)
+$$
+
+$$
+.\\
+.\\
+.
+$$
+
+and so on.
 
 **Example** **911 Calls.** Emergency 911 calls to a small municipality in Idaho come in at the rate of one every 2 minutes. [@anderson2020, page no. 261]
 
@@ -247,7 +283,16 @@ c\. Compute the probability of no arrivals in a 15-second period.
 
 d\. Compute the probability of at least one arrival in a 15-second period.
 
-**Poisson Approximation to the Binomial Distribution**
+**Example** Customers arrive at a busy checkout counter at an average rate of 3 per minute. If the distribution of arrivals is Poisson, find the probability that in any given minute there will be 2 or fewer arrivals.
+
+**Example** The number of accidents in a production facility has a Poisson distribution with a mean of 2.6 per month.
+
+a\. For a given month what is the probability there will be fewer than 2 accidents?
+
+b\. For a given month what is the probability there will be more than 3 accidents?\
+\
+
+### **Poisson Approximation to the Binomial Distribution**
 
 When,
 

@@ -17,19 +17,15 @@ In statistics, measures of location, also known as measures of central tendency,
 
 ### Mean
 
--   **Sample mean:** Suppose $n$ observation of a variable $X$ is drawn from a population. Then the sample mean is denoted by $\bar x$ and
+- **Sample mean:** Suppose $n$ observation of a variable $X$ is drawn from a population. Then the sample mean is denoted by $\bar x$ and
 
-$$
-\bar x =\frac{\sum x}{n}
-$$
+$$\bar x =\frac{\sum x}{n}$$
 
 The sample mean $\bar x$ is a sample statistic.
 
--   **Population mean:** Suppose in a population there are $N$ values of variable $X$. Then the population mean is denoted by $\mu$ and
+- **Population mean:** Suppose in a population there are $N$ values of variable $X$. Then the population mean is denoted by $\mu$ and
 
-$$
-\mu =\frac{\sum x}{N}
-$$
+$$\mu =\frac{\sum x}{N}$$
 
 The $\bar x$ is a point estimator of the population mean $\mu$.
 
@@ -37,11 +33,9 @@ The $\bar x$ is a point estimator of the population mean $\mu$.
 
 The weighted mean is a special case of the arithmetic mean. It occurs when there are several observations of the same value.
 
--   **Weighted mean:**
+- **Weighted mean:**
 
-$$
-\bar x=\frac{\sum w_i x_i}{\sum w_i}
-$$
+$$\bar x=\frac{\sum w_i x_i}{\sum w_i}$$
 
 where, $w_i=$ weight for observation $i$
 
@@ -87,9 +81,9 @@ b\. Students at State University must maintain a 2.5 grade point average for the
 
 The **median** is another measure of central location. The median is the value in the middle when the data are arranged in ascending order (smallest value to largest value).
 
--   For an *odd* number of observations, median is the middle value
+- For an *odd* number of observations, median is the middle value
 
--   For an *even* number of observations, median is the average of the two middle values
+- For an *even* number of observations, median is the average of the two middle values
 
 **Example 3.4 (n is odd):** Let us consider the following class size data for a sample of five college classes.
 
@@ -107,9 +101,7 @@ Because $n=5$ is odd, the median is the middle value. Thus the median class size
 
 Because $n=6$ is even, the
 
-$$
-Median=\frac{42+46}{2}=44
-$$
+$$Median=\frac{42+46}{2}=44$$
 
 ::: callout-note
 Although the mean is the more commonly used measure of central location, in some situations the median is preferred. For example, the median is the measure of location most often reported for annual income and property value data because a few extremely large incomes or property values can inflate the mean. In such cases, the median is the preferred measure of central location.
@@ -127,13 +119,11 @@ Situations can arise for which the greatest frequency occurs at two or more diff
 
 A **percentile** provides information about how the data are spread over the interval from the smallest value to the largest value.
 
--   The $p^{th}$ percentile is a value such that *at least* $p$ percent of the observations are less than or equal to this value and *at least* $(100-p)$ percent of the observations are greater than or equal to this value.
+- The $p^{th}$ percentile is a value such that *at least* $p$ percent of the observations are less than or equal to this value and *at least* $(100-p)$ percent of the observations are greater than or equal to this value.
 
--   **Formula:**
+- **Formula:**
 
-$$
-p^{th} \  \ percentile=( p\times \frac{n+1}{100} )^{th} \ \ value 
-$$
+$$p^{th} \  \ percentile=( p\times \frac{n+1}{100} )^{th} \ \ value $$
 
 **Example 3.6:** Here is the monthly starting salary (\$) of 12 graduates:
 
@@ -147,19 +137,13 @@ Let us determine the 85^th^ percentile for the starting salary data.
 
 Now,
 
-$$
-L_{85}=( 85\times \frac{12+1}{100} )^{th} \ \ value 
-$$
+$$P_{85}=( 85\times \frac{12+1}{100} )^{th} \ \ value $$
 
-$$
-=11.05^{th} \ \ value =11^{th} \ \ value+0.05 (12^{th} -11^{th})
-$$ $$
-=3730+0.05(3925-3730)
-$$
+$$=11.05^{th} \ \ value =11^{th} \ \ value+0.05 (12^{th} -11^{th})$$
 
-$$
-=3739.75 \ \ dollars
-$$
+$$=3730+0.05(3925-3730)$$
+
+$$=3739.75 \ \ dollars$$
 
 [Interpretation:]{.underline} Here, $85^{th} \ \ percentile =3739.75$ implies that at least 85% of the total observations (salaries ) are less or equal to 3739.75 dollars.
 
@@ -183,19 +167,15 @@ Compute Q1 and Q3 of the above data (*Will be solved in class*).
 
 The **geometric mean** is useful in finding the average change of percentages, ratios, indexes, or growth rates over time. It has a wide application in business and economics because we are often interested in finding the percentage changes in sales, salaries, or economic figures, such as the Gross Domestic Product, which compound or build on each other.
 
--   **Geometric mean (GM):** GM is the $n^{th}$ root of the product of $n$ values.
+- **Geometric mean (GM):** GM is the $n^{th}$ root of the product of $n$ values.
 
-$$
-GM=\sqrt[n]{(x_1)(x_2) \cdot \cdot \cdot (x_n)}=[(x_1)(x_2) \cdot \cdot \cdot(x_n)]^{1/n}
-$$
+$$GM=\sqrt[n]{(x_1)(x_2) \cdot \cdot \cdot (x_n)}=[(x_1)(x_2) \cdot \cdot \cdot(x_n)]^{1/n}$$
 
 **Example 3.8:** Compute the geometric mean of the following percent increases: 8, 12, 14, 26, and 5.
 
 [Solution:]{.underline} Here, $n=5$. The geometric mean is:
 
-$$
-GM=[8\cdot12\cdot14\cdot26\cdot5]^{1/5}=[174720]^{1/5}\approx 11.18
-$$
+$$GM=[8\cdot12\cdot14\cdot26\cdot5]^{1/5}=[174720]^{1/5}\approx 11.18$$
 
 **Exercise 3.9** [@lind2012]**:** The percent increase in sales for the last 4 years at Combs Cosmetics were: 4.91,5.75, 8.12, and 21.60.
 
@@ -217,37 +197,31 @@ Variability in data means lack of uniformity. It is also referred to as spread, 
 
 $Range =$ **Largest value** $-$ **Smallest value**
 
--   The simplest one, but is highly influenced by extreme values.
+- The simplest one, but is highly influenced by extreme values.
 
 ### Interquartile Range (IQR)
 
 $$IQR=Q_3-Q_1$$
 
--   The interquartile range is the range for the middle 50% of the data.
+- The interquartile range is the range for the middle 50% of the data.
 
 ### Variance
 
 The variance is a measure of variability that utilizes all the data. The variance is based on the difference between the value of each observation ($x_i$) and the mean. The difference between each $x_i$ and the mean ($\bar x$ for a sample, $\mu$ for a population) is called a deviation about the mean.
 
--   **Population variance**
+- **Population variance**
 
-$$
-\sigma^2 =\frac{(x_1-\mu)^2+(x_2-\mu)^2+\cdot \cdot \cdot+(x_N-\mu)^2}{N} = \frac{\sum (x_i -\mu)^2}{N}
-$$
+$$\sigma^2 =\frac{(x_1-\mu)^2+(x_2-\mu)^2+\cdot \cdot \cdot+(x_N-\mu)^2}{N} = \frac{\sum (x_i -\mu)^2}{N}$$
 
--   **Sample variance**
+- **Sample variance**
 
-$$
-s^2=\frac{(x_1-\bar x)^2+(x_2-\bar x)^2+ \cdot \cdot \cdot+(x_n-\bar x)^2}{n-1} = \frac{\sum (x_i -\bar x)^2}{n-1}
-$$
+$$s^2=\frac{(x_1-\bar x)^2+(x_2-\bar x)^2+ \cdot \cdot \cdot+(x_n-\bar x)^2}{n-1} = \frac{\sum (x_i -\bar x)^2}{n-1}$$
 
 > *The sample variance* $s^2$ *is the estimator of the population variance* $\sigma^2$ .
 
--   An alternative formula for the computation of the sample variance is:
+- An alternative formula for the computation of the sample variance is:
 
-$$
-s^2=\frac{\sum x_i^2-n\bar x^2}{n-1}
-$$ where, $\sum x_i^2=x_1^2+x_2^2+...+x_n^2$
+$$s^2=\frac{\sum x_i^2-n\bar x^2}{n-1}$$ where, $\sum x_i^2=x_1^2+x_2^2+...+x_n^2$
 
 ::: callout-note
 ## Derivation
@@ -299,7 +273,7 @@ sal6d %>% mutate(m=mean(sal6),deviation=sal6-m,squared_deviation=deviation^2)->v
 ```
 
 | Salary ($x_i$) | Sample mean, $\bar x$ | $(x_i-\bar x)$ | $(x_i-\bar x)^2$ |
-|:----------------:|:----------------:|:----------------:|:----------------:|
+|:--:|:--:|:--:|:--:|
 | 3450 | 3505 | -55 | 3025 |
 | 3550 | 3505 | 45 | 2025 |
 | 3650 | 3505 | 145 | 21025 |
@@ -308,29 +282,25 @@ sal6d %>% mutate(m=mean(sal6),deviation=sal6-m,squared_deviation=deviation^2)->v
 | 3545 | 3505 | 40 | 1600 |
 |  |  | $\sum (x_i-\bar x ) =0$ | $\sum (x_i-\bar x )^2 =50800$ |
 
-: Computation of the sample variance for the starting Salary data {#tbl-tbl3.1}
+: Computation of the sample variance for the starting Salary data
 
 Hence, the sample variance is:
 
-$$
-s^2=\frac{\sum (x_i-\bar x)^2}{n-1}=\frac{50800}{6-1}=10160 \ \ (dollars)^2 
-$$
+$$s^2=\frac{\sum (x_i-\bar x)^2}{n-1}=\frac{50800}{6-1}=10160 \ \ (dollars)^2 $$
 
 ### Standard deviation
 
 The **standard deviation** is defined to be the positive square root of the variance
 
--   **Sample standard deviation=**$s=\sqrt s^2$
+- **Sample standard deviation=**$s=\sqrt s^2$
 
--   **Population standard deviation=**$\sigma =\sqrt \sigma ^2$
+- **Population standard deviation=**$\sigma =\sqrt \sigma ^2$
 
 > *The sample standard deviation* $s$ *is the estimator of population standard deviation* $\sigma$*.*
 
 **Example 3.12:** The standard deviation of the previous example is :
 
-$$
-s=\sqrt {10160} =100.7968\approx 100.80 \ \ dollars
-$$
+$$s=\sqrt {10160} =100.7968\approx 100.80 \ \ dollars$$
 
 ::: callout-note
 ## Note:
@@ -375,17 +345,11 @@ $=\frac{\sum_{i=1}^N (ax_i)+\sum_{i=1}^N b} {N}=a\frac{\sum_{i=1}^N x_i}{N}+\fra
 
 Hence,
 
-$$
-Var(Y)=\frac{\sum_{i=1}^N (y_i-\mu_Y)^2}{N}=\frac{\sum_{i=1}^N(a\cdot x_i+b-a\cdot \mu_X-b)^2}{N}
-$$
+$$Var(Y)=\frac{\sum_{i=1}^N (y_i-\mu_Y)^2}{N}=\frac{\sum_{i=1}^N(a\cdot x_i+b-a\cdot \mu_X-b)^2}{N}$$
 
-$$
-=\frac{\sum_{i=1}^N (a\cdot x_i -a\cdot \mu_X)^2}{N}
-$$
+$$=\frac{\sum_{i=1}^N (a\cdot x_i -a\cdot \mu_X)^2}{N}$$
 
-$$
-a^2 \frac{\sum_{i=1}^N (x_i-\mu_X)^2}{N}=a^2 Var(X)
-$$
+$$a^2 \frac{\sum_{i=1}^N (x_i-\mu_X)^2}{N}=a^2 Var(X)$$
 
 $\therefore Var(Y)= Var(aX+b)=a^2 Var(X)$.
 :::
@@ -396,13 +360,11 @@ In some situations we may be interested in a descriptive statistic that indicate
 
 **Coefficient variation,**
 
-$$
-CV=\frac{Standard \ \ deviation}{Mean}
-$$
+$$CV=\frac{Standard \ \ deviation}{Mean}$$
 
--   The coefficient of variation is a relative measure of variability; it measures the standard deviation relative to the mean.
+- The coefficient of variation is a relative measure of variability; it measures the standard deviation relative to the mean.
 
--   In general, the coefficient of variation is a useful statistic for comparing the variability of variables that have different standard deviations and different means.
+- In general, the coefficient of variation is a useful statistic for comparing the variability of variables that have different standard deviations and different means.
 
 **Example 3.13:** The table at the left shows the population heights (in inches) and weights (in pounds) of the members of a basketball team. Find the coefficient of variation for the heights and the weights. Then compare the results.
 
@@ -448,9 +410,7 @@ In most cases, measures of location and variability are computed by using the in
 
 ### Sample mean for grouped data
 
-$$
-\bar x=\frac{\sum f_i M_i}{n}
-$$ where,
+$$\bar x=\frac{\sum f_i M_i}{n}$$ where,
 
 $M_i=\frac{Lower \ \ limit+Upper\ \ limit}{2}=$ the midpoint for class $i$
 
@@ -460,9 +420,7 @@ $n=$ the sample size $=\sum f_i$
 
 ### Sample variance for grouped data
 
-$$
-s^2=\frac{\sum f_i(M_i-\bar x)^2}{n-1}=\frac{\sum M_i x_i^2-n\cdot \bar x^2}{n-1}
-$$
+$$s^2=\frac{\sum f_i(M_i-\bar x)^2}{n-1}=\frac{\sum M_i x_i^2-n\cdot \bar x^2}{n-1}$$
 
 Eventually the **standard deviation** is $\sqrt {s^2}$
 
@@ -484,7 +442,7 @@ Eventually the **standard deviation** is $\sqrt {s^2}$
 [*Solution:*]{.underline}
 
 |  |  |  |  |  |
-|---------------|:-------------:|:-------------:|:-------------:|:-------------:|
+|----|:--:|:--:|:--:|:--:|
 | **Audit Time (days)** | **Mid point**$(M_i)$ | **Frequency** $(f_i)$ | $f_i M_i$ | $f_i M_i^2$ |
 | 10-14 | 12 | 4 | 48 | 576 |
 | 15-19 | 17 | 8 | 136 | 2312 |
@@ -497,15 +455,11 @@ Eventually the **standard deviation** is $\sqrt {s^2}$
 
 **Sample mean,**
 
-$$
-\bar x=\frac{\sum f_i M_i}{n}=\frac{380}{20}=19 \ \ days
-$$
+$$\bar x=\frac{\sum f_i M_i}{n}=\frac{380}{20}=19 \ \ days$$
 
 **Sample variance,**
 
-$$
-s^2=\frac{\sum f_i M_i^2-n\cdot \bar x^2}{n-1}=\frac{7790-20\cdot19^2}{20-1}=30 \ \ (days)^2
-$$
+$$s^2=\frac{\sum f_i M_i^2-n\cdot \bar x^2}{n-1}=\frac{7790-20\cdot19^2}{20-1}=30 \ \ (days)^2$$
 
 Hence the **standard deviation is:**
 
@@ -532,16 +486,14 @@ The **z-score** provide how far an observation or value is from the mean or aver
 
 Let, $X=\{x_1,x_2,...,x_n\}$ has the *sample mean* $\bar x$ and the *sample standard deviation* $s$. Then the **z-score** for $x_i$ is :
 
-$$
-z_i=\frac{x_i-\bar x}{s}
-$$
+$$z_i=\frac{x_i-\bar x}{s}$$
 :::
 
--   The z-score is often called the *standardized value*. The z-score, $z_i$, can be interpreted as the *number of standard deviations* $x_i$ is from the mean $\bar x$. For example, $z_1 = 1.2$ would indicate that $x_1$ is 1.2 standard deviations greater than the sample mean. Similarly, $z_2 = -0.5$ would indicate that $x_2$ is 0.5, or 1/2, standard deviation less than the sample mean.
+- The z-score is often called the *standardized value*. The z-score, $z_i$, can be interpreted as the *number of standard deviations* $x_i$ is from the mean $\bar x$. For example, $z_1 = 1.2$ would indicate that $x_1$ is 1.2 standard deviations greater than the sample mean. Similarly, $z_2 = -0.5$ would indicate that $x_2$ is 0.5, or 1/2, standard deviation less than the sample mean.
 
--   A z-score greater than zero occurs for observations with a value greater than the mean, and a z-score less than zero occurs for observations with a value less than the mean. A z-score of zero indicates that the value of the observation is equal to the mean.
+- A z-score greater than zero occurs for observations with a value greater than the mean, and a z-score less than zero occurs for observations with a value less than the mean. A z-score of zero indicates that the value of the observation is equal to the mean.
 
--   The z-score for any observation can be interpreted as a measure of the relative location of the observation in a data set. Thus, observations in two different data sets with the same z-score can be said to have the same relative location in terms of being the same number of standard deviations from the mean.
+- The z-score for any observation can be interpreted as a measure of the relative location of the observation in a data set. Thus, observations in two different data sets with the same z-score can be said to have the same relative location in terms of being the same number of standard deviations from the mean.
 
 **Example 3.15** Suppose $X=\{46,54,42,46,32\}$. Here $X$ is the number students in each class.
 
@@ -573,7 +525,7 @@ At least $(1 - \frac{1}{z^2})$ of the data values must be within $z$ standard de
 $P(\bar x-z\cdot s<X<\bar x+z\cdot s)\ge (1-\frac{1}{z^2})$
 :::
 
-**Example 3.16** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5.
+**Example 3.17** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5.
 
 i\) How many students (in %) had test scores between 60 and 80?
 
@@ -589,23 +541,34 @@ For, $x=80\ \ ; z=\frac{80-70}{5}=+2$
 
 Applying Chebyshev’s theorem with $z = 2$, we have
 
-$$
-(1-\frac{1}{z^2})=(1-\frac{1}{2^2})=0.75
-$$ So, at least 75% of the students must have test scores between 60 and 80.
+$$(1-\frac{1}{z^2})=(1-\frac{1}{2^2})=0.75$$ So, at least 75% of the students must have test scores between 60 and 80.
 
 ii\) DIY
 
-**Example 3.16** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5. **Find** the interval in which at least 80% data values lie.
+**Example 3.18** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5. **Find** the interval in which at least 80% data values lie.
 
 ### Empirical Rule
 
 If a **distribution is approximately bell-shaped/symmetric/normal** then
 
--   Approximately 68% of the data values will be within **one** standard deviation of the mean.
+- Approximately 68% of the data values will be within **one** standard deviation of the mean.
 
--   Approximately 95% of the data values will be within **two** standard deviations of the mean.
+- Approximately 95% of the data values will be within **two** standard deviations of the mean.
 
--   Almost all of the data values (99%) will be within **three** standard deviations of the mean.
+- Almost all of the data values (99%) will be within **three** standard deviations of the mean.
+
+[![Empirical rule](images/clipboard-712765208.png)](https://images.ctfassets.net/kj4bmrik9d6o/1SEuMoouEipHwd6BCarQjz/0cd917fabfb2186c43801a8669e9b5e0/Normal_Distribution_06.png)
+
+**Example GMAT Exam Scores**. The Graduate Management Admission Test (GMAT) is a standardized exam used by many universities as part of the assessment for admission to graduate study in business. The average GMAT score is 547 (Magoosh website). Assume that GMAT scores are bell-shaped with a standard deviation of 100.
+
+a\. What percentage of GMAT scores are 647 or higher?
+
+b\. What percentage of GMAT scores are 747 or higher?
+
+c\. What percentage of GMAT scores are between 447 and 547?
+
+d\. What percentage of GMAT scores are between 347 and 647?\
+(Hints: Use empirical rule)
 
 ### Detecting Outliers
 
@@ -621,7 +584,7 @@ An observation say $x_i$ is treated as *outlier* if its corresponding **z-score*
 [**Note:**]{.underline} **Z-score rule** works well for **large, symmetric, bell-shaped datasets**.
 :::
 
-**Example** Consider the following data:
+**Example** **3.19** Consider the following data:
 
 35, 68, 52, 80, 45, 60, 30, 75, 48, 53, 70, 42, 66, 55, 40, 58, 78, 36, 50, 62, 33, 71, 49, 44, 64, 38, 85, 57, 39, 61, 73, 46, 67, 32, 56, 65, 41, 59, 51, 54, 10, 100, 110, 77, 63, 69, 82, 37, 47, 60
 
@@ -663,7 +626,7 @@ Any data value or observation falls outside the interval $[LL,UL]$ will be treat
 [**Note:**]{.underline} **IQR rule** is **better for skewed or small datasets** .
 :::
 
-**Example** The following data shows the annual salaries (in thousand USD) of 10 employees in a company:
+**Example 3.20** The following data shows the annual salaries (in thousand USD) of 10 employees in a company:
 
 50, 45, 52, 37, 42, 70, 40, 35, 47, 17
 
@@ -685,7 +648,21 @@ In a **five-number summary**, five numbers are used to summarize the data:
 
 4\. Third quartile (Q3)
 
-5\. Largest value\
+5\. Largest value
+
+**Example 3.21** [@anderson2020, 158]**:** **Household Incomes**. The following data represent a sample of 14 household incomes(\$1000s). Answer the following questions based on this sample.
+
+49.4, 52.4, 53.4, 51.3, 52.1, 48.7, 52.1, 52.2, 64.5, 51.6, 46.5, 52.9, 52.5, 51.2
+
+a.  What is the median household income for these sample data?
+
+b.  According to a previous survey, the median annual household income five years ago was \$55,000. Based on the sample data above, estimate the percentage change in the median household income from five years ago to today.
+
+c.  Compute the first and third quartiles.
+
+d.  Provide a five-number summary.
+
+e.  Using the z-score approach, do the data contain any outliers? Does the approach that uses the values of the first and third quartiles and the interquartile range to detect outliers provide the same results?
 
 ## Box-plot
 
@@ -695,11 +672,11 @@ A key to the development of a boxplot is the computation of the interquartile ra
 
 ![Boxplot of the Monthly Starting Salary Data with Lines Showing the Lower and Upper Limits](Box-plot.png){#fig-boxplot}
 
-**Salary data (assenting order)**
+**Salary data (assending order)**
 
 5710, 5755, 5850, 5880, 5880, 5890, 5920, 5940, 5950, 6050, 6130, 6325
 
-1\. A box is drawn with the ends of the box located at the first and third quartiles. For the salary data, $Q_1 = 5857.5$ and $Q_2 = 6025$. This box contains the middle 50% of the data.
+1\. A box is drawn with the ends of the box located at the first and third quartiles. For the salary data, $Q_1 = 5857.5$ and $Q_3 = 6025$. This box contains the middle 50% of the data.
 
 2\. A vertical line is drawn in the box at the location of the **median** (5905 for the salary data).
 
@@ -777,24 +754,6 @@ xyz.long %>%
 
 ```
 
-**Example 3.17** [@anderson2020, 158]**:** **Household Incomes**. The following data represent a sample of 14 household incomes(\$1000s). Answer the following questions based on this sample.
-
-```         
-49.4 52.4 53.4 51.3 52.1 48.7 52.1
-
-52.2 64.5 51.6 46.5 52.9 52.5 51.2
-```
-
-a.  What is the median household income for these sample data?
-
-b.  According to a previous survey, the median annual household income five years ago was \$55,000. Based on the sample data above, estimate the percentage change in the median household income from five years ago to today.
-
-c.  Compute the first and third quartiles.
-
-d.  Provide a five-number summary.
-
-e.  Using the z-score approach, do the data contain any outliers? Does the approach that uses the values of the first and third quartiles and the interquartile range to detect outliers provide the same results?
-
 ### Comparative box-plot
 
 **An example:** Cell Phone Companies Customer Satisfaction. Consumer Reports provides overall customer satisfaction scores for AT&T, Sprint, T-Mobile, and Verizon cell-phone services in major metropolitan areas throughout the United States. The **rating** for each service reflects the overall customer satisfaction considering a variety of factors such as cost, connectivity problems, dropped calls, static interference, and customer support. A satisfaction scale from 0 to 100 is used with 0 indicating completely dissatisfied and 100 indicating completely satisfied. Suppose that the ratings for the four cell-phone services in 20 metropolitan areas are as shown below [@anderson2020].
@@ -822,7 +781,7 @@ e.  Using the z-score approach, do the data contain any outliers? Does the appro
 | Tampa             |  73  |   63   |    73    |   79    |
 | Washington        |  72  |   68   |    71    |   76    |
 
-: Cell Phone Companies Customer Satisfaction {#tbl-tab.compare}
+: Cell Phone Companies Customer Satisfaction
 
 We can easily compare the **ratings** for 4- cell-phone services using **comparative/parallel box-plots**
 
@@ -836,6 +795,7 @@ library(readxl)
 library(tidyverse)
 Rating<- read_excel("StatForBandE_data.xlsx", 
     sheet = "Sheet5")
+#dim(Rating)
 
 Rating %>% ggplot(aes(x=Company,y=Rating))+
   geom_boxplot(fill="steelblue")+
@@ -848,9 +808,72 @@ Rating %>% ggplot(aes(x=Company,y=Rating))+
 
 ```
 
--   Now, **discuss** what a comparison of the boxplots tells about the four services.
+- Now, **discuss** what a comparison of the boxplots tells about the four services.
 
--   Which service does *Consumer Reports* recommend as being best in terms of overall customer satisfaction?\
+- Which service does *Consumer Reports* recommend as being best in terms of overall customer satisfaction?
+
+**Problem 3.22** Consider a sample with data values of 27, 25, 20, 15, 30, 34, 28, and 25. Provide the five-number summary for the data. Also construct a boxplot.
+
+**Problem 3.23** A sample of 28 time shares in the Orlando, Florida, area revealed the following daily charges (in USD dollars) for a one-bedroom suite. For convenience, the data are ordered from smallest to largest.
+
+116, 121, 157, 192, 207, 209, 209, 229, 232, 236, 236, 239, 243, 246,
+
+260,264, 276, 281, 283, 289, 296, 307, 309, 312, 317, 324, 341, 353
+
+a\) Compute the lower and upper limits and check for outlier(s).
+
+b\) Then construct a boxplot of the daily charges and show the outlier(s) if any in the boxplot.
+
+c\) Comment on the distribution of the daily charges.
+
+**Problem 3.24** **Amateur Golfer Scores.** Scores turned in by an amateur golfer at the Bonita Fairways Golf Course in Bonita Springs, Florida, during 2017 and 2018 are as follows:
+
+*2017 Season:* 74, 78, 79, 77, 75, 73, 75, 77
+
+*2018 Season:* 71, 70, 75, 77, 85, 80, 71, 79
+
+(a) Construct a side-by-side comparative boxplot of scores for two seasons. Show outlier(s) if any.
+
+(b) Describe your findings.
+
+**Problem 3.25 Automobile Fuel Efficiencies.** In automobile mileage and gasoline-consumption testing, 13 automobiles were road tested for 300 miles in both city and highway driving conditions. The following data were recorded for miles-per-gallon performance.
+
+***City:*** 16.2, 16.7, 15.9, 14.4, 13.2, 15.3, 16.8, 16.0, 16.1, 15.3, 15.2, 15.3, 16.2
+
+***Highway:*** 19.4, 20.6, 18.3, 18.6, 19.2, 17.4, 17.2, 18.6, 19.0, 21.1, 19.4, 18.5, 18.7
+
+(a) Construct a side-by-side comparative boxplot of mileage between city and highway. Show outlier(s) if any.
+
+(b) Describe your findings.
+
+**Answer (a):**
+
+```{r}
+City <- c(16.2, 16.7, 15.9, 14.4, 13.2, 15.3, 16.8, 16.0, 16.1, 15.3, 15.2, 15.3, 16.2)
+Highway <- c(19.4, 20.6, 18.3, 18.6, 19.2, 17.4, 17.2, 18.6, 19.0, 21.1, 19.4, 18.5, 18.7)
+
+# Combine into a dataframe
+mileage_data <- data.frame(Type = rep(c("City", "Highway"), each = 13),
+  Mileage = c(City, Highway))
+#head(mileage_data)
+
+boxplot(Mileage ~ Type, data = mileage_data,
+        main = "Automobile Fuel Efficiency: City vs Highway",
+        xlab = "Driving Condition",
+        ylab = "Miles per Gallon (mpg)",
+        col = c("#66C2A5", "#FC8D62"),      # nice contrasting colors
+        border = "gray30",
+        pch=1,cex=1.5,
+        #notch = TRUE,                       # shows median CI
+        boxwex = 0.6,                       # narrower boxes
+        cex.axis = 1.1, cex.lab = 1.2,
+        ylim = c(12, 22),
+        yaxt="n")
+
+axis(2, at = seq(12, 22, by = 1), las = 2, cex.axis = 1)
+
+
+```
 
 ## Measures of shape: Skewness and Kurtosis
 
@@ -868,7 +891,7 @@ c\) **Negative skewness**/ Skewed left- where *mean\<median\<mode*
 
 The typical example of skewness is exhibited in @fig-skewness with the relative position of mean, median and mode.
 
-![Types of skewness and relative position of mean, median, mode](Skewness.jpeg){#fig-skewness fig-align="center" width="516"}
+![Types of skewness and relative position of mean, median, mode](Skewness.jpg){#fig-skewness fig-align="center" width="516"}
 
 ```{r}
 set.seed(1)
@@ -888,11 +911,11 @@ median.sk=median(skewR)
 
 **Kurtosis** *describes the amount of peakedness of a distribution*.
 
--   Distributions that are high and thin are referred to as **leptokurtic** distributions.
+- Distributions that are high and thin are referred to as **leptokurtic** distributions.
 
--   Distributions that are flat and spread out are referred to as **platykurtic** distributions.
+- Distributions that are flat and spread out are referred to as **platykurtic** distributions.
 
--   Between these two types are distributions that are more “normal” in shape, referred to as **mesokurtic** distributions.
+- Between these two types are distributions that are more “normal” in shape, referred to as **mesokurtic** distributions.
 
 These three types of kurtosis are illustrated in @fig-kurtosis.
 
@@ -906,9 +929,7 @@ Suppose a sample of size $n$ of variable $X$ with observations $x_1,x_2,....,x_n
 
 The$r^{th}$sample **raw moment is**
 
-$$
-m'_{r}=\frac{\sum_{i=1}^{n} x_i^r}{n}
-$$ {#eq-rawm}
+$$m'_{r}=\frac{\sum_{i=1}^{n} x_i^r}{n}$$ {#eq-rawm}
 
 Hence the first 4 raw moments are:
 
@@ -922,9 +943,7 @@ $m'_4=\frac{\sum_{i=i}^n x_i^4}{n}$
 
 The$r^{th}$sample **central moment (about mean) is:**
 
-$$
-m_r=\frac{\sum_{i=1}^n (x_i-\bar x)^r}{n}
-$$ {#eq-centralm}
+$$m_r=\frac{\sum_{i=1}^n (x_i-\bar x)^r}{n}$$ {#eq-centralm}
 
 Hence the first 4 central moments are:
 
@@ -977,7 +996,7 @@ x=c(3,5,6,9,12)
 Here sample mean, $\bar x=\frac{\sum x}{n}=\frac{3+5+...+12}{5}=7$
 
 | $x$ | $(x-\bar x)$ | $(x-\bar x)^2$ | $(x-\bar x)^3$ | $(x-\bar x)^4$ |
-|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+|:--:|:--:|:--:|:--:|:--:|
 | 3 | -4 | 16 | -64 | 256 |
 | 5 | -2 | 4 | -8 | 16 |
 | 6 | -1 | 1 | -1 | 1 |
@@ -999,9 +1018,7 @@ $m_4=\frac{914}{5}=182.8$
 
 The **coefficient skewness** say $\gamma_1$ is defined as
 
-$$
-\gamma_1=\frac{m_3}{\sqrt {m_2 ^3}}
-$$
+$$\gamma_1=\frac{m_3}{\sqrt {m_2 ^3}}$$
 
 [**Decision:**]{.underline}
 
@@ -1013,9 +1030,7 @@ c\) $\gamma_1 <0$ indicates negative skewness.
 
 The **coefficient of kurtosis** say $\beta_2$ is defined as:
 
-$$
-\beta _2=\frac{m_4}{m_2^2}
-$$
+$$\beta _2=\frac{m_4}{m_2^2}$$
 
 [**Decision:**]{.underline}
 
@@ -1031,55 +1046,57 @@ From the calculated moments in **Example 3.18** now we compute coefficients of s
 
 Now,
 
-$$
-\gamma_1=\frac{m_3}{\sqrt {m_2 ^3}}=\frac{12}{\sqrt{ 10^3}}=0.38>0
-$$
+$$\gamma_1=\frac{m_3}{\sqrt {m_2 ^3}}=\frac{12}{\sqrt{ 10^3}}=0.38>0$$
 
 So the distribution is **positively skewed**.
 
 Again,
 
-$$
-\beta _2=\frac{m_4}{m_2^2}=\frac{182}{10^2}=1.82<3
-$$
+$$\beta _2=\frac{m_4}{m_2^2}=\frac{182}{10^2}=1.82<3$$
 
 So the distribution is **platykurtic**.
+
+**Example 3.19** A sample of 7 data entry clerks employed in the Harry County Tax Office revised the following *number of tax records* last hour: 100, 75, 70, 65, 80, 68 and 50.
+
+**Comment** about *skewness* and *kurtosis* of the *number of tax records*.
 
 **NOTE:**
 
 Some authors [@newbold2013] use the following formulas to measure skewness and kurtosis without mentioning the moments.
 
-$$
-Skewness = \frac{1}{n} \left[ \sum \left( \frac{X_i - \overline{X}}{s} \right)^3 \right]=\frac{1}{n} \sum  z_i^3 
-$$
+$$Skewness = \frac{1}{n} \left[ \sum \left( \frac{X_i - \overline{X}}{s} \right)^3 \right]=\frac{1}{n} \sum  z_i^3 $$
 
 For calculation purpose the above formula is written as
 
-$$
-Skewness=\frac{1}{n}\frac{\sum (X-\bar X)^3}{s^3}
-$$
+$$Skewness=\frac{1}{n}\frac{\sum (X-\bar X)^3}{s^3}$$
 
 and
 
-$$
-Kurtosis = \frac{1}{n} \left[ \sum \left( \frac{X_i - \overline{X}}{s} \right)^4 \right]=\frac{1}{n} \sum  z_i^4 
-$$
+$$Kurtosis = \frac{1}{n} \left[ \sum \left( \frac{X_i - \overline{X}}{s} \right)^4 \right]=\frac{1}{n} \sum  z_i^4 $$
 
 For calculation purpose the above formula is written as
 
 $$ Kurtosis=\frac{1}{n}\frac{\sum (X-\bar X)^4}{s^4} $$
 
-**There are some other formulas to calculate skewness:**
+### Some other formulas to calculate skewness
 
-1\) Coefficient of skewness, $S_k=\frac{mean-mode}{SD}$
+1\) Karl Pearson’s Coefficient of Skewness,
 
-2\) $S_k=\frac{3(mean-median)}{SD}$
+$S_k=\frac{Mean-Mode}{SD}$. When mean $Mode$ is not available use median:
 
-3\) $S_k=\frac{Q_3+Q_1-2 Median}{Q_3-Q_1}$
+$S_k=\frac{3(Mean-Median)}{SD}$
 
-**Example 3.19** A sample of five data entry clerks employed in the Harry County Tax Office revised the following *number of tax records* last hour: 100, 75, 70, 65, and 50.
+2\) Bowley’s Skewness (Based on quartiles):
 
-**Comment** about *skewness* and *kurtosis* of the *number of tax records*.
+$S_k=\frac{Q_3+Q_1-2 Median}{Q_3-Q_1}$
+
+3\) Kelly’s Skewness (Uses 10th and 90th percentiles):
+
+$S_k=\frac{P_{90}+P_{10}-2P_{50}}{P_{90}-P_{10}}$
+
+**Home work** A sample of 7 data entry clerks employed in the Harry County Tax Office revised the following *number of tax records* last hour: 100, 75, 70, 65, 80, 68 and 50.
+
+Compute coefficient of *skewness* using *Pearson, Bowley* and *Kelly*'s methods. Compare the results.
 
 **Home work**
 
@@ -1195,7 +1212,7 @@ i\) Use the standard deviation and the coefficient of variation to summarize the
 
 ii\) Does the use of the coefficient of variation indicate that the coach’s statement should be qualified?\
 
-**3.14** Automobiles traveling on a road with a posted speed limit of 55 miles per hour are checked for speed by a state police radar system. Following is a frequency distribution of speeds.\
+**3.14** Automobiles traveling on a road with a posted speed limit of 55 miles per hour are checked for speed by a state police radar system. Following is a frequency distribution of speeds.
 
 |                            |               |
 |:--------------------------:|:-------------:|
@@ -1237,28 +1254,14 @@ c.  Interpret the z-scores in parts (a) and (b). Comment on whether either shoul
 
 d.  The Newsweek article described a backyard shed-office combination built in Albany, California, for \$13,000. Should this structure be considered an outlier? Explain.
 
-**3.19** Consider a sample with data values of 27, 25, 20, 15, 30, 34, 28, and 25. Provide the five-number summary for the data. Also construct a boxplot.
-
-**3.20** A data set has a first quartile of 42 and a third quartile of 50. Compute the lower and upper limits for the corresponding box plot. Should a data value of 65 be considered an outlier?\
-
-**3.21** A sample of 28 time shares in the Orlando, Florida, area revealed the following daily charges (in USD dollars) for a one-bedroom suite. For convenience, the data are ordered from smallest to largest.
-
-116, 121, 157, 192, 207, 209, 209, 229, 232, 236, 236, 239, 243, 246,
-
-260,264, 276, 281, 283, 289, 296, 307, 309, 312, 317, 324, 341, 353
-
-a\) Compute the lower and upper limits and check for outlier(s).
-
-b\) Then construct a boxplot of the daily charges and show the outlier(s) if any in the boxplot.
-
-c\) Comment on the distribution of the daily charges.\
+**3.20** A data set has a first quartile of 42 and a third quartile of 50. Compute the lower and upper limits for the corresponding box plot. Should a data value of 65 be considered an outlier?
 
 **3.22** Suppose a consumer group asked 18 consumers to keep a yearly log of their shopping practices and that the following data represent the number of coupons used by each consumer over the yearly period.
 
 ::: panel-tabset
 ## Data
 
-81, 68, 70, 100, 94, 47, 66, 70, 82, 110, 105, 60, 21, 70, 66, 90, 78, 85\
+81, 68, 70, 100, 94, 47, 66, 70, 82, 110, 105, 60, 21, 70, 66, 90, 78, 85
 
 ## Ordered data
 
@@ -1275,6 +1278,4 @@ three20<-c( 81, 68, 70, 100, 94, 47, 66, 70, 82, 110, 105,60, 21, 70, 66, 90, 78
 
 a\) Use the data to construct a box-and-whisker plot.
 
-b\) Discuss the skewness of the distribution of these data and point out any outliers.\
-
-\
+b\) Discuss the skewness of the distribution of these data and point out any outliers.

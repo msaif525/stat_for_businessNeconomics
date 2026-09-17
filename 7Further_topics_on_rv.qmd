@@ -7,71 +7,187 @@ bibliography: references.bib
 
 # Further topics on random variables
 
-## Functions of random variables: Transformations
+## Linear functions of random variables
 
+Given random variables $X_1, X_2, ..., X_n$ and constants $a_1, a_2,..., a_n \in \mathbb{R}$
 
-## Moments Moment-Generating Functions (MGF)
+$$Y=a_1X_1+a_2X_2+...+a_nX_n$$
 
+is a **linear combination** of $X_1, X_2, ..., X_n$.
 
+- Mean of Linear function
 
-## Sum and Average of Independent Random Variables
+$$E(Y)= a_1E(X_1)+a_2E(X_2)+...+a_nE(X_n)$$
 
-**Sum of Independent Random Variables:**
+- Variance of Linear function
 
-$Y = a_1X_1+a_2X_2+...+a_nX_n$, for $a_1, a_2,..., a_n \in \mathbb{R}$
+$$V(Y)=a_1^2 V(X_1)+a_2^2 V(X_2)+...+a_n^2 V(X_n)+2\sum_{i<j}\sum a_i a_j Cov(X_i,X_j)$$
 
--   $E(Y) = a_1E(X_1)+a_2E(X_2)+...+a_nE(X_n)$
+- If $X_1, X_2, ..., X_n$ are **independent** then,
 
--   $Var(Y) = a_1^2Var(X_1) + a_2^2Var(X_2) + ... + a_n^2Var(X_n)$
+$$V(Y)=a_1^2 V(X_1)+a_2^2 V(X_2)+...+a_n^2 V(X_n)$$
 
 If $n$ random variables $X_i$ have common mean $\mu$ and common variance $\sigma^2$ then,
 
--   $E(Y) = (a_1 + a_2 + ... + a_n)\mu$
+- $E(Y) = (a_1 + a_2 + ... + a_n)\mu$
 
--   $Var(Y) = (a_1^2 + a_2^2 + ... + a_n^2)\sigma^2$
+- $Var(Y) = (a_1^2 + a_2^2 + ... + a_n^2)\sigma^2$
 
 **Average of Independent Random Variables:**
 
 $X_1,X_2,...,X_n$ are $n$ independent random variables
 
--   $\overline{X} = \frac{X_1+X_2+...+X_n}{n}$
+- $\overline{X} = \frac{X_1+X_2+...+X_n}{n}$
 
--   $E[\overline{X}] = \frac{1}{n}[E(X_1)+E(X_2)+...+E(X_n)]$
+- $E[\overline{X}] = \frac{1}{n}[E(X_1)+E(X_2)+...+E(X_n)]$
 
--   $Var[\overline{X}] = \frac{1}{n^2}[Var(X_1)+Var(X_2)+...+Var(X_n)]$
+- $Var[\overline{X}] = \frac{1}{n^2}[Var(X_1)+Var(X_2)+...+Var(X_n)]$
 
 If $n$ random variables $X_i$ have common mean $\mu$ and common variance $\sigma^2$ then,
 
--   $E[\overline{X}] = \mu$
+- $E[\overline{X}] = \mu$
 
--   $Var[\overline{X}] = \frac{\sigma^2}{n}$
+- $Var[\overline{X}] = \frac{\sigma^2}{n}$
 
-## Some approximations
 
-### **Normal Approximation to the Binomial Distribution**
 
-Let $X \sim Bin(n,p)$. When $n$ is large so that both $np \geq 5$ and $n(1-p) \geq 5$. We can use the normal distribution to get an approximate answer. Remember to use **continuity correction.**
+## Functions of random variables: Transformations
 
-$X \sim N(\mu=np, \sigma^2=np(1-p))$, approx.
+### Transformation of Discrete random variable
 
-**Problem 7.8.1** A car-rental company has determined that the probability a car will need service work in any given month is 0.2. The company has 900 cars [@newbold2013].
+### Transformation Continuous random variable
 
-\(a\) What is the probability that more than 200 cars will require service work in a particular month?
+- **CDF Method:**
 
-\(b\) What is the probability that fewer than 175 cars will need service work in a given month?\
+We know $P(X\le x)=F_X(x)$.
 
-**Problem 7.8.2** The tread life of Stone Soup tires can be modeled by a normal distribution with a mean of 35,000 miles and a standard deviation of 4,000 miles. A sample of 100 of these tires is taken. What is the probability that more than 25 of them have tread lives of more than 38,000 miles? [@newbold2013]\
+Let, $Y=g(X)$. If $g(X)$ is a **one-to-one** function we will have the inverse function solving for $X$ we will have $X=w(Y)$
 
-### **Normal Approximation to the Poisson Distribution**
+By definition
 
-Let $X \sim Poisson(\mu)$. When $\mu$ is large ($\mu > 5$) then the Normal distribution can be used to approximate the Poisson distribution.
+$$F_Y (y)=P(Y\le y)=P[g(X)\le y]=P[X\le w(y)]=F_X [w(y)]$$
 
-$X\sim N(\mu,\mu)$ approx.
+$$\therefore  f_Y(y)=\frac{d}{dy} F_Y(y)=f_X [w(y)] \cdot \frac{d}{dy} w(y)$$
 
-**Problem 7.8.3** Hits to a high-volume Web site are assumed to follow a Poisson distribution with a mean of 10,000 per day. Approximate each of the following: [@montgomery2014]
+**Example 7.1** Let $X$ be a continuous r.v with the following PDF
 
-\(a\) Probability of more than 20,000 hits in a day,
+$$f(x) =
+\begin{cases}
+  \frac{x}{12}, & 1 < x < 5, \\
+  0, & \text{elsewhere.}
+\end{cases}$$
 
-\(b\) Probability of less than 9900 hits in a day .\
+Find the probability distribution of the random variable $Y=3X−4$.
 
-### 
+Here, $Y=3X-4$. Solving for $X$ we have $X=\frac{Y+4}{3}$
+
+Now,
+
+$$f_Y(y)=\frac{d}{dy}F_X \left (\frac{y+4}{3}\right)=f_X\left (\frac{y+4}{3}\right)\cdot \frac{1}{3}$$
+
+$$f_Y(y)=\frac{\frac{y+4}{3}}{12}\cdot \frac{1}{3}=\frac{y+4}{108}$$
+
+Hence the PDF of $Y$ is:
+
+$$f_Y(y) =
+\begin{cases}
+  \frac{y+4}{108}, & -1<y<11, \\
+  0, & \text{elsewhere.}
+\end{cases}$$
+
+- **Jacobian Method:**
+
+If $Y=u(X)$ then we will have $x=w(y)$
+
+Then the **Jacobian** $J=\frac{d}{dy} w(y)$. Finally
+
+$$f_Y(y)=f_X[w(y)]|J|$$
+
+**Example 7.2** From previous example we have
+
+$x=\frac{y+4}{3}=w(y)$.
+
+So, $J=\frac{d}{dy}w(y)=\frac{1}{3}$
+
+Finally, $f_Y(y)=f_X[w(y)]|J|=\frac{\frac{y+4}{3}}{12}\cdot \frac{1}{3}=\frac{y+4}{108}$
+
+**Example 7.3** If$X\sim N(\mu, \sigma^2)$ then derive the distribution of $Z$ where $Z=\frac{X-\mu}{\sigma}$.
+
+[*Solution:*]{.underline}
+
+We know
+
+$$f_X(x)=\frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2} (\frac{x-\mu}{\sigma})^2}$$
+
+Given
+
+$$z=\frac{x-\mu}{\sigma}$$
+
+$$\Rightarrow x=\mu+z\sigma$$
+
+Jacobian, $J=\frac{dx}{dz}=\frac{d}{dz}(\mu+z\sigma)=\sigma$
+
+For $-\infty<x<\infty$ ; $-\infty<z<\infty$
+
+$$\therefore f_Z(z)=f_X(z)\cdot |J|=\frac{1}{\sigma \sqrt{2\pi} }e^{-\frac{1}{2}z^2}\cdot\sigma=\frac{1}{\sqrt{2\pi} }e^{-\frac{1}{2}z^2}$$
+
+**NOTE:** CDF and Jacobian are almost same for uni-variate case; but **Jacobian** is more robust when we deal with multiple random variables.
+
+## Moments Moment-Generating Functions (MGF)
+
+### Moments
+
+The $r^{th}$ raw moment defined as:
+
+$$\mu_r^{'} =E(X^r)=
+\begin{cases}
+  \sum\limits_x x^r f(x) , &  \mathrm {if \ \ X \ \ is \ \ dicrete}, \\
+  \int_{-\infty}^{\infty} x^r f(x), & \mathrm {if \ \ X \ \ is \ \ continuous.}
+\end{cases}$$
+
+For example $\mu= \mu_1^{'}=E(X)$ and $\mu_2^{'}=E(X^2)$. So $\sigma^2 =\mu_2^{'}-\mu^2$.
+
+### MGF
+
+$$M_X(t)=E(e^{tX})$$
+
+### Finding moments using MGF
+
+$$\left. \frac{d^r M_X(t)}{dt^r} \right|_{t=0} = \mu'_r.$$
+
+**MGF of Binomial distribution**
+
+$$M_X(t)=E(e^{tX})=\sum\limits_{x=0}^n e^{tx} \binom{n}{x}  p^x q^{n-x}=\sum\limits_{x=0}^n \binom{n}{x} (pe^t)^x q^{n-x}=(pe^t+q)^n$$
+
+Now
+
+$$\frac{d M_X(t)}{dt}=n(pe^t+q)^{n-1} pe^t=np(pe^t+q)^{n-1}e^t$$
+
+Setting $t=0$ we have $\mu_1^{'}=np(p+q)^{n-1}.1=np.1.1=np$
+
+**MGF of Poisson distribution**
+
+Let $X \sim \text{Poisson}(\lambda)$. The PMF is $P(X=x) = \frac{e^{-\lambda}\lambda^x}{x!}$ for $x=0,1,\dots$.
+
+The MGF is derived as follows:
+
+$$\begin{aligned}
+M_X(t) &= E[e^{tX}] = \sum_{x=0}^{\infty} e^{tx} \frac{e^{-\lambda} \lambda^x}{x!} \\
+       &= e^{-\lambda} \sum_{x=0}^{\infty} \frac{(\lambda e^t)^x}{x!} \\
+       &= e^{-\lambda} e^{\lambda e^t} \quad \text{(using } \sum \frac{z^k}{k!} = e^z \text{)} \\
+       &= e^{\lambda(e^t - 1)}.
+\end{aligned}$$
+
+**MGF of Normal Distribution**
+
+**MGF of Standard Normal Distribution**
+
+**MGF of Chi-square Distribution**
+
+::: callout-note
+## Theorem
+
+If $Z_i$'s are independent standard normal random variables then $U=\sum_{i=1}^k Z_i^2$ has a chi-square distribution with $k$ degrees of freedom.
+
+**Proof:**
+:::

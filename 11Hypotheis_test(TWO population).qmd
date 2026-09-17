@@ -283,13 +283,13 @@ So the difference between the means is $\mu_d=\mu_A-\mu_B$
 
 To test the **hypotheses:**
 
-$$H_0: \mu_d=0$$
+$$H_0: \mu_d=D_0$$
 
 $$H_1: \mu_d \ne 0$$
 
 the t**est statistic** is:
 
-$$t=\frac{\bar d -\mu_d}{s_d/ \sqrt{n} }$$
+$$t_0=\frac{\bar d -D_0}{s_d/ \sqrt{n} }$$
 
 which is Student t distributed with $n-1$ degrees of freedom, provided that the differences are normally distributed.
 
@@ -341,23 +341,23 @@ $$H_1: \mu_D\ne 0$$
 
 [Required calculation for test of hypotheses]{.underline}
 
-| Employee | Before | After | Difference, $d=After-Before$ |
-|:--------:|:------:|:-----:|:----------------------------:|
-|    1     |  255   |  197  |             -58              |
-|    2     |  230   |  225  |              -5              |
-|    3     |  290   |  215  |             -75              |
-|    4     |  242   |  215  |             -27              |
-|    5     |  300   |  240  |             -60              |
-|    6     |  250   |  235  |             -15              |
-|    7     |  215   |  190  |             -25              |
-|    8     |  230   |  240  |              10              |
-|    9     |  225   |  200  |             -25              |
-|    10    |  219   |  203  |             -16              |
-|    11    |  236   |  223  |             -13              |
+| Employee | Before | After | Difference, $d=\mathrm {After-Before}$ |
+|:--------:|:------:|:-----:|:--------------------------------------:|
+|    1     |  255   |  197  |                  -58                   |
+|    2     |  230   |  225  |                   -5                   |
+|    3     |  290   |  215  |                  -75                   |
+|    4     |  242   |  215  |                  -27                   |
+|    5     |  300   |  240  |                  -60                   |
+|    6     |  250   |  235  |                  -15                   |
+|    7     |  215   |  190  |                  -25                   |
+|    8     |  230   |  240  |                   10                   |
+|    9     |  225   |  200  |                  -25                   |
+|    10    |  219   |  203  |                  -16                   |
+|    11    |  236   |  223  |                  -13                   |
 
 **Using calculator;**
 
-$\sum d=-309$
+$\sum d=-259$
 
 $\bar d= \frac{\sum d}{n}=\frac{-259}{11}=-28.09$
 
@@ -370,15 +370,15 @@ d=c(-58,-5,-75,-27,-60,-15,-25,10,-25,-16,-13)
 
 **Test statistic**
 
-$$t=\frac{\bar d-\mu_D}{s_D/\sqrt n}=\frac{-28.09-0}{25.81/\sqrt 11}=-3.609$$
+$$t_0=\frac{\bar d-D_0}{s_D/\sqrt n}=\frac{-28.09-0}{25.81/\sqrt 11}=-3.609$$
 
 **Critical value**
 
 **For**$\alpha=0.05$ and $df=n-1=11-1=10$;
 
-$$-t_{\alpha/2}=t_{0.025}=-2.228$$
+$$-t_{\alpha/2}=-t_{0.025}=-2.228$$
 
-Since $t$ falls in CR ($t<-t_{\alpha/2}$), so reject $H_0$.
+Since $t_0$ falls in CR ($t_0<-t_{\alpha/2}$), so reject $H_0$.
 
 Hence we can conclude with 95% confidence that the cholesterol reading before and after nurse's lecture are not same; actually after lecture mean cholesterol reading was decreased.
 
