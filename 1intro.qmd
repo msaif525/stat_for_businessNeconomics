@@ -67,7 +67,7 @@ As one of its major contributions, statistics uses data from a sample to make es
 @tbl-tab1_1 shows a data set containing information for 10 restaurant.
 
 | Restaurant Name | Cuisine Type | Average Meal Price (\$) | Customer Satisfaction (%) | Delivery Fee (\$) | Quality Rating |
-|:-----------|:----------:|:--------------:|:----------:|:----------:|:----------:|
+|:-----------|:----------:|:----------:|:----------:|:----------:|:----------:|
 | Bella Italia | Italian | 22.50 | 88.5 | 3.50 | 4-Star |
 | Taco Fiesta | Mexican | 11.20 | 79.0 | 1.99 | 3-Star |
 | Dragon Wok | Asian | 14.80 | 92.4 | 2.50 | 5-Star |
@@ -79,7 +79,7 @@ As one of its major contributions, statistics uses data from a sample to make es
 | Sizzling Steakhouse | American | 32.00 | 90.1 | 4.50 | 5-Star |
 | Curry Express | Indian | 15.00 | 86.4 | 2.75 | 4-Star |
 
-: Summary of 10 sampled local dining establishments {#tbl-tab1_1}
+: Summary of 10 sampled local dining establishments
 
 ## Elements, Variables, and Observations
 
@@ -119,7 +119,7 @@ Data collection requires one of the following scales of measurement: *nominal*, 
 
 *This scale requires that a zero value be included to indicate that nothing exists for the variable at the zero point.*
 
-## Quantitative and Categorical and Data
+## Quantitative and Categorical Data
 
 Data can be classified as either *quantitative or categorical* .
 

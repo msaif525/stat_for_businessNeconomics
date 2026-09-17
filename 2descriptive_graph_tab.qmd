@@ -742,7 +742,7 @@ axis(1, at = seq(180,2180,250))
 You’re given data from a cross-sectional survey of 30 individuals. Variables include Age, Gender, Monthly Income, Hours of Exercise/Week , Fitness Level, Favorite Fruit and Temperature preference. This data-set enables practice with data visualization, scale classification, and relationship analysis using tools like bar charts, scatter plots, and histograms.
 
 | **ID** | **Age** | **Gender** | **Monthly Income (USD)** | **Hours of Exercise/Week** | **Favorite Fruit** | **Fitness Level** | **Temperature Preference (°C)** |
-|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | 1 | 25 | Male | 1520.75 | 2.5 | Mango | Fair | 23 |
 | 2 | 32 | Female | 2280.50 | 1.2 | Apple | Poor | 22 |
 | 3 | 20 | Male | 925.10 | 4.8 | Banana | Good | 19 |
