@@ -1,5 +1,5 @@
 - source: project
   quarto-pub:
     - id: c1f46c64-5605-4c66-abb3-e6eff29916d3
-      url: https://saif525.quarto.pub/statistics-for-business-and-economics
-      #url: https://msaif525.github.io/stat_for_businessNeconomics
+      #url: https://saif525.quarto.pub/statistics-for-business-and-economics
+      url: https://msaif525.github.io/stat_for_businessNeconomics

@@ -455,34 +455,20 @@ Figure&nbsp;14.2: Sctter plot between X and Y
 <h2 data-number="14.2" class="anchored" data-anchor-id="covariance"><span class="header-section-number">14.2</span> Covariance</h2>
 <p>The covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as follows</p>
 <p><strong>Population covariance</strong></p>
-<p><span class="math display">\[
-\sigma_{XY}=\frac{\sum_{i=1}^N (x_i-\mu_X)(y_i-\mu_Y)}{N}
-\]</span></p>
+<p><span class="math display">\[\sigma_{XY}=\frac{\sum_{i=1}^N (x_i-\mu_X)(y_i-\mu_Y)}{N}\]</span></p>
 <p><strong>Sample covariance</strong></p>
-<p><span class="math display">\[
-s_{XY}=\frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{n-1}
-\]</span></p>
+<p><span class="math display">\[s_{XY}=\frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{n-1}\]</span></p>
 <p><strong>Shortcut for Sample Covariance</strong></p>
-<p><span class="math display">\[
-s_{XY}=\frac{\sum xy -n \bar x \bar y }{n-1}
-\]</span> Or,</p>
-<p><span id="eq-covshort"><span class="math display">\[
-s_{XY}=\frac{1}{n-1}\left[ \sum xy -\frac{\sum x \sum y}{n}     \right ]   
-\tag{14.1}\]</span></span></p>
+<p><span class="math display">\[s_{XY}=\frac{\sum xy -n \bar x \bar y }{n-1}\]</span> Or,</p>
+<p><span class="math display">\[s_{XY}=\frac{1}{n-1}\left[ \sum xy -\frac{\sum x \sum y}{n}     \right ]   \]</span> {#eq-covshort}</p>
 <p><strong>Example:</strong> Compute sample covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> from <a href="#tbl-xydata" class="quarto-xref">Table&nbsp;<span>14.1</span></a>.</p>
 <p><u><strong>Solution:</strong></u></p>
 <p>Here, <span class="math inline">\(n=10 ; \sum x=30 ; \sum y =510\)</span>.</p>
 <p><span class="math inline">\(\sum xy =x_1y_1+x_2y_2+ \cdot \cdot \cdot+x_ny_n= 1629\)</span></p>
 <p>Hence the sample covariance,</p>
-<p><span class="math display">\[
-s_{XY}=\frac{1}{n-1} \left[\sum xy - \frac{\sum x \sum y}{n}   \right]
-\]</span></p>
-<p><span class="math display">\[
-=\frac{1}{10-1} \left[1629 - \frac{30\times 510}{10} \right]
-\]</span></p>
-<p><span class="math display">\[
-\therefore s_{XY}=11
-\]</span></p>
+<p><span class="math display">\[s_{XY}=\frac{1}{n-1} \left[\sum xy - \frac{\sum x \sum y}{n}   \right]\]</span></p>
+<p><span class="math display">\[=\frac{1}{10-1} \left[1629 - \frac{30\times 510}{10} \right]\]</span></p>
+<p><span class="math display">\[\therefore s_{XY}=11\]</span></p>
 <p>Since, <span class="math inline">\(s_{XY}&gt;0\)</span> so there exists positive correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
 <p><strong>Drawback of covariance</strong></p>
 <p>According to <span class="citation" data-cites="keller2014">Keller (<a href="references.html#ref-keller2014" role="doc-biblioref">2014</a>)</span> , “Unfortunately, the magnitude may be difficult to judge. For example, if you’re told that the covariance between two variables is 500, does this mean that there is a strong linear relationship? The answer is that it is impossible to judge without additional statistics. Fortunately, we can improve on the information provided by this statistic by creating another one.”</p>
@@ -491,34 +477,24 @@ s_{XY}=\frac{1}{n-1} \left[\sum xy - \frac{\sum x \sum y}{n}   \right]
 <h2 data-number="14.3" class="anchored" data-anchor-id="coefficient-of-correlation"><span class="header-section-number">14.3</span> Coefficient of Correlation</h2>
 <p>The <strong>Pearson product-moment coefficient of correlation</strong> is defined as the covariance divided by the standard deviations of the variables.</p>
 <p><strong>Population correlation coefficient</strong></p>
-<p><span class="math display">\[
-\rho=\frac{\sigma_{XY}}{\sigma_X \times \sigma_Y}\ \ ;\ \ -1\le\rho \le +1
-\]</span></p>
+<p><span class="math display">\[\rho=\frac{\sigma_{XY}}{\sigma_X \times \sigma_Y}\ \ ;\ \ -1\le\rho \le +1\]</span></p>
 <p><strong>Sample correlation coefficient</strong></p>
-<p><span id="eq-sampleR"><span class="math display">\[
-r=\frac{s_{XY}}{s_X \times s_Y}\ \ ;\ \ -1\le r \le +1
-\tag{14.2}\]</span></span></p>
+<p><span class="math display">\[r=\frac{s_{XY}}{s_X \times s_Y}\ \ ;\ \ -1\le r \le +1\]</span> {#eq-sampleR}</p>
 <p>Where</p>
 <p><span class="math inline">\(s_{XY}\)</span> is sample covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> <span class="math inline">\(s_X\)</span> is sample standard deviation of <span class="math inline">\(X\)</span> and <span class="math inline">\(s_Y\)</span> is sample standard deviation of <span class="math inline">\(Y\)</span>.</p>
 <p><strong>Note:</strong> The sample correlation coefficient can be expressed in other forms:</p>
 <ol type="a">
 <li></li>
 </ol>
-<p><span class="math display">\[
-r=\frac{\sum(x_i-\bar x)(y_i-\bar y)}{\sqrt {\sum (x_i-\bar x)^2}\sqrt{\sum (y_i-\bar y)^2}}
-\]</span></p>
+<p><span class="math display">\[r=\frac{\sum(x_i-\bar x)(y_i-\bar y)}{\sqrt {\sum (x_i-\bar x)^2}\sqrt{\sum (y_i-\bar y)^2}}\]</span></p>
 <ol start="2" type="a">
 <li></li>
 </ol>
-<p><span class="math display">\[
-r=\frac{n \sum xy-(\sum x) (\sum y)}{\sqrt {\left [n\sum x^2-(\sum x)^2 \right] } \sqrt{\left [n\sum y^2-(\sum y)^2 \right]}}
-\]</span></p>
+<p><span class="math display">\[r=\frac{n \sum xy-(\sum x) (\sum y)}{\sqrt {\left [n\sum x^2-(\sum x)^2 \right] } \sqrt{\left [n\sum y^2-(\sum y)^2 \right]}}\]</span></p>
 <ol start="3" type="a">
 <li></li>
 </ol>
-<p><span class="math display">\[
-r=\frac{1}{n-1} \sum_{i=1}^n z_{x_i} z_{y_i}
-\]</span></p>
+<p><span class="math display">\[r=\frac{1}{n-1} \sum_{i=1}^n z_{x_i} z_{y_i}\]</span></p>
 <p>Where, <span class="math inline">\(z_x\)</span> and <span class="math inline">\(z_y\)</span> are the z-score of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> respectively.</p>
 </section>
 <section id="properties-of-coefficient-of-correlation" class="level2" data-number="14.4">
@@ -541,28 +517,14 @@ r=\frac{1}{n-1} \sum_{i=1}^n z_{x_i} z_{y_i}
 </div>
 <div class="callout-body-container callout-body">
 <p>From Cauchy–Schwarz Inequality we know that,</p>
-<p><span class="math display">\[
-(E[XY])^2\le E[X^2] E[Y^2]
-\]</span></p>
+<p><span class="math display">\[(E[XY])^2\le E[X^2] E[Y^2]\]</span></p>
 <p>Now center the variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with respect to their mean we have,</p>
-<p><span class="math display">\[
-(E[(X-\mu_X)(Y-\mu_Y)])^2 \le E[(X-\mu_X)^2] E[(Y-\mu_Y)^2]
-\]</span></p>
-<p><span class="math display">\[
-\Rightarrow [Cov(X,Y)]^2 \le Var(X)  \cdot Var(Y)
-\]</span></p>
-<p><span class="math display">\[
-\Rightarrow (\sigma_{XY})^2 \le \sigma^2_X \sigma^2_Y
-\]</span></p>
-<p><span class="math display">\[
-\Rightarrow | \sigma_{XY}| \le \sigma_X \sigma_Y
-\]</span></p>
-<p><span class="math display">\[
-\Rightarrow |\frac{\sigma_{XY}}{\sigma_X \sigma_Y}\le 1|
-\]</span></p>
-<p><span class="math display">\[
-\Rightarrow |\rho|\le 1
-\]</span></p>
+<p><span class="math display">\[(E[(X-\mu_X)(Y-\mu_Y)])^2 \le E[(X-\mu_X)^2] E[(Y-\mu_Y)^2]\]</span></p>
+<p><span class="math display">\[\Rightarrow [Cov(X,Y)]^2 \le Var(X)  \cdot Var(Y)\]</span></p>
+<p><span class="math display">\[\Rightarrow (\sigma_{XY})^2 \le \sigma^2_X \sigma^2_Y \]</span></p>
+<p><span class="math display">\[\Rightarrow | \sigma_{XY}| \le \sigma_X \sigma_Y\]</span></p>
+<p><span class="math display">\[\Rightarrow |\frac{\sigma_{XY}}{\sigma_X \sigma_Y}\le 1|\]</span></p>
+<p><span class="math display">\[\Rightarrow |\rho|\le 1\]</span></p>
 <p>Which implies that <span class="math inline">\(-1 \le \rho\le +1\)</span>.</p>
 </div>
 </div>
@@ -588,9 +550,7 @@ r=\frac{1}{n-1} \sum_{i=1}^n z_{x_i} z_{y_i}
 <p>Hence, <span class="math inline">\(\sigma_X=b\sigma_U\)</span> (standard deviation is always <span class="math inline">\(\ge0\)</span>).</p>
 <p>Similarly, <span class="math inline">\(\sigma_Y=d\sigma_V\)</span></p>
 <p>Finally we have,</p>
-<p><span class="math display">\[
-\rho_{XY}=\frac{\sigma_{XY}}{\sigma_X \sigma_Y}=\frac{bd\times \sigma_{UV}}{b\sigma_U \times d\sigma_V}=\frac{\sigma_{UV}}{\sigma_U \sigma_V}=\rho_{UV} \ \ \ \  (PROVED.)
-\]</span></p>
+<p><span class="math display">\[\rho_{XY}=\frac{\sigma_{XY}}{\sigma_X \sigma_Y}=\frac{bd\times \sigma_{UV}}{b\sigma_U \times d\sigma_V}=\frac{\sigma_{UV}}{\sigma_U \sigma_V}=\rho_{UV} \ \ \ \  (PROVED.)\]</span></p>
 </div>
 </div>
 <section id="interpretation-of-correlation-coefficient" class="level3" data-number="14.4.1">
@@ -613,19 +573,11 @@ r=\frac{1}{n-1} \sum_{i=1}^n z_{x_i} z_{y_i}
 <p><span class="math inline">\(\bar x =3\)</span></p>
 <p><span class="math inline">\(\bar y =51\)</span></p>
 <p>So,</p>
-<p><span class="math display">\[
-s_X=\sqrt { \frac{\sum x^2 -n \ \  \bar x^2}{n-1}}=1.490712
-\]</span></p>
-<p><span class="math display">\[
-s_Y=\sqrt { \frac{\sum y^2 -n \ \ \bar y^2}{n-1}}=7.930252
-\]</span></p>
-<p><span class="math display">\[
-s_{XY}=\frac{\sum xy -n \ \ \bar x \ \ \bar y }{n-1}=11
-\]</span></p>
+<p><span class="math display">\[s_X=\sqrt { \frac{\sum x^2 -n \ \  \bar x^2}{n-1}}=1.490712\]</span></p>
+<p><span class="math display">\[s_Y=\sqrt { \frac{\sum y^2 -n \ \ \bar y^2}{n-1}}=7.930252\]</span></p>
+<p><span class="math display">\[s_{XY}=\frac{\sum xy -n \ \ \bar x \ \ \bar y }{n-1}=11\]</span></p>
 <p>Hence,</p>
-<p><span class="math display">\[
-r=\frac{s_{XY}}{s_X \times s_Y}=\frac{11}{1.490712\times 7.930252}=0.9305
-\]</span></p>
+<p><span class="math display">\[r=\frac{s_{XY}}{s_X \times s_Y}=\frac{11}{1.490712\times 7.930252}=0.9305\]</span></p>
 <p>which is close to 1. So the correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is <em>strong</em> and <em>positive</em>.</p>
 </section>
 <section id="exercises-constructing-a-scatter-plot-and-determining-correlation" class="level3" data-number="14.4.3">
@@ -874,9 +826,7 @@ Figure&nbsp;14.4: Effect of outlier on the sign of correlation coefficient (r)
 <section id="rank-correlation" class="level2" data-number="14.5">
 <h2 data-number="14.5" class="anchored" data-anchor-id="rank-correlation"><span class="header-section-number">14.5</span> Rank correlation</h2>
 <p>To measure the association between two ordinal or rank-ordered data we use the <strong>Spearman Rank-correlation coefficient (RCC).</strong> Even if in presence of outliers in interval or ratio scale data we can use RCC. The sample Spearman RCC is computed as follows:</p>
-<p><span id="eq-Rcc"><span class="math display">\[
-r_s=1-\frac{6\sum_{i=1}^n d_i^2}{n(n^2-1)}
-\tag{14.3}\]</span></span></p>
+<p><span class="math display">\[r_s=1-\frac{6\sum_{i=1}^n d_i^2}{n(n^2-1)}\]</span> {#eq-Rcc}</p>
 <p>Where,</p>
 <p><span class="math inline">\(n\)</span> = the number of observations in the sample</p>
 <p><span class="math inline">\(x_i\)</span> = the rank of observation <span class="math inline">\(i\)</span> with respect to the first variable</p>
@@ -1015,9 +965,7 @@ r_s=1-\frac{6\sum_{i=1}^n d_i^2}{n(n^2-1)}
 <p>In the following section we will discuss about the <strong>Simple linear regression (SLR)</strong> where a independent variable and a dependent variable are involved.</p>
 <section id="population-regression-function-prf" class="level3" data-number="14.6.1">
 <h3 data-number="14.6.1" class="anchored" data-anchor-id="population-regression-function-prf"><span class="header-section-number">14.6.1</span> <strong>Population regression function (PRF)</strong></h3>
-<p><span id="eq-PRF"><span class="math display">\[
-y_i=\beta_0+\beta_1 x_i+\epsilon_i \hspace{10pt} ; i=1,2,3,..., N
-\tag{14.4}\]</span></span></p>
+<p><span class="math display">\[y_i=\beta_0+\beta_1 x_i+\epsilon_i \hspace{10pt} ; i=1,2,3,..., N\]</span> {#eq-PRF}</p>
 <p>Where,</p>
 <p><span class="math inline">\(y\)</span>= dependent variable</p>
 <p><span class="math inline">\(x\)</span>= independent variable</p>
@@ -1030,92 +978,58 @@ y_i=\beta_0+\beta_1 x_i+\epsilon_i \hspace{10pt} ; i=1,2,3,..., N
 <li><p>The independent variable should not be correlated with the error term (no endogeneity)</p></li>
 </ol>
 <p>Taking conditional expectation of of <strong>PRF</strong> for a given <span class="math inline">\(x_i\)</span> we have</p>
-<p><span id="eq-expectedprf"><span class="math display">\[
-E(y_i/x_i)=\beta_0+\beta_1 x_i
-\tag{14.5}\]</span></span></p>
+<p><span class="math display">\[E(y_i/x_i)=\beta_0+\beta_1 x_i \]</span> {#eq-expectedprf}</p>
 <p>From sample data we have to estimate <span class="math inline">\(E(y_i/x_i)\)</span> which is equivalent to estimate <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
 </section>
 <section id="ordinary-least-square-ols-estimate-of-ey_ix_i" class="level3" data-number="14.6.2">
 <h3 data-number="14.6.2" class="anchored" data-anchor-id="ordinary-least-square-ols-estimate-of-ey_ix_i"><span class="header-section-number">14.6.2</span> Ordinary least square (OLS) estimate of <span class="math inline">\(E(y_i/x_i)\)</span></h3>
 <p>Let we have <span class="math inline">\(n\)</span> pairs of sample data: <span class="math inline">\(\{X,Y\}=\{ (x_1,y_1), (x_2,y_2),..., (x_n, y_n) \}\)</span>. From the sample data suppose the <strong>estimated regression line of</strong> <span class="math inline">\(E(y_i/x_i)\)</span> <strong>is</strong></p>
-<p><span class="math display">\[
-\hat y_i= \hat \beta_0+\hat \beta_1 x_i \hspace {10pt}; i=1,2,....,n
-\]</span></p>
+<p><span class="math display">\[\hat y_i= \hat \beta_0+\hat \beta_1 x_i \hspace {10pt}; i=1,2,....,n\]</span></p>
 <p>So,</p>
-<p><span class="math display">\[
-y_i=\hat y_i +e_i \hspace{10pt} ; i=1,2, ..., n
-\]</span></p>
+<p><span class="math display">\[y_i=\hat y_i +e_i \hspace{10pt} ; i=1,2, ..., n\]</span></p>
 <p>Where, <span class="math inline">\(e_i\)</span> is the <strong>estimated error</strong> or <strong>residual.</strong></p>
 <p>Now, the <strong>residuals sum of square (RSS)</strong> is given as:</p>
-<p><span id="eq-ssr"><span class="math display">\[
-RSS=\sum_{i=1}^n e_i^2=\sum_{i=1}^n (y_i-\hat y_i)^2=\sum_{i=1}^n (y_i-\hat \beta_0-\hat \beta_1x_i)^2
-\tag{14.6}\]</span></span></p>
+<p><span class="math display">\[RSS=\sum_{i=1}^n e_i^2=\sum_{i=1}^n (y_i-\hat y_i)^2=\sum_{i=1}^n (y_i-\hat \beta_0-\hat \beta_1x_i)^2\]</span> {#eq-ssr}</p>
 <p>In <strong>OLS</strong> method we <em>minimize</em> the <strong>RSS</strong>with respect to <span class="math inline">\(\hat \beta_0\)</span> and <span class="math inline">\(\hat \beta_1\)</span>. To minimize <strong>RSS</strong>we have to set two equations using <em>partial derivative:</em></p>
-<p><span id="eq-ols1"><span class="math display">\[
-\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_0}=0
-\tag{14.7}\]</span></span></p>
-<p><span id="eq-ols2"><span class="math display">\[
-\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_1}=0
-\tag{14.8}\]</span></span></p>
+<p><span class="math display">\[\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_0}=0\]</span> {#eq-ols1}</p>
+<p><span class="math display">\[\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_1}=0\]</span> {#eq-ols2}</p>
 <p>By solving the two equations we will have the <strong>OLS estimates</strong> of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> as follows:</p>
-<p><span class="math display">\[
-\hat \beta_0=\bar y-\hat \beta_1 \bar x
-\]</span>and</p>
-<p><span class="math display">\[
-\hat \beta_1=\frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)} {\sum_{i=1}^n (x_i-\bar x)^2}=\frac{s_{xy}}{s^2_x}
-\]</span></p>
+<p><span class="math display">\[\hat \beta_0=\bar y-\hat \beta_1 \bar x\]</span> and</p>
+<p><span class="math display">\[\hat \beta_1=\frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)} {\sum_{i=1}^n (x_i-\bar x)^2}=\frac{s_{xy}}{s^2_x}\]</span></p>
 <p>Or,</p>
-<p><span class="math display">\[
-\hat \beta_1=r_{xy} \left (\frac{s_y}{s_x}\right )
-\]</span></p>
+<p><span class="math display">\[\hat \beta_1=r_{xy} \left (\frac{s_y}{s_x}\right )\]</span></p>
 <p>Thus, the <strong>estimated regression</strong> line is given by</p>
-<p><span class="math display">\[
-\hat y_i=\hat \beta_0+\hat \beta_1 x_i
-\]</span></p>
+<p><span class="math display">\[\hat y_i=\hat \beta_0+\hat \beta_1 x_i\]</span></p>
 </section>
 <section id="point-prediction-of-y-for-a-give-x" class="level3" data-number="14.6.3">
 <h3 data-number="14.6.3" class="anchored" data-anchor-id="point-prediction-of-y-for-a-give-x"><span class="header-section-number">14.6.3</span> Point prediction of <span class="math inline">\(y\)</span> for a give <span class="math inline">\(x\)</span></h3>
 <p>Given <span class="math inline">\(x=x_g\)</span>. Then the estimated <span class="math inline">\(y\)</span> for given <span class="math inline">\(x\)</span> is</p>
-<p><span class="math display">\[
-\hat y_g=\hat \beta _0+\hat \beta_1 \times x_g
-\]</span></p>
+<p><span class="math display">\[\hat y_g=\hat \beta _0+\hat \beta_1 \times x_g\]</span></p>
 </section>
 <section id="partition-of-sum-squares" class="level3" data-number="14.6.4">
 <h3 data-number="14.6.4" class="anchored" data-anchor-id="partition-of-sum-squares"><span class="header-section-number">14.6.4</span> Partition of sum squares</h3>
 <ol type="i">
 <li>Total sum of square,</li>
 </ol>
-<p><span class="math display">\[
-SS(Total)=\sum_{i=1}^n (y_i-\bar y)^2=(n-1) s^2_y
-\]</span></p>
+<p><span class="math display">\[SS(Total)=\sum_{i=1}^n (y_i-\bar y)^2=(n-1) s^2_y\]</span></p>
 <ol start="2" type="i">
 <li>Regression sum of square,</li>
 </ol>
-<p><span class="math display">\[
-SSR=\sum_{i=1}^n (\hat y_i-\bar y)^2
-\]</span></p>
+<p><span class="math display">\[SSR=\sum_{i=1}^n (\hat y_i-\bar y)^2 \]</span></p>
 <p>In the case of <strong>SLR</strong>, SSR can be written as <span class="math display">\[SSR=\hat \beta_1^2\sum_{i=1}^n (x_i-\bar x)^2=\hat \beta_1^2 (n-1)s_x^2\]</span></p>
 <ol start="3" type="i">
 <li>Sum of square of error,</li>
 </ol>
-<p><span class="math display">\[
-SSE=\sum_{i=1}^n (y_i-\hat y_i)^2=SS(Total)-SSR
-\]</span></p>
+<p><span class="math display">\[SSE=\sum_{i=1}^n (y_i-\hat y_i)^2=SS(Total)-SSR\]</span></p>
 </section>
 <section id="coefficient-of-determination-goodness-of-fit" class="level3" data-number="14.6.5">
 <h3 data-number="14.6.5" class="anchored" data-anchor-id="coefficient-of-determination-goodness-of-fit"><span class="header-section-number">14.6.5</span> Coefficient of determination (Goodness of fit)</h3>
-<p><span class="math display">\[
-R^2=\frac{SSR}{SS(Total)}  \hspace{10pt}; \hspace{10pt} 0\le R^2\le1
-\]</span></p>
+<p><span class="math display">\[R^2=\frac{SSR}{SS(Total)}  \hspace{10pt}; \hspace{10pt} 0\le R^2\le1 \]</span></p>
 <p><strong>Interpretation:</strong> The <span class="math inline">\(R^2\)</span> explains the amount of variation in <span class="math inline">\(Y\)</span> (dependent variable) by the estimated model.</p>
 <p>In the case of <strong>SLR,</strong></p>
-<p><span class="math display">\[
-R^2=r_{xy}^2=\frac{s^2_{xy}}{s_x^2 \times s^2_y}
-\]</span></p>
+<p><span class="math display">\[R^2=r_{xy}^2=\frac{s^2_{xy}}{s_x^2 \times s^2_y}\]</span></p>
 <p>We can also write <span class="math inline">\(R^2\)</span> as:</p>
-<p><span class="math display">\[
-R^2=\frac{\hat \beta_1^2 \sum(x-\bar x)^2}{\sum(y-\bar y)^2}
-\]</span></p>
+<p><span class="math display">\[R^2=\frac{\hat \beta_1^2 \sum(x-\bar x)^2}{\sum(y-\bar y)^2}\]</span></p>
 </section>
 <section id="some-problems-on-slr" class="level3" data-number="14.6.6">
 <h3 data-number="14.6.6" class="anchored" data-anchor-id="some-problems-on-slr"><span class="header-section-number">14.6.6</span> Some problems on SLR</h3>
@@ -1178,17 +1092,17 @@ R^2=\frac{\hat \beta_1^2 \sum(x-\bar x)^2}{\sum(y-\bar y)^2}
 <p><strong>Problem 15.4</strong> <strong>Age and Blood Pressure.</strong>&nbsp;The ages (in years) of 10 men and their systolic blood pressures (in millimeters of mercury).</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1247,34 +1161,20 @@ Figure&nbsp;14.5: Sacter plot of Age and SBP
 </div>
 <p>The scatter plot appears to be linear.</p>
 <p><strong>iii)</strong> Let the estimated regression line is :</p>
-<p><span class="math display">\[
-\hat y_i=\hat \beta_0 +\hat \beta_1 x_i \hspace{40pt} (1)
-\]</span></p>
+<p><span class="math display">\[\hat y_i=\hat \beta_0 +\hat \beta_1 x_i \hspace{40pt} (1)\]</span></p>
 <p>From sample data;</p>
 <p><span class="math inline">\(n=10, \sum x =416  , \sum y=1512 , \sum x^2 =20398\)</span>,</p>
 <p><span class="math inline">\(\sum y^2=237414, \sum xy=67977\)</span></p>
 <p><span class="math inline">\(\bar x=41.6 , \hspace{10pt} \bar y=151.2\)</span></p>
 <p>So,</p>
-<p><span class="math display">\[
-s_{xy}=\frac{\sum xy-n \cdot \bar x \cdot \bar y}{n-1}=\frac{67977-10\times 41.6\times 151.2}{10-1}=564.2
-\]</span></p>
-<p><span class="math display">\[
-s^2_x=\frac{\sum x^2 -n\times \bar x^2}{n-1}=343.6
-\]</span></p>
-<p><span class="math display">\[
-s^2_y=\frac{\sum y^2 -n\times \bar y^2}{n-1}=977.7333
-\]</span></p>
+<p><span class="math display">\[s_{xy}=\frac{\sum xy-n \cdot \bar x \cdot \bar y}{n-1}=\frac{67977-10\times 41.6\times 151.2}{10-1}=564.2\]</span></p>
+<p><span class="math display">\[s^2_x=\frac{\sum x^2 -n\times \bar x^2}{n-1}=343.6\]</span></p>
+<p><span class="math display">\[s^2_y=\frac{\sum y^2 -n\times \bar y^2}{n-1}=977.7333\]</span></p>
 <p>Hence,</p>
-<p><span class="math display">\[
-\hat \beta_1=\frac{s_{xy}}{s^2_x}=\frac{564.2}{343.6}=1.642026\approx 1.642
-\]</span></p>
+<p><span class="math display">\[\hat \beta_1=\frac{s_{xy}}{s^2_x}=\frac{564.2}{343.6}=1.642026\approx 1.642\]</span></p>
 <p>and,</p>
-<p><span class="math display">\[
-\hat \beta_0=\bar y-\hat \beta_1 \bar x=151.2-1.642026\times41.6=82.89172\approx82.8917
-\]</span></p>
-<p><span class="math display">\[
-\therefore \hat y_i=82.8917+1.642\hspace{3pt}x_i \hspace{5pt}
-\]</span></p>
+<p><span class="math display">\[\hat \beta_0=\bar y-\hat \beta_1 \bar x=151.2-1.642026\times41.6=82.89172\approx82.8917 \]</span></p>
+<p><span class="math display">\[\therefore \hat y_i=82.8917+1.642\hspace{3pt}x_i \hspace{5pt}\]</span></p>
 <ol start="4" type="i">
 <li><strong>Interpretation of the regression/slope coefficient:</strong></li>
 </ol>
@@ -1288,9 +1188,7 @@ s^2_y=\frac{\sum y^2 -n\times \bar y^2}{n-1}=977.7333
 <li><strong>Comment about goodness of fit of the estimated model:</strong></li>
 </ol>
 <p>The goodness of fit measure is</p>
-<p><span class="math display">\[
-R^2=\frac{s^2_{xy} }{s^2_x \cdot s^2_y}=\frac{(564.2)^2}{(343.6)(977.7333)}=0.9475
-\]</span></p>
+<p><span class="math display">\[R^2=\frac{s^2_{xy} }{s^2_x \cdot s^2_y}=\frac{(564.2)^2}{(343.6)(977.7333)}=0.9475\]</span></p>
 <p>Hence, <span class="math inline">\(R^2=0.9475\)</span> implies that 94.75% variation in “SBP” can be explained by the estimated model.</p>
 
 
