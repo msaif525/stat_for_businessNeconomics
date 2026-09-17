@@ -652,7 +652,7 @@ a.  Show the frequency distribution.
 b.  Show the relative frequency distribution.
 c.  Show the cumulative frequency distribution.
 d.  Show the cumulative relative frequency distribution.
-e.  What proportion of patients needing emergency service wait less than 10 minutes or less?
+e.  What proportion of patients needing emergency service wait less than 10 minutes ?
 
 <!-- -->
 
