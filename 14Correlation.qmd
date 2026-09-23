@@ -67,11 +67,9 @@ $$s_{XY}=\frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{n-1}$$
 
 **Shortcut for Sample Covariance**
 
-$$s_{XY}=\frac{\sum xy -n \bar x \bar y }{n-1}$$
-Or,
+$$s_{XY}=\frac{\sum xy -n \bar x \bar y }{n-1}$$ Or,
 
-$$s_{XY}=\frac{1}{n-1}\left[ \sum xy -\frac{\sum x \sum y}{n}     \right ]   $$
- {#eq-covshort}
+$$s_{XY}=\frac{1}{n-1}\left[ \sum xy -\frac{\sum x \sum y}{n}     \right ]   $$ {#eq-covshort}
 
 **Example:** Compute sample covariance between $X$ and $Y$ from @tbl-xydata.
 
@@ -111,8 +109,7 @@ $$\rho=\frac{\sigma_{XY}}{\sigma_X \times \sigma_Y}\ \ ;\ \ -1\le\rho \le +1$$
 
 **Sample correlation coefficient**
 
-$$r=\frac{s_{XY}}{s_X \times s_Y}\ \ ;\ \ -1\le r \le +1$$
- {#eq-sampleR}
+$$r=\frac{s_{XY}}{s_X \times s_Y}\ \ ;\ \ -1\le r \le +1$$ {#eq-sampleR}
 
 Where
 
@@ -393,8 +390,7 @@ par(mfrow=c(1,1))  # Reset plot layout
 
 To measure the association between two ordinal or rank-ordered data we use the **Spearman Rank-correlation coefficient (RCC).** Even if in presence of outliers in interval or ratio scale data we can use RCC. The sample Spearman RCC is computed as follows:
 
-$$r_s=1-\frac{6\sum_{i=1}^n d_i^2}{n(n^2-1)}$$
- {#eq-Rcc}
+$$r_s=1-\frac{6\sum_{i=1}^n d_i^2}{n(n^2-1)}$$ {#eq-Rcc}
 
 Where,
 
@@ -448,8 +444,7 @@ In the following section we will discuss about the **Simple linear regression (S
 
 ### **Population regression function (PRF)**
 
-$$y_i=\beta_0+\beta_1 x_i+\epsilon_i \hspace{10pt} ; i=1,2,3,..., N$$
- {#eq-PRF}
+$$y_i=\beta_0+\beta_1 x_i+\epsilon_i \hspace{10pt} ; i=1,2,3,..., N$$ {#eq-PRF}
 
 Where,
 
@@ -471,8 +466,7 @@ ii) The independent variable should not be correlated with the error term (no en
 
 Taking conditional expectation of of **PRF** for a given $x_i$ we have
 
-$$E(y_i/x_i)=\beta_0+\beta_1 x_i $$
- {#eq-expectedprf}
+$$E(y_i/x_i)=\beta_0+\beta_1 x_i $$ {#eq-expectedprf}
 
 From sample data we have to estimate $E(y_i/x_i)$ which is equivalent to estimate $\beta_0$ and $\beta_1$.
 
@@ -490,21 +484,17 @@ Where, $e_i$ is the **estimated error** or **residual.**
 
 Now, the **residuals sum of square (RSS)** is given as:
 
-$$RSS=\sum_{i=1}^n e_i^2=\sum_{i=1}^n (y_i-\hat y_i)^2=\sum_{i=1}^n (y_i-\hat \beta_0-\hat \beta_1x_i)^2$$
- {#eq-ssr}
+$$RSS=\sum_{i=1}^n e_i^2=\sum_{i=1}^n (y_i-\hat y_i)^2=\sum_{i=1}^n (y_i-\hat \beta_0-\hat \beta_1x_i)^2$$ {#eq-ssr}
 
 In **OLS** method we *minimize* the **RSS**with respect to $\hat \beta_0$ and $\hat \beta_1$. To minimize **RSS**we have to set two equations using *partial derivative:*
 
-$$\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_0}=0$$
- {#eq-ols1}
+$$\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_0}=0$$ {#eq-ols1}
 
-$$\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_1}=0$$
- {#eq-ols2}
+$$\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_1}=0$$ {#eq-ols2}
 
 By solving the two equations we will have the **OLS estimates** of $\beta_0$ and $\beta_1$ as follows:
 
-$$\hat \beta_0=\bar y-\hat \beta_1 \bar x$$
-and
+$$\hat \beta_0=\bar y-\hat \beta_1 \bar x$$ and
 
 $$\hat \beta_1=\frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)} {\sum_{i=1}^n (x_i-\bar x)^2}=\frac{s_{xy}}{s^2_x}$$
 

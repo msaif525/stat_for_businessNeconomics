@@ -67,7 +67,7 @@ As one of its major contributions, statistics uses data from a sample to make es
 @tbl-tab1_1 shows a data set containing information for 10 restaurant.
 
 | Restaurant Name | Cuisine Type | Average Meal Price (\$) | Customer Satisfaction (%) | Delivery Fee (\$) | Quality Rating |
-|:-----------|:----------:|:----------:|:----------:|:----------:|:----------:|
+|:---|:--:|:--:|:--:|:--:|:--:|
 | Bella Italia | Italian | 22.50 | 88.5 | 3.50 | 4-Star |
 | Taco Fiesta | Mexican | 11.20 | 79.0 | 1.99 | 3-Star |
 | Dragon Wok | Asian | 14.80 | 92.4 | 2.50 | 5-Star |
