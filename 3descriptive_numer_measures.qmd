@@ -261,6 +261,7 @@ sal<-c(3450 ,3550 ,3650 ,3480 ,3355, 3310 ,3490 ,3730, 3540 ,3925, 3520 ,3480)
 
 sal6<-c(3450 ,3550 ,3650 ,3480 ,3355, 3545)
 #mean(sal6)
+sum(sal6^2)
 
 sal6d=as.data.frame(sal6)
 
@@ -273,7 +274,7 @@ sal6d %>% mutate(m=mean(sal6),deviation=sal6-m,squared_deviation=deviation^2)->v
 ```
 
 | Salary ($x_i$) | Sample mean, $\bar x$ | $(x_i-\bar x)$ | $(x_i-\bar x)^2$ |
-|:--:|:--:|:--:|:--:|
+|:----------------:|:----------------:|:----------------:|:----------------:|
 | 3450 | 3505 | -55 | 3025 |
 | 3550 | 3505 | 45 | 2025 |
 | 3650 | 3505 | 145 | 21025 |
@@ -286,7 +287,15 @@ sal6d %>% mutate(m=mean(sal6),deviation=sal6-m,squared_deviation=deviation^2)->v
 
 Hence, the sample variance is:
 
-$$s^2=\frac{\sum (x_i-\bar x)^2}{n-1}=\frac{50800}{6-1}=10160 \ \ (dollars)^2 $$
+$$s^2=\frac{\sum (x_i-\bar x)^2}{n-1}=\frac{50800}{6-1}=10160 \ \ (\mathrm {dollars})^2 $$
+
+**Alternative**
+
+Here, $\sum x_i ^2=3450^2+3550^2+...+3545^2=73760950$
+
+$$
+s^2=\frac{\sum x_i ^2-n \cdot (\bar x)^2}{n-1}=\frac{73760950-6\cdot (3505^2)}{6-1}=10160 \ \ \mathrm {dollars^2}
+$$
 
 ### Standard deviation
 
@@ -310,9 +319,31 @@ The standard deviation is easier to interpret than the variance because the stan
 
 For example, the sample variance for the starting salary data of business school graduates is $s^2=10160 \ \ (dollars)^2$.
 
-Because the standard deviation is the square root of the variance, the units of the variance, dollars squared, are converted to dollars in the standard deviation.
+**Because the standard deviation is the square root of the variance, the units of the variance, dollars squared, are converted to dollars in the standard deviation.**
 
-Thus, the standard deviation of the starting salary data is 100.80 dollar. In other words, the standard deviation is measured in the same units as the original data. For this reason the standard deviation is more easily compared to the mean and other statistics that are measured in the same units as the original data.
+*Thus, the standard deviation of the starting salary data is 100.80 dollar.*
+
+In other words, the standard deviation is measured in the same units as the original data. For this reason the standard deviation is more easily compared to the mean and other statistics that are measured in the same units as the original data.
+
+::: {.callout-note appearance="minimal"}
+## Data transformation: Shifting origin and changing scale
+
+Given $X={x_1, x_2,...,x_n}$
+
+Let, $Y=\frac{X-a}{b}$ ; here $a$ and $b$ are any arbitrary constant with $b\ne0$.
+
+Then it can be shown that:
+
+- $\bar x =a+b \cdot \bar y$
+
+- $s^2_X=b^2 s^2_Y$
+
+**Conclusion:**
+
+- Mean is affected both origin shift ($a$) and scale change ($b$).
+
+- But, variance is only affected by change of scale ($b$).
+:::
 
 ::: callout-note
 ## Properties of variance
@@ -360,7 +391,7 @@ In some situations we may be interested in a descriptive statistic that indicate
 
 **Coefficient variation,**
 
-$$CV=\frac{Standard \ \ deviation}{Mean}$$
+$$CV=\mathrm{ \frac{Standard \ \ deviation}{Mean}}$$
 
 - The coefficient of variation is a relative measure of variability; it measures the standard deviation relative to the mean.
 
@@ -404,6 +435,21 @@ $CV_{weight}=\frac{\sigma}{\mu}.100\%=\frac{17.7}{187.8}.100\% \approx9.4\%$
 ***Interpretation:*** The weights (9.4%) are more variable than the heights (4.5%).
 :::
 
+**Example 3.14:** An investment analyst is evaluating six years of historical annual returns (n = 6) for two competing growth funds (**Fund X** and **Fund Y**).
+
+| **Year** | **Fund X Return (%)** | **Fund Y Return (%)** |
+|----------|:---------------------:|:---------------------:|
+| Year 1   |          +15          |          +8           |
+| Year 2   |          -5           |          +2           |
+| Year 3   |          +12          |          +6           |
+| Year 4   |          -8           |          -2           |
+| Year 5   |          +18          |          +10          |
+| Year 6   |          -4           |           0           |
+
+a\) **Compute** mean, standard deviation and coefficient of variation of returns fo *both funds.*
+
+b\) **Compare** coefficient of variation of returns fo *both funds.* **Decide** which fund is less risky.
+
 ## The mean and standard deviation of Grouped data
 
 In most cases, measures of location and variability are computed by using the individual data values. Sometimes, however, data are available only in a grouped or frequency distribution form. In the following discussion, we show how the weighted mean formula can be used to obtain approximations of the mean, variance, and standard deviation for **grouped data**.
@@ -424,7 +470,7 @@ $$s^2=\frac{\sum f_i(M_i-\bar x)^2}{n-1}=\frac{\sum M_i x_i^2-n\cdot \bar x^2}{n
 
 Eventually the **standard deviation** is $\sqrt {s^2}$
 
-**Example 3.14** The frequency distribution of audit times is given below:
+**Example 3.15** The frequency distribution of audit times is given below:
 
 | Audit Time (days) | Frequency |
 |:-----------------:|:---------:|
@@ -442,7 +488,7 @@ Eventually the **standard deviation** is $\sqrt {s^2}$
 [*Solution:*]{.underline}
 
 |  |  |  |  |  |
-|----|:--:|:--:|:--:|:--:|
+|---------------|:-------------:|:-------------:|:-------------:|:-------------:|
 | **Audit Time (days)** | **Mid point**$(M_i)$ | **Frequency** $(f_i)$ | $f_i M_i$ | $f_i M_i^2$ |
 | 10-14 | 12 | 4 | 48 | 576 |
 | 15-19 | 17 | 8 | 136 | 2312 |
@@ -495,7 +541,7 @@ $$z_i=\frac{x_i-\bar x}{s}$$
 
 - The z-score for any observation can be interpreted as a measure of the relative location of the observation in a data set. Thus, observations in two different data sets with the same z-score can be said to have the same relative location in terms of being the same number of standard deviations from the mean.
 
-**Example 3.15** Suppose $X=\{46,54,42,46,32\}$. Here $X$ is the number students in each class.
+**Example 3.16** Suppose $X=\{46,54,42,46,32\}$. Here $X$ is the number students in each class.
 
 i\) Compute *sample mean* and *standard deviation* of $X$
 
@@ -505,9 +551,9 @@ iii\) Interpret the *z-scores* for 54 and 32
 
 iv\) Compute the mean and variance of *z-scores*
 
-**Example 3.16** Consider a very large number of students taking a college entrance exam such as the SAT. And suppose the mean score on the mathematics section of the SAT is 570 with a standard deviation of 40.
+**Example 3.17** Consider a very large number of students taking a college entrance exam such as the SAT. And suppose the mean score on the mathematics section of the SAT is 570 with a standard deviation of 40.
 
-a\) Find the z-score for a student who scored 600.
+a\) **Find** the z-score for a student who scored 600.
 
 b\) A student is told that his z-score on this test is -1.5. What was his actual SAT math score?
 
@@ -525,7 +571,7 @@ At least $(1 - \frac{1}{z^2})$ of the data values must be within $z$ standard de
 $P(\bar x-z\cdot s<X<\bar x+z\cdot s)\ge (1-\frac{1}{z^2})$
 :::
 
-**Example 3.17** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5.
+**Example 3.18** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5.
 
 i\) How many students (in %) had test scores between 60 and 80?
 
@@ -545,7 +591,7 @@ $$(1-\frac{1}{z^2})=(1-\frac{1}{2^2})=0.75$$ So, at least 75% of the students mu
 
 ii\) DIY
 
-**Example 3.18** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5. **Find** the interval in which at least 80% data values lie.
+**Example 3.19** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5. **Find** the interval in which at least 80% data values lie.
 
 ### Empirical Rule
 
@@ -557,7 +603,7 @@ If a **distribution is approximately bell-shaped/symmetric/normal** then
 
 - Almost all of the data values (99%) will be within **three** standard deviations of the mean.
 
-[![Empirical rule](images/clipboard-712765208.png)](https://images.ctfassets.net/kj4bmrik9d6o/1SEuMoouEipHwd6BCarQjz/0cd917fabfb2186c43801a8669e9b5e0/Normal_Distribution_06.png)
+[![Empirical rule](images/clipboard-712765208.png){width="465"}](https://images.ctfassets.net/kj4bmrik9d6o/1SEuMoouEipHwd6BCarQjz/0cd917fabfb2186c43801a8669e9b5e0/Normal_Distribution_06.png)
 
 **Example GMAT Exam Scores**. The Graduate Management Admission Test (GMAT) is a standardized exam used by many universities as part of the assessment for admission to graduate study in business. The average GMAT score is 547 (Magoosh website). Assume that GMAT scores are bell-shaped with a standard deviation of 100.
 
@@ -584,7 +630,7 @@ An observation say $x_i$ is treated as *outlier* if its corresponding **z-score*
 [**Note:**]{.underline} **Z-score rule** works well for **large, symmetric, bell-shaped datasets**.
 :::
 
-**Example** **3.19** Consider the following data:
+**Example** **3.20** Consider the following data:
 
 35, 68, 52, 80, 45, 60, 30, 75, 48, 53, 70, 42, 66, 55, 40, 58, 78, 36, 50, 62, 33, 71, 49, 44, 64, 38, 85, 57, 39, 61, 73, 46, 67, 32, 56, 65, 41, 59, 51, 54, 10, 100, 110, 77, 63, 69, 82, 37, 47, 60
 
@@ -626,7 +672,7 @@ Any data value or observation falls outside the interval $[LL,UL]$ will be treat
 [**Note:**]{.underline} **IQR rule** is **better for skewed or small datasets** .
 :::
 
-**Example 3.20** The following data shows the annual salaries (in thousand USD) of 10 employees in a company:
+**Example 3.21** The following data shows the annual salaries (in thousand USD) of 10 employees in a company:
 
 50, 45, 52, 37, 42, 70, 40, 35, 47, 17
 
@@ -650,7 +696,7 @@ In a **five-number summary**, five numbers are used to summarize the data:
 
 5\. Largest value
 
-**Example 3.21** [@anderson2020, 158]**:** **Household Incomes**. The following data represent a sample of 14 household incomes(\$1000s). Answer the following questions based on this sample.
+**Example 3.22** [@anderson2020, 158]**:** **Household Incomes**. The following data represent a sample of 14 household incomes(\$1000s). Answer the following questions based on this sample.
 
 49.4, 52.4, 53.4, 51.3, 52.1, 48.7, 52.1, 52.2, 64.5, 51.6, 46.5, 52.9, 52.5, 51.2
 
@@ -658,9 +704,9 @@ a.  What is the median household income for these sample data?
 
 b.  According to a previous survey, the median annual household income five years ago was \$55,000. Based on the sample data above, estimate the percentage change in the median household income from five years ago to today.
 
-c.  Compute the first and third quartiles.
+c.  **Compute** the first and third quartiles.
 
-d.  Provide a five-number summary.
+d.  **Provide** a five-number summary.
 
 e.  Using the z-score approach, do the data contain any outliers? Does the approach that uses the values of the first and third quartiles and the interquartile range to detect outliers provide the same results?
 
@@ -812,21 +858,21 @@ Rating %>% ggplot(aes(x=Company,y=Rating))+
 
 - Which service does *Consumer Reports* recommend as being best in terms of overall customer satisfaction?
 
-**Problem 3.22** Consider a sample with data values of 27, 25, 20, 15, 30, 34, 28, and 25. Provide the five-number summary for the data. Also construct a boxplot.
+**Problem 3.23** Consider a sample with data values of 27, 25, 20, 15, 30, 34, 28, and 25. Provide the five-number summary for the data. Also construct a boxplot.
 
-**Problem 3.23** A sample of 28 time shares in the Orlando, Florida, area revealed the following daily charges (in USD dollars) for a one-bedroom suite. For convenience, the data are ordered from smallest to largest.
+**Problem 3.24** A sample of 28 time shares in the Orlando, Florida, area revealed the following daily charges (in USD dollars) for a one-bedroom suite. For convenience, the data are ordered from smallest to largest.
 
 116, 121, 157, 192, 207, 209, 209, 229, 232, 236, 236, 239, 243, 246,
 
 260,264, 276, 281, 283, 289, 296, 307, 309, 312, 317, 324, 341, 353
 
-a\) Compute the lower and upper limits and check for outlier(s).
+a\) **Compute** the lower and upper limits and check for outlier(s).
 
 b\) Then construct a boxplot of the daily charges and show the outlier(s) if any in the boxplot.
 
-c\) Comment on the distribution of the daily charges.
+c\) **Comment** on the distribution of the daily charges.
 
-**Problem 3.24** **Amateur Golfer Scores.** Scores turned in by an amateur golfer at the Bonita Fairways Golf Course in Bonita Springs, Florida, during 2017 and 2018 are as follows:
+**Problem 3.25** **Amateur Golfer Scores.** Scores turned in by an amateur golfer at the Bonita Fairways Golf Course in Bonita Springs, Florida, during 2017 and 2018 are as follows:
 
 *2017 Season:* 74, 78, 79, 77, 75, 73, 75, 77
 
@@ -836,7 +882,7 @@ c\) Comment on the distribution of the daily charges.
 
 (b) Describe your findings.
 
-**Problem 3.25 Automobile Fuel Efficiencies.** In automobile mileage and gasoline-consumption testing, 13 automobiles were road tested for 300 miles in both city and highway driving conditions. The following data were recorded for miles-per-gallon performance.
+**Problem 3.26 Automobile Fuel Efficiencies.** In automobile mileage and gasoline-consumption testing, 13 automobiles were road tested for 300 miles in both city and highway driving conditions. The following data were recorded for miles-per-gallon performance.
 
 ***City:*** 16.2, 16.7, 15.9, 14.4, 13.2, 15.3, 16.8, 16.0, 16.1, 15.3, 15.2, 15.3, 16.2
 
@@ -965,9 +1011,7 @@ c\) $m_3=m'_3-3m'_1 m'_2+2{m'_1}^3$
 
 d\) $m_4=m'_4-4m'_1 m'_3+6{m'_1}^2 m'_2-3{m'_1}^4$
 
-**Example 3.18**
-
-**Calculate** the first 4 central moments from the following sample data.
+**Example 3.27 Calculate** the first 4 central moments from the following sample data.
 
 `3,5,6,9,12`
 
@@ -996,7 +1040,7 @@ x=c(3,5,6,9,12)
 Here sample mean, $\bar x=\frac{\sum x}{n}=\frac{3+5+...+12}{5}=7$
 
 | $x$ | $(x-\bar x)$ | $(x-\bar x)^2$ | $(x-\bar x)^3$ | $(x-\bar x)^4$ |
-|:--:|:--:|:--:|:--:|:--:|
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | 3 | -4 | 16 | -64 | 256 |
 | 5 | -2 | 4 | -8 | 16 |
 | 6 | -1 | 1 | -1 | 1 |
@@ -1040,7 +1084,7 @@ b\) $\beta_2 \approx 3$ indicates *mesokurtic/normal* distribution*;*
 
 c\) $\beta_2<3$ indicates *platykurtic* distribution*.*
 
-**Example 3.18 (continued)**
+**Example 3.28 (continued)**
 
 From the calculated moments in **Example 3.18** now we compute coefficients of skewness and kurtosis.
 
@@ -1056,7 +1100,7 @@ $$\beta _2=\frac{m_4}{m_2^2}=\frac{182}{10^2}=1.82<3$$
 
 So the distribution is **platykurtic**.
 
-**Example 3.19** A sample of 7 data entry clerks employed in the Harry County Tax Office revised the following *number of tax records* last hour: 100, 75, 70, 65, 80, 68 and 50.
+**Example 3.29** A sample of 7 data entry clerks employed in the Harry County Tax Office revised the following *number of tax records* last hour: 100, 75, 70, 65, 80, 68 and 50.
 
 **Comment** about *skewness* and *kurtosis* of the *number of tax records*.
 
@@ -1230,9 +1274,9 @@ i\) What is the *mean speed* of the automobiles traveling on this road?
 
 ii\) **Compute** the *variance* and the *standard deviation*.\
 
-**3.15** Consider a sample with a mean of 500 and a standard deviation of 100. What are the z-scores for the following data values: 520, 650, 500, 450, and 280?
+**3.15** Consider a sample with a mean of 500 and a standard deviation of 100. What are the **z-scores** for the following data values: 520, 650, 500, 450, and 280?
 
-**3.16** Consider a sample with a mean of 30 and a standard deviation of 5. Use Chebyshev’s theorem to determine the percentage of the data within each of the following ranges:
+**3.16** Consider a sample with a mean of 30 and a standard deviation of 5. Use **Chebyshev’s theorem** to determine the percentage of the data within each of the following ranges:
 
 a.  20 to 40
 
@@ -1240,9 +1284,9 @@ b.  15 to 45
 
 **3.17** The results of a national survey showed that on average, adults sleep 6.9 hours per night. Suppose that the standard deviation is 1.2 hours.
 
-a.  Use Chebyshev’s theorem to calculate the percentage of individuals who sleep between 4.5 and 9.3 hours.
+a.  Use **Chebyshev’s theorem** to calculate the percentage of individuals who sleep between 4.5 and 9.3 hours.
 
-b.  Use Chebyshev’s theorem to calculate the percentage of individuals who sleep between 3.9 and 9.9 hours.
+b.  Use **Chebyshev’s theorem** to calculate the percentage of individuals who sleep between 3.9 and 9.9 hours.
 
 c.  Assume that the number of hours of sleep follows a bell-shaped distribution. Use the empirical rule to calculate the percentage of individuals who sleep between 4.5 and 9.3 hours per day. How does this result compare to the value that you obtained using Chebyshev’s theorem in part (a)?
 
@@ -1250,7 +1294,7 @@ c.  Assume that the number of hours of sleep follows a bell-shaped distribution.
 
 b.  What is the z-score for a backyard structure costing \$4900?
 
-c.  Interpret the z-scores in parts (a) and (b). Comment on whether either should be considered an outlier.
+c.  **Interpret** the z-scores in parts (a) and (b). Comment on whether either should be considered an outlier.
 
 d.  The Newsweek article described a backyard shed-office combination built in Albany, California, for \$13,000. Should this structure be considered an outlier? Explain.
 
@@ -1278,4 +1322,4 @@ three20<-c( 81, 68, 70, 100, 94, 47, 66, 70, 82, 110, 105,60, 21, 70, 66, 90, 78
 
 a\) Use the data to construct a box-and-whisker plot.
 
-b\) Discuss the skewness of the distribution of these data and point out any outliers.
+b\) **Discuss** the skewness of the distribution of these data and point out any outliers.

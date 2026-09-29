@@ -192,12 +192,11 @@ ggplot(gdp_data, aes(x = Year, y = Growth)) +
 ::: {.callout-important appearance="simple"}
 ## List of questions
 
-
 **The Role and Types of Statistics**
 
-- Explain the primary difference between descriptive statistics and inferential statistics.
-- Describe the relationship between a population and a sample in a statistical study.
-- Summarize the difference between conducting a census versus a sample survey.
+- **Explain** the primary difference between descriptive statistics and inferential statistics.
+- **Describe** the relationship between a population and a sample in a statistical study.
+- **Summarize** the difference between conducting a census versus a sample survey.
 - Give an example of how statistical inference might be used in a business or economic context.
 
 **Elements of a Data Set**
@@ -207,12 +206,12 @@ ggplot(gdp_data, aes(x = Year, y = Growth)) +
 
 **Measurement and Data Types**
 
-- Compare the nominal and ordinal scales of measurement.
-- Explain the key feature that distinguishes an interval scale from a ratio scale.
-- Summarize the difference between categorical (qualitative) and quantitative data.
-- Classify the difference between discrete quantitative data and continuous quantitative data.
-- Describe how cross-sectional data differs from time series data in terms of when it is collected.
-- Explain the conceptual difference between raw *data* and processed *information*.
+- **Compare** the nominal and ordinal scales of measurement.
+- **Explain** the key feature that distinguishes an interval scale from a ratio scale.
+- **Summarize** the difference between categorical (qualitative) and quantitative data.
+- **Classify** the difference between discrete quantitative data and continuous quantitative data.
+- **Describe** how cross-sectional data differs from time series data in terms of when it is collected.
+- **Explain** the conceptual difference between raw *data* and processed *information*.
 :::
 
 ## Exercise
