@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -54,15 +54,14 @@ div.csl-indent {
 <link href="./2descriptive_graph_tab.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-066b562477012fc308cfc884aa1e7cf5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8244c66523fac62cbacdae4f74e334b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,7 +103,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -579,7 +578,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Derivation
+Derivation
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -598,6 +597,11 @@ Note
 <p>Here, <strong>sample size,</strong> <span class="math inline">\(n=6\)</span>.</p>
 <p>The sample mean salary,</p>
 <p><span class="math inline">\(\bar x =\frac{\sum x}{n}=\frac{3450+\cdot \cdot \cdot+3545}{6}=3505 \ \ dollars\)</span></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 73760950</code></pre>
+</div>
+</div>
 <table class="caption-top table">
 <caption>Computation of the sample variance for the starting Salary data</caption>
 <colgroup>
@@ -660,7 +664,12 @@ Note
 </tbody>
 </table>
 <p>Hence, the sample variance is:</p>
-<p><span class="math display">\[s^2=\frac{\sum (x_i-\bar x)^2}{n-1}=\frac{50800}{6-1}=10160 \ \ (dollars)^2 \]</span></p>
+<p><span class="math display">\[s^2=\frac{\sum (x_i-\bar x)^2}{n-1}=\frac{50800}{6-1}=10160 \ \ (\mathrm {dollars})^2 \]</span></p>
+<p><strong>Alternative</strong></p>
+<p>Here, <span class="math inline">\(\sum x_i ^2=3450^2+3550^2+...+3545^2=73760950\)</span></p>
+<p><span class="math display">\[
+s^2=\frac{\sum x_i ^2-n \cdot (\bar x)^2}{n-1}=\frac{73760950-6\cdot (3505^2)}{6-1}=10160 \ \ \mathrm {dollars^2}
+\]</span></p>
 </section>
 <section id="standard-deviation" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="standard-deviation"><span class="header-section-number">3.2.4</span> Standard deviation</h3>
@@ -680,7 +689,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Note:
+Note:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -688,15 +697,40 @@ Note
 </div>
 </div>
 <p>For example, the sample variance for the starting salary data of business school graduates is <span class="math inline">\(s^2=10160 \ \ (dollars)^2\)</span>.</p>
-<p>Because the standard deviation is the square root of the variance, the units of the variance, dollars squared, are converted to dollars in the standard deviation.</p>
-<p>Thus, the standard deviation of the starting salary data is 100.80 dollar. In other words, the standard deviation is measured in the same units as the original data. For this reason the standard deviation is more easily compared to the mean and other statistics that are measured in the same units as the original data.</p>
+<p><strong>Because the standard deviation is the square root of the variance, the units of the variance, dollars squared, are converted to dollars in the standard deviation.</strong></p>
+<p><em>Thus, the standard deviation of the starting salary data is 100.80 dollar.</em></p>
+<p>In other words, the standard deviation is measured in the same units as the original data. For this reason the standard deviation is more easily compared to the mean and other statistics that are measured in the same units as the original data.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Data transformation: Shifting origin and changing scale
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Given <span class="math inline">\(X={x_1, x_2,...,x_n}\)</span></p>
+<p>Let, <span class="math inline">\(Y=\frac{X-a}{b}\)</span> ; here <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are any arbitrary constant with <span class="math inline">\(b\ne0\)</span>.</p>
+<p>Then it can be shown that:</p>
+<ul>
+<li><p><span class="math inline">\(\bar x =a+b \cdot \bar y\)</span></p></li>
+<li><p><span class="math inline">\(s^2_X=b^2 s^2_Y\)</span></p></li>
+</ul>
+<p><strong>Conclusion:</strong></p>
+<ul>
+<li><p>Mean is affected both origin shift (<span class="math inline">\(a\)</span>) and scale change (<span class="math inline">\(b\)</span>).</p></li>
+<li><p>But, variance is only affected by change of scale (<span class="math inline">\(b\)</span>).</p></li>
+</ul>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Properties of variance
+Properties of variance
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -727,14 +761,14 @@ Note
 <h3 data-number="3.2.5" class="anchored" data-anchor-id="coefficient-of-variation-cv"><span class="header-section-number">3.2.5</span> Coefficient of variation (CV)</h3>
 <p>In some situations we may be interested in a descriptive statistic that indicates how large the standard deviation is relative to the mean. This measure is called the <strong>coefficient of variation</strong> and is usually expressed as a percentage.</p>
 <p><strong>Coefficient variation,</strong></p>
-<p><span class="math display">\[CV=\frac{Standard \ \ deviation}{Mean}\]</span></p>
+<p><span class="math display">\[CV=\mathrm{ \frac{Standard \ \ deviation}{Mean}}\]</span></p>
 <ul>
 <li><p>The coefficient of variation is a relative measure of variability; it measures the standard deviation relative to the mean.</p></li>
 <li><p>In general, the coefficient of variation is a useful statistic for comparing the variability of variables that have different standard deviations and different means.</p></li>
 </ul>
 <p><strong>Example 3.13:</strong> The table at the left shows the population heights (in inches) and weights (in pounds) of the members of a basketball team. Find the coefficient of variation for the heights and the weights. Then compare the results.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Coefficient of variation</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Coefficient of variation</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <table class="caption-top table">
@@ -808,6 +842,50 @@ Note
 </div>
 </div>
 </div>
+<p><strong>Example 3.14:</strong> An investment analyst is evaluating six years of historical annual returns (n = 6) for two competing growth funds (<strong>Fund X</strong> and <strong>Fund Y</strong>).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Year</strong></th>
+<th style="text-align: center;"><strong>Fund X Return (%)</strong></th>
+<th style="text-align: center;"><strong>Fund Y Return (%)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Year 1</td>
+<td style="text-align: center;">+15</td>
+<td style="text-align: center;">+8</td>
+</tr>
+<tr class="even">
+<td>Year 2</td>
+<td style="text-align: center;">-5</td>
+<td style="text-align: center;">+2</td>
+</tr>
+<tr class="odd">
+<td>Year 3</td>
+<td style="text-align: center;">+12</td>
+<td style="text-align: center;">+6</td>
+</tr>
+<tr class="even">
+<td>Year 4</td>
+<td style="text-align: center;">-8</td>
+<td style="text-align: center;">-2</td>
+</tr>
+<tr class="odd">
+<td>Year 5</td>
+<td style="text-align: center;">+18</td>
+<td style="text-align: center;">+10</td>
+</tr>
+<tr class="even">
+<td>Year 6</td>
+<td style="text-align: center;">-4</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<p>a) <strong>Compute</strong> mean, standard deviation and coefficient of variation of returns fo <em>both funds.</em></p>
+<p>b) <strong>Compare</strong> coefficient of variation of returns fo <em>both funds.</em> <strong>Decide</strong> which fund is less risky.</p>
 </section>
 </section>
 <section id="the-mean-and-standard-deviation-of-grouped-data" class="level2" data-number="3.3">
@@ -824,7 +902,7 @@ Note
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="sample-variance-for-grouped-data"><span class="header-section-number">3.3.2</span> Sample variance for grouped data</h3>
 <p><span class="math display">\[s^2=\frac{\sum f_i(M_i-\bar x)^2}{n-1}=\frac{\sum M_i x_i^2-n\cdot \bar x^2}{n-1}\]</span></p>
 <p>Eventually the <strong>standard deviation</strong> is <span class="math inline">\(\sqrt {s^2}\)</span></p>
-<p><strong>Example 3.14</strong> The frequency distribution of audit times is given below:</p>
+<p><strong>Example 3.15</strong> The frequency distribution of audit times is given below:</p>
 <table class="caption-top table">
 <caption>Frequency distribution of audit times</caption>
 <thead>
@@ -943,7 +1021,7 @@ Note
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>z-score
+z-score
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -956,13 +1034,13 @@ Note
 <li><p>A z-score greater than zero occurs for observations with a value greater than the mean, and a z-score less than zero occurs for observations with a value less than the mean. A z-score of zero indicates that the value of the observation is equal to the mean.</p></li>
 <li><p>The z-score for any observation can be interpreted as a measure of the relative location of the observation in a data set. Thus, observations in two different data sets with the same z-score can be said to have the same relative location in terms of being the same number of standard deviations from the mean.</p></li>
 </ul>
-<p><strong>Example 3.15</strong> Suppose <span class="math inline">\(X=\{46,54,42,46,32\}\)</span>. Here <span class="math inline">\(X\)</span> is the number students in each class.</p>
+<p><strong>Example 3.16</strong> Suppose <span class="math inline">\(X=\{46,54,42,46,32\}\)</span>. Here <span class="math inline">\(X\)</span> is the number students in each class.</p>
 <p>i) Compute <em>sample mean</em> and <em>standard deviation</em> of <span class="math inline">\(X\)</span></p>
 <p>ii) Compute <em>z-scores</em></p>
 <p>iii) Interpret the <em>z-scores</em> for 54 and 32</p>
 <p>iv) Compute the mean and variance of <em>z-scores</em></p>
-<p><strong>Example 3.16</strong> Consider a very large number of students taking a college entrance exam such as the SAT. And suppose the mean score on the mathematics section of the SAT is 570 with a standard deviation of 40.</p>
-<p>a) Find the z-score for a student who scored 600.</p>
+<p><strong>Example 3.17</strong> Consider a very large number of students taking a college entrance exam such as the SAT. And suppose the mean score on the mathematics section of the SAT is 570 with a standard deviation of 40.</p>
+<p>a) <strong>Find</strong> the z-score for a student who scored 600.</p>
 <p>b) A student is told that his z-score on this test is -1.5. What was his actual SAT math score?</p>
 </section>
 <section id="chebyshevs-theorem" class="level3" data-number="3.4.2">
@@ -984,7 +1062,7 @@ Note
 <p><span class="math inline">\(P(\bar x-z\cdot s&lt;X&lt;\bar x+z\cdot s)\ge (1-\frac{1}{z^2})\)</span></p>
 </div>
 </div>
-<p><strong>Example 3.17</strong> Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5.</p>
+<p><strong>Example 3.18</strong> Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5.</p>
 <p>i) How many students (in %) had test scores between 60 and 80?</p>
 <p>ii) How many students (in %) had test scores between 58 and 82?</p>
 <p><u>Solution:</u></p>
@@ -994,7 +1072,7 @@ Note
 <p>Applying Chebyshev’s theorem with <span class="math inline">\(z = 2\)</span>, we have</p>
 <p><span class="math display">\[(1-\frac{1}{z^2})=(1-\frac{1}{2^2})=0.75\]</span> So, at least 75% of the students must have test scores between 60 and 80.</p>
 <p>ii) DIY</p>
-<p><strong>Example 3.18</strong> Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5. <strong>Find</strong> the interval in which at least 80% data values lie.</p>
+<p><strong>Example 3.19</strong> Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5. <strong>Find</strong> the interval in which at least 80% data values lie.</p>
 </section>
 <section id="empirical-rule" class="level3" data-number="3.4.3">
 <h3 data-number="3.4.3" class="anchored" data-anchor-id="empirical-rule"><span class="header-section-number">3.4.3</span> Empirical Rule</h3>
@@ -1006,7 +1084,7 @@ Note
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://images.ctfassets.net/kj4bmrik9d6o/1SEuMoouEipHwd6BCarQjz/0cd917fabfb2186c43801a8669e9b5e0/Normal_Distribution_06.png"><img src="images/clipboard-712765208.png" class="img-fluid figure-img"></a></p>
+<p><a href="https://images.ctfassets.net/kj4bmrik9d6o/1SEuMoouEipHwd6BCarQjz/0cd917fabfb2186c43801a8669e9b5e0/Normal_Distribution_06.png"><img src="images/clipboard-712765208.png" class="img-fluid figure-img" width="465"></a></p>
 <figcaption>Empirical rule</figcaption>
 </figure>
 </div>
@@ -1026,7 +1104,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Using z-score to detect outlier
+Using z-score to detect outlier
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1035,7 +1113,7 @@ Note
 <p><u><strong>Note:</strong></u> <strong>Z-score rule</strong> works well for <strong>large, symmetric, bell-shaped datasets</strong>.</p>
 </div>
 </div>
-<p><strong>Example</strong> <strong>3.19</strong> Consider the following data:</p>
+<p><strong>Example</strong> <strong>3.20</strong> Consider the following data:</p>
 <p>35, 68, 52, 80, 45, 60, 30, 75, 48, 53, 70, 42, 66, 55, 40, 58, 78, 36, 50, 62, 33, 71, 49, 44, 64, 38, 85, 57, 39, 61, 73, 46, 67, 32, 56, 65, 41, 59, 51, 54, 10, 100, 110, 77, 63, 69, 82, 37, 47, 60</p>
 <p>(i) <strong>Plot</strong> the data (histogram). Is it approximately bell-shaped/symmetric?</p>
 <p><u><strong>Solution (i):</strong></u></p>
@@ -1056,7 +1134,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Using 1.5(IQR) rule to detect outlier
+Using 1.5(IQR) rule to detect outlier
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1067,7 +1145,7 @@ Note
 <p><u><strong>Note:</strong></u> <strong>IQR rule</strong> is <strong>better for skewed or small datasets</strong> .</p>
 </div>
 </div>
-<p><strong>Example 3.20</strong> The following data shows the annual salaries (in thousand USD) of 10 employees in a company:</p>
+<p><strong>Example 3.21</strong> The following data shows the annual salaries (in thousand USD) of 10 employees in a company:</p>
 <p>50, 45, 52, 37, 42, 70, 40, 35, 47, 17</p>
 <p><strong>Identify</strong> the <strong>outlier(s)</strong> in the dataset using 1.5(IQR) rule.</p>
 </section>
@@ -1080,13 +1158,13 @@ Note
 <p>3. Median (Q2)</p>
 <p>4. Third quartile (Q3)</p>
 <p>5. Largest value</p>
-<p><strong>Example 3.21</strong> <span class="citation" data-cites="anderson2020">(<a href="references.html#ref-anderson2020" role="doc-biblioref">Anderson 2020a, 158</a>)</span><strong>:</strong> <strong>Household Incomes</strong>. The following data represent a sample of 14 household incomes($1000s). Answer the following questions based on this sample.</p>
+<p><strong>Example 3.22</strong> <span class="citation" data-cites="anderson2020">(<a href="references.html#ref-anderson2020" role="doc-biblioref">Anderson 2020a, 158</a>)</span><strong>:</strong> <strong>Household Incomes</strong>. The following data represent a sample of 14 household incomes($1000s). Answer the following questions based on this sample.</p>
 <p>49.4, 52.4, 53.4, 51.3, 52.1, 48.7, 52.1, 52.2, 64.5, 51.6, 46.5, 52.9, 52.5, 51.2</p>
 <ol type="a">
 <li><p>What is the median household income for these sample data?</p></li>
 <li><p>According to a previous survey, the median annual household income five years ago was $55,000. Based on the sample data above, estimate the percentage change in the median household income from five years ago to today.</p></li>
-<li><p>Compute the first and third quartiles.</p></li>
-<li><p>Provide a five-number summary.</p></li>
+<li><p><strong>Compute</strong> the first and third quartiles.</p></li>
+<li><p><strong>Provide</strong> a five-number summary.</p></li>
 <li><p>Using the z-score approach, do the data contain any outliers? Does the approach that uses the values of the first and third quartiles and the interquartile range to detect outliers provide the same results?</p></li>
 </ol>
 </section>
@@ -1310,21 +1388,21 @@ Figure&nbsp;3.2: Comparative Boxplots of Rating by customer for cell-phone servi
 <li><p>Now, <strong>discuss</strong> what a comparison of the boxplots tells about the four services.</p></li>
 <li><p>Which service does <em>Consumer Reports</em> recommend as being best in terms of overall customer satisfaction?</p></li>
 </ul>
-<p><strong>Problem 3.22</strong> Consider a sample with data values of 27, 25, 20, 15, 30, 34, 28, and 25. Provide the five-number summary for the data. Also construct a boxplot.</p>
-<p><strong>Problem 3.23</strong> A sample of 28 time shares in the Orlando, Florida, area revealed the following daily charges (in USD dollars) for a one-bedroom suite. For convenience, the data are ordered from smallest to largest.</p>
+<p><strong>Problem 3.23</strong> Consider a sample with data values of 27, 25, 20, 15, 30, 34, 28, and 25. Provide the five-number summary for the data. Also construct a boxplot.</p>
+<p><strong>Problem 3.24</strong> A sample of 28 time shares in the Orlando, Florida, area revealed the following daily charges (in USD dollars) for a one-bedroom suite. For convenience, the data are ordered from smallest to largest.</p>
 <p>116, 121, 157, 192, 207, 209, 209, 229, 232, 236, 236, 239, 243, 246,</p>
 <p>260,264, 276, 281, 283, 289, 296, 307, 309, 312, 317, 324, 341, 353</p>
-<p>a) Compute the lower and upper limits and check for outlier(s).</p>
+<p>a) <strong>Compute</strong> the lower and upper limits and check for outlier(s).</p>
 <p>b) Then construct a boxplot of the daily charges and show the outlier(s) if any in the boxplot.</p>
-<p>c) Comment on the distribution of the daily charges.</p>
-<p><strong>Problem 3.24</strong> <strong>Amateur Golfer Scores.</strong> Scores turned in by an amateur golfer at the Bonita Fairways Golf Course in Bonita Springs, Florida, during 2017 and 2018 are as follows:</p>
+<p>c) <strong>Comment</strong> on the distribution of the daily charges.</p>
+<p><strong>Problem 3.25</strong> <strong>Amateur Golfer Scores.</strong> Scores turned in by an amateur golfer at the Bonita Fairways Golf Course in Bonita Springs, Florida, during 2017 and 2018 are as follows:</p>
 <p><em>2017 Season:</em> 74, 78, 79, 77, 75, 73, 75, 77</p>
 <p><em>2018 Season:</em> 71, 70, 75, 77, 85, 80, 71, 79</p>
 <ol type="a">
 <li><p>Construct a side-by-side comparative boxplot of scores for two seasons. Show outlier(s) if any.</p></li>
 <li><p>Describe your findings.</p></li>
 </ol>
-<p><strong>Problem 3.25 Automobile Fuel Efficiencies.</strong> In automobile mileage and gasoline-consumption testing, 13 automobiles were road tested for 300 miles in both city and highway driving conditions. The following data were recorded for miles-per-gallon performance.</p>
+<p><strong>Problem 3.26 Automobile Fuel Efficiencies.</strong> In automobile mileage and gasoline-consumption testing, 13 automobiles were road tested for 300 miles in both city and highway driving conditions. The following data were recorded for miles-per-gallon performance.</p>
 <p><strong><em>City:</em></strong> 16.2, 16.7, 15.9, 14.4, 13.2, 15.3, 16.8, 16.0, 16.1, 15.3, 15.2, 15.3, 16.2</p>
 <p><strong><em>Highway:</em></strong> 19.4, 20.6, 18.3, 18.6, 19.2, 17.4, 17.2, 18.6, 19.0, 21.1, 19.4, 18.5, 18.7</p>
 <ol type="a">
@@ -1407,8 +1485,7 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p>b) <span class="math inline">\(m_2=m'_2-{m'_1}^2\)</span></p>
 <p>c) <span class="math inline">\(m_3=m'_3-3m'_1 m'_2+2{m'_1}^3\)</span></p>
 <p>d) <span class="math inline">\(m_4=m'_4-4m'_1 m'_3+6{m'_1}^2 m'_2-3{m'_1}^4\)</span></p>
-<p><strong>Example 3.18</strong></p>
-<p><strong>Calculate</strong> the first 4 central moments from the following sample data.</p>
+<p><strong>Example 3.27 Calculate</strong> the first 4 central moments from the following sample data.</p>
 <p><code>3,5,6,9,12</code></p>
 <p><u>Solution:</u></p>
 <p>Here sample mean, <span class="math inline">\(\bar x=\frac{\sum x}{n}=\frac{3+5+...+12}{5}=7\)</span></p>
@@ -1492,7 +1569,7 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p>a) <span class="math inline">\(\beta_2&gt;3\)</span> indicates <em>leptokurtic</em> distribution<em>;</em></p>
 <p>b) <span class="math inline">\(\beta_2 \approx 3\)</span> indicates <em>mesokurtic/normal</em> distribution<em>;</em></p>
 <p>c) <span class="math inline">\(\beta_2&lt;3\)</span> indicates <em>platykurtic</em> distribution<em>.</em></p>
-<p><strong>Example 3.18 (continued)</strong></p>
+<p><strong>Example 3.28 (continued)</strong></p>
 <p>From the calculated moments in <strong>Example 3.18</strong> now we compute coefficients of skewness and kurtosis.</p>
 <p>Now,</p>
 <p><span class="math display">\[\gamma_1=\frac{m_3}{\sqrt {m_2 ^3}}=\frac{12}{\sqrt{ 10^3}}=0.38&gt;0\]</span></p>
@@ -1500,7 +1577,7 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p>Again,</p>
 <p><span class="math display">\[\beta _2=\frac{m_4}{m_2^2}=\frac{182}{10^2}=1.82&lt;3\]</span></p>
 <p>So the distribution is <strong>platykurtic</strong>.</p>
-<p><strong>Example 3.19</strong> A sample of 7 data entry clerks employed in the Harry County Tax Office revised the following <em>number of tax records</em> last hour: 100, 75, 70, 65, 80, 68 and 50.</p>
+<p><strong>Example 3.29</strong> A sample of 7 data entry clerks employed in the Harry County Tax Office revised the following <em>number of tax records</em> last hour: 100, 75, 70, 65, 80, 68 and 50.</p>
 <p><strong>Comment</strong> about <em>skewness</em> and <em>kurtosis</em> of the <em>number of tax records</em>.</p>
 <p><strong>NOTE:</strong></p>
 <p>Some authors <span class="citation" data-cites="newbold2013">(<a href="references.html#ref-newbold2013" role="doc-biblioref">Newbold, Carlson, and Thorne 2013</a>)</span> use the following formulas to measure skewness and kurtosis without mentioning the moments.</p>
@@ -1638,28 +1715,28 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p>i) What is the <em>mean speed</em> of the automobiles traveling on this road?</p>
 <p>ii) <strong>Compute</strong> the <em>variance</em> and the <em>standard deviation</em>.<br>
 </p>
-<p><strong>3.15</strong> Consider a sample with a mean of 500 and a standard deviation of 100. What are the z-scores for the following data values: 520, 650, 500, 450, and 280?</p>
-<p><strong>3.16</strong> Consider a sample with a mean of 30 and a standard deviation of 5. Use Chebyshev’s theorem to determine the percentage of the data within each of the following ranges:</p>
+<p><strong>3.15</strong> Consider a sample with a mean of 500 and a standard deviation of 100. What are the <strong>z-scores</strong> for the following data values: 520, 650, 500, 450, and 280?</p>
+<p><strong>3.16</strong> Consider a sample with a mean of 30 and a standard deviation of 5. Use <strong>Chebyshev’s theorem</strong> to determine the percentage of the data within each of the following ranges:</p>
 <ol type="a">
 <li><p>20 to 40</p></li>
 <li><p>15 to 45</p></li>
 </ol>
 <p><strong>3.17</strong> The results of a national survey showed that on average, adults sleep 6.9 hours per night. Suppose that the standard deviation is 1.2 hours.</p>
 <ol type="a">
-<li><p>Use Chebyshev’s theorem to calculate the percentage of individuals who sleep between 4.5 and 9.3 hours.</p></li>
-<li><p>Use Chebyshev’s theorem to calculate the percentage of individuals who sleep between 3.9 and 9.9 hours.</p></li>
+<li><p>Use <strong>Chebyshev’s theorem</strong> to calculate the percentage of individuals who sleep between 4.5 and 9.3 hours.</p></li>
+<li><p>Use <strong>Chebyshev’s theorem</strong> to calculate the percentage of individuals who sleep between 3.9 and 9.9 hours.</p></li>
 <li><p>Assume that the number of hours of sleep follows a bell-shaped distribution. Use the empirical rule to calculate the percentage of individuals who sleep between 4.5 and 9.3 hours per day. How does this result compare to the value that you obtained using Chebyshev’s theorem in part (a)?</p></li>
 </ol>
 <p><strong>3.18</strong> The high costs in the California real estate market have caused families who cannot afford tobuy bigger homes to consider backyard sheds as an alternative form of housing expansion. Many are using the backyard structures for home offices, art studios, and hobby areas as well as for additional storage. The mean price of a customized wooden, shingled backyard structure is $3100 (Newsweek, September 29, 2003). Assume that the standard deviation is $1200. a. What is the z-score for a backyard structure costing $2300?</p>
 <ol start="2" type="a">
 <li><p>What is the z-score for a backyard structure costing $4900?</p></li>
-<li><p>Interpret the z-scores in parts (a) and (b). Comment on whether either should be considered an outlier.</p></li>
+<li><p><strong>Interpret</strong> the z-scores in parts (a) and (b). Comment on whether either should be considered an outlier.</p></li>
 <li><p>The Newsweek article described a backyard shed-office combination built in Albany, California, for $13,000. Should this structure be considered an outlier? Explain.</p></li>
 </ol>
 <p><strong>3.20</strong> A data set has a first quartile of 42 and a third quartile of 50. Compute the lower and upper limits for the corresponding box plot. Should a data value of 65 be considered an outlier?</p>
 <p><strong>3.22</strong> Suppose a consumer group asked 18 consumers to keep a yearly log of their shopping practices and that the following data represent the number of coupons used by each consumer over the yearly period.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Ordered data</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Ordered data</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>81, 68, 70, 100, 94, 47, 66, 70, 82, 110, 105, 60, 21, 70, 66, 90, 78, 85</p>
@@ -1670,7 +1747,7 @@ Figure&nbsp;3.4: Different types of kurtosis
 </div>
 </div>
 <p>a) Use the data to construct a box-and-whisker plot.</p>
-<p>b) Discuss the skewness of the distribution of these data and point out any outliers.</p>
+<p>b) <strong>Discuss</strong> the skewness of the distribution of these data and point out any outliers.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -1747,14 +1824,13 @@ R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -54,15 +54,14 @@ div.csl-indent {
 <link href="./13Chi_squaredTest.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-066b562477012fc308cfc884aa1e7cf5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8244c66523fac62cbacdae4f74e334b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,7 +103,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -460,7 +459,7 @@ Figure&nbsp;14.2: Sctter plot between X and Y
 <p><span class="math display">\[s_{XY}=\frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{n-1}\]</span></p>
 <p><strong>Shortcut for Sample Covariance</strong></p>
 <p><span class="math display">\[s_{XY}=\frac{\sum xy -n \bar x \bar y }{n-1}\]</span> Or,</p>
-<p><span class="math display">\[s_{XY}=\frac{1}{n-1}\left[ \sum xy -\frac{\sum x \sum y}{n}     \right ]   \]</span> {#eq-covshort}</p>
+<p><span id="eq-covshort"><span class="math display">\[s_{XY}=\frac{1}{n-1}\left[ \sum xy -\frac{\sum x \sum y}{n}     \right ]    \tag{14.1}\]</span></span></p>
 <p><strong>Example:</strong> Compute sample covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> from <a href="#tbl-xydata" class="quarto-xref">Table&nbsp;<span>14.1</span></a>.</p>
 <p><u><strong>Solution:</strong></u></p>
 <p>Here, <span class="math inline">\(n=10 ; \sum x=30 ; \sum y =510\)</span>.</p>
@@ -479,7 +478,7 @@ Figure&nbsp;14.2: Sctter plot between X and Y
 <p><strong>Population correlation coefficient</strong></p>
 <p><span class="math display">\[\rho=\frac{\sigma_{XY}}{\sigma_X \times \sigma_Y}\ \ ;\ \ -1\le\rho \le +1\]</span></p>
 <p><strong>Sample correlation coefficient</strong></p>
-<p><span class="math display">\[r=\frac{s_{XY}}{s_X \times s_Y}\ \ ;\ \ -1\le r \le +1\]</span> {#eq-sampleR}</p>
+<p><span id="eq-sampleR"><span class="math display">\[r=\frac{s_{XY}}{s_X \times s_Y}\ \ ;\ \ -1\le r \le +1 \tag{14.2}\]</span></span></p>
 <p>Where</p>
 <p><span class="math inline">\(s_{XY}\)</span> is sample covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> <span class="math inline">\(s_X\)</span> is sample standard deviation of <span class="math inline">\(X\)</span> and <span class="math inline">\(s_Y\)</span> is sample standard deviation of <span class="math inline">\(Y\)</span>.</p>
 <p><strong>Note:</strong> The sample correlation coefficient can be expressed in other forms:</p>
@@ -512,7 +511,7 @@ Figure&nbsp;14.2: Sctter plot between X and Y
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Proof of <span class="math inline">\(-1\le\rho\le+1\)</span>
+Proof of <span class="math inline">\(-1\le\rho\le+1\)</span>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -534,7 +533,7 @@ Figure&nbsp;14.2: Sctter plot between X and Y
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Effect of change of origin and scale on <span class="math inline">\(\rho\)</span>
+Effect of change of origin and scale on <span class="math inline">\(\rho\)</span>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -826,7 +825,7 @@ Figure&nbsp;14.4: Effect of outlier on the sign of correlation coefficient (r)
 <section id="rank-correlation" class="level2" data-number="14.5">
 <h2 data-number="14.5" class="anchored" data-anchor-id="rank-correlation"><span class="header-section-number">14.5</span> Rank correlation</h2>
 <p>To measure the association between two ordinal or rank-ordered data we use the <strong>Spearman Rank-correlation coefficient (RCC).</strong> Even if in presence of outliers in interval or ratio scale data we can use RCC. The sample Spearman RCC is computed as follows:</p>
-<p><span class="math display">\[r_s=1-\frac{6\sum_{i=1}^n d_i^2}{n(n^2-1)}\]</span> {#eq-Rcc}</p>
+<p><span id="eq-Rcc"><span class="math display">\[r_s=1-\frac{6\sum_{i=1}^n d_i^2}{n(n^2-1)} \tag{14.3}\]</span></span></p>
 <p>Where,</p>
 <p><span class="math inline">\(n\)</span> = the number of observations in the sample</p>
 <p><span class="math inline">\(x_i\)</span> = the rank of observation <span class="math inline">\(i\)</span> with respect to the first variable</p>
@@ -965,7 +964,7 @@ Figure&nbsp;14.4: Effect of outlier on the sign of correlation coefficient (r)
 <p>In the following section we will discuss about the <strong>Simple linear regression (SLR)</strong> where a independent variable and a dependent variable are involved.</p>
 <section id="population-regression-function-prf" class="level3" data-number="14.6.1">
 <h3 data-number="14.6.1" class="anchored" data-anchor-id="population-regression-function-prf"><span class="header-section-number">14.6.1</span> <strong>Population regression function (PRF)</strong></h3>
-<p><span class="math display">\[y_i=\beta_0+\beta_1 x_i+\epsilon_i \hspace{10pt} ; i=1,2,3,..., N\]</span> {#eq-PRF}</p>
+<p><span id="eq-PRF"><span class="math display">\[y_i=\beta_0+\beta_1 x_i+\epsilon_i \hspace{10pt} ; i=1,2,3,..., N \tag{14.4}\]</span></span></p>
 <p>Where,</p>
 <p><span class="math inline">\(y\)</span>= dependent variable</p>
 <p><span class="math inline">\(x\)</span>= independent variable</p>
@@ -978,7 +977,7 @@ Figure&nbsp;14.4: Effect of outlier on the sign of correlation coefficient (r)
 <li><p>The independent variable should not be correlated with the error term (no endogeneity)</p></li>
 </ol>
 <p>Taking conditional expectation of of <strong>PRF</strong> for a given <span class="math inline">\(x_i\)</span> we have</p>
-<p><span class="math display">\[E(y_i/x_i)=\beta_0+\beta_1 x_i \]</span> {#eq-expectedprf}</p>
+<p><span id="eq-expectedprf"><span class="math display">\[E(y_i/x_i)=\beta_0+\beta_1 x_i  \tag{14.5}\]</span></span></p>
 <p>From sample data we have to estimate <span class="math inline">\(E(y_i/x_i)\)</span> which is equivalent to estimate <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
 </section>
 <section id="ordinary-least-square-ols-estimate-of-ey_ix_i" class="level3" data-number="14.6.2">
@@ -989,10 +988,10 @@ Figure&nbsp;14.4: Effect of outlier on the sign of correlation coefficient (r)
 <p><span class="math display">\[y_i=\hat y_i +e_i \hspace{10pt} ; i=1,2, ..., n\]</span></p>
 <p>Where, <span class="math inline">\(e_i\)</span> is the <strong>estimated error</strong> or <strong>residual.</strong></p>
 <p>Now, the <strong>residuals sum of square (RSS)</strong> is given as:</p>
-<p><span class="math display">\[RSS=\sum_{i=1}^n e_i^2=\sum_{i=1}^n (y_i-\hat y_i)^2=\sum_{i=1}^n (y_i-\hat \beta_0-\hat \beta_1x_i)^2\]</span> {#eq-ssr}</p>
+<p><span id="eq-ssr"><span class="math display">\[RSS=\sum_{i=1}^n e_i^2=\sum_{i=1}^n (y_i-\hat y_i)^2=\sum_{i=1}^n (y_i-\hat \beta_0-\hat \beta_1x_i)^2 \tag{14.6}\]</span></span></p>
 <p>In <strong>OLS</strong> method we <em>minimize</em> the <strong>RSS</strong>with respect to <span class="math inline">\(\hat \beta_0\)</span> and <span class="math inline">\(\hat \beta_1\)</span>. To minimize <strong>RSS</strong>we have to set two equations using <em>partial derivative:</em></p>
-<p><span class="math display">\[\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_0}=0\]</span> {#eq-ols1}</p>
-<p><span class="math display">\[\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_1}=0\]</span> {#eq-ols2}</p>
+<p><span id="eq-ols1"><span class="math display">\[\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_0}=0 \tag{14.7}\]</span></span></p>
+<p><span id="eq-ols2"><span class="math display">\[\frac{\delta \hspace{1pt} (RSS)}{\delta \hat \beta_1}=0 \tag{14.8}\]</span></span></p>
 <p>By solving the two equations we will have the <strong>OLS estimates</strong> of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> as follows:</p>
 <p><span class="math display">\[\hat \beta_0=\bar y-\hat \beta_1 \bar x\]</span> and</p>
 <p><span class="math display">\[\hat \beta_1=\frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)} {\sum_{i=1}^n (x_i-\bar x)^2}=\frac{s_{xy}}{s^2_x}\]</span></p>
@@ -1267,14 +1266,13 @@ Selvamuthu, Dharmaraja, and Dipayan Das. 2024. <em>Introduction to Probability, 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
