@@ -67,7 +67,7 @@ As one of its major contributions, statistics uses data from a sample to make es
 @tbl-tab1_1 shows a data set containing information for 10 restaurant.
 
 | Restaurant Name | Cuisine Type | Average Meal Price (\$) | Customer Satisfaction (%) | Delivery Fee (\$) | Quality Rating |
-|:---|:--:|:--:|:--:|:--:|:--:|
+|:-----------|:----------:|:----------:|:----------:|:----------:|:----------:|
 | Bella Italia | Italian | 22.50 | 88.5 | 3.50 | 4-Star |
 | Taco Fiesta | Mexican | 11.20 | 79.0 | 1.99 | 3-Star |
 | Dragon Wok | Asian | 14.80 | 92.4 | 2.50 | 5-Star |
@@ -189,18 +189,43 @@ ggplot(gdp_data, aes(x = Year, y = Growth)) +
 
 - **Examples:** The average test score of a class, a trend line showing rising temperatures, or a summary report of survey findings.
 
+::: {.callout-important appearance="simple"}
+## List of questions
+
+
+**The Role and Types of Statistics**
+
+- Explain the primary difference between descriptive statistics and inferential statistics.
+- Describe the relationship between a population and a sample in a statistical study.
+- Summarize the difference between conducting a census versus a sample survey.
+- Give an example of how statistical inference might be used in a business or economic context.
+
+**Elements of a Data Set**
+
+- In a data set, how does an *element* differ from a *variable*?
+- Explain what constitutes an *observation* when looking at a table of data.
+
+**Measurement and Data Types**
+
+- Compare the nominal and ordinal scales of measurement.
+- Explain the key feature that distinguishes an interval scale from a ratio scale.
+- Summarize the difference between categorical (qualitative) and quantitative data.
+- Classify the difference between discrete quantitative data and continuous quantitative data.
+- Describe how cross-sectional data differs from time series data in terms of when it is collected.
+- Explain the conceptual difference between raw *data* and processed *information*.
+:::
+
 ## Exercise
 
 1.  What is the **level of measurement / categorical (nominal, ordinal ) or quantitative (discrete, continuous)** for each of the following variables?
 
 <!-- -->
 
-a.  Student IQ ratings.
-b.  Distance students travel to class.
-c.  The jersey numbers of a sorority soccer team.
-d.  A classification of students by state of birth.
-e.  A summary of students by academic class—that is, freshman, sophomore, junior, and senior.
-f.  Number of hours students study per week.
+a.  Distance students travel to class.
+b.  The jersey numbers of a sorority soccer team.
+c.  A classification of students by state of birth.
+d.  A summary of students by academic class—that is, freshman, sophomore, junior, and senior.
+e.  Number of hours students study per week.
 
 <!-- -->
 
