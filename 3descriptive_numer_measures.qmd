@@ -171,6 +171,12 @@ The **geometric mean** is useful in finding the average change of percentages, r
 
 $$GM=\sqrt[n]{(x_1)(x_2) \cdot \cdot \cdot (x_n)}=[(x_1)(x_2) \cdot \cdot \cdot(x_n)]^{1/n}$$
 
+### Harmonic mean
+
+$$
+HM=\frac{n}{\frac{1}{x_1} + \frac{1}{x_2}+...+\frac{1}{x_n}}
+$$
+
 **Example 3.8:** Compute the geometric mean of the following percent increases: 8, 12, 14, 26, and 5.
 
 [Solution:]{.underline} Here, $n=5$. The geometric mean is:
@@ -181,9 +187,11 @@ $$GM=[8\cdot12\cdot14\cdot26\cdot5]^{1/5}=[174720]^{1/5}\approx 11.18$$
 
 (a) Find the geometric mean percent increase.
 
-(b) Find the arithmetic mean percent increase.
+(b) Find the harmonic mean percent increase.
 
-(c) Is the arithmetic mean equal to or greater than the geometric mean?
+(c) Find the arithmetic mean percent increase.
+
+(d) Compare AM , GM and HM.
 
 **Example 3.10:** Listed below is the percent increase in sales for the MG Corporation over the last 5 years. **Determine** the geometric mean percent increase in sales over the period.
 
