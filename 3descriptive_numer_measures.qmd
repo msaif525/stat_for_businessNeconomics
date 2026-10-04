@@ -565,6 +565,12 @@ a\) **Find** the z-score for a student who scored 600.
 
 b\) A student is told that his z-score on this test is -1.5. What was his actual SAT math score?
 
+**Example 3.18** A student scores $82$ on a Finance exam where the class mean is $70$ and the standard deviation is $8$. The same student scores $88$ on an Economics exam where the class mean is $80$ and the standard deviation is $12$.
+
+- Compute the $z$-scores for both exam scores.
+
+- On which exam did the student perform relatively better compared to their peers?
+
 ### Chebyshev’s Theorem
 
 Regardless of the shape of a distribution **Chebyshev’s Theorem** provides lower bound of proportion of observations lie within a certain interval.
@@ -579,7 +585,7 @@ At least $(1 - \frac{1}{z^2})$ of the data values must be within $z$ standard de
 $P(\bar x-z\cdot s<X<\bar x+z\cdot s)\ge (1-\frac{1}{z^2})$
 :::
 
-**Example 3.18** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5.
+**Example 3.19** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5.
 
 i\) How many students (in %) had test scores between 60 and 80?
 
@@ -599,7 +605,23 @@ $$(1-\frac{1}{z^2})=(1-\frac{1}{2^2})=0.75$$ So, at least 75% of the students mu
 
 ii\) DIY
 
-**Example 3.19** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5. **Find** the interval in which at least 80% data values lie.
+**Example 3.20** Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5. **Find** the interval in which at least 80% data values lie.
+
+[*Solution:*]{.underline}
+
+Given $\bar x= 70$ and $s=5$. Since the distribution of exam scores is not mentioned/ known so according to Chebychev's inequality at least $(1-\frac{1}{z^2)}$ proportion of will lie in the interval $[\bar x -z\cdot s , \bar x +z\cdot s]$.
+
+According to question,
+
+$1-\frac{1}{z^2}=0.80$
+
+Solving for $z$ we have $z=2.24 ( \ \ approx.\ \ )$
+
+Hence the interval is :
+
+$$
+[70-2.24 *5\ \ ,\ \ 70+2.24*5]=[58.8\ \ ,\ \ 81.2] \ \ (Ans.)
+$$
 
 ### Empirical Rule
 
@@ -624,7 +646,7 @@ c\. What percentage of GMAT scores are between 447 and 547?
 d\. What percentage of GMAT scores are between 347 and 647?\
 (Hints: Use empirical rule)
 
-### Detecting Outliers
+### Detecting Outliers using z-score
 
 Sometimes a data set will have one or more observations with unusually large or unusually small values. These extreme values are called **outliers**.
 
@@ -638,7 +660,7 @@ An observation say $x_i$ is treated as *outlier* if its corresponding **z-score*
 [**Note:**]{.underline} **Z-score rule** works well for **large, symmetric, bell-shaped datasets**.
 :::
 
-**Example** **3.20** Consider the following data:
+**Example** **3.21** Consider the following data:
 
 35, 68, 52, 80, 45, 60, 30, 75, 48, 53, 70, 42, 66, 55, 40, 58, 78, 36, 50, 62, 33, 71, 49, 44, 64, 38, 85, 57, 39, 61, 73, 46, 67, 32, 56, 65, 41, 59, 51, 54, 10, 100, 110, 77, 63, 69, 82, 37, 47, 60
 
@@ -680,7 +702,7 @@ Any data value or observation falls outside the interval $[LL,UL]$ will be treat
 [**Note:**]{.underline} **IQR rule** is **better for skewed or small datasets** .
 :::
 
-**Example 3.21** The following data shows the annual salaries (in thousand USD) of 10 employees in a company:
+**Example 3.22** The following data shows the annual salaries (in thousand USD) of 10 employees in a company:
 
 50, 45, 52, 37, 42, 70, 40, 35, 47, 17
 
@@ -704,7 +726,7 @@ In a **five-number summary**, five numbers are used to summarize the data:
 
 5\. Largest value
 
-**Example 3.22** [@anderson2020, 158]**:** **Household Incomes**. The following data represent a sample of 14 household incomes(\$1000s). Answer the following questions based on this sample.
+**Example 3.23** [@anderson2020, 158]**:** **Household Incomes**. The following data represent a sample of 14 household incomes(\$1000s). Answer the following questions based on this sample.
 
 49.4, 52.4, 53.4, 51.3, 52.1, 48.7, 52.1, 52.2, 64.5, 51.6, 46.5, 52.9, 52.5, 51.2
 
@@ -866,9 +888,9 @@ Rating %>% ggplot(aes(x=Company,y=Rating))+
 
 - Which service does *Consumer Reports* recommend as being best in terms of overall customer satisfaction?
 
-**Problem 3.23** Consider a sample with data values of 27, 25, 20, 15, 30, 34, 28, and 25. Provide the five-number summary for the data. Also construct a boxplot.
+**Problem 3.25** Consider a sample with data values of 27, 25, 20, 15, 30, 34, 28, and 25. Provide the five-number summary for the data. Also construct a boxplot.
 
-**Problem 3.24** A sample of 28 time shares in the Orlando, Florida, area revealed the following daily charges (in USD dollars) for a one-bedroom suite. For convenience, the data are ordered from smallest to largest.
+**Problem 3.26** A sample of 28 time shares in the Orlando, Florida, area revealed the following daily charges (in USD dollars) for a one-bedroom suite. For convenience, the data are ordered from smallest to largest.
 
 116, 121, 157, 192, 207, 209, 209, 229, 232, 236, 236, 239, 243, 246,
 
@@ -880,7 +902,7 @@ b\) Then construct a boxplot of the daily charges and show the outlier(s) if any
 
 c\) **Comment** on the distribution of the daily charges.
 
-**Problem 3.25** **Amateur Golfer Scores.** Scores turned in by an amateur golfer at the Bonita Fairways Golf Course in Bonita Springs, Florida, during 2017 and 2018 are as follows:
+**Problem 3.27** **Amateur Golfer Scores.** Scores turned in by an amateur golfer at the Bonita Fairways Golf Course in Bonita Springs, Florida, during 2017 and 2018 are as follows:
 
 *2017 Season:* 74, 78, 79, 77, 75, 73, 75, 77
 
@@ -890,7 +912,7 @@ c\) **Comment** on the distribution of the daily charges.
 
 (b) Describe your findings.
 
-**Problem 3.26 Automobile Fuel Efficiencies.** In automobile mileage and gasoline-consumption testing, 13 automobiles were road tested for 300 miles in both city and highway driving conditions. The following data were recorded for miles-per-gallon performance.
+**Problem 3.28 Automobile Fuel Efficiencies.** In automobile mileage and gasoline-consumption testing, 13 automobiles were road tested for 300 miles in both city and highway driving conditions. The following data were recorded for miles-per-gallon performance.
 
 ***City:*** 16.2, 16.7, 15.9, 14.4, 13.2, 15.3, 16.8, 16.0, 16.1, 15.3, 15.2, 15.3, 16.2
 
@@ -1019,7 +1041,7 @@ c\) $m_3=m'_3-3m'_1 m'_2+2{m'_1}^3$
 
 d\) $m_4=m'_4-4m'_1 m'_3+6{m'_1}^2 m'_2-3{m'_1}^4$
 
-**Example 3.27 Calculate** the first 4 central moments from the following sample data.
+**Example 3.30 Calculate** the first 4 central moments from the following sample data.
 
 `3,5,6,9,12`
 
@@ -1092,7 +1114,7 @@ b\) $\beta_2 \approx 3$ indicates *mesokurtic/normal* distribution*;*
 
 c\) $\beta_2<3$ indicates *platykurtic* distribution*.*
 
-**Example 3.28 (continued)**
+**Example 3.31 (continued)**
 
 From the calculated moments in **Example 3.18** now we compute coefficients of skewness and kurtosis.
 
@@ -1108,7 +1130,7 @@ $$\beta _2=\frac{m_4}{m_2^2}=\frac{182}{10^2}=1.82<3$$
 
 So the distribution is **platykurtic**.
 
-**Example 3.29** A sample of 7 data entry clerks employed in the Harry County Tax Office revised the following *number of tax records* last hour: 100, 75, 70, 65, 80, 68 and 50.
+**Example 3.32** A sample of 7 data entry clerks employed in the Harry County Tax Office revised the following *number of tax records* last hour: 100, 75, 70, 65, 80, 68 and 50.
 
 **Comment** about *skewness* and *kurtosis* of the *number of tax records*.
 
@@ -1225,9 +1247,9 @@ Use the mean, median, and mode to make a statement about the difference in perfo
 
 **3.10 Air Quality Index.** The Los Angeles Times regularly reports the air quality index for various areas of Southern California. A sample of air quality index values for Pomona provided the following data: 28, 42, 58, 48, 45, 55, 60, 49, and 50.
 
-i\) Compute the range and interquartile range.
+i\) **Compute** the range and interquartile range.
 
-ii\) Compute the sample variance and sample standard deviation.
+ii\) **Compute** the sample variance and sample standard deviation.
 
 iii\) A sample of air quality index readings for Anaheim provided a sample mean of 48.5, a sample variance of 136, and a sample standard deviation of 11.66. What comparisons can you make between the air quality in Pomona and that in Anaheim on the basis of these descriptive statistics?
 
@@ -1262,7 +1284,7 @@ After viewing this sample of running times, one of the coaches commented that th
 
 i\) Use the standard deviation and the coefficient of variation to summarize the variability in the data.
 
-ii\) Does the use of the coefficient of variation indicate that the coach’s statement should be qualified?\
+ii\) Does the use of the coefficient of variation indicate that the coach’s statement should be qualified?
 
 **3.14** Automobiles traveling on a road with a posted speed limit of 55 miles per hour are checked for speed by a state police radar system. Following is a frequency distribution of speeds.
 
