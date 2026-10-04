@@ -334,7 +334,7 @@ window.Quarto = {
   <li><a href="#z-score" id="toc-z-score" class="nav-link" data-scroll-target="#z-score"><span class="header-section-number">3.4.1</span> z-score</a></li>
   <li><a href="#chebyshevs-theorem" id="toc-chebyshevs-theorem" class="nav-link" data-scroll-target="#chebyshevs-theorem"><span class="header-section-number">3.4.2</span> Chebyshev’s Theorem</a></li>
   <li><a href="#empirical-rule" id="toc-empirical-rule" class="nav-link" data-scroll-target="#empirical-rule"><span class="header-section-number">3.4.3</span> Empirical Rule</a></li>
-  <li><a href="#detecting-outliers" id="toc-detecting-outliers" class="nav-link" data-scroll-target="#detecting-outliers"><span class="header-section-number">3.4.4</span> Detecting Outliers</a></li>
+  <li><a href="#detecting-outliers-using-z-score" id="toc-detecting-outliers-using-z-score" class="nav-link" data-scroll-target="#detecting-outliers-using-z-score"><span class="header-section-number">3.4.4</span> Detecting Outliers using z-score</a></li>
   </ul></li>
   <li><a href="#five-number-summary" id="toc-five-number-summary" class="nav-link" data-scroll-target="#five-number-summary"><span class="header-section-number">3.5</span> Five-Number summary</a></li>
   <li><a href="#box-plot" id="toc-box-plot" class="nav-link" data-scroll-target="#box-plot"><span class="header-section-number">3.6</span> Box-plot</a>
@@ -1050,6 +1050,11 @@ z-score
 <p><strong>Example 3.17</strong> Consider a very large number of students taking a college entrance exam such as the SAT. And suppose the mean score on the mathematics section of the SAT is 570 with a standard deviation of 40.</p>
 <p>a) <strong>Find</strong> the z-score for a student who scored 600.</p>
 <p>b) A student is told that his z-score on this test is -1.5. What was his actual SAT math score?</p>
+<p><strong>Example 3.18</strong> A student scores <span class="math inline">\(82\)</span> on a Finance exam where the class mean is <span class="math inline">\(70\)</span> and the standard deviation is <span class="math inline">\(8\)</span>. The same student scores <span class="math inline">\(88\)</span> on an Economics exam where the class mean is <span class="math inline">\(80\)</span> and the standard deviation is <span class="math inline">\(12\)</span>.</p>
+<ul>
+<li><p>Compute the <span class="math inline">\(z\)</span>-scores for both exam scores.</p></li>
+<li><p>On which exam did the student perform relatively better compared to their peers?</p></li>
+</ul>
 </section>
 <section id="chebyshevs-theorem" class="level3" data-number="3.4.2">
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="chebyshevs-theorem"><span class="header-section-number">3.4.2</span> Chebyshev’s Theorem</h3>
@@ -1070,7 +1075,7 @@ Note
 <p><span class="math inline">\(P(\bar x-z\cdot s&lt;X&lt;\bar x+z\cdot s)\ge (1-\frac{1}{z^2})\)</span></p>
 </div>
 </div>
-<p><strong>Example 3.18</strong> Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5.</p>
+<p><strong>Example 3.19</strong> Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5.</p>
 <p>i) How many students (in %) had test scores between 60 and 80?</p>
 <p>ii) How many students (in %) had test scores between 58 and 82?</p>
 <p><u>Solution:</u></p>
@@ -1080,7 +1085,16 @@ Note
 <p>Applying Chebyshev’s theorem with <span class="math inline">\(z = 2\)</span>, we have</p>
 <p><span class="math display">\[(1-\frac{1}{z^2})=(1-\frac{1}{2^2})=0.75\]</span> So, at least 75% of the students must have test scores between 60 and 80.</p>
 <p>ii) DIY</p>
-<p><strong>Example 3.19</strong> Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5. <strong>Find</strong> the interval in which at least 80% data values lie.</p>
+<p><strong>Example 3.20</strong> Suppose that the midterm test scores for 100 students in a college business statistics course had a mean of 70 and a standard deviation of 5. <strong>Find</strong> the interval in which at least 80% data values lie.</p>
+<p><u><em>Solution:</em></u></p>
+<p>Given <span class="math inline">\(\bar x= 70\)</span> and <span class="math inline">\(s=5\)</span>. Since the distribution of exam scores is not mentioned/ known so according to Chebychev’s inequality at least <span class="math inline">\((1-\frac{1}{z^2)}\)</span> proportion of will lie in the interval <span class="math inline">\([\bar x -z\cdot s , \bar x +z\cdot s]\)</span>.</p>
+<p>According to question,</p>
+<p><span class="math inline">\(1-\frac{1}{z^2}=0.80\)</span></p>
+<p>Solving for <span class="math inline">\(z\)</span> we have <span class="math inline">\(z=2.24 ( \ \ approx.\ \ )\)</span></p>
+<p>Hence the interval is :</p>
+<p><span class="math display">\[
+[70-2.24 *5\ \ ,\ \ 70+2.24*5]=[58.8\ \ ,\ \ 81.2] \ \ (Ans.)
+\]</span></p>
 </section>
 <section id="empirical-rule" class="level3" data-number="3.4.3">
 <h3 data-number="3.4.3" class="anchored" data-anchor-id="empirical-rule"><span class="header-section-number">3.4.3</span> Empirical Rule</h3>
@@ -1103,8 +1117,8 @@ Note
 <p>d. What percentage of GMAT scores are between 347 and 647?<br>
 (Hints: Use empirical rule)</p>
 </section>
-<section id="detecting-outliers" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="detecting-outliers"><span class="header-section-number">3.4.4</span> Detecting Outliers</h3>
+<section id="detecting-outliers-using-z-score" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="detecting-outliers-using-z-score"><span class="header-section-number">3.4.4</span> Detecting Outliers using z-score</h3>
 <p>Sometimes a data set will have one or more observations with unusually large or unusually small values. These extreme values are called <strong>outliers</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1121,7 +1135,7 @@ Using z-score to detect outlier
 <p><u><strong>Note:</strong></u> <strong>Z-score rule</strong> works well for <strong>large, symmetric, bell-shaped datasets</strong>.</p>
 </div>
 </div>
-<p><strong>Example</strong> <strong>3.20</strong> Consider the following data:</p>
+<p><strong>Example</strong> <strong>3.21</strong> Consider the following data:</p>
 <p>35, 68, 52, 80, 45, 60, 30, 75, 48, 53, 70, 42, 66, 55, 40, 58, 78, 36, 50, 62, 33, 71, 49, 44, 64, 38, 85, 57, 39, 61, 73, 46, 67, 32, 56, 65, 41, 59, 51, 54, 10, 100, 110, 77, 63, 69, 82, 37, 47, 60</p>
 <p>(i) <strong>Plot</strong> the data (histogram). Is it approximately bell-shaped/symmetric?</p>
 <p><u><strong>Solution (i):</strong></u></p>
@@ -1153,7 +1167,7 @@ Using 1.5(IQR) rule to detect outlier
 <p><u><strong>Note:</strong></u> <strong>IQR rule</strong> is <strong>better for skewed or small datasets</strong> .</p>
 </div>
 </div>
-<p><strong>Example 3.21</strong> The following data shows the annual salaries (in thousand USD) of 10 employees in a company:</p>
+<p><strong>Example 3.22</strong> The following data shows the annual salaries (in thousand USD) of 10 employees in a company:</p>
 <p>50, 45, 52, 37, 42, 70, 40, 35, 47, 17</p>
 <p><strong>Identify</strong> the <strong>outlier(s)</strong> in the dataset using 1.5(IQR) rule.</p>
 </section>
@@ -1166,7 +1180,7 @@ Using 1.5(IQR) rule to detect outlier
 <p>3. Median (Q2)</p>
 <p>4. Third quartile (Q3)</p>
 <p>5. Largest value</p>
-<p><strong>Example 3.22</strong> <span class="citation" data-cites="anderson2020">(<a href="references.html#ref-anderson2020" role="doc-biblioref">Anderson 2020a, 158</a>)</span><strong>:</strong> <strong>Household Incomes</strong>. The following data represent a sample of 14 household incomes($1000s). Answer the following questions based on this sample.</p>
+<p><strong>Example 3.23</strong> <span class="citation" data-cites="anderson2020">(<a href="references.html#ref-anderson2020" role="doc-biblioref">Anderson 2020a, 158</a>)</span><strong>:</strong> <strong>Household Incomes</strong>. The following data represent a sample of 14 household incomes($1000s). Answer the following questions based on this sample.</p>
 <p>49.4, 52.4, 53.4, 51.3, 52.1, 48.7, 52.1, 52.2, 64.5, 51.6, 46.5, 52.9, 52.5, 51.2</p>
 <ol type="a">
 <li><p>What is the median household income for these sample data?</p></li>
@@ -1396,21 +1410,21 @@ Figure&nbsp;3.2: Comparative Boxplots of Rating by customer for cell-phone servi
 <li><p>Now, <strong>discuss</strong> what a comparison of the boxplots tells about the four services.</p></li>
 <li><p>Which service does <em>Consumer Reports</em> recommend as being best in terms of overall customer satisfaction?</p></li>
 </ul>
-<p><strong>Problem 3.23</strong> Consider a sample with data values of 27, 25, 20, 15, 30, 34, 28, and 25. Provide the five-number summary for the data. Also construct a boxplot.</p>
-<p><strong>Problem 3.24</strong> A sample of 28 time shares in the Orlando, Florida, area revealed the following daily charges (in USD dollars) for a one-bedroom suite. For convenience, the data are ordered from smallest to largest.</p>
+<p><strong>Problem 3.25</strong> Consider a sample with data values of 27, 25, 20, 15, 30, 34, 28, and 25. Provide the five-number summary for the data. Also construct a boxplot.</p>
+<p><strong>Problem 3.26</strong> A sample of 28 time shares in the Orlando, Florida, area revealed the following daily charges (in USD dollars) for a one-bedroom suite. For convenience, the data are ordered from smallest to largest.</p>
 <p>116, 121, 157, 192, 207, 209, 209, 229, 232, 236, 236, 239, 243, 246,</p>
 <p>260,264, 276, 281, 283, 289, 296, 307, 309, 312, 317, 324, 341, 353</p>
 <p>a) <strong>Compute</strong> the lower and upper limits and check for outlier(s).</p>
 <p>b) Then construct a boxplot of the daily charges and show the outlier(s) if any in the boxplot.</p>
 <p>c) <strong>Comment</strong> on the distribution of the daily charges.</p>
-<p><strong>Problem 3.25</strong> <strong>Amateur Golfer Scores.</strong> Scores turned in by an amateur golfer at the Bonita Fairways Golf Course in Bonita Springs, Florida, during 2017 and 2018 are as follows:</p>
+<p><strong>Problem 3.27</strong> <strong>Amateur Golfer Scores.</strong> Scores turned in by an amateur golfer at the Bonita Fairways Golf Course in Bonita Springs, Florida, during 2017 and 2018 are as follows:</p>
 <p><em>2017 Season:</em> 74, 78, 79, 77, 75, 73, 75, 77</p>
 <p><em>2018 Season:</em> 71, 70, 75, 77, 85, 80, 71, 79</p>
 <ol type="a">
 <li><p>Construct a side-by-side comparative boxplot of scores for two seasons. Show outlier(s) if any.</p></li>
 <li><p>Describe your findings.</p></li>
 </ol>
-<p><strong>Problem 3.26 Automobile Fuel Efficiencies.</strong> In automobile mileage and gasoline-consumption testing, 13 automobiles were road tested for 300 miles in both city and highway driving conditions. The following data were recorded for miles-per-gallon performance.</p>
+<p><strong>Problem 3.28 Automobile Fuel Efficiencies.</strong> In automobile mileage and gasoline-consumption testing, 13 automobiles were road tested for 300 miles in both city and highway driving conditions. The following data were recorded for miles-per-gallon performance.</p>
 <p><strong><em>City:</em></strong> 16.2, 16.7, 15.9, 14.4, 13.2, 15.3, 16.8, 16.0, 16.1, 15.3, 15.2, 15.3, 16.2</p>
 <p><strong><em>Highway:</em></strong> 19.4, 20.6, 18.3, 18.6, 19.2, 17.4, 17.2, 18.6, 19.0, 21.1, 19.4, 18.5, 18.7</p>
 <ol type="a">
@@ -1493,7 +1507,7 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p>b) <span class="math inline">\(m_2=m'_2-{m'_1}^2\)</span></p>
 <p>c) <span class="math inline">\(m_3=m'_3-3m'_1 m'_2+2{m'_1}^3\)</span></p>
 <p>d) <span class="math inline">\(m_4=m'_4-4m'_1 m'_3+6{m'_1}^2 m'_2-3{m'_1}^4\)</span></p>
-<p><strong>Example 3.27 Calculate</strong> the first 4 central moments from the following sample data.</p>
+<p><strong>Example 3.30 Calculate</strong> the first 4 central moments from the following sample data.</p>
 <p><code>3,5,6,9,12</code></p>
 <p><u>Solution:</u></p>
 <p>Here sample mean, <span class="math inline">\(\bar x=\frac{\sum x}{n}=\frac{3+5+...+12}{5}=7\)</span></p>
@@ -1577,7 +1591,7 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p>a) <span class="math inline">\(\beta_2&gt;3\)</span> indicates <em>leptokurtic</em> distribution<em>;</em></p>
 <p>b) <span class="math inline">\(\beta_2 \approx 3\)</span> indicates <em>mesokurtic/normal</em> distribution<em>;</em></p>
 <p>c) <span class="math inline">\(\beta_2&lt;3\)</span> indicates <em>platykurtic</em> distribution<em>.</em></p>
-<p><strong>Example 3.28 (continued)</strong></p>
+<p><strong>Example 3.31 (continued)</strong></p>
 <p>From the calculated moments in <strong>Example 3.18</strong> now we compute coefficients of skewness and kurtosis.</p>
 <p>Now,</p>
 <p><span class="math display">\[\gamma_1=\frac{m_3}{\sqrt {m_2 ^3}}=\frac{12}{\sqrt{ 10^3}}=0.38&gt;0\]</span></p>
@@ -1585,7 +1599,7 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p>Again,</p>
 <p><span class="math display">\[\beta _2=\frac{m_4}{m_2^2}=\frac{182}{10^2}=1.82&lt;3\]</span></p>
 <p>So the distribution is <strong>platykurtic</strong>.</p>
-<p><strong>Example 3.29</strong> A sample of 7 data entry clerks employed in the Harry County Tax Office revised the following <em>number of tax records</em> last hour: 100, 75, 70, 65, 80, 68 and 50.</p>
+<p><strong>Example 3.32</strong> A sample of 7 data entry clerks employed in the Harry County Tax Office revised the following <em>number of tax records</em> last hour: 100, 75, 70, 65, 80, 68 and 50.</p>
 <p><strong>Comment</strong> about <em>skewness</em> and <em>kurtosis</em> of the <em>number of tax records</em>.</p>
 <p><strong>NOTE:</strong></p>
 <p>Some authors <span class="citation" data-cites="newbold2013">(<a href="references.html#ref-newbold2013" role="doc-biblioref">Newbold, Carlson, and Thorne 2013</a>)</span> use the following formulas to measure skewness and kurtosis without mentioning the moments.</p>
@@ -1652,8 +1666,8 @@ Figure&nbsp;3.4: Different types of kurtosis
 </blockquote>
 <p>Use the mean, median, and mode to make a statement about the difference in performance for city and highway driving.</p>
 <p><strong>3.10 Air Quality Index.</strong> The Los Angeles Times regularly reports the air quality index for various areas of Southern California. A sample of air quality index values for Pomona provided the following data: 28, 42, 58, 48, 45, 55, 60, 49, and 50.</p>
-<p>i) Compute the range and interquartile range.</p>
-<p>ii) Compute the sample variance and sample standard deviation.</p>
+<p>i) <strong>Compute</strong> the range and interquartile range.</p>
+<p>ii) <strong>Compute</strong> the sample variance and sample standard deviation.</p>
 <p>iii) A sample of air quality index readings for Anaheim provided a sample mean of 48.5, a sample variance of 136, and a sample standard deviation of 11.66. What comparisons can you make between the air quality in Pomona and that in Anaheim on the basis of these descriptive statistics?</p>
 <p><br>
 <strong>3.11</strong> <strong>Reliability of Delivery Service.</strong> The following data were the number of days required to fill orders for Dawson Supply, Inc., and J.C. Clark Distributors.</p>
@@ -1677,8 +1691,7 @@ Figure&nbsp;3.4: Different types of kurtosis
 </blockquote>
 <p>After viewing this sample of running times, one of the coaches commented that the quarter-milers turned in the more consistent times.</p>
 <p>i) Use the standard deviation and the coefficient of variation to summarize the variability in the data.</p>
-<p>ii) Does the use of the coefficient of variation indicate that the coach’s statement should be qualified?<br>
-</p>
+<p>ii) Does the use of the coefficient of variation indicate that the coach’s statement should be qualified?</p>
 <p><strong>3.14</strong> Automobiles traveling on a road with a posted speed limit of 55 miles per hour are checked for speed by a state police radar system. Following is a frequency distribution of speeds.</p>
 <table class="caption-top table">
 <tbody>
