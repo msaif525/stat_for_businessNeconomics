@@ -1,0 +1,159 @@
+---
+title: "Measures of Central Tendency, Variation, and Positional Statistics"
+format: pdf
+    #toc: true
+number-sections: true
+code-fold: show
+editor_options: 
+  chunk_output_type: console
+---
+
+# Demo questions regarding Measures of central tendency and variation
+
+## Practice Problem Statement (Single group's summary statistics)
+
+Sample Dataset: Monthly Salary (BDT) of 10 individuals working at an entry-to-mid-level company in Bangladesh:
+
+15000, 28000, 32000, 35000, 40000, 42000, 45000, 50000, 55000, 82000
+
+Using the sample salary dataset ($n = 10$) provided above, solve the following statistical tasks:
+
+**Task 1: Measures of Central Tendency**
+
+- **Compute** the Arithmetic Mean (AM), Geometric Mean (GM), and Harmonic Mean (HM).
+
+- **Compare** the three means (AM, GM, and HM) and explain the relationship observed between them ($AM \ge GM\ge HM$).
+
+**Task 2: Positional Measures & Percentiles**
+
+- **Calculate** the Median (Q2 ), First Quartile (Q1), and Third Quartile (Q 3).
+
+- **Compute** the Interquartile Range (IQR).
+
+- **Calculate** the $80^{th}$ Percentile ($P_{80}$ ).
+
+- **Determine** the threshold values needed to be in:
+
+  - The top 15% of earners (85th percentile, $P_{85}$).
+
+- The bottom 15% of earners (15th percentile, $P_{15}$).
+
+**Task 3: Measures of Variation**
+
+- **Calculate** the Sample Standard Deviation.
+
+- **Compute** the Coefficient of Variation (CV) to measure relative dispersion in percentage terms.
+
+## Weighted mean
+
+**Example 1:** Academic Course Grade (GPA Calculation) In a university course, different components of the course carry different weights toward the final grade.
+
+| Assessment Component | Marks Obtained ($x_i$) | Weight / Percentage($w_i$) |
+|:---------------------|:----------------------:|:--------------------------:|
+| Attendance & Quizzes |           85           |         10% (0.10)         |
+| Midterm Exam         |           72           |         30% (0.30)         |
+| Group Project        |           90           |         20% (0.20)         |
+| Final Exam           |           78           |         40% (0.40)         |
+
+**Calculate** the course grade.
+
+**Example 2:** Average Price of Purchased RiceA family buys different brands/qualities of rice in varying quantities throughout the month. To find the average cost per kilogram, we use the weighted mean (where quantity is the weight $w_i$ and price per kg is $x_i$).
+
+| Rice Variety | Price per kg ($x_i$) in BDT) | Quantity Purchased ($w_i$) in kg) |
+|:--------------------|:------------------------:|:------------------------:|
+| Everyday Miniket | 70 | 20 |
+| Premium Nazirshail | 90 | 10 |
+| Aromatic Katari | 130 | 5 |
+
+**Calculate** the weighted average price per kg of rice purchased.
+
+\newpage
+
+## Comparative (TWO-group summary statistics comparison)
+
+**Example 1** An investment analyst is evaluating six years of historical annual returns (n = 6) for two competing growth funds (**Fund X** and **Fund Y**).
+
+| **Year** | **Fund X Return (%)** | **Fund Y Return (%)** |
+|----------|:---------------------:|:---------------------:|
+| Year 1   |          +15          |          +8           |
+| Year 2   |          -5           |          +2           |
+| Year 3   |          +12          |          +6           |
+| Year 4   |          -8           |          -2           |
+| Year 5   |          +18          |          +10          |
+| Year 6   |          -4           |           0           |
+
+a\) **Compute** mean, standard deviation and coefficient of variation of returns fo *both funds.*
+
+b\) **Compare** coefficient of variation of returns fo *both funds.* **Decide** which fund is less risky.
+
+c\) If you want to maximize your average return which Fund should you select? **Explain**.
+
+**Example 2: Consistency of Running Times.** The following times were recorded by the quarter-mile and mile runners of a university track team (times are in minutes).
+
+> *Quarter-Mile Times:* 0.92, 0.98, 1.04, 0.90, 0.99
+>
+> *Mile Times:* 4.52, 4.35, 4.60, 4.70, 4.50
+
+After viewing this sample of running times, one of the coaches commented that the quarter-milers turned in the more consistent times.
+
+i\) Use the standard deviation (SD) to compare the variability of type of Timings (Quarter-Mile vs. Mile). **Explain** which timing is consistent.
+
+ii\) Use the coefficient of variation (CV) to compare the variability of type of Timings (Quarter-Mile vs. Mile). **Explain** which timing is consistent.
+
+iii\) In this case which measures of variability (SD vs. CV) is appropriate to compare consistency of timing?
+
+iv\) Does the use of the coefficient of variation indicate that the coach’s statement should be qualified?
+
+## Z-scores, Box-plot and outlier detection
+
+### Z-score and Chebychev's inequality
+
+**Example-1:** Sample Dataset: Monthly Salary (BDT) of 10 Individuals in an area:
+
+15000, 28000, 32000, 35000, 40000, 42000, 45000, 50000, 55000, 82000
+
+- **Compute** sample mean and standard deviation of monthly salary.
+
+- **Compute** and **explain** the z-scores of BDT 35000 and BDT 82000.
+
+- **Find** the interval which consists at least 70% of salary of the selected individuals.
+
+**Example-2:** A student scores on a Finance exam where the class mean is 70 and the standard deviation is 8. The same student scores 88 on an Economics exam where the class mean is 80 and the standard deviation is 12.
+
+- **Compute** the z-scores for both exam scores.
+
+- On which exam did the student perform relatively better compared to their peers?
+
+### Box-plot and outlier
+
+Sample Dataset: Monthly Salary (BDT) of 10 individuals working at an entry-to-mid-level company in Bangladesh:
+
+15000, 28000, 32000, 35000, 40000, 42000, 45000, 50000, 55000, 82000
+
+a)  **Compute** Q1, Q2, Q3 and IQR.
+
+b)  **Report** if there is any outlier(s) using $1.5\times IQR$ rule.
+
+c)  **Sketch** the box-plot of the salary data along with outlier(s) if any.
+
+d)  **Interpret** the distribution of salary data from the box-plot.
+
+```{r echo=FALSE}
+
+x=c(15000, 28000, 32000, 35000, 40000, 42000, 45000, 50000, 55000, 82000)
+
+#boxplot(x,horizontal = TRUE,main=" Boxplot of Salary ")
+
+m=mean(x);
+s=sd(x)
+
+p=0.70
+
+z=sqrt(1/(1-p))
+
+ll=mean(x)-z*sd(x)
+ul=mean(x)+z*sd(x)
+
+
+#ll; ul
+```

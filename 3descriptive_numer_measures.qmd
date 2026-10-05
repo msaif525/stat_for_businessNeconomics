@@ -173,9 +173,7 @@ $$GM=\sqrt[n]{(x_1)(x_2) \cdot \cdot \cdot (x_n)}=[(x_1)(x_2) \cdot \cdot \cdot(
 
 ### Harmonic mean
 
-$$
-HM=\frac{n}{\frac{1}{x_1} + \frac{1}{x_2}+...+\frac{1}{x_n}}
-$$
+$$HM=\frac{n}{\frac{1}{x_1} + \frac{1}{x_2}+...+\frac{1}{x_n}}$$
 
 **Example 3.8:** Compute the geometric mean of the following percent increases: 8, 12, 14, 26, and 5.
 
@@ -301,9 +299,7 @@ $$s^2=\frac{\sum (x_i-\bar x)^2}{n-1}=\frac{50800}{6-1}=10160 \ \ (\mathrm {doll
 
 Here, $\sum x_i ^2=3450^2+3550^2+...+3545^2=73760950$
 
-$$
-s^2=\frac{\sum x_i ^2-n \cdot (\bar x)^2}{n-1}=\frac{73760950-6\cdot (3505^2)}{6-1}=10160 \ \ \mathrm {dollars^2}
-$$
+$$s^2=\frac{\sum x_i ^2-n \cdot (\bar x)^2}{n-1}=\frac{73760950-6\cdot (3505^2)}{6-1}=10160 \ \ \mathrm {dollars^2}$$
 
 ### Standard deviation
 
@@ -619,9 +615,7 @@ Solving for $z$ we have $z=2.24 ( \ \ approx.\ \ )$
 
 Hence the interval is :
 
-$$
-[70-2.24 *5\ \ ,\ \ 70+2.24*5]=[58.8\ \ ,\ \ 81.2] \ \ (Ans.)
-$$
+$$[70-2.24 *5\ \ ,\ \ 70+2.24*5]=[58.8\ \ ,\ \ 81.2] \ \ (Ans.)$$
 
 ### Empirical Rule
 
@@ -1070,7 +1064,7 @@ x=c(3,5,6,9,12)
 Here sample mean, $\bar x=\frac{\sum x}{n}=\frac{3+5+...+12}{5}=7$
 
 | $x$ | $(x-\bar x)$ | $(x-\bar x)^2$ | $(x-\bar x)^3$ | $(x-\bar x)^4$ |
-|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+|:--:|:--:|:--:|:--:|:--:|
 | 3 | -4 | 16 | -64 | 256 |
 | 5 | -2 | 4 | -8 | 16 |
 | 6 | -1 | 1 | -1 | 1 |
