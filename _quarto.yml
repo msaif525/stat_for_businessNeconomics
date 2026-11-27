@@ -35,7 +35,7 @@ book:
     collapse-level: 1
 
   page-navigation: true
-  reader-mode: true
+  reader-mode: false
 
   page-footer:
     left: "© 2026 Mohammad Saifuddin"
