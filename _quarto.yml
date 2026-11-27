@@ -52,6 +52,7 @@ book:
 website:
   site-url: "https://msaif525.github.io/stat_for_businessNeconomics/"
   repo-url: "https://github.com/msaif525/stat_for_businessNeconomics"
+  repo-actions: [source]
   search: 
     location: sidebar
     type: textbox    
