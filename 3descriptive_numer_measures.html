@@ -625,13 +625,10 @@ window.Quarto = {
 <p><strong>Example 3.1</strong> <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012</a>)</span><strong>:</strong> The Carter Construction Company pays its hourly employees $16.50, $19.00, or $25.00 per hour. There are 26 hourly employees, 14 of which are paid at the $16.50 rate, 10 at the $19.00 rate, and 2 at the $25.00 rate. What is the mean hourly rate paid the 26 employees?</p>
 <p><u>Solution:</u></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>xi<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">16.50</span>,<span class="fl">19.00</span>,<span class="fl">25.00</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>wi<span class="ot">=</span><span class="fu">c</span>(<span class="dv">14</span>,<span class="dv">10</span>,<span class="dv">2</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(xi*wi)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <table class="caption-top table">
 <thead>
@@ -834,8 +831,6 @@ Note
 <p>The sample mean salary,</p>
 <p><span class="math inline">\(\bar x =\frac{\sum x}{n}=\frac{3450+\cdot \cdot \cdot+3545}{6}=3505 \ \ dollars\)</span></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sal<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3450</span> ,<span class="dv">3550</span> ,<span class="dv">3650</span> ,<span class="dv">3480</span> ,<span class="dv">3355</span>, <span class="dv">3310</span> ,<span class="dv">3490</span> ,<span class="dv">3730</span>, <span class="dv">3540</span> ,<span class="dv">3925</span>, <span class="dv">3520</span> ,<span class="dv">3480</span>)</span>
@@ -843,12 +838,9 @@ Note
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>sal6<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3450</span> ,<span class="dv">3550</span> ,<span class="dv">3650</span> ,<span class="dv">3480</span> ,<span class="dv">3355</span>, <span class="dv">3545</span>)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#mean(sal6)</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sal6<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 73760950</code></pre>
 </div>
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sal6d<span class="ot">=</span><span class="fu">as.data.frame</span>(sal6)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sal6d <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m=</span><span class="fu">mean</span>(sal6),<span class="at">deviation=</span>sal6<span class="sc">-</span>m,<span class="at">squared_deviation=</span>deviation<span class="sc">^</span><span class="dv">2</span>)<span class="ot">-&gt;</span>varcaltable </span>
@@ -856,7 +848,6 @@ Note
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(varcaltable$squared_deviation)</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#varcaltable %&gt;% knitr::kable()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <table class="caption-top table">
 <caption>Computation of the sample variance for the starting Salary data</caption>
@@ -1262,14 +1253,11 @@ Note
 <p>Hence the <strong>standard deviation is:</strong></p>
 <p><span class="math inline">\(s=\sqrt {30} \ \ days =5.48 \ \ days\)</span></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>M<span class="ot">=</span><span class="fu">seq</span>(<span class="dv">12</span>,<span class="dv">32</span>,<span class="dv">5</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>f<span class="ot">=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(M*f)</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#sum((M^2)*f)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 </section>
 </section>
@@ -1394,15 +1382,12 @@ Note
 <p>(i) <strong>Plot</strong> the data (histogram). Is it approximately bell-shaped/symmetric?</p>
 <p><u><strong>Solution (i):</strong></u></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x_data<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">68</span>, <span class="dv">52</span>, <span class="dv">80</span>, <span class="dv">45</span>, <span class="dv">60</span>, <span class="dv">30</span>, <span class="dv">75</span>, <span class="dv">48</span>, <span class="dv">53</span>,</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dv">70</span>, <span class="dv">42</span>, <span class="dv">66</span>, <span class="dv">55</span>, <span class="dv">40</span>, <span class="dv">58</span>, <span class="dv">78</span>, <span class="dv">36</span>, <span class="dv">50</span>, <span class="dv">62</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dv">33</span>, <span class="dv">71</span>, <span class="dv">49</span>, <span class="dv">44</span>, <span class="dv">64</span>, <span class="dv">38</span>, <span class="dv">85</span>, <span class="dv">57</span>, <span class="dv">39</span>, <span class="dv">61</span>,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="dv">73</span>, <span class="dv">46</span>, <span class="dv">67</span>, <span class="dv">32</span>, <span class="dv">56</span>, <span class="dv">65</span>, <span class="dv">41</span>, <span class="dv">59</span>, <span class="dv">51</span>, <span class="dv">54</span>,</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>, <span class="dv">100</span>, <span class="dv">115</span>, <span class="dv">77</span>, <span class="dv">63</span>, <span class="dv">69</span>, <span class="dv">82</span>, <span class="dv">37</span>, <span class="dv">47</span>, <span class="dv">60</span>)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x_data, <span class="at">main =</span> <span class="st">"Frequency histogram"</span>,<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1413,12 +1398,9 @@ Note
 </div>
 <p>(ii) Now identify outlier(s) using z-score rule.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>z_score<span class="ot">=</span>(x_data<span class="sc">-</span><span class="fu">mean</span>(x_data))<span class="sc">/</span><span class="fu">sd</span>(x_data)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#hist(z_score)</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(abs(z_score)&gt;3)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <p><u><strong>Solution (ii):</strong></u></p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1442,10 +1424,7 @@ Note
 <p>50, 45, 52, 37, 42, 70, 40, 35, 47, 17</p>
 <p><strong>Identify</strong> the <strong>outlier(s)</strong> in the dataset using 1.5(IQR) rule.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#boxplot(c(50, 45, 52, 37, 42, 70, 40, 35, 47, 17))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 </section>
 </section>
@@ -1490,12 +1469,9 @@ Figure&nbsp;3.1: Boxplot of the Monthly Starting Salary Data with Lines Showing 
 </p>
 <p>Here is the computer generated boxplot of salary data using R programmning language <span class="citation" data-cites="R">(<a href="references.html#ref-R" role="doc-biblioref">R Core Team 2024</a>)</span>.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>salary_d<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">5710</span>, <span class="dv">5755</span>, <span class="dv">5850</span>, <span class="dv">5880</span>, <span class="dv">5880</span>, <span class="dv">5890</span>, <span class="dv">5920</span>, <span class="dv">5940</span>, <span class="dv">5950</span>, <span class="dv">6050</span>, <span class="dv">6130</span>, <span class="dv">6325</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(salary_d,<span class="at">horizontal =</span> T,<span class="at">pch=</span><span class="dv">19</span>,<span class="at">lwd=</span><span class="dv">1</span>,<span class="at">col =</span> <span class="st">"#B6C5D1"</span>, <span class="at">main=</span><span class="st">"Boxplot of the Monthly Starting Salary  Data"</span> ,<span class="at">xlab=</span><span class="st">"Salary (in US dollars)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1508,8 +1484,6 @@ Figure&nbsp;3.1: Boxplot of the Monthly Starting Salary Data with Lines Showing 
 <h3 data-number="3.6.1" class="anchored" data-anchor-id="boxplot-and-skewness-of-the-data"><span class="header-section-number">3.6.1</span> Boxplot and skewness of the data</h3>
 <p>When we discuss the frequency histogram we also learned about shape of the distribution. By visual inspection of boxplot we can also tell about the distribution shape of a variable. The following boxplots are the typycal examples of skewness of the data.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1551,7 +1525,6 @@ Figure&nbsp;3.1: Boxplot of the Monthly Starting Salary Data with Lines Showing 
 <span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
 <span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>(b1<span class="sc">/</span>b2<span class="sc">/</span>b3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1559,8 +1532,6 @@ Figure&nbsp;3.1: Boxplot of the Monthly Starting Salary Data with Lines Showing 
 </figure>
 </div>
 </div>
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>xyz <span class="sc">%&gt;%</span> <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">"variable"</span>,<span class="at">value =</span> <span class="st">"value"</span>)<span class="ot">-&gt;</span>xyz.long</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>xyz.long <span class="sc">%&gt;%</span> </span>
@@ -1572,7 +1543,6 @@ Figure&nbsp;3.1: Boxplot of the Monthly Starting Salary Data with Lines Showing 
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>())<span class="ot">-&gt;</span>b123</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 </section>
 <section id="comparative-box-plot" class="level3" data-number="3.6.2">
@@ -1734,8 +1704,6 @@ Figure&nbsp;3.1: Boxplot of the Monthly Starting Salary Data with Lines Showing 
 </table>
 <p>We can easily compare the <strong>ratings</strong> for 4- cell-phone services using <strong>comparative/parallel box-plots</strong></p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>Rating<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"StatForBandE_data.xlsx"</span>, </span>
@@ -1748,7 +1716,6 @@ Figure&nbsp;3.1: Boxplot of the Monthly Starting Salary Data with Lines Showing 
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>,<span class="at">color =</span> <span class="st">"black"</span>),</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span><span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>,<span class="at">face =</span> <span class="st">"bold"</span>) )<span class="sc">+</span></span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">" "</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-parabox" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1789,8 +1756,6 @@ Figure&nbsp;3.2: Comparative Boxplots of Rating by customer for cell-phone servi
 </ol>
 <p><strong>Answer (a):</strong></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>City <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">16.2</span>, <span class="fl">16.7</span>, <span class="fl">15.9</span>, <span class="fl">14.4</span>, <span class="fl">13.2</span>, <span class="fl">15.3</span>, <span class="fl">16.8</span>, <span class="fl">16.0</span>, <span class="fl">16.1</span>, <span class="fl">15.3</span>, <span class="fl">15.2</span>, <span class="fl">15.3</span>, <span class="fl">16.2</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Highway <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">19.4</span>, <span class="fl">20.6</span>, <span class="fl">18.3</span>, <span class="fl">18.6</span>, <span class="fl">19.2</span>, <span class="fl">17.4</span>, <span class="fl">17.2</span>, <span class="fl">18.6</span>, <span class="fl">19.0</span>, <span class="fl">21.1</span>, <span class="fl">19.4</span>, <span class="fl">18.5</span>, <span class="fl">18.7</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1813,7 +1778,6 @@ Figure&nbsp;3.2: Comparative Boxplots of Rating by customer for cell-phone servi
 <span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">yaxt=</span><span class="st">"n"</span>)</span>
 <span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">12</span>, <span class="dv">22</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex.axis =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1845,8 +1809,6 @@ Figure&nbsp;3.3: Types of skewness and relative position of mean, median, mode
 </figure>
 </div>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>skewR<span class="ot">&lt;-</span><span class="dv">5</span><span class="sc">+</span><span class="fu">rbeta</span>(<span class="dv">10000</span>,<span class="dv">2</span>,<span class="dv">8</span>)<span class="sc">*</span><span class="dv">20</span></span>
@@ -1858,7 +1820,6 @@ Figure&nbsp;3.3: Types of skewness and relative position of mean, median, mode
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#abline(v=mean.sk,col="red",lwd=2)</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#abline(v=median.sk,col="green",lwd=2)</span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#arrows(x0 = mean.sk, y0 = 0.15,x1 = mean.sk, y1 = 0)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 </section>
 <section id="kurtosis" class="level3" data-number="3.7.2">
@@ -1907,8 +1868,6 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p><strong>Example 3.30 Calculate</strong> the first 4 central moments from the following sample data. 3,5,6,9,12.</p>
 <p><u>Solution:</u></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>moments<span class="ot">&lt;-</span><span class="cf">function</span>(x,r){</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  x_bar<span class="ot">=</span><span class="fu">mean</span>(x)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  n<span class="ot">=</span><span class="fu">length</span>(x)</span>
@@ -1923,7 +1882,6 @@ Figure&nbsp;3.4: Different types of kurtosis
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">12</span>)</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co">#moments(x,4)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <p>Here sample mean, <span class="math inline">\(\bar x=\frac{\sum x}{n}=\frac{3+5+...+12}{5}=7\)</span></p>
 <table class="caption-top table">
@@ -2067,8 +2025,6 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p>2) Suppose the following data are the ages of Internet users obtained from a sample.</p>
 <p>41, 15 ,31, 25 ,24, 23 ,21 ,22 ,22 ,18, 30 ,20 ,19 ,19 ,16, 23 ,27 ,38 ,34 ,24, 19 ,20, 29 ,17, 23.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>skurt<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">41</span>, <span class="dv">15</span> ,<span class="dv">31</span>, <span class="dv">25</span> ,<span class="dv">24</span>, <span class="dv">23</span> ,<span class="dv">21</span> ,<span class="dv">22</span> ,<span class="dv">22</span> ,<span class="dv">18</span>, <span class="dv">30</span> ,<span class="dv">20</span> ,<span class="dv">19</span> ,<span class="dv">19</span> ,<span class="dv">16</span>, <span class="dv">23</span> ,<span class="dv">27</span> ,<span class="dv">38</span> ,<span class="dv">34</span> ,<span class="dv">24</span>, <span class="dv">19</span> ,<span class="dv">20</span>, <span class="dv">29</span> ,<span class="dv">17</span>, <span class="dv">23</span>)</span>
@@ -2083,7 +2039,6 @@ Figure&nbsp;3.4: Different types of kurtosis
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#sum((skurt-smean)^2)</span></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co">#sum((skurt-smean)^3)</span></span>
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#sum((skurt-smean)^4)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <p>From sample data we have following statistics: <span class="math inline">\(\sum(X-\bar X)^2=1062\)</span>, <span class="math inline">\(\sum(X-\bar X)^3=7020\)</span> and <span class="math inline">\(\sum(X-\bar X)^4=153198\)</span>.</p>
 <p>a) <strong>Plot</strong> a histogram. What is your observation about skewness? Is it possible to have an idea about form the histogram?</p>
@@ -2227,12 +2182,9 @@ Figure&nbsp;3.4: Different types of kurtosis
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>three20<span class="ot">&lt;-</span><span class="fu">c</span>( <span class="dv">81</span>, <span class="dv">68</span>, <span class="dv">70</span>, <span class="dv">100</span>, <span class="dv">94</span>, <span class="dv">47</span>, <span class="dv">66</span>, <span class="dv">70</span>, <span class="dv">82</span>, <span class="dv">110</span>, <span class="dv">105</span>,<span class="dv">60</span>, <span class="dv">21</span>, <span class="dv">70</span>, <span class="dv">66</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">85</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#sort(three20)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <p>21, 47, 60, 66, 66, 68, 70, 70, 70, 78, 81, 82, 85, 90, 94, 100, 105, 110</p>
 </div>

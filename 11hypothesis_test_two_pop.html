@@ -726,8 +726,6 @@ window.Quarto = {
 <p><strong>Decision:</strong> Since the value of <span class="math inline">\(t_0\)</span> falls in the rejection region (RR) we can reject the <span class="math inline">\(H_0\)</span> .</p>
 <p><strong>Conclusion:</strong> With 95% confidence we can conclude that the population means are not equal; rather mean of population 1 (B) is significantly lower than the mean of population 2 (A).</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>svar1<span class="ot">=</span><span class="fl">8.5</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>svar2<span class="ot">=</span><span class="fl">5.2</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>F_ratio<span class="ot">=</span>svar1<span class="sc">/</span>svar2</span>
@@ -741,7 +739,6 @@ window.Quarto = {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>t_sta<span class="ot">&lt;-</span>(<span class="fl">10.1-13.6</span>)<span class="sc">/</span><span class="fu">sqrt</span>(svar_pooled<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">40</span><span class="sc">+</span><span class="dv">1</span><span class="sc">/</span><span class="dv">35</span>))</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>t_c<span class="ot">&lt;-</span><span class="fu">qt</span>(.<span class="dv">025</span>,<span class="dv">73</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <p><strong>Problem 12.5</strong> An accounting firm is interested in providing opportunities for its auditors to gain more expertise in statistical sampling methods. They wish to compare traditional classroom instruction with online self-paced tutorials. Auditors were assigned at random to one type of instruction, and the auditors were then given an exam. The table shows how the two groups performed.</p>
 <table class="caption-top table">
@@ -771,8 +768,6 @@ window.Quarto = {
 <p>a) <strong>Test</strong> equality of variances of two methods of learning.</p>
 <p>b) <strong>Test</strong> whether there is any significant difference in mean scores between Traditional and Online method.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f_test_variance <span class="ot">&lt;-</span> <span class="cf">function</span>(s1_sq, s2_sq, n1, n2) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  F <span class="ot">&lt;-</span> s1_sq <span class="sc">/</span> s2_sq</span>
@@ -797,7 +792,6 @@ window.Quarto = {
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>s2_sq<span class="ot">=</span><span class="fl">11.2</span><span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#f_test_variance(s1_sq,s2_sq,30,30)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <p><strong>Problem 12.6</strong> The bank randomly assigns <strong>160 credit card customers</strong> to each of two marketing strategies: <strong>Proposal A</strong> (waive the annual fee if yearly spending is at least $3600) and <strong>Proposal B</strong> (offer a small cash rebate based on total yearly spending). After one year, the <strong>total amount charged by each customer</strong> is recorded and compared to determine which proposal leads to higher credit card spending. Here are the summary statistics:</p>
 <table class="caption-top table">
@@ -833,13 +827,10 @@ window.Quarto = {
 </p></li>
 </ul>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>s1_sq<span class="ot">=</span><span class="dv">468</span><span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>s2_sq<span class="ot">=</span><span class="dv">411</span><span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#f_test_variance(s1_sq,s2_sq,160,160)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 </section>
 <section id="hypothesis-test-comparing-two-means-when-the-samples-are-dependent-matchedpaired" class="level2" data-number="11.3">
@@ -1040,11 +1031,8 @@ window.Quarto = {
 <p><span class="math inline">\(\bar d= \frac{\sum d}{n}=\frac{-259}{11}=-28.09\)</span></p>
 <p><span class="math inline">\(s_D=\sqrt \frac{\sum d^2-n(\bar d)^2}{n-1}=25.81\)</span></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">58</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="sc">-</span><span class="dv">75</span>,<span class="sc">-</span><span class="dv">27</span>,<span class="sc">-</span><span class="dv">60</span>,<span class="sc">-</span><span class="dv">15</span>,<span class="sc">-</span><span class="dv">25</span>,<span class="dv">10</span>,<span class="sc">-</span><span class="dv">25</span>,<span class="sc">-</span><span class="dv">16</span>,<span class="sc">-</span><span class="dv">13</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(d); mean(d);sum(d^2) ;sd(d)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <p><strong>Test statistic</strong></p>
 <p><span class="math display">\[t_0=\frac{\bar d-D_0}{s_D/\sqrt n}=\frac{-28.09-0}{25.81/\sqrt 11}=-3.609\]</span></p>

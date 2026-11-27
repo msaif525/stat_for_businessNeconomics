@@ -669,15 +669,12 @@ window.Quarto = {
 </table>
 <p>Now we will construct a frequency distribution by simply counting each type of soft-drink.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>MBA <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"StatForBandE_data.xlsx"</span>,<span class="at">sheet =</span> <span class="st">"Sheet1"</span>,<span class="at">range =</span> <span class="st">"A1:A51"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>MBA <span class="sc">%&gt;%</span> <span class="fu">count</span>(<span class="st">`</span><span class="at">Soft Drink</span><span class="st">`</span>) <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Soft Drink"</span>,<span class="st">"Frequency"</span>),<span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div id="tbl-tbl2" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tbl2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -734,12 +731,9 @@ Table&nbsp;2.1: Frequency distribution of Soft Drink Purchases
 </ul>
 <p>From the frequency table of soft drinks purchase, we will develop relative and percent frequency distribution (see <a href="#tbl-tbl3" class="quarto-xref">Table&nbsp;<span>2.2</span></a>) and will construct a <strong>bar-chart</strong> and <strong>pie-chart</strong>.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>MBA <span class="sc">%&gt;%</span> <span class="fu">count</span>(<span class="st">`</span><span class="at">Soft Drink</span><span class="st">`</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">RF=</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="at">PF=</span>RF<span class="sc">*</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>,<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Soft Drink"</span>,<span class="st">"Frequency (f)"</span>,<span class="st">"Relative Frequency(Rf)"</span>, <span class="st">"Percent Frequency (Pf)"</span>),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>,<span class="st">"c"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div id="tbl-tbl3" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tbl3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -802,8 +796,6 @@ Table&nbsp;2.2: Frequency, Relative And Percent Frequency Distributions Of Soft 
 </div>
 <p>Now we construct a bar chart and pie chart.</p>
 <div class="cell" data-layout-align="left">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>bar<span class="ot">&lt;-</span>MBA <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">Soft Drink</span><span class="st">`</span>,<span class="at">fill=</span><span class="st">`</span><span class="at">Soft Drink</span><span class="st">`</span>))<span class="sc">+</span></span>
@@ -815,7 +807,6 @@ Table&nbsp;2.2: Frequency, Relative And Percent Frequency Distributions Of Soft 
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text=</span>  <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>))</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>bar</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-fig1" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
 <figure class="quarto-float quarto-float-fig figure">
@@ -830,8 +821,6 @@ Figure&nbsp;2.1: Bar chart of Soft drink purchases
 </div>
 </div>
 <div class="cell" data-layout-align="left">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pi_data<span class="ot">&lt;-</span>MBA <span class="sc">%&gt;%</span> <span class="fu">count</span>(<span class="st">`</span><span class="at">Soft Drink</span><span class="st">`</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">RF=</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent</span>(RF))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -847,7 +836,6 @@ Figure&nbsp;2.1: Bar chart of Soft drink purchases
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>pi_chart</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-fig2" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
 <figure class="quarto-float quarto-float-fig figure">
@@ -940,12 +928,9 @@ Figure&nbsp;2.3: Visulization of relationship between two categorical variables
 <p>Consider the following data.</p>
 <p>YEAR-END AUDIT TIMES (IN DAYS): 12, 14, 19, 18, 15, 15, 18, 17, 20, 27, 22, 23, 22, 21, 33, 28, 14, 18, 16, 13,</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Audit<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">17</span>,</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span>, <span class="dv">27</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">33</span>, <span class="dv">28</span>,<span class="dv">14</span>, <span class="dv">18</span>, <span class="dv">16</span>, <span class="dv">13</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(Audit)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <p>To construct a frequency distribution we have to</p>
 <ol type="1">
@@ -965,8 +950,6 @@ Figure&nbsp;2.3: Visulization of relationship between two categorical variables
 <p><strong>[10,15), [15,20), [20,25), [25,30), and [30,35)</strong></p>
 <p>Now count the data values in corresponding classes and thus we have the <em>frequency distribution</em>. Once we have the frequency distribution then we also can produce the <em>relative</em> and <em>percent frequency distribution</em> (<a href="#tbl-tbl4" class="quarto-xref">Table&nbsp;<span>2.4</span></a> ).</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(Audit)<span class="ot">-&gt;</span>fd_data</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fd_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Audit_clas=</span><span class="fu">ifelse</span>(Audit<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">14</span>),<span class="st">"[10,15)"</span>,</span>
@@ -976,7 +959,6 @@ Figure&nbsp;2.3: Visulization of relationship between two categorical variables
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>fd <span class="sc">%&gt;%</span> <span class="fu">count</span>(Audit_clas) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">rf=</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="at">pf=</span><span class="dv">100</span><span class="sc">*</span>rf)<span class="ot">-&gt;</span>fd2 </span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>fd2 <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>,<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Audit Time (days)"</span>,<span class="st">"Frequency (f) "</span>,<span class="st">"Relative frequency (rf)"</span>, <span class="st">"Percent frequency(pf)"</span>),<span class="at">align =</span> <span class="st">"c"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div id="tbl-tbl4" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tbl4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1042,8 +1024,6 @@ Table&nbsp;2.4: Frequency, relative frequency (rf) and percent frequency (pf) di
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="histogram"><span class="header-section-number">2.2.3</span> Histogram</h3>
 <p>A common graphical presentation of quantitative data is a <em>histogram.</em> This graphical summary can be prepared for data previously summarized in either a <em>frequency</em>, <em>relative frequency</em>, or <em>percent frequency</em> distribution.</p>
 <div class="cell" data-layout-align="left">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#png(filename="HISTOGRAM.png", width=600, height=600)</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>fd2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Audit_clas,<span class="at">y=</span>n))<span class="sc">+</span><span class="fu">geom_col</span>(<span class="at">width =</span><span class="dv">1</span>,<span class="at">col=</span><span class="st">"black"</span>,<span class="at">fill=</span><span class="st">"steelblue"</span>)<span class="sc">+</span></span>
@@ -1053,7 +1033,6 @@ Table&nbsp;2.4: Frequency, relative frequency (rf) and percent frequency (pf) di
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-fig3" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1090,8 +1069,6 @@ Figure&nbsp;2.4: Histogram for the Audit Time data
 </ul>
 <p>This comparison is <strong>valid</strong> only because the histograms show <strong>relative frequency</strong>, not raw counts.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">332</span>)  <span class="co"># For reproducibility</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 30 male CGPAs and 50 female CGPAs</span></span>
@@ -1174,7 +1151,6 @@ Figure&nbsp;2.4: Histogram for the Audit Time data
 <span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>rf.better</span>
 <span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-rfhist.is.better" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1193,8 +1169,6 @@ Figure&nbsp;2.5: Comparison between Frequency histogram and relative frequency h
 <h3 data-number="2.2.4" class="anchored" data-anchor-id="histogram-and-shape-of-the-distribution"><span class="header-section-number">2.2.4</span> HISTOGRAM and shape of the distribution</h3>
 <p>See <a href="#fig-hist.skewness" class="quarto-xref">Figure&nbsp;<span>2.6</span></a> .</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -1235,7 +1209,6 @@ Figure&nbsp;2.5: Comparison between Frequency histogram and relative frequency h
 <span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
 <span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
 <span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-hist.skewness" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1254,11 +1227,8 @@ Figure&nbsp;2.6: Histograms Showing Differing Levels of Skewness
 <h3 data-number="2.2.5" class="anchored" data-anchor-id="cumulative-distributions-and-ogive"><span class="header-section-number">2.2.5</span> Cumulative Distributions and Ogive</h3>
 <p>A variation of the frequency distribution that provides another tabular summary of quantitative data is the <em>cumulative frequency</em> distribution. <a href="#tbl-tab.crf" class="quarto-xref">Table&nbsp;<span>2.5</span></a> shows the <strong>cumulative relative frequency</strong> of <code>Audit Time</code> data.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fd <span class="sc">%&gt;%</span> <span class="fu">count</span>(Audit_clas) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">rf=</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="at">crf=</span><span class="fu">cumsum</span>(rf)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>,<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Audit Time (days)"</span>,<span class="st">"Frequency (f) "</span>,<span class="st">"Relative frequency (rf)"</span>, <span class="st">"Cumulative relative frequency(crf)"</span>),<span class="at">align =</span> <span class="st">"c"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div id="tbl-tab.crf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tab.crf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1325,8 +1295,6 @@ Table&nbsp;2.5: Frequency, relative frequency and Cumulative relative frequency 
 <p>Another way of presenting this information is the ogive, which is a graphical representation of the cumulative relative frequencies. <a href="#fig-ogive" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> is the drawn ogive for the cumulative relative frequency for <code>Audit time</code> data.<br>
 </p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load library</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1354,7 +1322,6 @@ Table&nbsp;2.5: Frequency, relative frequency and Cumulative relative frequency 
 <span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
 <span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
 <span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-ogive" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1388,14 +1355,11 @@ Figure&nbsp;2.7: Ogive for Audit Time data
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>stemleaf<span class="ot">=</span><span class="fu">c</span>(<span class="dv">112</span>,<span class="dv">72</span>,<span class="dv">69</span>,<span class="dv">97</span>,<span class="dv">107</span>,<span class="dv">73</span>,<span class="dv">92</span>,<span class="dv">76</span>,<span class="dv">86</span>,<span class="dv">73</span>,<span class="dv">126</span>,<span class="dv">128</span>,<span class="dv">118</span>,<span class="dv">127</span>,<span class="dv">124</span>,<span class="dv">82</span>,<span class="dv">104</span>,<span class="dv">132</span>,<span class="dv">134</span>,<span class="dv">83</span>,<span class="dv">92</span>,<span class="dv">108</span>,<span class="dv">96</span>,<span class="dv">100</span>,<span class="dv">92</span>,<span class="dv">115</span>,<span class="dv">76</span>,<span class="dv">91</span>,<span class="dv">102</span>,<span class="dv">81</span>,<span class="dv">95</span>,<span class="dv">141</span>,<span class="dv">81</span>,<span class="dv">80</span>,<span class="dv">106</span>,<span class="dv">84</span>,<span class="dv">119</span>,<span class="dv">113</span>,<span class="dv">98</span>,<span class="dv">75</span>,<span class="dv">68</span>,<span class="dv">98</span>,<span class="dv">115</span>,<span class="dv">106</span>,<span class="dv">95</span>,<span class="dv">100</span>,<span class="dv">85</span>,<span class="dv">94</span>,<span class="dv">106</span>,<span class="dv">119</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(stemleaf)</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(stemleaf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   The decimal point is 1 digit(s) to the right of the |
@@ -1423,12 +1387,9 @@ Figure&nbsp;2.7: Ogive for Audit Time data
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sl<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">88.5</span>, <span class="fl">98.8</span>, <span class="fl">89.6</span>, <span class="fl">92.2</span>, <span class="fl">92.7</span>, <span class="fl">88.4</span>, <span class="fl">87.5</span>, <span class="fl">90.9</span>,<span class="fl">94.7</span>, <span class="fl">88.3</span>, <span class="fl">90.4</span>, <span class="fl">83.4</span>, <span class="fl">87.9</span>, <span class="fl">92.6</span>, <span class="fl">87.8</span>, <span class="fl">89.9</span>,<span class="fl">84.3</span>, <span class="fl">90.4</span>, <span class="fl">91.6</span>, <span class="fl">91.0</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(sl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   The decimal point is 1 digit(s) to the right of the |
@@ -1442,10 +1403,7 @@ Figure&nbsp;2.7: Ogive for Audit Time data
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(sl,<span class="at">scale =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   The decimal point is at the |
@@ -1467,11 +1425,8 @@ Figure&nbsp;2.7: Ogive for Audit Time data
 <p><strong>Example 2.4 (Another example):</strong> Construct a stem-and-leaf plot from the following data: 7,8,2,1,8,3,5,7,1,2,2,5,8,5,5,7,8,7,5,3</p>
 <p><u>Solution:</u></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>singldigit<span class="ot">=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(singldigit,<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   The decimal point is at the |
@@ -1526,8 +1481,6 @@ Figure&nbsp;2.7: Ogive for Audit Time data
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>salary<span class="ot">=</span><span class="fu">c</span>(<span class="dv">187</span>, <span class="dv">184</span>, <span class="dv">174</span>, <span class="dv">185</span>, <span class="dv">175</span>, <span class="dv">172</span>, <span class="dv">202</span>, <span class="dv">197</span>, <span class="dv">165</span>, <span class="dv">208</span>, <span class="dv">215</span>, <span class="dv">164</span>, <span class="dv">162</span>, <span class="dv">172</span>, <span class="dv">182</span>, <span class="dv">156</span>, <span class="dv">172</span>, <span class="dv">175</span>, <span class="dv">170</span>, <span class="dv">183</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#sort(salary)</span></span>
@@ -1539,7 +1492,6 @@ Figure&nbsp;2.7: Ogive for Audit Time data
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">right =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">'n'</span>,<span class="at">labels =</span> <span class="cn">TRUE</span>,<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>))</span>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">155</span>, <span class="at">to =</span> <span class="dv">225</span>, <span class="at">by =</span> <span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1547,10 +1499,7 @@ Figure&nbsp;2.7: Ogive for Audit Time data
 </figure>
 </div>
 </div>
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#hist(salary,xlim = c(155, 220),right = FALSE)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 </div>
 </div>
@@ -1575,15 +1524,12 @@ Figure&nbsp;2.7: Ogive for Audit Time data
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>spending<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1200</span>, <span class="dv">850</span>, <span class="dv">740</span>, <span class="dv">590</span>, <span class="dv">340</span>, <span class="dv">450</span>, <span class="dv">890</span>, <span class="dv">260</span>, <span class="dv">610</span>, <span class="dv">350</span>, <span class="dv">1780</span>, <span class="dv">180</span>, <span class="dv">850</span>,<span class="dv">2050</span>, <span class="dv">770</span>, <span class="dv">800</span>, <span class="dv">1090</span>, <span class="dv">510</span>, <span class="dv">520</span>, <span class="dv">220</span>, <span class="dv">1450</span>, <span class="dv">280</span>, <span class="dv">1120</span>, <span class="dv">200</span>, <span class="dv">350</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(spending)</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(spending,<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">180</span>,<span class="dv">2180</span>,<span class="dv">250</span>),<span class="at">xaxt=</span><span class="st">"n"</span>,<span class="at">main =</span> <span class="st">"Frequency histogram of holiday spending (USD)"</span>,<span class="at">xlab =</span> <span class="st">"Holiday spending"</span>,<span class="at">labels =</span> <span class="cn">TRUE</span>,<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">9</span>))</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">180</span>,<span class="dv">2180</span>,<span class="dv">250</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
