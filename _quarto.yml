@@ -49,8 +49,9 @@ book:
             url:  "#"
           - text: ""
             url:  "#"
-            
-  repo-url: https://github.com/msaif525/stat_for_businessNeconomics   
+website:
+  site-url: "https://msaif525.github.io/stat_for_businessNeconomics/"
+  repo-url: "https://github.com/msaif525/stat_for_businessNeconomics"
   search: 
     location: sidebar
     type: textbox    
