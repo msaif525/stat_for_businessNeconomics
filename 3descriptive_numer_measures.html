@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -54,14 +54,15 @@ div.csl-indent {
 <link href="./2descriptive_graph_tab.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8244c66523fac62cbacdae4f74e334b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-066b562477012fc308cfc884aa1e7cf5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,7 +104,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -528,9 +529,7 @@ Note
 </section>
 <section id="harmonic-mean" class="level3" data-number="3.1.8">
 <h3 data-number="3.1.8" class="anchored" data-anchor-id="harmonic-mean"><span class="header-section-number">3.1.8</span> Harmonic mean</h3>
-<p><span class="math display">\[
-HM=\frac{n}{\frac{1}{x_1} + \frac{1}{x_2}+...+\frac{1}{x_n}}
-\]</span></p>
+<p><span class="math display">\[HM=\frac{n}{\frac{1}{x_1} + \frac{1}{x_2}+...+\frac{1}{x_n}}\]</span></p>
 <p><strong>Example 3.8:</strong> Compute the geometric mean of the following percent increases: 8, 12, 14, 26, and 5.</p>
 <p><u>Solution:</u> Here, <span class="math inline">\(n=5\)</span>. The geometric mean is:</p>
 <p><span class="math display">\[GM=[8\cdot12\cdot14\cdot26\cdot5]^{1/5}=[174720]^{1/5}\approx 11.18\]</span></p>
@@ -586,7 +585,7 @@ HM=\frac{n}{\frac{1}{x_1} + \frac{1}{x_2}+...+\frac{1}{x_n}}
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Derivation
+<span class="screen-reader-only">Note</span>Derivation
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -675,9 +674,7 @@ Derivation
 <p><span class="math display">\[s^2=\frac{\sum (x_i-\bar x)^2}{n-1}=\frac{50800}{6-1}=10160 \ \ (\mathrm {dollars})^2 \]</span></p>
 <p><strong>Alternative</strong></p>
 <p>Here, <span class="math inline">\(\sum x_i ^2=3450^2+3550^2+...+3545^2=73760950\)</span></p>
-<p><span class="math display">\[
-s^2=\frac{\sum x_i ^2-n \cdot (\bar x)^2}{n-1}=\frac{73760950-6\cdot (3505^2)}{6-1}=10160 \ \ \mathrm {dollars^2}
-\]</span></p>
+<p><span class="math display">\[s^2=\frac{\sum x_i ^2-n \cdot (\bar x)^2}{n-1}=\frac{73760950-6\cdot (3505^2)}{6-1}=10160 \ \ \mathrm {dollars^2}\]</span></p>
 </section>
 <section id="standard-deviation" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="standard-deviation"><span class="header-section-number">3.2.4</span> Standard deviation</h3>
@@ -697,7 +694,7 @@ s^2=\frac{\sum x_i ^2-n \cdot (\bar x)^2}{n-1}=\frac{73760950-6\cdot (3505^2)}{6
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note:
+<span class="screen-reader-only">Note</span>Note:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -714,7 +711,7 @@ Note:
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Data transformation: Shifting origin and changing scale
+<span class="screen-reader-only">Note</span>Data transformation: Shifting origin and changing scale
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -738,7 +735,7 @@ Data transformation: Shifting origin and changing scale
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Properties of variance
+<span class="screen-reader-only">Note</span>Properties of variance
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -776,7 +773,7 @@ Properties of variance
 </ul>
 <p><strong>Example 3.13:</strong> The table at the left shows the population heights (in inches) and weights (in pounds) of the members of a basketball team. Find the coefficient of variation for the heights and the weights. Then compare the results.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Coefficient of variation</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Coefficient of variation</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <table class="caption-top table">
@@ -1029,7 +1026,7 @@ Properties of variance
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-z-score
+<span class="screen-reader-only">Note</span>z-score
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1092,9 +1089,7 @@ Note
 <p><span class="math inline">\(1-\frac{1}{z^2}=0.80\)</span></p>
 <p>Solving for <span class="math inline">\(z\)</span> we have <span class="math inline">\(z=2.24 ( \ \ approx.\ \ )\)</span></p>
 <p>Hence the interval is :</p>
-<p><span class="math display">\[
-[70-2.24 *5\ \ ,\ \ 70+2.24*5]=[58.8\ \ ,\ \ 81.2] \ \ (Ans.)
-\]</span></p>
+<p><span class="math display">\[[70-2.24 *5\ \ ,\ \ 70+2.24*5]=[58.8\ \ ,\ \ 81.2] \ \ (Ans.)\]</span></p>
 </section>
 <section id="empirical-rule" class="level3" data-number="3.4.3">
 <h3 data-number="3.4.3" class="anchored" data-anchor-id="empirical-rule"><span class="header-section-number">3.4.3</span> Empirical Rule</h3>
@@ -1126,7 +1121,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Using z-score to detect outlier
+<span class="screen-reader-only">Note</span>Using z-score to detect outlier
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1156,7 +1151,7 @@ Using z-score to detect outlier
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Using 1.5(IQR) rule to detect outlier
+<span class="screen-reader-only">Note</span>Using 1.5(IQR) rule to detect outlier
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1495,20 +1490,19 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p><span class="math inline">\(m'_2=\frac{\sum_{i=i}^n x_i^2}{n}\)</span></p>
 <p><span class="math inline">\(m'_3=\frac{\sum_{i=i}^n x_i^3}{n}\)</span></p>
 <p><span class="math inline">\(m'_4=\frac{\sum_{i=i}^n x_i^4}{n}\)</span></p>
-<p>The<span class="math inline">\(r^{th}\)</span>sample <strong>central moment (about mean) is:</strong></p>
-<p><span id="eq-centralm"><span class="math display">\[m_r=\frac{\sum_{i=1}^n (x_i-\bar x)^r}{n} \tag{3.2}\]</span></span></p>
+<p>The<span class="math inline">\(r^{th}\)</span>sample <strong>central moment (about mean) of X is:</strong></p>
+<p><span id="eq-centralm"><span class="math display">\[m_r (X)=\frac{\sum_{i=1}^n (x_i-\bar x)^r}{n} \tag{3.2}\]</span></span></p>
 <p>Hence the first 4 central moments are:</p>
-<p><span class="math inline">\(m_1=\frac{\sum(x-\bar x)}{n}=\frac{0}{n}=0\)</span></p>
-<p><span class="math inline">\(m_2=\frac{\sum(x-\bar x)^2}{n}\)</span></p>
-<p><span class="math inline">\(m_3=\frac{\sum(x-\bar x)^3}{n}\)</span></p>
-<p><span class="math inline">\(m_4=\frac{\sum(x-\bar x)^4}{n}\)</span></p>
+<p><span class="math inline">\(m_1(X)=\frac{\sum(x-\bar x)}{n}=\frac{0}{n}=0\)</span></p>
+<p><span class="math inline">\(m_2(X)=\frac{\sum(x-\bar x)^2}{n}\)</span></p>
+<p><span class="math inline">\(m_3(X)=\frac{\sum(x-\bar x)^3}{n}\)</span></p>
+<p><span class="math inline">\(m_4(X)=\frac{\sum(x-\bar x)^4}{n}\)</span></p>
 <p><strong>Relation between raw moments and central moments</strong></p>
-<p>a) <span class="math inline">\(m_1=0\)</span></p>
-<p>b) <span class="math inline">\(m_2=m'_2-{m'_1}^2\)</span></p>
+<p>a) <span class="math inline">\(m_1(X)=0\)</span></p>
+<p>b) <span class="math inline">\(m_2(X)=m'_2(X)-{m'_1}^2(X)\)</span></p>
 <p>c) <span class="math inline">\(m_3=m'_3-3m'_1 m'_2+2{m'_1}^3\)</span></p>
 <p>d) <span class="math inline">\(m_4=m'_4-4m'_1 m'_3+6{m'_1}^2 m'_2-3{m'_1}^4\)</span></p>
-<p><strong>Example 3.30 Calculate</strong> the first 4 central moments from the following sample data.</p>
-<p><code>3,5,6,9,12</code></p>
+<p><strong>Example 3.30 Calculate</strong> the first 4 central moments from the following sample data. 3,5,6,9,12.</p>
 <p><u>Solution:</u></p>
 <p>Here sample mean, <span class="math inline">\(\bar x=\frac{\sum x}{n}=\frac{3+5+...+12}{5}=7\)</span></p>
 <table class="caption-top table">
@@ -1610,6 +1604,29 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p><span class="math display">\[Kurtosis = \frac{1}{n} \left[ \sum \left( \frac{X_i - \overline{X}}{s} \right)^4 \right]=\frac{1}{n} \sum  z_i^4 \]</span></p>
 <p>For calculation purpose the above formula is written as</p>
 <p><span class="math display">\[ Kurtosis=\frac{1}{n}\frac{\sum (X-\bar X)^4}{s^4} \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Effect of change of origin and scale on Central moment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We know the <span class="math inline">\(r^{th}\)</span> central moment of variable X is:<br>
+</p>
+<p><span class="math display">\[m_r(X)=\frac{\sum_{i=1}^n (x_i -\bar x)^r}{n}\]</span></p>
+<p>Let, <span class="math inline">\(Y=\frac{X-a}{b} \ \ ; b\ne 0\)</span></p>
+<p>Hence, <span class="math inline">\(y_i=\frac{x_i-a}{b}\)</span></p>
+<p><span class="math inline">\(\Rightarrow x_i=a+b y_i\)</span></p>
+<p><span class="math inline">\(\Rightarrow\bar x=a+b \bar y\)</span></p>
+<p>Now,</p>
+<p><span class="math display">\[m_r(X)=\frac{\sum(x_i-\bar x)^r}{n}=\frac{\sum(a+by_i-a-b\bar y)^r}{n}=b^r\frac{\sum (y_i-\bar y)^r}{n}=b^r m_r(Y)\]</span></p>
+<p><span class="math inline">\(\boxed {\therefore m_r(X)=b^r m_r)Y)}\)</span></p>
+<p>So <strong>Central moment is only affected by <em>change of scale (b) ; not by origin (a).</em></strong></p>
+</div>
+</div>
 </section>
 <section id="some-other-formulas-to-calculate-skewness" class="level3" data-number="3.7.4">
 <h3 data-number="3.7.4" class="anchored" data-anchor-id="some-other-formulas-to-calculate-skewness"><span class="header-section-number">3.7.4</span> Some other formulas to calculate skewness</h3>
@@ -1757,7 +1774,7 @@ Figure&nbsp;3.4: Different types of kurtosis
 <p><strong>3.20</strong> A data set has a first quartile of 42 and a third quartile of 50. Compute the lower and upper limits for the corresponding box plot. Should a data value of 65 be considered an outlier?</p>
 <p><strong>3.22</strong> Suppose a consumer group asked 18 consumers to keep a yearly log of their shopping practices and that the following data represent the number of coupons used by each consumer over the yearly period.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Ordered data</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Ordered data</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>81, 68, 70, 100, 94, 47, 66, 70, 82, 110, 105, 60, 21, 70, 66, 90, 78, 85</p>
@@ -1845,13 +1862,14 @@ R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
