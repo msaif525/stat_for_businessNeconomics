@@ -44,34 +44,21 @@ book:
   chapters:
     - index.qmd
     - 1intro.qmd
-
-    - part: "Descriptive Statistics"
-      chapters:
-        - 2descriptive_graph_tab.qmd
-        - 3descriptive_numer_measures.qmd
-
-    - part: "Probability and Distributions"
-      chapters:
-        - 4Probability.qmd
-        - 5randomvariable_and_Discrete_dist.qmd
-        # - 6.1discrete_r.v_special.qmd
-        - 6continuous_Dist.qmd
-        - 7Further_topics_on_rv.qmd
-
-    - part: "Sampling and Statistical Inference"
-      chapters:
-        - 8sampling_and_sampling_distributions.qmd
-        - 9estimation.qmd
-        - 10hypothesis_test.qmd
-        - 11Hypotheis_test(TWO population).qmd   # rename recommended (see notes)
-        - 12ANOVA_oneway.qmd
-        - 13Chi_squaredTest.qmd
-
-    - part: "Correlation and Regression"
-      chapters:
-        - 14Correlation.qmd
-        # - Multiple_linear.qmd
-
+    - 2descriptive_graph_tab.qmd
+    - 3descriptive_numer_measures.qmd
+    - 4Probability.qmd
+    - 5randomvariable_and_Discrete_dist.qmd
+    # - 6.1discrete_r.v_special.qmd
+    - 6continuous_Dist.qmd
+    - 7Further_topics_on_rv.qmd
+    - 8sampling_and_sampling_distributions.qmd
+    - 9estimation.qmd
+    - 10hypothesis_test.qmd
+    - 11Hypotheis_test(TWO population).qmd   # rename recommended
+    - 12ANOVA_oneway.qmd
+    - 13Chi_squaredTest.qmd
+    - 14Correlation.qmd
+    # - Multiple_linear.qmd
     - summary.qmd
     - references.qmd
 
