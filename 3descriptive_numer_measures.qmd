@@ -280,7 +280,7 @@ sal6d %>% mutate(m=mean(sal6),deviation=sal6-m,squared_deviation=deviation^2)->v
 ```
 
 | Salary ($x_i$) | Sample mean, $\bar x$ | $(x_i-\bar x)$ | $(x_i-\bar x)^2$ |
-|:--:|:--:|:--:|:--:|
+|:----------------:|:----------------:|:----------------:|:----------------:|
 | 3450 | 3505 | -55 | 3025 |
 | 3550 | 3505 | 45 | 2025 |
 | 3650 | 3505 | 145 | 21025 |
@@ -492,7 +492,7 @@ Eventually the **standard deviation** is $\sqrt {s^2}$
 [*Solution:*]{.underline}
 
 |  |  |  |  |  |
-|----|:--:|:--:|:--:|:--:|
+|---------------|:-------------:|:-------------:|:-------------:|:-------------:|
 | **Audit Time (days)** | **Mid point**$(M_i)$ | **Frequency** $(f_i)$ | $f_i M_i$ | $f_i M_i^2$ |
 | 10-14 | 12 | 4 | 48 | 576 |
 | 15-19 | 17 | 8 | 136 | 2312 |
@@ -1062,7 +1062,7 @@ x=c(3,5,6,9,12)
 Here sample mean, $\bar x=\frac{\sum x}{n}=\frac{3+5+...+12}{5}=7$
 
 | $x$ | $(x-\bar x)$ | $(x-\bar x)^2$ | $(x-\bar x)^3$ | $(x-\bar x)^4$ |
-|:--:|:--:|:--:|:--:|:--:|
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | 3 | -4 | 16 | -64 | 256 |
 | 5 | -2 | 4 | -8 | 16 |
 | 6 | -1 | 1 | -1 | 1 |
@@ -1163,7 +1163,9 @@ Now,
 
 $$m_r(X)=\frac{\sum(x_i-\bar x)^r}{n}=\frac{\sum(a+by_i-a-b\bar y)^r}{n}=b^r\frac{\sum (y_i-\bar y)^r}{n}=b^r m_r(Y)$$
 
-$\boxed {\therefore m_r(X)=b^r m_r(Y)}$
+$$
+\boxed {\therefore \ \ m_r(X)=b^r m_r(Y)}
+$$
 
 So **Central moment is only affected by *change of scale (b) ; not by origin (a).***
 :::

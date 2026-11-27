@@ -54,7 +54,7 @@ book:
     - 8sampling_and_sampling_distributions.qmd
     - 9estimation.qmd
     - 10hypothesis_test.qmd
-    - 11Hypotheis_test(TWO population).qmd   # rename recommended
+    - 11hypothesis_test_two_pop.qmd   # rename recommended
     - 12ANOVA_oneway.qmd
     - 13Chi_squaredTest.qmd
     - 14Correlation.qmd
