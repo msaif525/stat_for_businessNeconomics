@@ -1,21 +1,16 @@
 project:
   type: book
-  
-description: "An introductory e‑book on Statistics for Business and Economics with practical examples, exercises, and visualizations."
-keyword: ["Statistics", "Business", "Economics", "Probability", "Data Analysis","Hypothesis test"]
-number-sections: true
+  description: "An introductory e-book on Statistics for Business and Economics with practical examples, exercises, and visualizations."
+  keyword: ["Statistics", "Business", "Economics", "Probability", "Data Analysis", "Hypothesis test"]
+  number-sections: true
 
 book:
   title: "Statistics for Business and Economics"
-  author: 
-  - name: "Mohammad Saifuddin"
-    affiliation: "Assistant Professor, Department of Mathematics and  Statistics, BUBT"
-
-  
+  author:
+    - name: "Mohammad Saifuddin"
+      affiliation: "Assistant Professor, Department of Mathematics and Statistics, BUBT"
   date: today
   cover-image: "cover3.jpg"
-  
-  
   chapters:
     - index.qmd
     - 1intro.qmd
@@ -23,7 +18,7 @@ book:
     - 3descriptive_numer_measures.qmd
     - 4Probability.qmd
     - 5randomvariable_and_Discrete_dist.qmd
-    #- 6.1discrete_r.v_special.qmd
+    # - 6.1discrete_r.v_special.qmd
     - 6continuous_Dist.qmd
     - 7Further_topics_on_rv.qmd
     - 8sampling_and_sampling_distributions.qmd
@@ -33,10 +28,9 @@ book:
     - 12ANOVA_oneway.qmd
     - 13Chi_squaredTest.qmd
     - 14Correlation.qmd
-    #- Multiple_linear.qmd
+    # - Multiple_linear.qmd
     - summary.qmd
     - references.qmd
-
   downloads: [pdf, epub]
   sidebar:
     pinned: true
@@ -44,25 +38,30 @@ book:
       - icon: save
         menu:
           - text: ""
-            url:  "#"
+            url: "#"
           - text: ""
-            url:  "#"
+            url: "#"
           - text: ""
-            url:  "#"
+            url: "#"
+  navbar:
+    right:
+      - text: GitHub repository
+        href: "https://github.com/msaif525/stat_for_businessNeconomics"
+        target: _blank
+
 website:
   site-url: "https://msaif525.github.io/stat_for_businessNeconomics/"
   repo-url: "https://github.com/msaif525/stat_for_businessNeconomics"
   repo-actions: [source]
-  search: 
+  search:
     location: sidebar
-    type: textbox    
+    type: textbox
 
-execute: 
+execute:
   echo: false
   warning: false
 
 bibliography: references.bib
-
 
 format:
   html:
@@ -87,6 +86,6 @@ format:
     colorlinks: true
     fontsize: 11pt
     include-before-body: cover.tex
-  
+
 css: styles.css
 editor: visual
