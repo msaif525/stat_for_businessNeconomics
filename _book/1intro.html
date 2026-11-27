@@ -724,8 +724,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Cross-sectional data</strong> are data collected at the <strong>same</strong> or <strong>approximately the same point in time</strong>. The data in <span class="quarto-unresolved-ref">?tbl-tab1_1</span> are cross-sectional because they describe the five variables for the 25 mutual funds at the same point in time.</p>
 <p><strong>Time series data</strong> are data collected <strong>over several time periods</strong>. For example, the time series in <a href="#fig-figGDP_BD" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> shows the GDP gowth (%) of Bangladesh 1990 and 2024.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gdp_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Year =</span> <span class="dv">1990</span><span class="sc">:</span><span class="dv">2024</span>,</span>
@@ -742,7 +740,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1990</span>,<span class="dv">2024</span>,<span class="at">by=</span><span class="dv">5</span>))<span class="sc">+</span> </span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-figGDP_BD" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">

@@ -638,14 +638,11 @@ window.Quarto = {
 <p>Now we draw a random sample (by using both SWR and SWOR )using <code>sample()</code> function in base <code>R</code>.</p>
 <p><strong>Sampling without replacement (SWOR)</strong></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2103</span>) <span class="co"># To keep reproducibility</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>) <span class="co"># The elemnets in X variable</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Drawing a random sample without replacement</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(X,<span class="dv">2</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5 9</code></pre>
 </div>
@@ -696,18 +693,12 @@ window.Quarto = {
 <p><strong>Sampling with replacement (SWR)</strong></p>
 <p>The all possible that is <span class="math inline">\(N^n=4^2=16\)</span> samples (by <em>SWR</em>) are :</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drawing a random sample with replacement</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(X,<span class="dv">2</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9 9</code></pre>
 </div>
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sampls_swr<span class="ot">=</span><span class="fu">expand.grid</span>(X, X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <table class="caption-top table">
 <caption>Samples of size n=2 with replacement</caption>
@@ -904,8 +895,6 @@ window.Quarto = {
 </tbody>
 </table>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Y<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">2</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>all_sampl<span class="ot">&lt;-</span><span class="fu">combn</span>(Y,<span class="dv">2</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#class(all_sampl)</span></span>
@@ -922,7 +911,6 @@ window.Quarto = {
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="fu">expression</span>(<span class="fu">bar</span>(x)),<span class="at">y=</span><span class="fu">expression</span>(<span class="fu">f</span>(<span class="fu">bar</span>(x))))<span class="sc">+</span></span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-samdist" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -990,8 +978,6 @@ Figure&nbsp;8.1: Sampling distribution of <span class="math inline">\(\bar{x}\)<
 <p>In this section we illustrates how sampling distributions of sample means approximate to normal or bell shaped distribution as we increase the sample size .</p>
 <p><strong>At first,</strong> we consider a population data regarding <code>gdp per capita (USD),2023</code> of 218 countries. We can see that the distribution of <code>gdp per capita</code> is highly skewed to the right (see <a href="#fig-fig_clt1" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>).</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>GDP_percap23 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"StatForBandE_data.xlsx"</span>, </span>
@@ -1026,7 +1012,6 @@ Figure&nbsp;8.1: Sampling distribution of <span class="math inline">\(\bar{x}\)<
 <span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">4</span>)<span class="sc">+</span></span>
 <span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>,<span class="at">xmin =</span> <span class="dv">83000</span>, <span class="at">xmax =</span> <span class="dv">119500</span>, <span class="at">ymin =</span> <span class="dv">65</span>, <span class="at">ymax =</span> <span class="dv">80</span>, </span>
 <span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>           <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-fig_clt1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1041,8 +1026,6 @@ Figure&nbsp;8.2: Frequency histogram of GDP percapita of N=218 countries
 </div>
 </div>
 <p><strong>Now</strong> we draw 1000 random samples (without replacement) of different sample sizes and then plot the histogram of samples means.</p>
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>xgdp<span class="ot">&lt;-</span>gdp_2023<span class="sc">$</span>Y_2023</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>nsim<span class="ot">=</span><span class="dv">1000</span> <span class="co"># no of simulations/ samples</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1066,7 +1049,6 @@ Figure&nbsp;8.2: Frequency histogram of GDP percapita of N=218 countries
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>pclt_1</span>
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>pclt_2</span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>pclt_3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div id="fig-cltsim" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cltsim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">

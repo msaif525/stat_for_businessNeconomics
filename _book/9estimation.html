@@ -883,14 +883,11 @@ window.Quarto = {
 <h3 data-number="9.2.3" class="anchored" data-anchor-id="understanding-confidence-interval-through-simulation"><span class="header-section-number">9.2.3</span> Understanding confidence interval through Simulation</h3>
 <p>Suppose <span class="math inline">\(X\sim N(50,5^2)\)</span> . Now consider a population data of size <span class="math inline">\(N=10000\)</span> and the histogram of <span class="math inline">\(X\)</span> is:</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">36</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">10000</span>,<span class="dv">50</span>,<span class="dv">5</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X,<span class="at">freq =</span> F,<span class="at">sub=</span> <span class="st">"Population size, N=10000"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(X),<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -901,8 +898,6 @@ window.Quarto = {
 </div>
 <p>Now we draw a random sample of size <span class="math inline">\(n=50\)</span> from this population and construct a 95% confidence interval (CI) for <span class="math inline">\(\mu\)</span>. The CI may or may not include the <span class="math inline">\(\mu=50\)</span> !!!</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">36</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mu<span class="ot">=</span><span class="dv">50</span>;sigma<span class="ot">=</span><span class="dv">5</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -920,23 +915,16 @@ window.Quarto = {
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>sampl_1<span class="ot">&lt;-</span><span class="fu">sample</span>(X,n)</span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sample data :"</span>, sampl_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sample data : 52.60842 55.16664 59.23435 44.2092 50.94234 43.34063 44.65922 53.81687 47.60075 46.63776 49.04826 49.44461 52.87322 46.22968 48.2174 55.67331 53.41989 51.86472 54.8001 41.25542 47.11374 47.38467 46.27874 49.85406 44.46384 52.43189 44.33381 53.19745 53.2059 57.02731 43.5203 48.93579 50.28559 55.69281 48.55212 49.2889 45.48768 46.8649 46.96022 35.22993 54.00936 58.99123 50.92287 45.76209 45.1751 44.65327 48.44115 49.47725 55.49664 44.73951</code></pre>
 </div>
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sample mean:"</span>,<span class="fu">round</span>(<span class="fu">mean</span>(sampl_1),<span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sample mean: 49.3</code></pre>
 </div>
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ci_1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">lower=</span><span class="fu">mean</span>(sampl_1)<span class="sc">-</span>z<span class="sc">*</span>s.e,<span class="at">upper=</span><span class="fu">mean</span>(sampl_1)<span class="sc">+</span>z<span class="sc">*</span>s.e)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#ci_1[1]</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"95%  CI:"</span>,<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"[Lower ,Upper]"</span>,<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"["</span>,<span class="fu">round</span>(ci_1[<span class="dv">1</span>],<span class="dv">2</span>),<span class="st">","</span>,<span class="fu">round</span>(ci_1[<span class="dv">2</span>],<span class="dv">2</span>),<span class="st">"]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>95%  CI: 
  [Lower ,Upper] 
@@ -946,8 +934,6 @@ window.Quarto = {
 <p>Luckily our 95% CI contains the true population mean <span class="math inline">\(\mu=50\)</span> 😊.</p>
 <p>Lets simulate 100 samples each of size <span class="math inline">\(n=50\)</span> and construct all 95% CIs.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppose, X~N(50,5^2); so</span></span>
@@ -1000,7 +986,6 @@ window.Quarto = {
 <span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Sample ID"</span>)<span class="sc">+</span></span>
 <span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
 <span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-conf_sim" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
