@@ -1,88 +1,115 @@
 project:
   type: book
-  
-description: "An introductory e‑book on Statistics for Business and Economics with practical examples, exercises, and visualizations."
-keyword: ["Statistics", "Business", "Economics", "Probability", "Data Analysis","Hypothesis test"]
-number-sections: true
+  output-dir: _book            # change to "docs" if GitHub Pages serves from /docs
+
+lang: en
+keywords: ["Statistics", "Business", "Economics", "Probability",
+           "Data Analysis", "Hypothesis Testing"]
 
 book:
   title: "Statistics for Business and Economics"
-  author: 
-  - name: "Mohammad Saifuddin"
-    affiliation: "Assistant Professor, Department of Mathematics and  Statistics, BUBT"
-
-  
+  description: "An introductory e-book on Statistics for Business and Economics with practical examples, exercises, and visualizations."
+  author:
+    - name: "Mohammad Saifuddin"
+      affiliation: "Assistant Professor, Department of Mathematics and Statistics, BUBT"
   date: today
-  cover-image: "cover3.jpg"
-  
-  
+  date-format: "D MMMM YYYY"
+  cover-image: cover3.jpg
+  cover-image-alt: "Cover of Statistics for Business and Economics"
+
+  # --- Site / repository (book projects take these under `book:`, not `website:`)
+  site-url: "https://msaif525.github.io/stat_for_businessNeconomics/"
+  repo-url: "https://github.com/msaif525/stat_for_businessNeconomics"
+  repo-branch: main
+  repo-actions: [source, issue]   # "issue" lets readers report errors
+  downloads: [pdf, epub]
+  sharing: [twitter, facebook, linkedin]
+
+  search:
+    location: sidebar
+    type: textbox
+
+  sidebar:
+    style: docked
+    pinned: true
+    collapse-level: 1
+
+  page-navigation: true
+  reader-mode: true
+
+  page-footer:
+    left: "© 2026 Mohammad Saifuddin"
+    right: "Built with [Quarto](https://quarto.org/)"
+
   chapters:
     - index.qmd
     - 1intro.qmd
-    - 2descriptive_graph_tab.qmd
-    - 3descriptive_numer_measures.qmd
-    - 4Probability.qmd
-    - 5randomvariable_and_Discrete_dist.qmd
-    #- 6.1discrete_r.v_special.qmd
-    - 6continuous_Dist.qmd
-    - 7Further_topics_on_rv.qmd
-    - 8sampling_and_sampling_distributions.qmd
-    - 9estimation.qmd
-    - 10hypothesis_test.qmd
-    - 11Hypotheis_test(TWO population).qmd
-    - 12ANOVA_oneway.qmd
-    - 13Chi_squaredTest.qmd
-    - 14Correlation.qmd
-    #- Multiple_linear.qmd
+
+    - part: "Descriptive Statistics"
+      chapters:
+        - 2descriptive_graph_tab.qmd
+        - 3descriptive_numer_measures.qmd
+
+    - part: "Probability and Distributions"
+      chapters:
+        - 4Probability.qmd
+        - 5randomvariable_and_Discrete_dist.qmd
+        # - 6.1discrete_r.v_special.qmd
+        - 6continuous_Dist.qmd
+        - 7Further_topics_on_rv.qmd
+
+    - part: "Sampling and Statistical Inference"
+      chapters:
+        - 8sampling_and_sampling_distributions.qmd
+        - 9estimation.qmd
+        - 10hypothesis_test.qmd
+        - 11Hypotheis_test(TWO population).qmd   # rename recommended (see notes)
+        - 12ANOVA_oneway.qmd
+        - 13Chi_squaredTest.qmd
+
+    - part: "Correlation and Regression"
+      chapters:
+        - 14Correlation.qmd
+        # - Multiple_linear.qmd
+
     - summary.qmd
     - references.qmd
 
-  downloads: [pdf, epub]
-  sidebar:
-    pinned: true
-    tools:
-      - icon: save
-        menu:
-          - text: ""
-            url:  "#"
-          - text: ""
-            url:  "#"
-          - text: ""
-            url:  "#"
-  navbar:
-    right:
-      - text: GitHub repository
-        href: "https://github.com/msaif525/stat_for_businessNeconomics"
-        target: _blank
-        
-        
-website:
-  site-url: "https://msaif525.github.io/stat_for_businessNeconomics/"
-  repo-url: "https://github.com/msaif525/stat_for_businessNeconomics"
-  repo-actions: [source]
-  search: 
-    location: sidebar
-    type: textbox    
-
-execute: 
-  echo: false
-  warning: false
-
 bibliography: references.bib
+link-citations: true
 
+number-sections: true
+
+execute:
+  echo: true          # needed for code-fold to have any effect in HTML
+  warning: false
+  message: false
+  freeze: auto        # re-run code only when a chapter's source changes
 
 format:
   html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: styles.css
     grid:
-      margin-width: 300px
-      body-width: 900px
       sidebar-width: 300px
+      body-width: 900px
+      margin-width: 300px
       gutter-width: 1.5rem
-    theme: cosmo
+    toc: true
+    toc-depth: 3
     code-fold: true
+    code-summary: "Show R code"
+    code-copy: true
+    reference-location: margin
+    lightbox: true
+    smooth-scroll: true
+
   pdf:
     documentclass: scrreprt
-    include-in-header: footer.tex
+    papersize: a4
+    fontsize: 11pt
     geometry:
       - top=20mm
       - bottom=25mm
@@ -91,9 +118,16 @@ format:
       - heightrounded
     toc: true
     toc-depth: 2
+    lof: true
+    lot: true
     colorlinks: true
-    fontsize: 11pt
+    include-in-header: footer.tex
     include-before-body: cover.tex
-  
-css: styles.css
+    echo: false        # keep code out of the printed book
+
+  epub:
+    cover-image: cover3.jpg
+    toc: true
+    echo: false
+
 editor: visual
