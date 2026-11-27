@@ -1,3 +1,13 @@
 .justify-text {
   text-align: justify;
 }
+
+
+/* Keep sidebar menus from being cut off */
+#quarto-sidebar,
+.sidebar-menu-container {
+  overflow: visible !important;
+}
+.sidebar-tools-main .dropdown-menu {
+  z-index: 2000;
+}

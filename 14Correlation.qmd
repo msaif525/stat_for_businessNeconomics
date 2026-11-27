@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Correlation and Simple Linear Regression
 
 In real world we often observe that a change in one variable is associated with the change in another variable.
@@ -5,7 +10,7 @@ In real world we often observe that a change in one variable is associated with 
 In statistics, **correlation** refers to *degree* and *direction* of **linear relationship** between two quantitative (interval or ratio scale ) variables. For example-
 
 - As *income* increases *expense* also increases (positive correlation);
-- As *resistance* increases *current flow* decreases (negative correlation) etc.
+- As *price* increases *demand* decreases (negative correlation) etc.
 
 To understand the nature and to measure the **linear relationship (correlation)** between two quantitative variable we use some techniques. In the following section we will discuss about that.
 
@@ -13,9 +18,94 @@ To understand the nature and to measure the **linear relationship (correlation)*
 
 A **scatter plot** shows the relationship between two quantitative variables measured for the same individuals. The values of one variable appear on the horizontal axis, and the values of the other variable appear on the vertical axis. Each individual in the data appears as a point on the graph.
 
-- A scatterplot *displays* the strength, direction, and form of the relationship between two quantitative variables (*see* @fig-scatter).
+- A scatterplot *displays* the strength, direction, and form of the relationship between two quantitative variables (*see* @fig-scatter or @fig-scatter_exmpl).
 
-![Types of correlations that can be represented using a scatter plot](Scatter.png){#fig-scatter}
+
+```{r}
+#| label: fig-scatter_exmpl
+#| fig-cap: Types of correlations that can be represented using a scatter plot
+#| fig-height: 8
+
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+
+set.seed(42)
+n <- 100
+
+make_linear_data <- function(n, target_r, label) {
+  x <- rnorm(n)
+  z <- rnorm(n)
+  z_orth <- residuals(lm(z ~ x))
+
+  x_scaled <- as.numeric(scale(x))
+  z_scaled <- as.numeric(scale(z_orth))
+  y <- target_r * x_scaled + sqrt(1 - target_r^2) * z_scaled
+
+  data.frame(x = x_scaled, y = y, Type = label)
+}
+
+# (i) – (vi) Linear correlation cases (without r values in titles)
+df_linear <- bind_rows(
+  make_linear_data(n,  1.00, "i) Perfect Positive"),
+  make_linear_data(n, -1.00, "ii) Perfect Negative"),
+  make_linear_data(n,  0.85, "iii) Strong Positive"),
+  make_linear_data(n, -0.85, "iv) Strong Negative"),
+  make_linear_data(n,  0.60, "v) Moderately Strong Positive"),
+  make_linear_data(n, -0.60, "vi) Moderately Strong Negative")
+)
+
+df_linear$Type <- factor(df_linear$Type, levels = unique(df_linear$Type))
+
+# (vii-a) Non-linear: Quadratic
+x_quad <- seq(-2, 2, length.out = n)
+y_quad <- x_quad^2 - mean(x_quad^2) + rnorm(n, sd = 0.15)
+df_quad <- data.frame(x = x_quad, y = y_quad)
+
+# (vii-b) Non-linear: Circle
+theta <- seq(0, 2 * pi, length.out = n)
+x_circ <- cos(theta) + rnorm(n, sd = 0.05)
+y_circ <- sin(theta) + rnorm(n, sd = 0.05)
+df_circ <- data.frame(x = x_circ, y = y_circ)
+
+# Plot 1: Faceted grid of linear correlations (i to vi)
+p_linear <- ggplot(df_linear, aes(x = x, y = y)) +
+  geom_point(color = "#2C3E50", alpha = 0.75, size = 2) +
+  facet_wrap(~ Type, scales = "free", ncol = 2) +
+  theme_minimal(base_size = 11) +
+  theme(
+    strip.text = element_text(face = "bold", size = 10),
+    panel.border = element_rect(color = "grey80", fill = NA)
+  ) +
+  labs(title = "Types of correlation from scatter plot", x = "X", y = "Y")
+
+# Plot 2: Quadratic non-linear (vii-a)
+p_quad <- ggplot(df_quad, aes(x = x, y = y)) +
+  geom_point(color = "#16A085", alpha = 0.8, size = 2) +
+  theme_minimal(base_size = 11) +
+  theme(
+    plot.title = element_text(face = "bold", size = 10),
+    panel.border = element_rect(color = "grey80", fill = NA)
+  ) +
+  labs(title = "Zero Correlation", x = "X", y = "Y")
+
+# Plot 3: Circle non-linear (vii-b)
+p_circ <- ggplot(df_circ, aes(x = x, y = y)) +
+  geom_point(color = "#8E44AD", alpha = 0.8, size = 2) +
+  coord_fixed() +
+  theme_minimal(base_size = 11) +
+  theme(
+    plot.title = element_text(face = "bold", size = 10),
+    panel.border = element_rect(color = "grey80", fill = NA)
+  ) +
+  labs(title = "Zero Correlation", x = "X", y = "Y")
+
+final_plot <- p_linear / (p_quad | p_circ) +
+  plot_layout(heights = c(3, 1.2))
+
+print(final_plot)
+```
+
 
 Lets draw a scatter plot for the following data.
 

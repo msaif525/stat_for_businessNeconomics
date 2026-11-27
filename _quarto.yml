@@ -68,7 +68,7 @@ link-citations: true
 number-sections: true
 
 execute:
-  echo: true          # needed for code-fold to have any effect in HTML
+  echo: false          # needed for code-fold to have any effect in HTML
   warning: false
   message: false
   freeze: auto        # re-run code only when a chapter's source changes
@@ -86,7 +86,7 @@ format:
       gutter-width: 1.5rem
     toc: true
     toc-depth: 3
-    code-fold: true
+    code-fold: false
     code-summary: "Show R code"
     code-copy: true
     reference-location: margin
