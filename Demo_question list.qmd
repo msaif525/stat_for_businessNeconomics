@@ -60,7 +60,7 @@ Using the sample salary dataset ($n = 10$) provided above, solve the following s
 **Example 2:** Average Price of Purchased RiceA family buys different brands/qualities of rice in varying quantities throughout the month. To find the average cost per kilogram, we use the weighted mean (where quantity is the weight $w_i$ and price per kg is $x_i$).
 
 | Rice Variety | Price per kg ($x_i$) in BDT) | Quantity Purchased ($w_i$) in kg) |
-|:--------------------|:------------------------:|:------------------------:|
+|:---|:--:|:--:|
 | Everyday Miniket | 70 | 20 |
 | Premium Nazirshail | 90 | 10 |
 | Aromatic Katari | 130 | 5 |

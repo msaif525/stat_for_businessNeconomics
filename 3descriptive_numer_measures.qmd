@@ -1011,33 +1011,31 @@ $m'_3=\frac{\sum_{i=i}^n x_i^3}{n}$
 
 $m'_4=\frac{\sum_{i=i}^n x_i^4}{n}$
 
-The$r^{th}$sample **central moment (about mean) is:**
+The$r^{th}$sample **central moment (about mean) of X is:**
 
-$$m_r=\frac{\sum_{i=1}^n (x_i-\bar x)^r}{n}$$ {#eq-centralm}
+$$m_r (X)=\frac{\sum_{i=1}^n (x_i-\bar x)^r}{n}$$ {#eq-centralm}
 
 Hence the first 4 central moments are:
 
-$m_1=\frac{\sum(x-\bar x)}{n}=\frac{0}{n}=0$
+$m_1(X)=\frac{\sum(x-\bar x)}{n}=\frac{0}{n}=0$
 
-$m_2=\frac{\sum(x-\bar x)^2}{n}$
+$m_2(X)=\frac{\sum(x-\bar x)^2}{n}$
 
-$m_3=\frac{\sum(x-\bar x)^3}{n}$
+$m_3(X)=\frac{\sum(x-\bar x)^3}{n}$
 
-$m_4=\frac{\sum(x-\bar x)^4}{n}$
+$m_4(X)=\frac{\sum(x-\bar x)^4}{n}$
 
 **Relation between raw moments and central moments**
 
-a\) $m_1=0$
+a\) $m_1(X)=0$
 
-b\) $m_2=m'_2-{m'_1}^2$
+b\) $m_2(X)=m'_2(X)-{m'_1}^2(X)$
 
 c\) $m_3=m'_3-3m'_1 m'_2+2{m'_1}^3$
 
 d\) $m_4=m'_4-4m'_1 m'_3+6{m'_1}^2 m'_2-3{m'_1}^4$
 
-**Example 3.30 Calculate** the first 4 central moments from the following sample data.
-
-`3,5,6,9,12`
+**Example 3.30 Calculate** the first 4 central moments from the following sample data. 3,5,6,9,12.
 
 [Solution:]{.underline}
 
@@ -1064,7 +1062,7 @@ x=c(3,5,6,9,12)
 Here sample mean, $\bar x=\frac{\sum x}{n}=\frac{3+5+...+12}{5}=7$
 
 | $x$ | $(x-\bar x)$ | $(x-\bar x)^2$ | $(x-\bar x)^3$ | $(x-\bar x)^4$ |
-|:--:|:--:|:--:|:--:|:--:|
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | 3 | -4 | 16 | -64 | 256 |
 | 5 | -2 | 4 | -8 | 16 |
 | 6 | -1 | 1 | -1 | 1 |
@@ -1145,6 +1143,30 @@ $$Kurtosis = \frac{1}{n} \left[ \sum \left( \frac{X_i - \overline{X}}{s} \right)
 For calculation purpose the above formula is written as
 
 $$ Kurtosis=\frac{1}{n}\frac{\sum (X-\bar X)^4}{s^4} $$
+
+::: callout-note
+## Effect of change of origin and scale on Central moment
+
+We know the $r^{th}$ central moment of variable X is:\
+
+$$m_r(X)=\frac{\sum_{i=1}^n (x_i -\bar x)^r}{n}$$
+
+Let, $Y=\frac{X-a}{b} \ \ ; b\ne 0$
+
+Hence, $y_i=\frac{x_i-a}{b}$
+
+$\Rightarrow x_i=a+b y_i$
+
+$\Rightarrow\bar x=a+b \bar y$
+
+Now,
+
+$$m_r(X)=\frac{\sum(x_i-\bar x)^r}{n}=\frac{\sum(a+by_i-a-b\bar y)^r}{n}=b^r\frac{\sum (y_i-\bar y)^r}{n}=b^r m_r(Y)$$
+
+$\boxed {\therefore m_r(X)=b^r m_r)Y)}$
+
+So **Central moment is only affected by *change of scale (b) ; not by origin (a).***
+:::
 
 ### Some other formulas to calculate skewness
 
